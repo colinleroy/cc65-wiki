@@ -1,1 +1,1 @@
-[cc65 Documentation](http://oliverschmidt.github.com/cc65/docs/)
+[http://oliverschmidt.github.com/cc65/docs/ cc65 Documentation]
