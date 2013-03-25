@@ -1,0 +1,85 @@
+== Overview ==
+
+In most filesystems a file consists of a few file attributes (incl. the filename) and a byte stream (the file content). However in the GEOS filesystem all files have 256 bytes of file attributes and VLIR files have up to 127 distinct byte streams. Therefore a GEOS file can't be represented in other filesystems as-is.
+
+So if a GEOS file is to be transfered from one machine to another it has to be converted first into a "standard file", then transfered and finally deconverted back into a GEOS file. Of course this "standard file" can't be used with GEOS, its only use is to be transfered. For GEOS 64/128 the program [http://cbmfiles.com/geos/geos-5.php CONVERT] takes care of the convert and deconvert process. When transfered to other filesystems this "standard file" is typically given the filename extension <code>.cvt</code>. The [http://www.filegate.net/cbm/g-tech/cvtformt.txt GEOS CONVERT UTILITY FILE STRUCTURE] describes the GEOS 64/128 CONVERT file format.
+
+Why is the CONVERT file format interesting from the cc65 point of view? Being a cross development package its linker has no access to the GEOS filesystem and therefore can't produce a GEOS file. Instead it produces a CONVERT file which has to be deconverted after transfer to the GEOS filesystem. This is perfectly identical for GEOS 64/128 and Apple GEOS. However there was no CONVERT program available for Apple GEOS. Therefore cc65 provides its own program called CONVERT.SYSTEM (that currently only implements the deconversion necessary for cc65).
+
+The GEOS 64/128 CONVERT file format was carefully designed to allow for an easy in-place conversion/deconversion. Thus the CONVERT program doesn't require additional disk space - and is quite fast. Both the GEOS 64/128 filesystem and the Apple GEOS filesystem are only somewhat modfied variants of the respective standard filesystems (CBM and ProDOS). And because those standard filesystems are very different the same is true for the GEOS 64/128 filesystem and the Apple GEOS filesystem. So to allow for an easy in-place conversion/deconversion the Apple GEOS CONVERT format has to be very different from the GEOS 64/128 CONVERT format. As there was no Apple GEOS CONVERT format specified it is defined here - both for '''GEOS sequential CONVERT files''' and '''GEOS VLIR CONVERT files'''.
+
+== Common to both CONVERT Formats ==
+
+* All data blocks existing in the GEOS file remain.
+* The ProDOS <code>blocks_used</code> of the GEOS file remains.
+* The ProDOS <code>file_name</code> has an upper case char where the <code>file_name</code> of the GEOS file has a lower case char.
+* The ProDOS <code>file_name</code> has an underscore where the <code>file_name</code> of the GEOS file has an invalid ProDOS char.
+* The ProDOS <code>file_type</code> is 6.
+* The ProDOS <code>storage_type</code> is 2.
+* The ProDOS <code>aux_type</code> is unused.
+* The first data block is the header block of the GEOS file.
+* The first data block offsets $180-$1A6 contain the ProDOS directory entry of the GEOS file but the ProDOS <code>key_pointer</code>, <code>blocks_used</code>, <code>access</code>, <code>aux_type</code> and <code>header_pointer</code> are unused.
+* The first data block offsets $1A7-$1FF are unused.
+
+=== Conversion Notes ===
+
+* The ProDOS <code>aux_type</code> is written to the first data block pointer in the ProDOS index block.
+* The ProDOS directory entry is written as-is to the first data block offset $180.
+* The ProDOS <code>storage_type</code> is set to 2.
+* The ProDOS <code>file_type</code> is set to 6.
+* The ProDOS <code>file_name</code> is transformed to a valid ProDOS file name.
+
+=== Deconversion Notes ===
+
+* The ProDOS <code>storage_type</code>, <code>name_length</code>, <code>file_name</code>, <code>file_type</code>, <code>creation</code>, <code>version</code>, <code>min_version</code> and <code>last_mod</code> at the first data block offset $180 are written to the ProDOS directory entry.
+* The first data block pointer in the ProDOS index block is written to the ProDOS <code>aux_type</code>.
+
+== Sequential CONVERT Format ==
+
+* The ProDOS <code>EOF</code> in the ProDOS directory entry at the first data block offset $180 is the ProDOS <code>EOF</code> of the GEOS file.
+* The first data block offsets $100-$17F are unused.
+* All but the first data blocks are the data blocks existing in the GEOS file.
+
+=== Conversion Notes ===
+
+* The ProDOS index block remains.
+* The pointers to the data blocks existing in the GEOS file are moved upwards by one entry.
+
+=== Deconversion Notes ===
+
+* The ProDOS index block remains.
+* The pointers to all but the first data blocks are moved downwards by one entry.
+* The ProDOS <code>EOF</code> at the first data block offset $180 is written to the ProDOS directory entry.
+* The ProDOS <code>EOF</code> at the first data block offset $180 is written to ProDOS index block offsets $1FF, $0FF and $0FE.
+
+== VLIR CONVERT Format ==
+
+* The ProDOS <code>EOF</code> in the ProDOS directory entry at the first data block offset $180 is unused.
+* The first data block offsets $100-$17F indicate empty records ($FF for an empty record, $00-$FE for a non-empty record).
+* There is no ProDOS master index record.
+* Each record has is a data block called "prefix block".
+* The prefix block offsets $000-$0FD and $100-$1FD are unused.
+* The prefix block offsets $0FF, $1FF and $0FE contain the record size in bytes.
+* The prefix block offset $1FE is 0.
+* The second data block is the the prefix block of the first record.
+* The following data blocks are the data blocks of the first record existing in the GEOS file.
+* The prefix block and data blocks of the remaining records are handled in the same way.
+
+=== Conversion Notes ===
+
+* The ProDOS master index block becomes the ProDOS index block.
+* The first data block offsets $100-$17F are for each record the low byte bitwise and-ed with the high byte of the pointer in the ProDOS index block.
+* The ProDOS index block of each non-empty record becomes the prefix block of that record.
+* For each non-empty record the pointers to the data blocks are inserted in the ProDOS index block after the pointer to the prefix block.
+
+=== Deconversion Notes ===
+
+* The ProDOS index block becomes the ProDOS master index block.
+* For each record the size in bytes is determined by the prefix block offsets $0FF, $1FF and $0FE.
+* For each record the number of data blocks existing in the GEOS file is determined by the size in bytes.
+* The prefix block of each record becomes the ProDOS index block of that record.
+* Fore each record the pointers to the data blocks existing in the GEOS file are written to the ProDOS index block of that record.
+* The pointers to the ProDOS index blocks are written to the ProDOS master index block in the order the prefix blocks appear in the file.
+* The first data block offsets $100-$17F are for each record checked for a $FF, if it is present then the ProDOS block adress $FFFF is inserted in the ProDOS master index block.
+* The the sum of all record sizes in bytes is written to the ProDOS <code>EOF</code> in directory entry.
+* The the sum of all record sizes in bytes is written to ProDOS master index block offsets $0FF, $1FF and $0FE.
