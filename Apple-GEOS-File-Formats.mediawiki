@@ -1,0 +1,116 @@
+== Apple GEOS File Formats ==
+
+The Apple GEOS disk I/O subsystem is based on '''ProDOS 8'''. In order to understand the information provided here both knowledge of [http://www.easy68k.com/paulrsm/6502/PDOS8TRM.HTM ProDOS 8 Technical Reference Manual] terminology and the general concept of '''GEOS sequential files''' and '''GEOS VLIR files''' is necessary.
+
+== Common to both Formats ==
+
+* The ProDOS <code>file_name</code> is not limited to capital letters, digits, and periods.
+* The ProDOS <code>file_type</code> is in the range $80-$8F ($82 for a GEOS <code>application</code>).
+* The ProDOS <code>aux_type</code> contains the ProDOS block address of a header block.
+* The header block counts for the ProDOS <code>blocks_used</code>.
+* The header block offsets $000-$0FF contain the the GEOS <code>file header</code>.
+* The header block offsets $100-$1FF are unused.
+
+== Sequential File Format ==
+
+* The format is nearly identical to a ProDOS sapling file.
+* The ProDOS <code>storage_type</code> is 2.
+* The ProDOS index block points to up to 254 data blocks.
+* The ProDOS index block offset $0FF contains the low byte of the ProDOS <code>EOF</code>.
+* The ProDOS index block offset $1FF contains the mid byte of the ProDOS <code>EOF</code>.
+* The ProDOS index block offset $0FE contains the high byte of the ProDOS <code>EOF</code>.
+* The ProDOS index block offset $1FE is 0.
+
+== VLIR File Format ==
+
+* The format is somewhat similiar to a ProDOS tree file.
+* The ProDOS <code>storage_type</code> is 3.
+* The file contains up to 127 VLIR records.
+* The ProDOS <code>EOF</code> is the sum of all record sizes in bytes.
+* The ProDOS master index block points to one ProDOS index block for every record.
+* The list of records is terminated with the ProDOS block address $0000.
+* The list of records may contain empty records indicated by the ProDOS block address $FFFF.
+* The ProDOS master index block offset $0FF contains the low byte of the ProDOS <code>EOF</code>.
+* The ProDOS master index block offset $1FF contains the mid byte of the ProDOS <code>EOF</code>.
+* The ProDOS master index block offset $0FE contains the high byte of the ProDOS <code>EOF</code>.
+* The ProDOS master index block offset $1FE is 0.
+* Each ProDOS index block points to up to 254 data blocks.
+* Each ProDOS index block offset $0FF contains the low byte of the record size in bytes.
+* Each ProDOS index block offset $1FF contains the mid byte of the record size in bytes.
+* Each ProDOS index block offset $0FE contains the high byte of the record size in bytes.
+* Each ProDOS index block offset $1FE is 0.
+
+== Background Info ==
+
+[http://lyonlabs.org/commodore/onrequest/geos-manuals/The_Hitchhikers_Guide_to_GEOS.pdf The Hitchhiker's Guide To GEOS] contains no section on file formats. However several sections contain side notes on Apple GEOS file formats:
+
+=== AppendRecord ===
+<pre>
+An empty record is marked with $ffff in the VLIR index table (stored in the buffer
+at fileHeader). An unused record is marked with $0000. Use PointRecord to
+check the status of a particular record (unused, empty, or filled).
+</pre>
+
+=== BlkAlloc ===
+<pre>
+The Apple version of BlkAlloc builds out a list of allocated blocks in the internal
+INDEXBLOCKBUF buffer. This index block is a modified 512-byte ProDOS
+sapling index block. The block is divided into two 256-byte portions. The lower
+half (bytes 0 through 255) represent the low-bytes of the data blocks and the
+upper half (bytes 256 through 511) represent the associated high-bytes. Byte 0
+and byte 256+0 combine to form the block number of the first data block, byte 1
+and byte 256+1 combine to form the number of the second data block, and so on
+for each allocated block. A block pointer of $0000 ($00 high, $00 low) represents
+the end of the list.
+
+The last two pointers in the index block—the ones in a standard ProDOS sapling
+index that point to the 254th and 255th blocks in the chain—comprise a four-byte
+size value in GEOS. The four-byte value, which represents the number of bytes
+stored in the allocated blocks, can be accessed using the following offsets into the
+index block:
+DSIZE0 Low byte
+DSIZE1 .
+DSIZE2 .
+DSIZE3 High byte
+</pre>
+
+=== FollowChain ===
+<pre>
+Apple GEOS has no FollowChain equivalent because ProDOS links blocks
+together, not by pointers within each block, but by a list of blocks in an index
+associated with each sequential file and VLIR record This index is called the
+index block and, as its name implies, occupies a single block on the disk.
+</pre>
+
+=== FreeFile ===
+<pre>
+FreeFile first copies the entire directory entry (ENTRY_SIZE bytes) from
+DIRENTRY (in main memory) to an internal buffer in auxiliary memory.
+
+If the file is a VLIR file, then FreeFile reads the VLIR index block (the ProDOS
+master index block) into memory and frees all the data blocks in each record. The
+VLIR index block and all the individual record index blocks are then deleted.
+FreeFile finishes by calling PutVBM to flush the VBM cache.
+
+If the file is a sequential file, FreeFile reads the sequential index block into
+memory, frees all assoiciated data blocks, then frees the index block itself.
+FreeFile finishes by calling PutVBM to flush the VBM cache.
+</pre>
+
+=== LdFile ===
+<pre>
+fileHeader: contains 256-byte GEOS file header. (This is a 512-byte
+buffer in Apple GEOS, although only 256 bytes are used in
+the GEOS file header for compatibility).
+</pre>
+
+=== OpenRecordFile ===
+<pre>
+fileBytes: total number of bytes in file (as picked up from last from
+bytes 254,255,511, and 512 of the master index block.
+</pre>
+
+=== SetGEOSDisk ===
+<pre>
+All ProDOS disks are already GEOS compatible.
+</pre>
