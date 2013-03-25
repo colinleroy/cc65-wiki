@@ -29,7 +29,7 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 == Setting up a cc65 project ==
 
 * [[Hello cc65!]]
-* [[Setting up bigger project(s)]]
+* [[Bigger Projects|Setting up somewhat bigger projects]]
 * [[Hey, my project is growing!]]
 
 == Tips and tricks ==
