@@ -1,0 +1,5 @@
+[http://lyonlabs.org/commodore/onrequest/geos-manuals/The_Hitchhikers_Guide_to_GEOS.pdf The Hitchhiker's Guide To GEOS] contains no section on zeropage usage. However the section on public GEOS variables shows variables at locations  in the range '''$53 - $78'''.
+
+Some reverse engineering on existing applications shows that the GEOS pseudoregisters r0 - r15 are mapped to the locations '''$00 - $1F'''. This is very plausible as they are mapped to the locations $02 - $21 on machines with a 6510 (where the location $00 and $01 can't be used).
+
+An Apple II emulator instrumented to create a zeropage usage statistics seems to indicate that the locations '''$80 - $FF''' are not used by the GEOS Kernal. Therefore the location $80 was choosen as base address of the cc65 zeropage memory area.
