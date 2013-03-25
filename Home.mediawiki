@@ -26,7 +26,7 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 * [[Commodore machines]]
 * [[GEOS]]
 
-== Setting up cc65 project ==
+== Setting up a cc65 project ==
 
 * [[Hello cc65!]]
 * [[Setting up bigger project(s)]]
