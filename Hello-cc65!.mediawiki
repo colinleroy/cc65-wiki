@@ -1,0 +1,35 @@
+Here we go again - the mighty piece of code that never dies...
+
+<pre>
+#include <stdio.h>
+
+void main(void)
+{
+	printf("Hello, world!\n");
+}
+</pre>
+
+You save the above programming masterpiece using your favourite text editor as hello.c and the fun begins... You probably should read the excellent [http://oliverschmidt.github.com/cc65/doc/ cc65 documentation] or at least the [http://oliverschmidt.github.com/cc65/doc/intro.html introduction section] before continuing. This will make things more clear and structured in your mind :-) For now, we assume that you know what are the [http://oliverschmidt.github.com/cc65/doc/intro-1.html#ss1.3 translation phases] (or you just don't want to know that) and we go the easy way, using cc65's [http://oliverschmidt.github.com/cc65/doc/cl65.html Compile & Link utility]. The beauty of this utility is that single command:
+
+<pre>
+$ cl65 hello.c
+</pre>
+
+should create for you one object file named "hello.o" and one (C64) executable named "hello":
+
+<pre>
+$ ls -l
+total 24
+-rw-r--r--  1 user  staff  2758 17 cze 20:05 hello
+-rw-r--r--  1 user  staff    68 17 cze 19:38 hello.c
+-rw-r--r--  1 user  staff   568 17 cze 20:05 hello.o
+$
+</pre>
+
+C64 is the default target for many cc65 tools. If you need to have your pride compiled for a different [[cc65:mainpage#target_platforms|target platform]] you need to add a switch to the command line:
+
+<pre>
+$ cl65 -t apple2 hello.c
+</pre>
+
+creates executable file for Apple II machines. For a complete list of supported target platforms, please refer to the [http://oliverschmidt.github.com/cc65/doc/ cc65 documentation] and [http://oliverschmidt.github.com/cc65/doc/ld65.html ld65] [http://oliverschmidt.github.com/cc65/doc/ld65-2.html#ss2.2 linker options] for setting the target.
