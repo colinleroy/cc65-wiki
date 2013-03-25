@@ -6,7 +6,7 @@ cc65 is a complete package, which includes
 * a powerful macro assembler,
 * linker, librarian and several other tools,
 * target libraries that support common 6502 platform like the Commodore C64, the Atari 8-bit machines, the Apple II and others,
-* [http://oliverschmidt.github.com/cc65/docs/ documentation] and more.
+* [http://oliverschmidt.github.com/cc65/doc/ documentation] and more.
 
 == Downloading and installing ==
 
