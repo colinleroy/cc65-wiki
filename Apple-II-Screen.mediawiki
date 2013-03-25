@@ -1,0 +1,90 @@
+== Save and restore the text video screen ==
+
+Because of the non-contiguous memory layout it's not trivial to save and restore the Apple II text video screen. The code below does not only demonstrate how to do it but also shows how well the Apple II conio implementation interoperates with the Apple II ROM routines and their zero page usage. In general you can presume that r/w access to '''CH''', '''CV''', '''BASL''', '''BASH''', '''WNDLFT''', '''WNDWDTH''', '''WNDTOP''', '''WNDBTM''' and '''INVFLG''' has the same effect on the Apple II conio functions it has on the Apple II ROM routines.
+
+<pre>
+#include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define ROWS 24
+#define COLS 40
+
+#define BASL      0x28
+#define RD80VID 0xC01F
+#define LOWSCR  0xC054
+#define HISCR   0xC055
+
+char* getscreen(void)
+{
+  char wide = *(signed char*)RD80VID < 0;
+  unsigned char x = wherex();
+  unsigned char y = wherey();
+  unsigned char row;
+  char* screen;
+  char* buffer;
+
+  screen = buffer = malloc(1 + ROWS * COLS * (1 + wide) + 2);
+  *screen++ = wide;
+
+  for (row = 0; row < ROWS; ++row)
+  {
+    gotoy(row);
+    memcpy(screen, *(char**)BASL, COLS);
+    screen += COLS;
+    if (wide)
+    {
+      *(char*)HISCR = 0;
+      memcpy(screen, *(char**)BASL, COLS);
+      screen += COLS;
+      *(char*)LOWSCR = 0;
+    }
+  }
+  *screen++ = y;
+  *screen   = x;
+
+  gotoy(y);
+  return buffer;
+}
+
+void putscreen(char* screen)
+{
+  char wide = *screen++;
+  unsigned char row;
+
+  for (row = 0; row < ROWS; ++row)
+  {
+    gotoy(row);
+    memcpy(*(char**)BASL, screen, COLS);
+    screen += COLS;
+    if (wide)
+    {
+      *(char*)HISCR = 0;
+      memcpy(*(char**)BASL, screen, COLS);
+      screen += COLS;
+      *(char*)LOWSCR = 0;
+    }
+  }
+  gotoy(*screen++);
+  gotox(*screen);
+}
+
+void main(void)
+{
+  void* screen;
+
+  printf("Init...\n");
+  screen = getscreen();
+
+  cgetc();
+  clrscr();
+  printf("Hello, World\n");  
+
+  cgetc();
+  putscreen(screen);
+  printf("Exit...\n");
+
+  free(screen);
+}
+</pre>
