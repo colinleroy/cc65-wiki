@@ -1,1 +1,76 @@
-[http://oliverschmidt.github.com/cc65/docs/ cc65 Documentation]
+== What is cc65? ==
+
+cc65 is a complete package, which includes
+
+* a C compiler for machines with a 6502 compatible CPU,
+* a powerful macro assembler,
+* linker, librarian and several other tools,
+* target libraries that support common 6502 platform like the Commodore C64, the Atari 8-bit machines, the Apple II and others,
+* [http://oliverschmidt.github.com/cc65/docs/ documentation] and more.
+
+== Downloading and installing ==
+
+According to the original author and former maintainer: "with one exception in the compiler (access()) the code is plain ISO C, so it should compile on most systems. Memory usage may be a problem, however."
+
+cc65 can surely be compiled and run on the following platforms, for which GNU Compiler Collection - [http://gcc.gnu.org GCC] is available.
+
+* [[GNU/Linux]]
+* [[OS X]]
+* [[Microsoft Windows]]
+* [[AmigaOS]]
+
+== Target platforms ==
+
+* [[Apple II]]
+* [[Atari 2600]]
+* [[Commodore machines]]
+* [[GEOS]]
+
+== Setting up cc65 project ==
+
+* [[Hello cc65!]]
+* [[Setting up bigger project(s)]]
+* [[Hey, my project is growing!]]
+
+== Tips and tricks ==
+
+* [[Using cc65 with Emacs]]
+* [[Searching the mailing list archive]]
+* [[Using ca65 with foreign source]]
+* [[Using runtime zeropage locations in assembly language]]
+* [[Force addressing mode in ca65]]
+
+== Frequently asked questions ==
+
+* [[Mail problems]]
+* [[File path problems]]
+* [[PEEK and POKE]]
+* [[The .ORG directive]]
+* [[Interrupt handlers in C]]
+* [[Direct console I/O]]
+* [[Symbols in local scopes]]
+
+== Library internals ==
+
+* [[Tiny Graphics Interface]]
+* [[Priority of constructors and destructors]]
+* [[Reminders]]
+
+== Compiler internals ==
+
+* [[The primary register]]
+* [[Parameter and return stacks]]
+* [[Parameter passing and calling conventions]]
+* [[Roadmap]]
+
+== Debug information ==
+
+* [[debug-info-overview|Overview]]
+* [[debug-info-data|Available information]]
+* [[debug-info-module|Module usage and API calls]]
+
+== Applications ==
+
+* [[The contrib area on the ftp server]]
+* [[Applications written in assembler with ca65]]
+* [[Applications written in C or C/assembler]]
