@@ -1,0 +1,23 @@
+== Overview ==
+
+The Apple II family is supported by cc65 through the two targets
+
+* '''apple2''' for Apple ][+ (or later) machines
+* '''apple2enh''' for enhanced Apple %%//%%e (or later) machines
+** CPU (6502 vs. 65C02)
+** Text screen (only the latter can have 80 columns)
+** Lowercase chars (only the latter can display inverse lc)
+** Keyboard (only the latter has up/down keys)
+
+== Sample Code ==
+
+* [[Apple II Screen|Save and restore the text video screen]]
+
+== Apple GEOS ==
+
+The only publicly available information source on Apple GEOS internals is [http://lyonlabs.org/commodore/onrequest/geos-manuals/The_Hitchhikers_Guide_to_GEOS.pdf The Hitchhiker's Guide To GEOS]. That information is for sure necessary but unfortunately not sufficient to actually create Apple GEOS applications. Therefore additional material is collected here.
+
+* [[Apple GEOS symbol table]]
+* [[Apple GEOS zeropage usage]]
+* [[Apple GEOS file formats]]
+* [[Apple GEOS CONVERT format]]
