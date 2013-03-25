@@ -2,8 +2,8 @@
 
 The Apple II family is supported by cc65 through the two targets
 
-* '''apple2''' for Apple ][+ (or later) machines
-* '''apple2enh''' for enhanced Apple %%//%%e (or later) machines
+* '''apple2''' for Apple <nowiki>][+</nowiki> (or later) machines
+* '''apple2enh''' for enhanced Apple //e (or later) machines
 ** CPU (6502 vs. 65C02)
 ** Text screen (only the latter can have 80 columns)
 ** Lowercase chars (only the latter can display inverse lc)
