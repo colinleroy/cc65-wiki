@@ -23,6 +23,7 @@ $ make
 to get your project built... as long as it is free from show-stopping errors, that is.
 
 Trying to be consistent with the rest of cc65, C64 target is assumed as default.
+
 === Build options ===
 <code>
 $ make OPTIONS=optsize,mapfile
@@ -238,7 +239,7 @@ endif
 # execute the command 'echo' without any parameters. Only cmd.exe will return a
 # non-empy string - saying 'ECHO is on/off'.
 #
-# Many "Native Win32" prorams accept '/' as directory delimiter just fine. How-
+# Many "Native Win32" programs accept '/' as directory delimiter just fine. How-
 # ever the internal commands of cmd.exe generally require '\' to be used.
 #
 # cmd.exe has an internal command 'mkdir' that doesn't understand nor require a
