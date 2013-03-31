@@ -1,0 +1,104 @@
+== Overview ==
+For a machine with only 128 bytes of RAM for its data ''and'' stack, programming it using any language other than assembly is not very practical.  Therefore, this article will forgo any discussion on using cc65 to build Atari 2600 projects and focus on ca65. 
+
+Even though the Atari 2600 isn't a supported target out of the box, it is easy to use a custom linker config and Makefile to achieve this end.  Just drop 'atari2600.cfg' and the general purpose Makefile below into the same directory as your project. 
+
+=== Linker config file ===
+Create a file named 'atari2600.cfg' and place it in the same directory as your project.
+
+<pre>
+# Linker config file for targeting the Atari 2600.
+
+MEMORY {
+       RAM:   start = $80,   size=$80, type = rw, define = yes;
+       ROM:   start = $F000, size=$1000, type = ro, file = %O, define = yes;
+       TIA:   start = $00,   size=$40, type = rw, define = yes;
+       RIOT:  start = $280,  size=$20, type = rw, define = yes;
+}
+
+SEGMENTS {
+       RODATA:   load=ROM, type=ro, align = $100;
+       CODE:     load=ROM, type=ro, define=yes;
+       DATA:     load=ROM, run=RAM, type=rw, define=yes;
+       BSS:      load=RAM, type=bss, define=yes;
+       VECTORS:  load=ROM, type=ro, start=$FFFA;
+       ZEROPAGE: load=RAM, type=zp;
+       TIA:      load=TIA, type=rw, define = yes, optional = yes;
+       RIOT:     load=RIOT, type=rw, define = yes, optional = yes;
+}
+</pre>
+
+=== Makefile ===
+Place this Makefile into your project directory.  This Makefile will scan all directories in 'SOURCE' (by default, the current directory only).  All '.s' files found will be assembled and linked to create the output, which by default has the same name as the project directory (plus the '.bin' extension).
+
+You can use <code>make run</code> to build the program and immediately run it using an emulator.
+
+<pre>
+######################################################################
+# General-purpose makefile for compiling Atari 2600 projects.        #
+# This should work for most projects without any changes.            #
+# Default output is $(CURDIR).bin.  Override PROGRAM to change this. #  
+######################################################################
+
+PROGRAM := $(shell basename $(CURDIR)).bin
+SOURCES := .
+INCLUDES :=
+LIBS :=
+OBJDIR := obj
+DEBUGDIR := $(OBJDIR)
+
+LINKCFG := atari2600.cfg
+ASFLAGS :=
+LDFLAGS	= -C$(LINKCFG) \
+          -m $(DEBUGDIR)/$(notdir $(basename $@)).map \
+          -Ln $(DEBUGDIR)/$(notdir $(basename $@)).labels -vm
+
+EMULATORFLAGS := -format ntsc
+
+################################################################################
+
+CC 	      := cc65 
+LD            := ld65
+AS	      := ca65
+AR	      := ar65
+EMULATOR      := stella
+
+MKDIR         := mkdir
+RM            := rm -f
+RMDIR         := rm -rf
+
+################################################################################
+
+ofiles :=
+sfiles := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
+extra_includes := $(foreach i, $(INCLUDES), -I $i)
+
+define depend
+  my_obj := $$(addprefix $$(OBJDIR)/, $$(addsuffix .o, $$(notdir $$(basename $(1)))))
+  ofiles += $$(my_obj)
+
+  $$(my_obj):  $(1)
+	$$(AS) -g -o $$@ $$(ASFLAGS) $(extra_includes) $$<
+endef
+
+################################################################################
+
+.SUFFIXES:
+.PHONY: all clean run
+all: $(PROGRAM)
+
+$(foreach file,$(sfiles),$(eval $(call depend,$(file))))
+
+$(OBJDIR):
+	[ -d $@ ] || mkdir -p $@
+
+$(PROGRAM): $(OBJDIR) $(ofiles)
+	$(LD)  $(LDFLAGS) $(ofiles) $(LIBS) -o $@ 
+
+run : $(PROGRAM)
+	$(EMULATOR) $(EMULATORFLAGS) $(PROGRAM)
+
+clean:
+	$(RM) $(ofiles) $(PROGRAM)
+	$(RMDIR) $(OBJDIR)
+</pre>
