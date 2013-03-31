@@ -1,5 +1,5 @@
 == Even more complex project? ==
-So... you followed guidelines from [[Bigger Projects|previous article]] and by now you have a working development environment with GNU Make at the centre of your build system, utilising happily [[Bigger-Projects#wiki-THE_Makefile_itself|THE Makefile for cc65]], right? Right! Your code is flourishing and your appetite to rule the 6502 based world is growing accordingly! How about running it on Apple <nowiki>][</nowiki>? How about Atari 800? Well...
+So... you followed guidelines from [[Bigger Projects|previous article]] and by now you have a working development environment with GNU Make at the centre of your build system, utilising happily [[Bigger-Projects#the-makefile-itself|THE Makefile for cc65]], right? Right! Your code is flourishing and your appetite to rule the 6502 based world is growing accordingly! How about running it on Apple <nowiki>][</nowiki>? How about Atari 800? Well...
 
 === Multiple target platforms ===
 Building your Wunderwaffe of 8-bit code for multiple target platforms might be as simple as
@@ -213,7 +213,7 @@ diskstest: $(PROGRAM) disks $(PROGRAM).moncommands
 $(PROGRAM).moncommands:
 	echo >$(PROGRAM).moncommands "ll \"$(PROGRAM).lbl\""
 </pre>
-Here we use variables from the main Makefile: PREEMUCMD and POSTEMUCMD and add dependency on 'disks', which means the images have to be created before we can manipulate and use them within our test run. Additional, non-phony subtarget creates a monitor commands file for VICE, which will enable VICE's monitor to load labels automatically. Of course I don't need to say that because you have already been [[Bigger Projects|there]] (right?) and know well that in order to create the appropriate labelfile automatically, one has to have [[Bigger-Projects#wiki-Build_options|build OPTIONS]] properly set.
+Here we use variables from the main Makefile: PREEMUCMD and POSTEMUCMD and add dependency on 'disks', which means the images have to be created before we can manipulate and use them within our test run. Additional, non-phony subtarget creates a monitor commands file for VICE, which will enable VICE's monitor to load labels automatically. Of course I don't need to say that because you have already been [[Bigger Projects|there]] (right?) and know well that in order to create the appropriate labelfile automatically, one has to have [[Bigger-Projects#build-options|build OPTIONS]] properly set.
 
 And the last example:
 <pre>
