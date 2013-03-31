@@ -26,7 +26,7 @@ total 24
 $
 </pre>
 
-C64 is the default target for many cc65 tools. If you need to have your pride compiled for a different [[target platforms|target platform]] you need to add a switch to the command line:
+C64 is the default target for many cc65 tools. If you need to have your pride compiled for a different [[Home#target-platforms|target platform]] you need to add a switch to the command line:
 
 <pre>
 $ cl65 -t apple2 hello.c
