@@ -53,7 +53,7 @@ Well... what can I say? Your choice ;&ndash;) But don't worry that much. We stil
 However a viable alternative is to run THE Makefile directly from the Windows cmd.exe shell using a 'Native Win32' build of GNU Make. There are several sources around but we recommend the [http://gnuwin32.sourceforge.net/packages/make.htm GnuWin Make for Windows]. Just make sure it's available through your PATH and you should be ready to go - and again don't forget to make sure your CC65_HOME is set.
 
 === What next? ===
-First get the Makefile below. Play and experiment with it. Once you master the basics described here, and you get eager to try more advanced stuff, then you might be interested to know that the Makefile you got acquainted with, supports also building with target (and variant!) specific code, various libraries and linker configurations, and more. Advanced topics are described in [[project_grows|another article]].
+First get the Makefile below. Play and experiment with it. Once you master the basics described here, and you get eager to try more advanced stuff, then you might be interested to know that the Makefile you got acquainted with, supports also building with target (and variant!) specific code, various libraries and linker configurations, and more. Advanced topics are described in [[Project Growing|another article]].
 
 === THE Makefile itself ===
 Here comes the long awaited pearl of GNU Make code in its full glory...
