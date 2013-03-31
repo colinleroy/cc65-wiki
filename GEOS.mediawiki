@@ -30,7 +30,6 @@ GEOS requires a 6502 compatible CPU (e.g. 6510 or 8510). For binary compatibilit
 * SCREEN_BASE $axxx-$bxxx
 * OS_JUMPTAB $c1xx-$c2xx
 * disk block size $100
-
 Info by Maciej Witkowiak
 
 === Apple GEOS ===
@@ -38,5 +37,4 @@ Info by Maciej Witkowiak
 * PRINTBASE $79xx
 * OS_JUMPTAB $fexx-$ffxx, $03xx
 * disk block size $200
-
 Info by Stefan Haubenthal
