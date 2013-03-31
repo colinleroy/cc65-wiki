@@ -1,0 +1,20 @@
+== Common problems for assembler programmers (and workarounds) ==
+
+For assembler programs, ca65 doesn't add the 2 byte load address when generating binaries for the Commodore machines. This load address is automatically added by most other assemblers. Since ca65 is not a Commodore specific assembler it doesn't do so, which means the program won't run when transfered to disk or loaded in an emulator.
+
+So to add this manually, we need two things: 
+
+* Add the address as first word in the generated binary.
+* Be sure to correct the memory start address in the linker, since this address is part of the binary but the actual code starts after it.
+
+The former is done by adding
+
+<pre>
+        .addr   *+2
+</pre>
+
+We have to make sure this goes in front of anything else, so when using segments we may place it on its own segment and tell the linker to add this segment as the first on in the binary. Or, if we aren't using segment (that is, anything goes into CODE), we just add it as the first code line.
+
+The second measure is to account for the additional two bytes in the linker config. If our code starts at $C000, we must account for the load address and make the start address of the memory area $BFFE.
+
+People who are used to other assemblers may find some more hints [http://oliverschmidt.github.com/cc65/doc/ca65-17.html in the ca65 documentation].
