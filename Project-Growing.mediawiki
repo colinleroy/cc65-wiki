@@ -1,0 +1,244 @@
+== Even more complex project? ==
+So... you followed guidelines from [[Bigger Projects|previous article]] and by now you have a working development environment with GNU Make at the centre of your build system, utilising happily [[Bigger-Projects#wiki-THE_Makefile_itself|THE Makefile for cc65]], right? Right! Your code is flourishing and your appetite to rule the 6502 based world is growing accordingly! How about running it on Apple <nowiki>][</nowiki>? How about Atari 800? Well...
+
+=== Multiple target platforms ===
+Building your Wunderwaffe of 8-bit code for multiple target platforms might be as simple as
+<pre>
+$ make TARGETS=c64,atari,apple2
+</pre>
+Which builds it for (yes, you guessed it right!) C64, Atari and Apple <nowiki>][</nowiki>. The full list of linker [http://oliverschmidt.github.com/cc65/doc/ld65-2.html#ss2.2 supported target platforms] can be found in [http://oliverschmidt.github.com/cc65/doc/ld65.html ld65 linker documentation]. Unless your program uses some non-portable techniques, after issuing the above command, you should be able to find binaries for all three platforms, having their names ending with '.c64', '.atari', and '.apple2' respectively.
+
+Now - setting the targets on the command line is good for quick testing. But if you want to make it more permanent, assigning appropriate value to TARGETS variable inside the editable variables section of the Makefile itself is the way to go:
+<pre>
+# Space or comma separated list of cc65 supported target platforms to build for.
+# Default: c64 (lowercase!)
+TARGETS := c64 atari apple2
+</pre>
+Will make default targets list to include exactly the same platforms we used previously on the command line. Please note that you can separate the platforms names with either spaces or commas.
+
+This is all fine and works perfectly well as long as you keep programming using only portable C and generic assembler. How long can you keep it that way? ;&ndash;) At some point you will most probably want to add extra spice and utilise some machine specific features, which will make your program simply better suited for it. A simple example - [http://en.wikipedia.org/wiki/Sprite_(computer_graphics) sprites]. Some of cc65 supported target platforms can display hardware sprites. Using them would be great as they offload lots of heavyweight bit lifting from your code (this seems to be the case at least for Commodore 64. I heard rumours that with other platforms YMMV...), some would require software approach. Even between those, which can display hardware based sprites (aka MOBs), there are significant differences in implementation mechanisms, addresses, etc. Therefore it seems to be the time to introduce...
+
+=== Platform specific code ===
+How to do it? There are sexy ways and there are ugly ways (which are which depends on personal tastes and orientations ;&ndash;) ). One pretty common way is to add number of conditional #ifdefs into your code and compile accordingly to the current target. Sexy or ugly? You decide, but only after you read about another method.
+
+Method #2: inside 'src' directory create subdirectories named exactly as the names of [http://oliverschmidt.github.com/cc65/doc/ld65-2.html#ss2.2 cc65 target platforms] you want to develop and build for. Using our predefined platform list we get:
+<pre>
+$ ls -lFr src/
+total 0
+drwxr-xr-x  2 silverdr  staff  68 Jun  1 00:28 c64/
+drwxr-xr-x  2 silverdr  staff  68 Jun  1 00:28 atari/
+drwxr-xr-x  2 silverdr  staff  68 Jun  1 00:28 apple2/
+</pre>
+Now place all your target platform specific source files in the respective target directories, leaving source files with code common for all platforms in the root of 'src' directory:
+<pre>
+$ ls -lFR src/
+total 0
+drwxr-xr-x  4 silverdr  staff   136 Jun  1 00:36 apple2/
+drwxr-xr-x  4 silverdr  staff   136 Jun  1 00:36 atari/
+drwxr-xr-x  4 silverdr  staff   136 Jun  1 00:37 c64/
+-rw-r--r--  1 silverdr  staff  1430 Jun  1 00:36 common.s
+-rw-r--r--  1 silverdr  staff  2156 Jun  1 00:35 main.c
+
+src/apple2:
+total 0
+-rw-r--r--  1 silverdr  staff  1026 Jun  1 00:36 spritedata.s
+-rw-r--r--  1 silverdr  staff  2203 Jun  1 00:36 sprites.c
+
+src/atari:
+total 0
+-rw-r--r--  1 silverdr  staff  1026 Jun  1 00:36 spritedata.s
+-rw-r--r--  1 silverdr  staff  2331 Jun  1 00:36 sprites.c
+
+src/c64:
+total 0
+-rw-r--r--  1 silverdr  staff  1026 Jun  1 00:37 spritedata.s
+-rw-r--r--  1 silverdr  staff   318 Jun  1 00:37 sprites.c
+</pre>
+You can name the platform specific files however you see fit (For example 'src/atari/sprites.c' can be named 'src/atari/atari_sprites.c') but you have to remember about symbols consistency between common and target platform specific source code or you get linker errors.
+
+OK. From now on, issuing
+<pre>
+$ make TARGETS=c64,atari,apple2
+</pre>
+will compile and assemble your code using appropriate sources for each platform accordingly.
+
+=== Additional libraries ===
+So... so far you agree with me that it is just plain C001 ;&ndash;) but then, out of a sudden you ask "Aha, but what with all my highly optimised libraries of code, I spent last three decades polishing and perfecting?" "I can add them to LIBS variable but what if those are customised differently for various target platforms??"
+
+You are right. You can add paths to your (or system) libraries in the variables section of the Makefile:
+<pre>
+# Path(s) to additional libraries required for linking the program
+# Use only if you don't want to place copies of the libraries in SRCDIR
+# Default: none
+LIBS    :=
+</pre>
+but that doesn't solve the problem of platform specific libraries, does it? No - you are right again - it doesn't. What then? How to link-in target platform specific libraries without extra hassle? Before you answer - maybe you should rather think how easy you would like it to be... yes, think again. Did you? So why don't you just put those platform specific libraries inside respective platform specific subdirectories of 'src' yet?
+<pre>
+$ ls -lFR src/
+total 0
+drwxr-xr-x  5 silverdr  staff   136 Jun  1 00:36 apple2/
+drwxr-xr-x  5 silverdr  staff   136 Jun  1 00:36 atari/
+drwxr-xr-x  5 silverdr  staff   136 Jun  1 00:37 c64/
+-rw-r--r--  1 silverdr  staff  1430 Jun  1 00:36 common.s
+-rw-r--r--  1 silverdr  staff  2156 Jun  1 00:35 main.c
+-rw-r--r--  1 silverdr  staff  6338 Jun  1 00:36 my_common_lib.lib
+
+src/apple2:
+total 0
+-rw-r--r--  1 silverdr  staff  5812 Jun  1 00:36 my_apple_lib.lib
+-rw-r--r--  1 silverdr  staff  1026 Jun  1 00:36 spritedata.s
+-rw-r--r--  1 silverdr  staff  2203 Jun  1 00:36 sprites.c
+
+src/atari:
+total 0
+-rw-r--r--  1 silverdr  staff  4524 Jun  1 00:36 my_atari_lib.lib
+-rw-r--r--  1 silverdr  staff  1026 Jun  1 00:36 spritedata.s
+-rw-r--r--  1 silverdr  staff  2331 Jun  1 00:36 sprites.c
+
+src/c64:
+total 0
+-rw-r--r--  1 silverdr  staff  6232 Jun  1 00:36 my_c64_lib.lib
+-rw-r--r--  1 silverdr  staff  1026 Jun  1 00:37 spritedata.s
+-rw-r--r--  1 silverdr  staff   318 Jun  1 00:37 sprites.c
+</pre>
+And check if it gets linked-in when you issue
+<pre>
+$ make
+</pre>
+Works? Good! Then don't forget that libraries with code shared across all target platforms can be dropped to the root 'src' directory and put checkmark on the libs question.
+
+=== Specific linker configs ===
+OK, and what about specific linker configuration files??
+
+Hmmm, I think that if you read that far, then by now you should be able to guess without clues. I mean - with sources, libraries... it all works like a charm, doesn't it? So why should it not work the same with target platform specific linker configuration files? Because one can have multiple sources but not multiple linker configuration files you say? Yes - that's a limitation that exists neither for sources, nor for libraries... so what? You simply have to remember yourself that putting more than one configuration file into one directory doesn't make much sense. But if you want to have various versions for different occasions you can always keep them side-by-side as long as their names do not end with '.cfg'. Yes, put your target platform specific configuration files into respective 'src' subdirectories and there you go.
+
+Have in mind that the following conventions are being used:
+* filename of active configuration file should end with '.cfg'
+* config file placed in 'src' directory is used for all targets, for which NO target specific config file exists inside target subdirectory of 'src'
+* config file placed in target subdirectory of 'src' is being used for linking target in question. Config file present in 'src' is ignored in such situation
+
+Thus, if you want various versions, keep the currently unused versions renamed to have their names ending differently than '.cfg' (but also not '.c', '.h', '.s', '.i', '.lib', ... I hope you know that, and also know why!) If you want to use one custom configuration file for all target platforms - put it into root of 'src' dirctory. That's it. That beer you will buy us when we meet ;&ndash;)
+
+=== Let's complicate things - variants ===
+Some people have never enough. Once they developed a brilliant piece of software, they keep complicating things instead of sipping that shaken, not stirred Martini... One guy who is an Atari fan, wrote a nice program for it. Then he ported it to Apple <nowiki>][</nowiki> and everything was fine. But then he decided it'd be круто to have XEP-80 connected to his Atari. And what's even worse, he wanted to have a special "variant" of his program, adapted specifically to utilise the extra capabilities of XEP-80 device. He wanted it this way because he didn't want to bloat the standard Atari variant with extra byte-baggage! Especially that there is never too much RAM in 6502 systems as we all know..
+
+Now we are in stalemate situation. Both versions (variants) are for one target platform (namely 'atari'), but they are still very much different. So.. what can we do? Back to #ifdefs?
+
+Go ahead if you like ;&ndash;) In the meantime I shall be creating another subdirectory inside 'src' and calling it 'atari.xep' instead of just 'atari'. This way I am going to have two subdirectories, which names start with 'atari'. I keep all "standard" Atari stuff where it was and belongs. But I place the XEP-80 specific Atari code inside 'atari.xep' subdirectory. Is that all?? Let's see.
+<pre>
+$ make TARGETS=atari
+</pre>
+and... boooooo - only the standard Atari variant get build!
+
+Then how about, maybe...
+<pre>
+$ make TARGETS=atari.xep
+</pre>
+Bingo! Now the XEP version got build!
+
+And if we issue:
+<pre>
+$ make TARGETS=atari,atari.xep,apple2
+</pre>
+or update the variable to read
+<pre>
+# Space or comma separated list of cc65 supported target platforms to build for.
+# Default: c64 (lowercase!)
+TARGETS := atari atari.xep apple2
+</pre>
+then two Atari executables and one Apple <nowiki>][</nowiki> executable will be build.
+
+Thing to remember: subdirectory name has to ''begin'' with proper cc65 target platform name and "variant" part has to be separated from platform name with a dot (period). In other words:
+* atari.xep
+* atari.joystick
+* atari.whatever
+are all OK, but
+* atari_xep
+* atari-xep
+* atari+xep
+* atari xep (sic!)
+are all bad! The last one is especially bad (Path names with spaces don't work with 'make'. Period. 'GNU make' contains several hacks to make it a little work. But as 'make' in general builds on the core concept of "words" being separated by spaces it just can't work.) ;&ndash;)
+
+Please also note that directory, which name has an "extension" after the period is not actually "extending" or "inheriting" anything from the one without "extension". It is a fully separated platform subdirectory so (in our example) all code, specific to standard atari (except the parts ''replaced'' by XEP variant specific code) has to be copied over to the new "variant extended" subdirectory. Of course this approach is not really [http://en.wikipedia.org/wiki/Don't_repeat_yourself DRY] but for now you may have to either live with it or consider some workarounds like symbolic links to link repeated source files to one physical file or putting the common code into a library, or maybe still something else...
+
+=== HELP! My binaries have now strange names! ===
+Adding variants is nice thing but the executables are named accordingly to the variant part. Seems like all is fine at first. And in most cases it will be. But - still - it can be nice to have a common ending of the filename for each platform we build for. Why? For example in order to be able to assign each particular ending to a file type that can be open with a specific program. I mean I want '*.txt' files to be opened in a text editor but my 'atari.txt' (in case I created such variant - say a text only version of adventure game) to be opened in an Atari emulator. (This is of course a highly suboptimal (in order not to name it properly: purely lame) way of recognising file types / formats, for spreading which we have to "thank" the brilliant people located in Redmond... :&ndash;( ) So how to do it (easily)? Well - you asked for easy way, didn't you? So let's assume we agree on the following convention:
+* C64 programs have to have file name ending with '.c64'
+* Atari programs have to have file name ending with '.atari'
+* ... etc.
+This is covered with the base versions, but with variants we now have the names ending with the variant specification! But (again)... what prevents us from naming the variant with a name that ends the way we want the final executables having their names ended??
+
+I mean:
+* instead of 'atari.xep' name it 'atari.xep.atari'
+* instead of 'atari.txt' name it 'atari.txt.atari'
+* instead of 'c64.txt' name it 'c64.txt.c64'
+and so on.. This method is flexible enough to accommodate various conventions without a glitch ;&ndash;)
+
+=== OK, I like it but I need more functionality... ===
+
+So - you like it, you say.. I guess it's good, isn't it? If you need the extra finctionality, you can easily (who could have guessed :&ndash;) ) add it using for example new make targets stored in additional files, which names end with '.mk'. One of such examples, which the author of this words had a need for, is creating and populating disk images before test running the freshly built executable. How this is achieved? Have a look at the short file below
+<pre>
+G64DISK=$(basename $(PROGRAM)).g64
+D64DISK=$(basename $(PROGRAM)).d64
+ALLDISKS=$(G64DISK) $(D64DISK)
+
+PREFSFILE=$(basename $(PROGRAM)).prefs
+DRIVERS=d0rs.drv s0rs.drv
+ALLFILES=$(PROGRAM) $(DRIVERS) $(PREFSFILE)
+
+REMOVES += $(ALLDISKS)
+
+.PHONY: disks
+disks: $(ALLDISKS)
+
+$(ALLDISKS): $(ALLFILES)
+	c1541 -format $(basename $(PROGRAM)),00 $(subst .,,$(suffix $@)) $@
+	for file in $(ALLFILES) ; do c1541 $@ -write $$file ; done
+</pre>
+It shows by example what you need to do in order to efficiently accommodate additional functionality without touching the main Makefile:
+* File name: you may call it whatever you like as long as the name ends with '.mk' but in order to e. g. have the related files grouped next to each other on directory or IDE files listings you may consider the name starting with 'Makefile'. Second part after underscore denotes the name of the target the file adds to the build system. And of course the name has to end with '.mk' in order to be processed from within the main Makefile
+* Artefacts created by your make target (or targets) have to be added to the REMOVES variable in order to be able to use <code>make clean</code> and have them removed
+* Phony targets (those not leaving file artefacts) are to be declared as .PHONY (Please note that even if invoking 'disks' target will actually leave artefacts behind, it is not this target that creates them but the ones it depends on.)
+
+Another example:
+<pre>
+REMOVES += $(PROGRAM).moncommands
+
+.PHONY: diskstest
+diskstest: $(PROGRAM) disks $(PROGRAM).moncommands
+	$(PREEMUCMD)
+	x64 -truedrive -8 $(D64DISK) -9 $(D71DISK) -10 $(D81DISK) -moncommands $(PROGRAM).moncommands
+	$(POSTEMUCMD)
+
+$(PROGRAM).moncommands:
+	echo >$(PROGRAM).moncommands "ll \"$(PROGRAM).lbl\""
+</pre>
+Here we use variables from the main Makefile: PREEMUCMD and POSTEMUCMD and add dependency on 'disks', which means the images have to be created before we can manipulate and use them within our test run. Additional, non-phony subtarget creates a monitor commands file for VICE, which will enable VICE's monitor to load labels automatically. Of course I don't need to say that because you have already been [[Bigger Projects|there]] (right?) and know well that in order to create the appropriate labelfile automatically, one has to have [[Bigger-Projects#wiki-Build_options|build OPTIONS]] properly set.
+
+And the last example:
+<pre>
+EXOPRG = $(PROGRAM)x
+PUSPRG = $(PROGRAM)ps
+PUFPRG = $(PROGRAM)pf
+PUDPRG = $(PROGRAM)pd
+
+REMOVES += $(EXOPRG) $(PUSPRG) $(PUFPRG) $(PUDPRG)
+
+.PHONY: crunch
+crunch: $(EXOPRG) $(PUSPRG) $(PUFPRG) $(PUDPRG)
+
+$(EXOPRG): $(PROGRAM)
+	exomizer sfx sys -o $(EXOPRG) $(PROGRAM)
+
+$(PUSPRG): $(PROGRAM)
+	pucrunch -fshort $(PROGRAM) $(PUSPRG)
+
+$(PUFPRG): $(PROGRAM)
+	pucrunch -ffast $(PROGRAM) $(PUFPRG)
+
+$(PUDPRG): $(PROGRAM)
+	pucrunch -fdelta $(PROGRAM) $(PUDPRG)
+</pre>
+which shows a seamless way to integrate the best crosscrunchers into your build system.
+
+Putting those files next to your main Makefile will automatically extend the build system with desirable extra functions in no time. Possibilities are endless.. of course :&ndash;)
