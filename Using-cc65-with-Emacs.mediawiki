@@ -1,0 +1,13 @@
+When developing with Emacs, it is often convenient to use the <code>M-x compile</code> command to invoke 'make' from within Emacs.  One benefit of invoking the compiler this way is that Emacs is able to parse the list of errors output by the compiler, and provide you with the ability to jump to the location of the errors in the source code.
+
+In order for this to work with cc65 and ca65, Emacs needs to be taught how to parse the error messages.  To do so, add the following snippet to your '.emacs' file:
+
+<pre>
+(require 'compile)
+
+; ** cc65 and ca65 errors **
+(pushnew '("^\\([^ \n(]+\\)(\\([0-9]+\\)): \\(?:Error\\|Warnin\\(g\\)\\):" 1 2 nil (3))
+	 compilation-error-regexp-alist)
+</pre>
+
+With this in place, you will be able to use the <code>M-g M-n</code> (next-error) and <code>M-g M-p</code> (previous-error) keys to visit the source code for each error.
