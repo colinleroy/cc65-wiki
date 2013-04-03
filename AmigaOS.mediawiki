@@ -1,0 +1,10 @@
+== cc65 on AmigaOS ==
+
+You can find various ports on [http://aminet.net/search.php?query=cc65 Aminet].
+The MorphOS port is maintained by Stefan Haubenthal (polluks@sdf.lonestar.org).
+
+Execute installer script:
+<pre>
+cd cc65-2.13.2/packages/amiga
+installer Install_cc65
+</pre>
