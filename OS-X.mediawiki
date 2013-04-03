@@ -1,0 +1,36 @@
+== cc65 on OS X ==
+cc65 runs perfectly fine under various versions of OS X. While at the moment there are no up to date binary installation packages distributed, one can quite easily build his own binaries from sources.
+
+Please note that in order to build cc65 from sources one requires a working UNIX development environment (especially GCC compiler), which is not a part of the default system installation. The requirement is then:
+
+* Apple Developer's Tools - please download appropriate, latest package available for your OS version and install it with "UNIX Development" option checked. Checking this option places all necessary command line tools, headers, and other files required for typical UNIX style development, where they are expected to be in a working unix development environment (/usr/). At the time of writing [http://www.apple.com/ Apple] provides necessary [http://developer.apple.com/technologies/xcode.html developer tools] free of charge but requires registration in order to download the software.
+
+Since cc65 is very cleanly written no additional configuration processes are needed. Once the necessary prerequisites are in place, start your terminal and cd to the directory where you have checked out the cc65 sources. Simple command:
+<pre>
+$ make -f make/gcc.mak
+</pre>
+given from the directory you just cd'ed to, should be enough to build binaries and libraries.
+
+Once the build process is finished without errors, the next step is to install the files in their default locations:
+<pre>
+$ sudo make -f make/gcc.mak install
+</pre>
+installs all the required files in their default location of /usr/local/
+
+== Compatibility ==
+=== OS X 10.6 "Snow Leopard" (i386) ===
+Building from source works 100% - tested
+=== OS X 10.5 "Leopard" (ppc) ===
+Building from source works 100% - tested
+=== OS X 10.5 "Leopard" (i386) ===
+Building from source works 100% - tested
+=== OS X 10.4 "Tiger" (ppc) ===
+Building from source should work fine - untested
+=== OS X 10.4 "Tiger" (i386) ===
+Building from source should work fine - untested
+=== OS X 10.3 "Panther" (ppc) ===
+Building from source should work fine - tested, please consider switching to 10.4, which is (IMHO) the first mature OS X version
+=== OS X 10.2 "Jaguar" (ppc) ===
+Building from source works 100% - tested, but while 10.2 was probably the first usable OS X version, you shouldn't really be running it anymore these days
+=== OS X 10.1 or earlier (ppc) ===
+Those were not really usable (IMHO) - I don't believe you might still be running it...
