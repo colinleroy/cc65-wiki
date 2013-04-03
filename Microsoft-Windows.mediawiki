@@ -1,0 +1,5 @@
+== cc65 on Microsoft Windows ==
+
+There's a guide describing how to build [http://www.contiki-os.org/ Contiki] under Windows using cc65: [http://cbm8bit.com/articles/user-contributions/compile-contiki]
+
+Several sections of this guide are of general interest when it comes to using cc65 under Windows.
