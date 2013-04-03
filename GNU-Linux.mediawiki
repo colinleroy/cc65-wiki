@@ -1,0 +1,1 @@
+This is the primary development platform, so the sources should compile out of the box under Linux. Binary and source RPMs for RedHat Linux are available.
