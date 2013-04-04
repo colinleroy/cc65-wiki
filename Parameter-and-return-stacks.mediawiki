@@ -58,7 +58,7 @@ we can access it using
 
 === Moving the stack ===
 
-The stack isn't put in a segment; it's put into a separate memory area. That area isn't named; it's implied by two expressions.  The first one is in the ld65 configuration file.  For example, 'c64.cfg' has size = $C7F3 - &#96;&#96;STACKSIZE&#96;&#96;.  The second one is in the start-up code. For example, 'c64/crt0.s' has <code><nowiki>(__RAM_START__ + __RAM_SIZE__ + __STACKSIZE__)</nowiki></code>.
+The stack isn't put in a segment; it's put into a separate memory area. That area isn't named; it's implied by two expressions.  The first one is in the ld65 configuration file.  For example, 'c64.cfg' has <tt>size = $C7F3 - &#95;&#95;STACKSIZE&#95;&#95;</tt>.  The second one is in the start-up code. For example, 'c64/crt0.s' has <tt>(&#95;&#95;RAM_START&#95;&#95; + &#95;&#95;RAM_SIZE&#95;&#95; + &#95;&#95;STACKSIZE&#95;&#95;)</tt>.
 
 If it were named explicitly (it ''should'' be!), then they would look like this:
 
@@ -68,6 +68,6 @@ STACK: file="", define=yes, start=$d000-__STACKSIZE__, size=__STACKSIZE__;
 RAM: file=%O, define=yes, start=__HEADER_LAST__, size=__STACK_START__-__RAM_START__;
 </pre>
 
-And, <code>sp</code> would be set to <code><nowiki>(__STACK_START__ + __STACK_SIZE__)</nowiki></code>.
+And, <code>sp</code> would be set to <tt>(&#95;&#95;STACK_START&#95;&#95; + &#95;&#95;STACK_SIZE&#95;&#95;)</tt>.
 
 If you do want to put your stack into a segment, then you simply assemble a big buffer, put a label at the end of it, and store that label in <code>sp</code>.
