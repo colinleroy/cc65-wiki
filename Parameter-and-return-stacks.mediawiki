@@ -1,0 +1,73 @@
+== Overview ==
+
+The 6502 has a fixed stack with a size of 256 bytes in page 1 (at address $100). On several platforms, the stack is even smaller, because the operating system uses part of it for other purposes. This means that the stack is too small to use it as storage for local variables in C programs. For this reason, cc65 compiled programs utilize separate parameter and return stacks.
+
+== The return stack ==
+
+The 'return stack' is actually the 6502 hardware stack. It is called 'return stack', because it contains mostly return address of subroutines. It can be (and is) used also as temporary data storage (for example saving a register). It is not used for parameters and variables.
+
+== The parameter stack ==
+
+=== General use ===
+
+The parameter stack is a software stack that usually resides at the highest program data address and grows downwards. It is addressed using a two byte zeropage variable named <code>sp</code> and the Y register. The parameter stack is also used for local auto variables.
+
+=== Functions for use with the parameter stack ===
+
+The runtime library contains functions to access the stack, push and pop values, and reserve or drop space on the stack. Here are a few examples:
+
+{| class="wikitable"
+!function
+!purpose
+|-
+|pusha
+|Push byte in A onto the parameter stack
+|-
+|pushax
+|Push word in A/X onto the parameter stack
+|-
+|popa
+|Pop byte on TOS into A
+|-
+|popax
+|Pop word on TOS into A/X
+|-
+|decsp2
+|Decrement the stack pointer by 2
+|-
+|incsp2
+|Increment the stack pointer by 2
+|}
+
+=== Accessing data on the parameter stack ===
+
+Data on the parameter stack is accessed using the <code>sp</code> zeropage variable using 'indirect Y' addressing mode. The last byte pushed is always at offset zero. So if we pushed the value $42 onto the runtime stack using
+
+<pre>
+        lda     #$42
+        jsr     pusha
+</pre>
+
+we can access it using 
+
+<pre>
+        ldy     #$00
+        lda     (sp),y
+</pre>
+
+
+=== Moving the stack ===
+
+The stack isn't put in a segment; it's put into a separate memory area. That area isn't named; it's implied by two expressions.  The first one is in the ld65 configuration file.  For example, 'c64.cfg' has size = $C7F3 - &#96;&#96;STACKSIZE&#96;&#96;.  The second one is in the start-up code. For example, 'c64/crt0.s' has <code><nowiki>(__RAM_START__ + __RAM_SIZE__ + __STACKSIZE__)</nowiki></code>.
+
+If it were named explicitly (it ''should'' be!), then they would look like this:
+
+<pre>
+HEADER: file=%O, define=yes, start=$0801, size=$000C;
+STACK: file="", define=yes, start=$d000-__STACKSIZE__, size=__STACKSIZE__;
+RAM: file=%O, define=yes, start=__HEADER_LAST__, size=__STACK_START__-__RAM_START__;
+</pre>
+
+And, <code>sp</code> would be set to <code><nowiki>(__STACK_START__ + __STACK_SIZE__)</nowiki></code>.
+
+If you do want to put your stack into a segment, then you simply assemble a big buffer, put a label at the end of it, and store that label in <code>sp</code>.
