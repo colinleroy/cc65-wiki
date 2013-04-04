@@ -5,7 +5,7 @@ The following enumeration is from the cc65 mailing list. The order implies no ju
 == Applications ==
 
 === A2Command ===
-[http://a2command.codeplex.com/ A2Command] is a filebrowser based on [[#cbm_command|CBM Command]] running on Apple //e, //c, IIgs.
+[http://a2command.codeplex.com/ A2Command] is a filebrowser based on [[Applications written in C or C with assembler#cbm-command|CBM Command]] running on Apple //e, //c, IIgs.
 
 === Breadbox64 ===
 [http://www.vandenbrande.com/wp/2009/06/breadbox64-a-twitter-client-for-the-c64/ Breadbox64] is a twitter client for the C64 that runs on Contiki. The source is available in the [http://contikiprojects.svn.sourceforge.net/viewvc/contikiprojects/vandenbrande.com/twitter/ Contiki Projects Community].
