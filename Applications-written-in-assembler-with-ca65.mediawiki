@@ -1,0 +1,20 @@
+== CCFA ==
+[http://dreher.net/projects/CFforAppleII/downloads/CFforAppleII_Manual_1.0.pdf CFFA] is a CompactFlash Interface for Apple II. The reference manual contains in appendix 1 the firmware listing.
+
+== G-Pascal ==
+[http://kildall.apana.org.au/~cjb/G-Pascal/ G-Pascal] is a Pascal compiler of 1983, call SYS 32768. (184 KB source included)
+
+== IP65 ==
+[http://ip65.sourceforge.net IP65] is a TCP/IP stack for 6502 based computers.
+
+== Krill's Loader ==
+[http://noname.c64.org/csdb/release/?id=78348 Krill's Loader] is an advanced IRQ fastloader for the C64 supporting many different drives.
+
+== seitensprung ==
+"seitensprung" is an ASCII/Windows-1252 text viewer with proportional font support for Atari 8-bit computers. [http://www.atariage.com/forums/topic/157385-release-of-seitensprung-v015-5th-place-abbuc-sc/ Download/Video]
+
+== SID Vicious ==
+[http://vic20emu.googlecode.com/svn/trunk/sidplay/ SID Vicious] is a SID emulator for the VIC-20 by Aleksi Eeben. Output pulse wave, triangle, sawtooth, noise with ADSR envelopes at 6.1 kHz. (source included)
+
+== VM02 ==
+[http://sourceforge.net/projects/vm02/ VM02] is a Java compatible environment for the Apple II series of computers. Most basic features of a Java VM are implemented to allow direct execution of standard Java class files on a 64K, 8 bit, 1 MHz Apple II computer. (source included)
