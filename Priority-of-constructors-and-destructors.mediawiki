@@ -1,143 +1,75 @@
 For constructors, destructors and interruptors, the linker generates a table of addresses sorted by increasing numeric value of the priorities (if not otherwise specified by the <code>ORDER</code> attribute in the linker config file). The library routines that process these tables work from rear to front. This means that routines with a higher numeric priority value are called first.
 
 {| class="wikitable"
-|+'''Constructors'''
-!priority
-!function
-!platform
+|+ '''Constructors'''
+! priority !! function !! platform
 |-
-|30
-|initcurunit
-|cbm
+| 30 || initcurunit   || cbm
 |-
-|26
-|detect
-|atari
+| 26 || detect        || atari
 |-
-|25
-|initdostype
-|apple2
+| 25 || initdostype   || apple2
 |-
-|25
-|initmainargs
-|atari
+| 25 || initmainargs  || atari
 |-
-|25
-|initstkchk
-|runtime
+| 25 || initstkchk    || runtime
 |-
-|24
-|__getdefdev
-|atari
+| 24 || __getdefdev   || atari
 |-
-|24
-|initheap
-|common
+| 24 || initheap      || common
 |-
-|24
-|initmainargs
-|apple2, atmos, c16, c128, c64, cbm510, cbm610, geos, lynx, nes, pet, plus4, vic20
+| 24 || initmainargs  || apple2, atmos, c16, c128, c64, cbm510, cbm610, geos, lynx, nes, pet, plus4, vic20
 |-
-|11
-|initreboot
-|apple2
+| 11 || initreboot    || apple2
 |-
-|10
-|irq_init
-|runtime
+| 10 || irq_init      || runtime
 |-
-|7
-|cwd_init
-|common
+|  7 || cwd_init      || common
 |-
-|7
-|env_init
-|common
+|  7 || env_init      || common
 |-
-|7
-|init_clock
-|lynx
+|  7 || init_clock    || lynx
 |-
-|7
-|init_pointer
-|geos
+|  7 || init_pointer  || geos
 |-
-|7
-|initcgetc
-|atmos, c128
+|  7 || initcgetc     || atmos, c128
 |-
-|7
-|initconio
-|apple2, nes
+|  7 || initconio     || apple2, nes
 |-
-|7
-|initiobuf
-|apple2
+|  7 || initiobuf     || apple2
 |-
-|7
-|initkbd
-|c16, plus4
+|  7 || initkbd       || c16, plus4
 |-
-|7
-|initostype
-|apple2
+|  7 || initostype    || apple2
 |-
-|7
-|initprompt
-|apple2
+|  7 || initprompt    || apple2
 |-
-|7
-|initscrsize
-|geos
+|  7 || initscrsize   || geos
 |-
-|7
-|initstdin
-|cbm
+|  7 || initstdin     || cbm
 |-
-|7
-|initstdout
-|cbm
+|  7 || initstdout    || cbm
 |-
-|7
-|initsystime
-|c128, c64
+|  7 || initsystime   || c128, c64
 |-
-|7
-|raisefilelevel
-|apple2
+|  7 ||raisefilelevel || apple2
 |}
 
 {| class="wikitable"
-|+'''Destructors'''
-!priority
-!function
-!platform
+|+ '''Destructors'''
+! priority !! function !! platform
 |-
-|17
-|doatexit
-|common
+| 17 || doatexit      || common
 |-
-|10
-|irq_done
-|runtime
+| 10 || irq_done      || runtime
 |-
-|7
-|_reset_brk
-|apple2, atari, c16, c128, c64, pet, vic20
+|  7 || _reset_brk    || apple2, atari, c16, c128, c64, pet, vic20
 |-
-|7
-|donecgetc
-|c128
+|  7 || donecgetc     || c128
 |-
-|7
-|donekbd
-|c16, plus4
+|  7 || donekbd       || c16, plus4
 |-
-|7
-|setsyscursor
-|cbm610
+|  7 || setsyscursor  || cbm610
 |-
-|5
-|closeallfiles
-|apple2, atari, cbm
+|  5 || closeallfiles || apple2, atari, cbm
 |}
