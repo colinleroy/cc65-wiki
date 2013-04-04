@@ -1,0 +1,61 @@
+'''The assembler translates an instruction in a local scope using absolute instruction, but the address is actually a zero page address. How comes?'''
+
+When the assembler translates an instruction that may have both, zeropage or absolute addressing modes, and the size of the address is unknown, it has to assume the worst case and use absolute addressing, since changing it later would change the size of the generated code, causing mismatches for code labels.
+
+With local scopes, the problem becomes even worse, because a local symbol definition may follow, even if there is a global one.
+
+<pre>
+zploc = $01
+.proc local
+        lda     zploc
+.endproc
+</pre>
+
+One should think that the situation shown in above code snippet is clear. <code>zploc</code> is definitely a zero page location. But look at this:
+
+<pre>
+zploc = $01
+.proc local
+        lda     zploc
+zploc = $1234
+.endproc
+</pre>
+
+Now we have a local symbol named <code>zploc</code>, and a symbol in local scope will hide the global one. The problem is, that when the assembler translates the <code>lda</code> instruction, it doesn't know if a local symbol with the same name will be defined later, so we have another situation where it has to assume the worst case possible, and use absolute addressing.
+
+The solution to the problem is simple. Just tell the assembler what you want:
+
+<pre>
+zploc = $01
+.proc local
+        lda     ::zploc               ; We want the global symbol, not the local one!
+zploc = $1234
+.endproc
+</pre>
+
+----
+'''The assembler complains about an expression in an <code>.IF</code> command. It is in a local scope and the assembler claims it is not constant. But the whole expression is just a symbol that is declared in global scope as a constant value.'''
+
+This is a similar problem as the one described above. If you have something like this:
+
+<pre>
+condition = $01
+.proc local
+        .IF     condition             ; Error: constant expression expected
+        ; code here
+        .ENDIF
+.endproc
+</pre>
+
+The assembler doesn't know if a local definition for <code>condition</code> will follow, so it delays evaluation of the expression until the local scope is closed. But expressions in <code>.IF</code> commands must actually be known when they're parsed. Which is why you get an error in this case. 
+
+The solution is the same as above. Just tell the assembler that you're talking about the global symbol:
+
+<pre>
+condition = $01
+.proc local
+        .IF     ::condition           ; We want the global symbol, not a local one!
+        ; code here
+        .ENDIF
+.endproc
+</pre>
