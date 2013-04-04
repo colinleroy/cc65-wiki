@@ -1,0 +1,8 @@
+'''I've found a bug: cprintf doesn't seem to handle a newline correctly. It places the cursor in the next line, but doesn't move it to the beginning of the line.'''
+
+'''When outputting a newline in the last screen line using one of the conio functions, the screen doesn't scroll. Instead the program behaves erratically and does sometimes crash.'''
+
+The conio library is different from output done via printf. It was designed primarily for programs using dialogue oriented full screen masks. As a consequence...
+
+* ...CR (\r) and LF (\n) have a different meaning. The first one moves the cursor to the beginning of the line, the second one moves it down into the next line.
+* ...conio doesn't scroll the screen, when moving below the last line. In fact, allowing this to happen may spell desaster on several machines, because for performance reasons, there are no checks.
