@@ -1,4 +1,4 @@
-== Driver Classification ==
+== Driver classification ==
 {| class="wikitable"
 !driver
 !double page
@@ -131,7 +131,7 @@
 |✓
 |}
 
-== TGI Bitmap Fonts ==
+== TGI bitmap fonts ==
 * Starting coordinates are: Lower left corner (not baseline).
 * Drawing is done transparently (meaning non-glyph "background" pixels are left as they are).
 * A driver states via a bit in the header if it supports 8.8 fixed point scaling (or only integer scaling).
