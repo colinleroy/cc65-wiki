@@ -2,55 +2,55 @@
 {| class="wikitable"
 ! driver !! double page !! best colors !! best resolution
 |-
-| a2.hi.tgi           || ✓ ||   || ✓
+| a2.hi.tgi           || ✓     || &nbsp;  || ✓
 |-
-| a2.lo.tgi           ||   || ✓ ||
+| a2.lo.tgi           || &nbsp; || ✓      || &nbsp;
 |-
-| a2e.hi.tgi          || ✓ ||   || ✓
+| a2e.hi.tgi          || ✓     || &nbsp;  || ✓
 |-
-| a2e.lo.tgi          ||   || ✓ ||
+| a2e.lo.tgi          || &nbsp; || ✓      || &nbsp;
 |-
-| atari3.tgi          ||   ||   ||
+| atari3.tgi          || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari4.tgi          ||   ||   ||
+| atari4.tgi          || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari5.tgi          ||   ||   ||
+| atari5.tgi          || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari6.tgi          ||   ||   ||
+| atari6.tgi          || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari7.tgi          ||   ||   ||
+| atari7.tgi          || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari8.tgi          ||   ||   || ✓
+| atari8.tgi          || &nbsp; || &nbsp; || ✓
 |-
-| atr8p2.tgi          || ✓ ||   || ✓
+| atr8p2.tgi          || ✓     || &nbsp; || ✓
 |-
-| atari9.tgi          ||   || ✓ ||
+| atari9.tgi          || &nbsp; || ✓     || &nbsp;
 |-
-| atr9p2.tgi          || ✓ || ✓ ||
+| atr9p2.tgi          || ✓     || ✓     || &nbsp;
 |-
-| atari10.tgi         ||   ||   ||
+| atari10.tgi         || &nbsp; || &nbsp; || &nbsp;
 |-
-| atr10p2.tgi         || ✓ ||   ||
+| atr10p2.tgi         || ✓     || &nbsp; || &nbsp;
 |-
-| atari11.tgi         ||   || ✓ ||
+| atari11.tgi         || &nbsp; || ✓     || &nbsp;
 |-
-| atari14.tgi         ||   ||   ||
+| atari14.tgi         || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari15.tgi         ||   ||   ||
+| atari15.tgi         || &nbsp; || &nbsp; || &nbsp;
 |-
-| atr15p2.tgi         || ✓ ||   ||
+| atr15p2.tgi         || ✓     || &nbsp; || &nbsp;
 |-
-| atmos-240-200-2.tgi ||   || ✓ || ✓
+| atmos-240-200-2.tgi || &nbsp; || ✓     || ✓
 |-
-| c128-vdc.tgi        ||   || ✓ ||
+| c128-vdc.tgi        || &nbsp; || ✓     || &nbsp;
 |-
-| c128-vdc2.tgi       ||   || ✓ || ✓
+| c128-vdc2.tgi       || &nbsp; || ✓     || ✓
 |-
-| c64-hi.tgi          ||   || ✓ || ✓
+| c64-hi.tgi          || &nbsp; || ✓     || ✓
 |-
-| geos-tgi.tgi        ||   || ✓ || ✓
+| geos-tgi.tgi        || &nbsp; || ✓     || ✓
 |-
-| lynx-160-102-16.tgi || ✓ || ✓ || ✓
+| lynx-160-102-16.tgi || ✓     || ✓     || ✓
 |}
 
 == TGI bitmap fonts ==
