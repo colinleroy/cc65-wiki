@@ -1,0 +1,38 @@
+The runtime zeropage locations used by the compiler are declared in the assembler include file '''zeropage.inc'''.
+
+{| class="wikitable"
+!Location
+!Size
+!Meaning
+!Usage
+|-
+|sp
+|2
+|stack pointer
+|access the parameter stack
+|-
+|tmp1..tmp4
+|1 ea.
+|temporary value
+|can be written to at any time (caller saved)
+|-
+|ptr1..ptr4
+|2 ea.
+|pointer
+|can be written to at any time (caller saved)
+|-
+|sreg
+|2
+|secondary register
+|can be written to at any time (caller saved)
+|-
+|regsave
+|4
+|register save area
+|can be written to at any time (caller saved)
+|-
+|regbank
+|6
+|register bank
+|can be used only after saving (callee saved)
+|}
