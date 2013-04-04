@@ -68,6 +68,6 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 
 == Applications ==
 
-* [[The contrib area on the ftp server]]
+* [[User contributions]]
 * [[Applications written in assembler with ca65]]
-* [[Applications written in C or C/assembler]]
+* [[Applications written in C or C with assembler]]
