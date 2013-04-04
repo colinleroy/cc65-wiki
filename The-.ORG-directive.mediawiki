@@ -1,0 +1,66 @@
+''' I've ported an assembler program that was originally written for some other assembler. The program uses .ORG to place code at specific addresses. While the program assembles fine with ca65, the code placement does not seem to work. '''
+
+Most other assemblers for the 6502 handle .ORG different than ca65. The reason is, that these tools usually do not use a linker. Professional development systems separate the job of the assembler and the linker to gain more flexibility and to implement features not possible with just one tool.
+
+If you don't have a separate linker, the assembler is responsible for code translation and code placement. With such an assembler, you use the .ORG directive to place your code at a specific address.
+
+If you have a look at the cc65 library, you will notice that it consists of several hundred(!) assembler files. Each of these files contains one or more support subroutines or pieces of data. Without a linker, placement of this code would be a nightmare, since it depends on your program, which of these files are actually used, so the runtime address for each one is different for any program.
+
+To solve this, ca65 creates intermediate files (object files) containing relocatable code. Instead of absolute code references, complete expression trees are stored into the object files. Placement of a code section is done by the linker, and the linker will evaluate the expressions at link time, and replace it by the real addresses. With a linker, having a lot of object files with support routines is easy: Since the linker knows which object files will be part of the final program (because it looks for external symbols in the library), it can add these modules, calculate the start address for each module, evaluate the expressions stored inside the object files, and create an executable containing binary code.
+
+So you should not use the assembler (ca65) to place your code at a specific address. This is the job of the linker. Instead create a new segment containing your code, and use a linker config file to place this segment at the address you want. Here is an example that places some graphics data at a fixed address:
+
+<pre>
+    .segment    "gfx"
+    .incbin     "gfx-file"
+    .code
+</pre>
+
+(Note that there is no .ORG!)
+
+In the linker config use something like
+
+<pre>
+    MEMORY {
+    	...
+       	GFX:    start = $2000, size = $1000, type = ro, file = %O, fill = yes;
+    	...
+    }
+
+    SEGMENTS {
+    	...
+    	gfx:    load = GFX, type = ro;
+    	...
+    }
+</pre>
+
+You define a memory area at $2000 and tell the linker to place the segment with the name "gfx" into this area.
+
+In the given example, it would probably be a good idea to use a separate assembler module for each binary include file that contains just the lines
+
+<pre>
+    .segment    "segmentname"
+    .incbin     "filename"
+</pre>
+
+Now the remaining question is, why is there an .ORG command and what does it do?
+
+Most people will never use .ORG with ca65, since things will usually work as expected without it. The linker takes care for all things needed to place some piece of code at a specific address. If the linker puts your code at address $1234, it will resolve all jumps and other references, so your code will be able to run at this address. It is even able to handle different load and run addresses (this may be needed if your code is placed in a ROM but copied into RAM before it runs).
+
+A situation, where one might use a .ORG directive is, when your code is placed at a specific address, but it should not be run at this address. A prominent example would be some code that is loaded into the 1541 CBM floppy. Having the linker relocate the code to the load address would be wrong, since the code will be copied at a specific address into the floppy RAM. So what you need is to tell the assembler to start a section of absolute code. If you do that, the assembler will still not place the code at a specific address, but since the final location of the code is already known, there is no need to make the code relocatable (references to symbols outside the absolute code range will still create relocation entries resolved by the linker). Code created with .ORG does not have internal relocation information. It may (must) be placed at a specific address by the linker, but if this address is not equal to the absolute address used in the .ORG directive, the code will usually not run at this address. Please note that even this problem may be solved using the "load" and "run" attributes of the linker, so I cannot think of a situation that cannot be solved without using .ORG.
+
+Since sections of absolute code are a rare exception with ca65, there is also a directive to end a section of absolute code: .RELOC switches back to relocatable mode.
+
+So, while the way ca65 handles things is more complex than the old .ORG stuff, it is also a lot more powerful.
+
+You may use .ORG and .RES to emulate the behaviour of simpler assemblers (this may be useful for a short time when porting old code written for other assemblers), but you loose a lot if you do this, and it's not recommended. Anyway, here is the example above again using .ORG and .RES:
+
+<pre>
+    .code
+    .org        $1000
+    ; Add code here
+    .res        $2000-*
+    .incbin     "gfx-file"
+</pre>
+
+Please note that the example does work only if the code above is placed at $1000 by the linker. As explained above, the assembler is not responsible for code placement, so even in this case, you don't get away without using a special linker config file. 
