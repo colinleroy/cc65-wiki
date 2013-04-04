@@ -1,0 +1,5 @@
+The 6502 CPU has no single register that is able to hold any C data besides <code>char</code>. And, for arithmetic operations, only the A register (the accumulator) can be used. Obviously, the 6502 architecture is not very well suited for C and its larger data types.
+
+For this reason, operands are placed in an artificial "primary register". This register consists of the A and X CPU registers if the operand is 16 bit wide (low byte in A, high byte in X). For 32 bit operands, a 16 bit zeropage location named <code>sreg</code> is used in addition to these CPU registers. So the high word goes into <code>sreg</code> and the low word goes into A/X.
+
+If a runtime function uses more than one operand (a multiplication for example), the first operand is passed on the [[Parameter and return stacks|parameter stack]], while the second one is passed in the primary register.
