@@ -44,7 +44,7 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 * [[PEEK and POKE]]
 * [[The .ORG directive]]
 * [[Interrupt handlers in C]]
-* [[Direct console I/O]]
+* [[Direct console IO|Direct console I/O]]
 * [[Symbols in local scopes]]
 
 == Library internals ==
