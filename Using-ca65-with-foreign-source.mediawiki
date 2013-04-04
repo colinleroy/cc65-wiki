@@ -1,0 +1,15 @@
+== DASM ==
+
+Incomplete DASM compatibility settings:
+<pre>
+.feature	labels_without_colons
+.feature	leading_dot_in_identifiers
+.macro		processor	type
+	.p02
+.endmacro
+.define		org		.org
+.define		.asm
+.macro		include		file
+	.include	.concat(.string(file), ".asm")
+.endmacro
+</pre>
