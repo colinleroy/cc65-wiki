@@ -10,7 +10,7 @@ cc65 is a complete package, which includes
 
 == Downloading and installing ==
 
-According to the original author and former maintainer: "with one exception in the compiler (access()) the code is plain ISO C, so it should compile on most systems. Memory usage may be a problem, however."
+According to the original author and former maintainer: "With one exception in the compiler (access()) the code is plain ISO C, so it should compile on most systems. Memory usage may be a problem, however."
 
 cc65 can surely be compiled and run on the following platforms, for which GNU Compiler Collection - [http://gcc.gnu.org GCC] is available.
 
@@ -71,3 +71,5 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 * [[User contributions]]
 * [[Applications written in assembler with ca65]]
 * [[Applications written in C or C with assembler]]
+
+<div class="center"><sub>Content on this wiki is licensed under the following license: [http://creativecommons.org/licenses/by/3.0/ CC Attribution 3.0 Unported]</sub></div>
