@@ -1,0 +1,47 @@
+== Floating point support ==
+
+Summary of the discussion in 2004 (without IEEE 754-2008 knowledge of course):
+
+* An agreed floating point number format
+* 6502 conversion routines from int <-> float and back
+* 6502 routines to support + - * / < > <= >= == != operators
+* changes of the compiler, assembler and linker
+* 6502 ASCII <-> FP conversion functions (e.g. for scanf/printf)
+* A 6502 math library (pow(), exp(), sin(), cos(), ... the works)
+
+
+=== 32 vs. 48 bit ===
+
+{|
+! 32 bit !! 48 bit
+|-
+|
+* "Standard" (whatever that's worth).
+* Needs slightly less memory and is faster.
+* Compiler can use native FP routines. But: Limits number of host platforms.
+* Doesn't meet ISO C requirements.
+* Less precision.
+* Binary format is given and we have to live with that.
+* Is suboptimal wrt. exponent processing (8 bit covered in 2 bytes).
+|
+* Needs slightly more memory and is slower.
+* Compiler needs FP library. But: will work on all host platforms.
+* Will meet the ISO C requirements.
+* Better precision.
+* Binary format can be optimized for 6502.
+* Could be made optimal wrt. exponent processing.
+* Implementation needs more code, so programs have a larger memory footprint.
+|}
+
+
+=== Conclusion ===
+
+* support the ISO C standard: IEEE 32 bit format
+
+The C standard allows setting errno, raising an exception, or just ignoring the condition for most operations. The standard does not require NaNs and infinite values, so it may be an option not to implement them, because this removes all corresponding checks in the math functions resulting in smaller code size. The TMS320 DSP has this behaviour and it's quite convenient.
+
+[http://grouper.ieee.org/groups/754/ IEEE 754-2008]
+
+[http://www.jhauser.us/arithmetic/ IEEE 754 test suite]
+
+[http://codebase64.org/doku.php?id=base:floating_point_routines_for_the_6502 Steve Wozniak's implementation]
