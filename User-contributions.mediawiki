@@ -1,0 +1,159 @@
+== 3dmaze ==
+[http://oliverschmidt.github.com/cc65/contrib/3dmaze-0.2.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/3dmaze-0.2.zip Code]
+
+== AltInput ==
+[http://oliverschmidt.github.com/cc65/contrib/altinput_cc65_1.00.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/altinput_cc65_1.00.c Code]
+
+== AutoRun ==
+[http://oliverschmidt.github.com/cc65/contrib/autorun-1.5.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/autorun-1.5.0.zip Code]
+
+== C64-RRR ==
+[http://oliverschmidt.github.com/cc65/contrib/c64-rrr-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/c64-rrr-1.0.zip Code]
+
+== calomin-1.0-D ==
+[http://oliverschmidt.github.com/cc65/contrib/calomin-1.0-D.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/calomin-1.0-D.zip Code]
+
+== CBM Simple-I/O ==
+[http://oliverschmidt.github.com/cc65/contrib/cbmsimpio.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/cbmsimpio.zip Code]
+
+== circle ==
+[http://oliverschmidt.github.com/cc65/contrib/circle-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/circle-1.0.zip Code]
+
+== Circle Frac ==
+[http://oliverschmidt.github.com/cc65/contrib/circlefracv1-0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/circlefracv1-0.zip Code]
+
+== dirmenu ==
+[http://oliverschmidt.github.com/cc65/contrib/dirmenu-1.00.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/dirmenu-1.00.zip Code]
+
+== drachen ==
+[http://oliverschmidt.github.com/cc65/contrib/drachenv1.1.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/drachenv1.1.zip Code]
+
+== entp ==
+[http://oliverschmidt.github.com/cc65/contrib/entp-0.7.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/entp-0.7.zip Code]
+
+== Diamond-Effect ==
+[http://oliverschmidt.github.com/cc65/contrib/even_odd-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/even_odd-1.0.zip Code]
+
+== fields ==
+[http://oliverschmidt.github.com/cc65/contrib/fields-1.2.1.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/fields-1.2.1.zip Code]
+
+== GenCart64 ==
+[http://oliverschmidt.github.com/cc65/contrib/gencart64-0.1.0-beta.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/gencart64-0.1.0-beta.zip Code]
+
+== GenCartVic ==
+[http://oliverschmidt.github.com/cc65/contrib/gencartvic-1.0.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/gencartvic-1.0.0.zip Code]
+
+== Hidden64 ==
+[http://oliverschmidt.github.com/cc65/contrib/hidden64-0.21a-beta.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/hidden64-0.21a-beta.zip Code]
+
+== huffman ==
+[http://oliverschmidt.github.com/cc65/contrib/huffman-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/huffman-1.0.zip Code]
+
+== Hardware Clock ==
+[http://oliverschmidt.github.com/cc65/contrib/hwclock-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/hwclock-1.0.tgz Code]
+
+== isoline ==
+[http://oliverschmidt.github.com/cc65/contrib/isolinev0.6.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/isolinev0.6.zip Code]
+
+== LOADER.SYSTEM ==
+[http://oliverschmidt.github.com/cc65/contrib/loader-1.4.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/loader-1.4.zip Code]
+
+== load koala ==
+[http://oliverschmidt.github.com/cc65/contrib/loadkoala-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/loadkoala-1.0.zip Code]
+
+== Lynx Cart Demo 1.0 ==
+[http://oliverschmidt.github.com/cc65/contrib/lynx-cart-demo-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/lynx-cart-demo-1.0.zip Code]
+
+== Lynx Cart Demo 1.1 ==
+[http://oliverschmidt.github.com/cc65/contrib/lynx-cart-demo-1.1.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/lynx-cart-demo-1.1.zip Code]
+
+== Matrix screen saver ==
+[http://oliverschmidt.github.com/cc65/contrib/matrixcevi-2.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/matrixcevi-2.0.zip Code]
+
+== MemBank128 ==
+[http://oliverschmidt.github.com/cc65/contrib/membank128-0.10-beta.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/membank128-0.10-beta.zip Code]
+
+== mastermind ==
+[http://oliverschmidt.github.com/cc65/contrib/mmind-1.0.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/mmind-1.0.0.zip Code]
+
+== NESControllerTest ==
+[http://oliverschmidt.github.com/cc65/contrib/nescontrollertest-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/nescontrollertest-1.0.zip Code]
+
+== Pet Tetris ==
+[http://oliverschmidt.github.com/cc65/contrib/pet_tetris-v1.3c.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/pet_tetris-v1.3c.tgz Code]
+
+== pico<nowiki>]</nowiki>OS RTOS ==
+[http://oliverschmidt.github.com/cc65/contrib/picoos-demo-0.8.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/picoos-demo-0.8.0.zip Code]
+
+== quikman ==
+[http://oliverschmidt.github.com/cc65/contrib/quikman2k8-2008.11.1.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/quikman2k8-2008.11.1.zip Code]
+
+== rand ==
+[http://oliverschmidt.github.com/cc65/contrib/rand.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/rand.s Code]
+
+== Randfade ==
+[http://oliverschmidt.github.com/cc65/contrib/randfade-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/randfade-1.0.zip Code]
+
+== Se.g.i.t.a.i ==
+[http://oliverschmidt.github.com/cc65/contrib/se.g.i.t.a.i.-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/se.g.i.t.a.i.-1.0.zip Code]
+
+== Sierpinski Triangle ==
+[http://oliverschmidt.github.com/cc65/contrib/sierpinski-1.1.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/sierpinski-1.1.zip Code]
+
+== SimpleMenu ==
+[http://oliverschmidt.github.com/cc65/contrib/simplemenu11.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/simplemenu11.zip Code]
+
+== Speedcode generator ==
+[http://oliverschmidt.github.com/cc65/contrib/speedcode-1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/speedcode-1.0.zip Code]
+
+== squareroot ==
+[http://oliverschmidt.github.com/cc65/contrib/sqrtv1.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/sqrtv1.0.zip Code]
+
+== Sudoku solver ==
+[http://oliverschmidt.github.com/cc65/contrib/sudoku65.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/sudoku65.zip Code]
+
+== VicText ==
+[http://oliverschmidt.github.com/cc65/contrib/textvic-1.0.0.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/textvic-1.0.0.zip Code]
+
+== TGI preview ==
+[http://oliverschmidt.github.com/cc65/contrib/tgi-preview-0.0.1.txt Info] and 
+[http://oliverschmidt.github.com/cc65/contrib/tgi-preview-0.0.1.zip Code]
