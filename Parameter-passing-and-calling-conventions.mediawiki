@@ -1,0 +1,56 @@
+== Overview ==
+
+Parameters are passed to functions on the [[Parameter and return stacks|parameter stack]]. In general, parameters are pushed from left to right, so the rightmost parameter is the last one pushed (and therefore the one at the lowest position on the parameter stack). Provided that there are no local variables, the last parameter is at offset zero on the parameter stack. 
+
+== Parameter passing in presence of a prototype ==
+
+In presence of a prototype, parameters are pushed as their respective types. This does especially mean that characters are pushed as such and are not promoted to integers.
+
+== Parameter passing without a prototype ==
+
+If no prototype is available, the default promotions are applied before pushing parameters. This means that characters are promoted to integer before pushing them.
+
+== Variable argument lists ==
+
+Parameters in variable argument lists (ellipsis, <code>...</code>) are treated the same as if there were no prototype. 
+
+== The 'fastcall' calling convention ==
+
+If a function is declared as <tt>&#95;&#95;fastcall&#95;&#95;</tt> (or <tt>fastcall</tt>), the last (rightmost) parameter is not passed on the stack, but passed in the [[The primary register|primary register]] to the called function. This is A in case of an eight bit value, A/X in case of a 16 bit value, and A/X/sreg in case of a 32 bit value. 
+
+If the called function is a C function, its first instruction will be a call to one of the 'push' functions to push the passed value onto the stack. This means that for C functions 'fastcall' doesn't make the code really faster. Assembler functions however, can take advantage of the values passed in registers.
+
+Although 'fastcall' doesn't help making C functions faster it usually helps making the whole program somewhat smaller as all the callers of a 'fastcall' function can omit one call to a 'push' function.
+
+== Callee cleans up the stack ==
+
+Contrary to most other C compilers, the callee is responsible for cleaning up the stack (dropping stack space used for parameters) before returning. This is done in order to generate smaller code, since dropping parameters can in many places be combined with dropping local variables.
+
+== Examples ==
+
+The following example assume that there are no local variables. Presence of local variables would change the stack offset of the parameters in the function.
+
+Prototype:
+<pre>
+void foo (unsigned bar, unsigned char baz);
+</pre>
+
+Stack layout within the function:
+<pre>
+           +------------------+
+           | High byte of bar |
+Offset 2 ->+------------------+
+           | Low byte of bar  |
+Offset 1 ->+------------------+
+           | baz              |
+Offset 0 ->+------------------+
+</pre>
+
+Example code for accessing bar. The variable is in A/X after the code snippet:
+<pre>
+        ldy     #2              ; Offset of high byte of bar
+        lda     (sp),y          ; High byte now in A
+        tax                     ; High byte now in X
+        dey                     ; Offset of low byte of bar
+        lda     (sp),y          ; Low byte now in A
+</pre>
