@@ -40,7 +40,6 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 
 == Frequently asked questions ==
 
-* [[File path problems]]
 * [[PEEK and POKE]]
 * [[The .ORG directive]]
 * [[Interrupt handlers in C]]
