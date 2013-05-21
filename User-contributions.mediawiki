@@ -27,8 +27,8 @@
 [http://oliverschmidt.github.io/cc65/contrib/circle-1.0.zip Code]
 
 == Circle Frac ==
-[http://oliverschmidt.github.io/cc65/contrib/circlefracv1-0.txt Info] and 
-[http://oliverschmidt.github.io/cc65/contrib/circlefracv1-0.zip Code]
+[http://oliverschmidt.github.io/cc65/contrib/circlefracv1-1.txt Info] and 
+[http://oliverschmidt.github.io/cc65/contrib/circlefracv1-1.zip Code]
 
 == dirmenu ==
 [http://oliverschmidt.github.io/cc65/contrib/dirmenu-1.00.txt Info] and 
