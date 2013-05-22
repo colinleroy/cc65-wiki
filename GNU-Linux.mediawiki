@@ -1,3 +1,3 @@
 == cc65 on GNU/Linux ==
 
-This is the primary development platform, so the sources should compile out of the box under Linux. Binary and source RPMs for RedHat Linux are available.
+Just proceed as described in [http://oliverschmidt.github.io/cc65/getting-started.html Getting Started].
