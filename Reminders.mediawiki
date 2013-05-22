@@ -60,7 +60,7 @@ Things that might be considered to be evaluated/implemented/included...
 
 == Atari library ==
 * Add dio_query_sectcount() to complete the DIO implementation.
-** algorithm as follows (see http://oliverschmidt.github.io/cc65/mailarchive/2012-10/10974.html):
+** algorithm as follows (see http://oliverschmidt.github.io/cc65/mailarchive/2012-10/10974.html ):
 *** Read the 4th sector. (the xf551 drive had a bug, it returned the wrong PERCOM info after reading the normally 128-byte boot sectors, a read from sector 4 eliminates this chance)
 *** Read status (SIO command 0x53) and save that info.
 *** Request a PERCOM block. If it succeeds use that information.
