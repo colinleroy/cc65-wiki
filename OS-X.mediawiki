@@ -1,5 +1,5 @@
 == cc65 on OS X ==
-cc65 runs perfectly fine under various versions of OS X. There are binary installation packages distributed, but one can quite easily build his own binaries from sources.
+cc65 runs perfectly fine under various versions of OS X. There are no binary installation packages distributed, but one can quite easily build his own binaries from sources.
 
 Please note that in order to build cc65 from sources one requires a working UNIX development environment (especially GCC compiler), which is not a part of the default system installation. The requirement is then:
 
