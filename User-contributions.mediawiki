@@ -47,8 +47,8 @@
 [http://oliverschmidt.github.io/cc65/contrib/even_odd-1.0.zip Code]
 
 == fields ==
-[http://oliverschmidt.github.io/cc65/contrib/fields-1.2.1.txt Info] and 
-[http://oliverschmidt.github.io/cc65/contrib/fields-1.2.1.zip Code]
+[http://oliverschmidt.github.io/cc65/contrib/fields-1.2.2.txt Info] and 
+[http://oliverschmidt.github.io/cc65/contrib/fields-1.2.2.zip Code]
 
 == GenCart64 ==
 [http://oliverschmidt.github.io/cc65/contrib/gencart64-0.1.0-beta.txt Info] and 
