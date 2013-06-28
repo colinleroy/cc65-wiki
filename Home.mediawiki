@@ -71,4 +71,4 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 * [[Applications written in assembler with ca65]]
 * [[Applications written in C or C with assembler]]
 
-<div class="center"><sub>Content on this wiki is licensed under the following license: [http://creativecommons.org/licenses/by/3.0/ CC Attribution 3.0 Unported]</sub></div>
+<sub>Content on this wiki is licensed under the following license: [http://creativecommons.org/licenses/by/3.0/ CC Attribution 3.0 Unported]</sub>
