@@ -11,7 +11,6 @@ Things that might be considered to be evaluated/implemented/included...
 
 == Linker ==
 * Fix issues with o65 format.
-* Fix internal error in complex setups where the precalculated memory setup differs from the one determined later.
 * Map files do not work for o65 output in presence of external symbols. 
 * Add option to omit generation of output files if the file length is zero (useful for unused overlays).
 * Intel hex output.
