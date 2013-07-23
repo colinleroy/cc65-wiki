@@ -2,6 +2,10 @@
 [http://oliverschmidt.github.io/cc65/contrib/3dmaze-0.2.txt Info] and 
 [http://oliverschmidt.github.io/cc65/contrib/3dmaze-0.2.zip Code]
 
+== Aclock GEOS ==
+[http://oliverschmidt.github.io/cc65/contrib/aclock-geos.txt Info] and 
+[http://oliverschmidt.github.io/cc65/contrib/aclock-geos.zip Code]
+
 == AltInput ==
 [http://oliverschmidt.github.io/cc65/contrib/altinput_cc65_1.00.txt Info] and 
 [http://oliverschmidt.github.io/cc65/contrib/altinput_cc65_1.00.c Code]
