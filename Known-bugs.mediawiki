@@ -43,5 +43,4 @@ A fix is possible with not too much effort (needs rewrite of two functions in th
 
 * Fixing the conversions will have a negative impact on code quality. The reason are the integer promotions: The C standard says that operands to most binary operators must be converted to int. If this conversion is done to signed instead of unsigned, most operations on char will actually operate on signed ints. And on 6502 machines, code for a signed operation is usually larger and slower than the same code for an unsigned operation.
 
-
 So if you have plans to solve the issue, be at least prepared to have a thorough look at the generated code.
