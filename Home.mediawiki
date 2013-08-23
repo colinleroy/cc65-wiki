@@ -58,6 +58,7 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 * [[Parameter and return stacks]]
 * [[Parameter passing and calling conventions]]
 * [[Roadmap]]
+* [[Known bugs]]
 
 == Debug information ==
 
