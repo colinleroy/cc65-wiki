@@ -1,0 +1,46 @@
+== Wrong implicit conversion of integers ==
+
+While the standard says that an unsigned char should be promoted to int if an int can represent all values of an unsigned char, and similar for promotion from unsigned to long, cc65 promotes unsigned types to unsigned types of the larger range. That is, unsigned char is promoted to unsigned and unsigned to unsigned long.
+
+This can be easily tested. The following code should promote the operands to integer and produce a signed result, but if you look at the generated assembly, it uses the runtime routine for unsigneds, which generate an unsigned result:
+
+<pre>
+int main (void)
+{
+    unsigned char c = 2;
+    unsigned u = 2;
+    int a = -2;
+    long l = -2;
+
+    /* Generated code should use tosmulax but uses tosumulax */
+    int r = c * a;
+    /* Generated code should use tosmuleax but uses tosumuleax */
+    long lr = u * l;
+
+    return 0;
+}
+</pre>
+
+While in the examples above, this has no ill effects, and is therefore only visible by looking at the generated code, there are other places, were the compiler gets tests wrong (as in your example) or produces invalid calculation results. For example (from the original bug report):
+
+<pre>
+long n = -95;
+unsigned int d = 3;
+int r = n/d; // produces 21813 instead of 31
+</pre>
+
+A workaround is to manually force usage of the correct type:
+
+<pre>
+int r = n / (long) d;
+</pre>
+
+The disadvantage being that one must really understand the nature of the bug to apply the proper casts.
+
+A fix is possible with not too much effort (needs rewrite of two functions in the compiler), but introduces two other problems:
+
+* The fixed code has a higher chance to trigger an error in the optimizer which causes invalid code transformations. This optimizer problem does actually exist without the fix, but chances for triggering it are rather low.
+
+* Fixing the conversions will have a negative impact on code quality. The reason are the integer promotions: The C standard says that operands to most binary operators must be converted to int. If this conversion is done to signed instead of unsigned, most operations on char will actually operate on signed ints. And on 6502 machines, code for a signed operation is usually larger and slower than the same code for an unsigned operation.
+
+So if you have plans to solve the issue, be at least prepared to have a thorough look at the generated code.
