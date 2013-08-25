@@ -21,7 +21,7 @@ int main (void)
 }
 </pre>
 
-While in the examples above, this has no ill effects, and is therefore only visible by looking at the generated code, there are other places, were the compiler gets tests wrong (as in your example) or produces invalid calculation results. For example (from the original bug report):
+While in the examples above, this has no ill effects, and is therefore only visible by looking at the generated code, there are other places, were the compiler gets tests wrong or produces invalid calculation results. For example:
 
 <pre>
 long n = -95;
