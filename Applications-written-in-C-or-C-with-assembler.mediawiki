@@ -49,11 +49,11 @@ Clone of the flash puzzle game 'Znax' with improved score system for Atari-8-Bit
 [http://noname.c64.org/csdb/release/?id=29472|GNU Sudoku] is a port of the well known game to the C64.
 
 === Manic Miner ===
-Remake of Manic Miner by Matthew Smith from 1983.  This for the C64 [https://github.com/StewBC/manicminer.git GitHub project] and [http://www.youtube.com/watch?v=_3_V-8X8J5o Video]
+Remake of Manic Miner by Matthew Smith from 1983.  This for the C64 [https://github.com/StewBC/manicminer GitHub project] and [http://www.youtube.com/watch?v=_3_V-8X8J5o Video]
 
 === Snake Byte ===
 Remake of Snake Byte by Sirius Software first published in 1982.  This for the C64 with a conio port.
-[https://github.com/StewBC/snakebyte.git GitHub project] and [http://www.youtube.com/watch?v=H7Y4HVXVzoI Video]
+[https://github.com/StewBC/snakebyte GitHub project] and [http://www.youtube.com/watch?v=H7Y4HVXVzoI Video]
 
 === Solitaire ===
 The Atari Lynx [http://www.classicgamedev.com/Lynx:Solitaire_in_C Solitaire] (source included) contains three games:
