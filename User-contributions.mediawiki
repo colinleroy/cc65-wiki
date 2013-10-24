@@ -54,6 +54,10 @@
 [http://oliverschmidt.github.io/cc65/contrib/fields-1.2.2.txt Info] and 
 [http://oliverschmidt.github.io/cc65/contrib/fields-1.2.2.zip Code]
 
+== Fixed Point Library ==
+[http://oliverschmidt.github.io/cc65/contrib/fixedpoint.txt Info] and 
+[http://oliverschmidt.github.io/cc65/contrib/fixedpoint.zip Code]
+
 == GenCart64 ==
 [http://oliverschmidt.github.io/cc65/contrib/gencart64-0.1.0-beta.txt Info] and 
 [http://oliverschmidt.github.io/cc65/contrib/gencart64-0.1.0-beta.zip Code]
