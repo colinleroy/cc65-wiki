@@ -70,6 +70,10 @@
 [http://oliverschmidt.github.io/cc65/contrib/hidden64-0.21a-beta.txt Info] and 
 [http://oliverschmidt.github.io/cc65/contrib/hidden64-0.21a-beta.zip Code]
 
+== HiMem64 ==
+[http://oliverschmidt.github.io/cc65/contrib/himem64-0.1.0beta.txt Info] and 
+[http://oliverschmidt.github.io/cc65/contrib/himem64-0.1.0beta.zip Code]
+
 == huffman ==
 [http://oliverschmidt.github.io/cc65/contrib/huffman-1.0.txt Info] and 
 [http://oliverschmidt.github.io/cc65/contrib/huffman-1.0.zip Code]
