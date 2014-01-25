@@ -65,7 +65,6 @@ Things that might be considered to be evaluated/implemented/included...
 *** If reading PERCOM block fails assume 1050, 810 (or even 815) or compatible. Use the status byte 0 to differentiate between single, enhanced (medium) and double density. (bit 5 is set if double density and bit 7 is set if enhanced density). If we're only looking for sector count, only the bit 7 matters.
 * Implement the functions in device.h and test them with samples/enumdevdir.c.
 * Implement exec().
-* Add documentation for TGI and EMD drivers.
 
 == GEOS library ==
 * Make dio_query_sectcount() less naive.
