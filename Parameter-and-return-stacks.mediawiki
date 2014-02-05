@@ -10,7 +10,9 @@ The 'return stack' is actually the 6502 hardware stack. It is called 'return sta
 
 === General use ===
 
-The parameter stack is a software stack that usually resides at the highest program data address and grows downwards. It is addressed using a two byte zeropage variable named <code>sp</code> and the Y register. The parameter stack is also used for local auto variables.
+The parameter stack is a software stack that usually resides at the highest program data address and grows downwards (usually towards the heap). It is addressed using a two byte zeropage variable named <code>sp</code> and the Y register. The parameter stack is also used for local auto variables.
+
+Note: The size of the stack is only needed if the heap is used, or if the stack checking routine <code>_stkcheck</code> is called from somewhere in the program.
 
 === Functions for use with the parameter stack ===
 
