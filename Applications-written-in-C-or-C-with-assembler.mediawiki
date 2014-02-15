@@ -42,7 +42,7 @@ Skoe has written a tool named [http://skoe.de/easyflash/index.php?page=easyprog-
 === CardSwipe ===
 [http://noname.c64.org/csdb/release/?id=98755 CardSwipe] is a card game for the C64.
 
-=== Snake Byte ===
+=== cc65 Chess ===
 Portable AI, 1 or 2 player Chess game in C.
 [https://github.com/StewBC/cc65-Chess GitHub project] and [http://www.youtube.com/watch?v=bkA4vtwxaJg Video]
 
