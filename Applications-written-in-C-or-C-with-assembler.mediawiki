@@ -42,6 +42,10 @@ Skoe has written a tool named [http://skoe.de/easyflash/index.php?page=easyprog-
 === CardSwipe ===
 [http://noname.c64.org/csdb/release/?id=98755 CardSwipe] is a card game for the C64.
 
+=== Snake Byte ===
+Portable AI, 1 or 2 player Chess game in C.
+[https://github.com/StewBC/cc65-Chess GitHub project] and [http://www.youtube.com/watch?v=bkA4vtwxaJg Video]
+
 === ECKN/ECKN+ ===
 Clone of the flash puzzle game 'Znax' with improved score system for Atari-8-Bit computers. The 'plus' version has minor fixes, is NTSC compatible and supports Atari CX77 touch tablet or similar devices (CMI08 PS/2 mouse interface). [http://atari.fandal.cz/search.php?search=ECKN Download] and [http://www.youtube.com/watch?v=KnwpMZAuxZo Video]
 
