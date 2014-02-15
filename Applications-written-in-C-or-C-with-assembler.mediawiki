@@ -43,7 +43,7 @@ Skoe has written a tool named [http://skoe.de/easyflash/index.php?page=easyprog-
 [http://noname.c64.org/csdb/release/?id=98755 CardSwipe] is a card game for the C64.
 
 === cc65 Chess ===
-Portable AI, 1 or 2 player Chess game in C.
+Portable AI, 1 or 2 player Chess game in C. This for the C64.
 [https://github.com/StewBC/cc65-Chess GitHub project] and [http://www.youtube.com/watch?v=bkA4vtwxaJg Video]
 
 === ECKN/ECKN+ ===
@@ -53,7 +53,7 @@ Clone of the flash puzzle game 'Znax' with improved score system for Atari-8-Bit
 [http://noname.c64.org/csdb/release/?id=29472|GNU Sudoku] is a port of the well known game to the C64.
 
 === Manic Miner ===
-Remake of Manic Miner by Matthew Smith from 1983.  This for the C64 [https://github.com/StewBC/manicminer GitHub project] and [http://www.youtube.com/watch?v=_3_V-8X8J5o Video]
+Remake of Manic Miner by Matthew Smith from 1983.  This for the C64. [https://github.com/StewBC/manicminer GitHub project] and [http://www.youtube.com/watch?v=_3_V-8X8J5o Video]
 
 === Snake Byte ===
 Remake of Snake Byte by Sirius Software first published in 1982.  This for the C64 with a conio port.
