@@ -1,7 +1,3 @@
 == cc65 on GNU/Linux ==
 
-You have two options to install cc65:
-
-* You can download pre-built packages for RPM based systems (OpenSUSE) and for DEB based systems (Debian) from [http://software.opensuse.org/download.html?project=home%3Astrik&package=cc65].
-
-* You can just proceed as described in [http://oliverschmidt.github.io/cc65/getting-started.html Getting Started].
+Just proceed as described in [http://oliverschmidt.github.io/cc65/getting-started.html Getting Started].
