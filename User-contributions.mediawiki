@@ -51,8 +51,8 @@
 [http://oliverschmidt.github.io/cc65/contrib/even_odd-1.0.zip Code]
 
 == fields ==
-[http://oliverschmidt.github.io/cc65/contrib/fields-1.2.2.txt Info] and 
-[http://oliverschmidt.github.io/cc65/contrib/fields-1.2.2.zip Code]
+[http://oliverschmidt.github.io/cc65/contrib/fields-1.2.3.txt Info] and 
+[http://oliverschmidt.github.io/cc65/contrib/fields-1.2.3.zip Code]
 
 == Fixed Point Library ==
 [http://oliverschmidt.github.io/cc65/contrib/fixedpoint.txt Info] and 
