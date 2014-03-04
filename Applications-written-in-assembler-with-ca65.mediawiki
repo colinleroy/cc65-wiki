@@ -5,7 +5,7 @@
 [http://kildall.apana.org.au/~cjb/G-Pascal/ G-Pascal] is a Pascal compiler of 1983, call SYS 32768. (184 KB source included)
 
 == IP65 ==
-[http://ip65.sourceforge.net IP65] is a TCP/IP stack for 6502 based computers.
+[http://oliverschmidt.github.io/ip65/ IP65] is a TCP/IP stack for 6502 based computers.
 
 == Krill's Loader ==
 [http://noname.c64.org/csdb/release/?id=78348 Krill's Loader] is an advanced IRQ fastloader for the C64 supporting many different drives.
