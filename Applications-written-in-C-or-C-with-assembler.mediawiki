@@ -108,7 +108,7 @@ The boot loader and menu program of the [http://icomp.de/products/chameleon_e.ht
 === Eliza 65 ===
 [http://noname.c64.org/csdb/release/?id=95792 Eliza 65] is a port of the well known Eliza program. (source included)
 
-=== pico<nowiki>]</nowiki>OS ===
+=== picoOS ===
 [http://picoos.sourceforge.net/ports/6502/ pico<nowiki>]</nowiki>OS for 6502] is a realtime operating system by Dennis Kuschel. (source included)
 
 === VICE ===
