@@ -122,7 +122,7 @@
 [http://oliverschmidt.github.io/cc65/contrib/pet_tetris-v1.3c.txt Info] and 
 [http://oliverschmidt.github.io/cc65/contrib/pet_tetris-v1.3c.tgz Code]
 
-== pico<nowiki>]</nowiki>OS RTOS ==
+== picoOS RTOS ==
 [http://oliverschmidt.github.io/cc65/contrib/picoos-demo-0.8.0.txt Info] and 
 [http://oliverschmidt.github.io/cc65/contrib/picoos-demo-0.8.0.zip Code]
 
