@@ -99,6 +99,9 @@ The C64 game [http://noname.c64.org/csdb/release/?id=102217 Zoo Mania] was writt
 === 1541 Ultimate ===
 The 1.x firmware of the [http://1541ultimate.net/ 1541 Ultimate] uses cc65 to build the menu program, which is written in C.
 
+=== brainfuck64 ===
+[https://github.com/gergoerdi/brainfuck64 brainfuck64] is a Brainfuck compiler that runs on the Commodore 64 (or any 6502-based computer supported by cc65 that has enough RAM).
+
 === Chameleon ===
 The boot loader and menu program of the [http://icomp.de/products/chameleon_e.htm Chameleon] are written using a combination of assembler and C.
 
