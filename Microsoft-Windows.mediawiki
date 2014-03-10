@@ -2,6 +2,10 @@
 
 In general just proceed as described in [http://oliverschmidt.github.io/cc65/getting-started.html Getting Started].
 
-Additionally there's a guide describing how to build [http://www.contiki-os.org/ Contiki] under Windows using cc65: [http://cbm8bit.com/articles/user-contributions/compile-contiki]
+If you however want to build cc65 yourself from the sources then you can do so using [http://mingw-w64.sourceforge.net/ MinGW-w64], [http://www.mingw.org/ MinGW] or Microsoft Visual C++ 2013 Express.
 
-Several sections of this guide are of general interest when it comes to using cc65 under Windows.
+The build process is in general controlled by Makefiles. But this does '''not''' imply that you have to use an environment like Cygwin or MSYS. Rather the Makefiles are carefully designed to work with a plain vanilla cmd.exe.
+
+Both MinGW-w64 and MinGW come with GNU make (built as mingw32-make.exe) so there's no need for any additional tools whatsoever. Just build the default make target of the top level Makefile.
+
+Building cc65 with Visual C++ is a two step process. You first build the Visual C++ solution in the 'src' directory. Then you build the make target 'lib' of the top level Makefile. For the latter you need a Win32 build of GNU make. I suggest using [http://gnuwin32.sourceforge.net/packages/make.htm Make for Windows].
