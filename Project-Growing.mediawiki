@@ -6,7 +6,7 @@ Building your Wunderwaffe of 8-bit code for multiple target platforms might be a
 <pre>
 $ make TARGETS=c64,atari,apple2
 </pre>
-Which builds it for (yes, you guessed it right!) C64, Atari and Apple <nowiki>][</nowiki>. The full list of linker [http://oliverschmidt.github.com/cc65/doc/ld65-2.html#ss2.2 supported target platforms] can be found in [http://oliverschmidt.github.com/cc65/doc/ld65.html ld65 linker documentation]. Unless your program uses some non-portable techniques, after issuing the above command, you should be able to find binaries for all three platforms, having their names ending with '.c64', '.atari', and '.apple2' respectively.
+Which builds it for (yes, you guessed it right!) C64, Atari and Apple <nowiki>][</nowiki>. The full list of linker [http://cc65.github.com/cc65/doc/ld65.html#ss2.2 supported target platforms] can be found in [http://cc65.github.com/cc65/doc/ld65.html ld65 linker documentation]. Unless your program uses some non-portable techniques, after issuing the above command, you should be able to find binaries for all three platforms, having their names ending with '.c64', '.atari', and '.apple2' respectively.
 
 Now - setting the targets on the command line is good for quick testing. But if you want to make it more permanent, assigning appropriate value to TARGETS variable inside the editable variables section of the Makefile itself is the way to go:
 <pre>
@@ -21,7 +21,7 @@ This is all fine and works perfectly well as long as you keep programming using 
 === Platform specific code ===
 How to do it? There are sexy ways and there are ugly ways (which are which depends on personal tastes and orientations ;&ndash;) ). One pretty common way is to add number of conditional #ifdefs into your code and compile accordingly to the current target. Sexy or ugly? You decide, but only after you read about another method.
 
-Method #2: inside 'src' directory create subdirectories named exactly as the names of [http://oliverschmidt.github.com/cc65/doc/ld65-2.html#ss2.2 cc65 target platforms] you want to develop and build for. Using our predefined platform list we get:
+Method #2: inside 'src' directory create subdirectories named exactly as the names of [http://cc65.github.com/cc65/doc/ld65.html#ss2.2 cc65 target platforms] you want to develop and build for. Using our predefined platform list we get:
 <pre>
 $ ls -lFr src/
 total 0
