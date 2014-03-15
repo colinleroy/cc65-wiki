@@ -1,6 +1,6 @@
 == cc65 on AmigaOS ==
 
-If you want to use the current cc65 code base you have to build your own binaries from the sources - see [http://oliverschmidt.github.io/cc65/getting-started.html Getting Started].
+If you want to use the current cc65 code base you have to build your own binaries from the sources - see [http://cc65.github.io/cc65/getting-started.html Getting Started].
 
 If you're fine with some older cc65 code base you can find various ports on [http://aminet.net/search.php?query=cc65 Aminet]. The MorphOS port is maintained by Stefan Haubenthal (polluks@sdf.lonestar.org).
 
