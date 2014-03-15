@@ -5,7 +5,7 @@ Please note that in order to build cc65 from sources one requires a working UNIX
 
 * Apple Developer's Tools - please download appropriate, latest package available for your OS version and install it with "UNIX Development" option checked. Checking this option places all necessary command line tools, headers, and other files required for typical UNIX style development, where they are expected to be in a working unix development environment (/usr/). At the time of writing [http://www.apple.com/ Apple] provides necessary [http://developer.apple.com/technologies/xcode.html developer tools] free of charge but requires registration in order to download the software.
 
-Since cc65 is very cleanly written no additional configuration processes are needed. Once the necessary prerequisites are in place, start your terminal and proceed as described in [http://oliverschmidt.github.io/cc65/getting-started.html Getting Started].
+Since cc65 is very cleanly written no additional configuration processes are needed. Once the necessary prerequisites are in place, start your terminal and proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
 
 == Compatibility ==
 === OS X 10.6 "Snow Leopard" (i386) ===
