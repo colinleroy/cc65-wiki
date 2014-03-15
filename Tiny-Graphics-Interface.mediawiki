@@ -2,45 +2,43 @@
 {| class="wikitable"
 ! driver !! double page !! best colors !! best resolution
 |-
-| a2.hi.tgi           || ✓     || &nbsp;  || ✓
+| a2[e].hi.tgi        || ✓     || &nbsp;  || ✓
 |-
-| a2.lo.tgi           || &nbsp; || ✓      || &nbsp;
+| a2[e].lo.tgi        || &nbsp; || ✓      || &nbsp;
 |-
-| a2e.hi.tgi          || ✓     || &nbsp;  || ✓
+| atr[x]3.tgi         || &nbsp; || &nbsp; || &nbsp;
 |-
-| a2e.lo.tgi          || &nbsp; || ✓      || &nbsp;
+| atr[x]4.tgi         || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari3.tgi          || &nbsp; || &nbsp; || &nbsp;
+| atr[x]5.tgi         || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari4.tgi          || &nbsp; || &nbsp; || &nbsp;
+| atr[x]6.tgi         || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari5.tgi          || &nbsp; || &nbsp; || &nbsp;
+| atr[x]7.tgi         || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari6.tgi          || &nbsp; || &nbsp; || &nbsp;
+| atr[x]8.tgi         || &nbsp; || &nbsp; || ✓
 |-
-| atari7.tgi          || &nbsp; || &nbsp; || &nbsp;
+| atr[x]8p2.tgi       || ✓     || &nbsp; || ✓
 |-
-| atari8.tgi          || &nbsp; || &nbsp; || ✓
+| atr[x]9.tgi         || &nbsp; || ✓     || &nbsp;
 |-
-| atr8p2.tgi          || ✓     || &nbsp; || ✓
+| atr[x]9p2.tgi       || ✓     || ✓     || &nbsp;
 |-
-| atari9.tgi          || &nbsp; || ✓     || &nbsp;
+| atr[x]10.tgi        || &nbsp; || &nbsp; || &nbsp;
 |-
-| atr9p2.tgi          || ✓     || ✓     || &nbsp;
+| atr[x]10p2.tgi      || ✓     || &nbsp; || &nbsp;
 |-
-| atari10.tgi         || &nbsp; || &nbsp; || &nbsp;
+| atr[x]11.tgi        || &nbsp; || ✓     || &nbsp;
 |-
-| atr10p2.tgi         || ✓     || &nbsp; || &nbsp;
+| atr[x]14.tgi        || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari11.tgi         || &nbsp; || ✓     || &nbsp;
+| atr[x]15.tgi        || &nbsp; || &nbsp; || &nbsp;
 |-
-| atari14.tgi         || &nbsp; || &nbsp; || &nbsp;
+| atr[x]15p2.tgi      || ✓     || &nbsp; || &nbsp;
 |-
-| atari15.tgi         || &nbsp; || &nbsp; || &nbsp;
+| atmos-228-200-3.tgi || &nbsp; || ✓     || &nbsp;
 |-
-| atr15p2.tgi         || ✓     || &nbsp; || &nbsp;
-|-
-| atmos-240-200-2.tgi || &nbsp; || ✓     || ✓
+| atmos-240-200-2.tgi || &nbsp; || &nbsp; || ✓
 |-
 | c128-vdc.tgi        || &nbsp; || ✓     || &nbsp;
 |-
@@ -51,6 +49,8 @@
 | geos-tgi.tgi        || &nbsp; || ✓     || ✓
 |-
 | lynx-160-102-16.tgi || ✓     || ✓     || ✓
+|-
+| nes-64-56-2.tgi     || &nbsp; || ✓     || ✓
 |}
 
 == TGI bitmap fonts ==
