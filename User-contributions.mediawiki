@@ -86,10 +86,6 @@
 [http://cc65.github.io/cc65/contrib/isolinev0.6.txt Info] and 
 [http://cc65.github.io/cc65/contrib/isolinev0.6.zip Code]
 
-== LOADER.SYSTEM ==
-[http://cc65.github.io/cc65/contrib/loader-1.4.txt Info] and 
-[http://cc65.github.io/cc65/contrib/loader-1.4.zip Code]
-
 == load koala ==
 [http://cc65.github.io/cc65/contrib/loadkoala-1.0.txt Info] and 
 [http://cc65.github.io/cc65/contrib/loadkoala-1.0.zip Code]
