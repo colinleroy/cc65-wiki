@@ -24,7 +24,7 @@ Things that might be considered to be evaluated/implemented/included...
 * Add capability to call other external programs for processing, for example Pucrunch.
 
 == Platform independent runtime library ==
-* Complete multiplication and division routines. Currently it's somewhat a mess. Especially cc65_imul8x8r16 is missing.
+* Complete multiplication and division routines. Currently it's somewhat a mess. Especially cc65_imul8x8r16() is missing.
 * The changes in the TGI library need a review and cleanup. The new vector font routines need testing, docs and maybe a sample program. Clipping is probably not implemented (needs check).
 * There's a function tgi_imulround() - declared in tgi/tgi-kernel.h - that can be used with tgi_getaspectratio() to scale a value "up" by the aspect ratio. However it is as well desirable to be able to scale "down" by the aspect ratio - maybe with a function called tgi_idivround().
 * Implement an alternative "naive" heap manager that simply increments a pointer for every allocation (and doesn't actually de-allocate anything) to allow i.e. the module loader to be used without linking in the full blown heap manager.
