@@ -2,49 +2,49 @@
 {| class="wikitable"
 ! Platform !! driver !! double page !! best colors !! best resolution !! default driver
 |-
-! Apple II,
+! rowspan="2" | Apple II,
 <nowiki>[Apple IIe]</nowiki> || a2[e].hi.tgi || ✓ || &nbsp; || ✓   || ✓
 |-
-| &nbsp;        || a2[e].lo.tgi        || &nbsp; || ✓     || &nbsp; || &nbsp;
+| a2[e].lo.tgi        || &nbsp; || ✓     || &nbsp; || &nbsp;
 |-
-! Atari,
+! rowspan="15" | Atari,
 <nowiki/>[AtariXL] || atr[x]3.tgi      || &nbsp; || &nbsp; || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]4.tgi         || &nbsp; || &nbsp; || &nbsp; || &nbsp;
+| atr[x]4.tgi         || &nbsp; || &nbsp; || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]5.tgi         || &nbsp; || &nbsp; || &nbsp; || &nbsp;
+| atr[x]5.tgi         || &nbsp; || &nbsp; || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]6.tgi         || &nbsp; || &nbsp; || &nbsp; || &nbsp;
+| atr[x]6.tgi         || &nbsp; || &nbsp; || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]7.tgi         || &nbsp; || &nbsp; || &nbsp; || &nbsp;
+| atr[x]7.tgi         || &nbsp; || &nbsp; || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]8.tgi         || &nbsp; || &nbsp; || ✓     || ✓
+| atr[x]8.tgi         || &nbsp; || &nbsp; || ✓     || ✓
 |-
-| &nbsp;        || atr[x]8p2.tgi       || ✓     || &nbsp; || ✓     || &nbsp;
+| atr[x]8p2.tgi       || ✓     || &nbsp; || ✓     || &nbsp;
 |-
-| &nbsp;        || atr[x]9.tgi         || &nbsp; || ✓     || &nbsp; || &nbsp;
+| atr[x]9.tgi         || &nbsp; || ✓     || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]9p2.tgi       || ✓     || ✓     || &nbsp; || &nbsp;
+| atr[x]9p2.tgi       || ✓     || ✓     || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]10.tgi        || &nbsp; || &nbsp; || &nbsp; || &nbsp;
+| atr[x]10.tgi        || &nbsp; || &nbsp; || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]10p2.tgi      || ✓     || &nbsp; || &nbsp; || &nbsp;
+| atr[x]10p2.tgi      || ✓     || &nbsp; || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]11.tgi        || &nbsp; || ✓     || &nbsp; || &nbsp;
+| atr[x]11.tgi        || &nbsp; || ✓     || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]14.tgi        || &nbsp; || &nbsp; || &nbsp; || &nbsp;
+| atr[x]14.tgi        || &nbsp; || &nbsp; || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]15.tgi        || &nbsp; || &nbsp; || &nbsp; || &nbsp;
+| atr[x]15.tgi        || &nbsp; || &nbsp; || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atr[x]15p2.tgi      || ✓     || &nbsp; || &nbsp; || &nbsp;
+| atr[x]15p2.tgi      || ✓     || &nbsp; || &nbsp; || &nbsp;
 |-
-! Oric Atmos    || atmos-228-200-3.tgi || &nbsp; || ✓     || &nbsp; || &nbsp;
+! rowspan="2" | Oric Atmos    || atmos-228-200-3.tgi || &nbsp; || ✓     || &nbsp; || &nbsp;
 |-
-| &nbsp;        || atmos-240-200-2.tgi || &nbsp; || &nbsp; || ✓     || ✓
+| atmos-240-200-2.tgi || &nbsp; || &nbsp; || ✓     || ✓
 |-
-! Commodore 128 || c128-vdc.tgi        || &nbsp; || ✓     || &nbsp; || ✓
+! rowspan="2" | Commodore 128 || c128-vdc.tgi        || &nbsp; || ✓     || &nbsp; || ✓
 |-
-| &nbsp;        || c128-vdc2.tgi       || &nbsp; || ✓     || ✓     || &nbsp;
+| c128-vdc2.tgi       || &nbsp; || ✓     || ✓     || &nbsp;
 |-
 ! Commodore 64  || c64-hi.tgi          || &nbsp; || ✓     || ✓     || ✓
 |-
