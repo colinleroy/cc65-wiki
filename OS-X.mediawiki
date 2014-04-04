@@ -1,13 +1,20 @@
 == cc65 on OS X ==
-cc65 runs perfectly fine under various versions of OS X. There are no binary installation packages distributed, but one can quite easily build his own binaries from sources.
+cc65 runs perfectly fine under various versions of OS X. There are no binary installation packages distributed yet, but one can quite easily build his own binaries from sources.
 
-Please note that in order to build cc65 from sources one requires a working UNIX development environment (especially GCC compiler), which is not a part of the default system installation. The requirement is then:
+Please note that in order to build cc65 from sources one requires a working UNIX development environment (especially C compiler), which is not a part of the default system installation. The main requirement is then:
 
-* Apple Developer's Tools - please download appropriate, latest package available for your OS version and install it with "UNIX Development" option checked. Checking this option places all necessary command line tools, headers, and other files required for typical UNIX style development, where they are expected to be in a working unix development environment (/usr/). At the time of writing [http://www.apple.com/ Apple] provides necessary [http://developer.apple.com/technologies/xcode.html developer tools] free of charge but requires registration in order to download the software.
+* Apple Developer's Tools - please download appropriate, latest package available for your OS version and install it with "UNIX Development/Command Line Tools" option. This option places all necessary command line tools, headers, and other files required for typical UNIX style development, where they are expected to be in a working unix development environment. At the time of writing [http://www.apple.com/ Apple] provides necessary [http://developer.apple.com/technologies/xcode.html developer tools] free of charge but requires registration in order to download the software. With more recent versions of OSX the "Xcode" development environment can be [https://itunes.apple.com/en/app/xcode/id497799835 installed from "App Store"] without registering at Apple's developers website. Moreover it is no longer necessary to install whole set of Developer Tools, especially the "Xcode" itself. It is enough to install "Command Line Tools for Xcode" package, which contains necessary tools you need in order to checkout and build cc65 from source. One of the easiest way to install said command line tools on OSX 10.9 "Mavericks" is to open Terminal.app and issue a command:
+<code>
+$ xcode-select --install
+</code>
 
-Since cc65 is very cleanly written no additional configuration processes are needed. Once the necessary prerequisites are in place, start your terminal and proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
+choose "Install" from the dialog box that appears when the command is not found. There are more thorough explanations available e. g. in [http://blog.chrisbolman.com/how-install-command-line-developer-tools-mac-osx-mavericks-10-9-xcode/ This blog post].
+
+Since cc65 is very cleanly written, no additional configuration processes are needed. Once the necessary prerequisites are in place, start your terminal and proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
 
 == Compatibility ==
+=== OS X 10.9 "Mavericks" (i386) ===
+Building from source works 100% - tested
 === OS X 10.6 "Snow Leopard" (i386) ===
 Building from source works 100% - tested
 === OS X 10.5 "Leopard" (ppc) ===
@@ -19,7 +26,7 @@ Building from source should work fine - untested
 === OS X 10.4 "Tiger" (i386) ===
 Building from source should work fine - untested
 === OS X 10.3 "Panther" (ppc) ===
-Building from source should work fine - tested, please consider switching to 10.4, which is (IMHO) the first mature OS X version
+Building from source works 100% - tested, please consider switching to 10.4, which is (IMHO) the first mature OS X version
 === OS X 10.2 "Jaguar" (ppc) ===
 Building from source works 100% - tested, but while 10.2 was probably the first usable OS X version, you shouldn't really be running it anymore these days
 === OS X 10.1 or earlier (ppc) ===
