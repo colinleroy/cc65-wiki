@@ -2,7 +2,7 @@
 
 You have two options: You can compile everything from scratch. In this case, just proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
 
-Another option is to use pre-built binaries, which are available for Debian based systems, as well as RPM based system (currently, OpenSUSE, but other platforms might work, too).
+Another option is to use pre-built binaries, which are available for Debian based systems, as well as RPM based system (currently, OpenSUSE, but other platforms might work, too). Go find the [https://build.opensuse.org/package/show/home:strik/cc65 history of the binary packages].
 
 The pre-built binary packages can be got from [http://software.opensuse.org/download.html?project=home%3Astrik&package=cc65 the OpenSUSE build service]. As said, there are debian as .DEB well as OpenSUSE .RPM available. Install instructions can be found at this link.
 
