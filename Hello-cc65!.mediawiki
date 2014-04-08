@@ -9,7 +9,7 @@ void main(void)
 }
 </pre>
 
-You save the above programming masterpiece using your favourite text editor as hello.c and the fun begins... You probably should read the excellent [http://cc65.github.com/cc65/doc/ cc65 documentation] or at least the [http://cc65.github.com/cc65/doc/intro.html introduction section] before continuing. This will make things more clear and structured in your mind :&ndash;) For now, we assume that you know what are the [http://cc65.github.io/cc65/doc/intro.html#ss1.3 translation phases] (or you just don't want to know that) and we go the easy way, using cc65's [http://cc65.github.com/cc65/doc/cl65.html compile & Link utility]. The beauty of this utility is that single command:
+You save the above programming masterpiece using your favourite text editor as hello.c and the fun begins... You probably should read the excellent [http://cc65.github.com/cc65/doc/ cc65 documentation] or at least the [http://cc65.github.com/cc65/doc/intro.html introduction section] before continuing. This will make things more clear and structured in your mind. For now, we assume that you know what are the [http://cc65.github.io/cc65/doc/intro.html#ss1.3 translation phases] (or you just don't want to know that) and we go the easy way, using cc65's [http://cc65.github.com/cc65/doc/cl65.html compile & Link utility]. The beauty of this utility is that single command:
 
 <pre>
 $ cl65 hello.c
