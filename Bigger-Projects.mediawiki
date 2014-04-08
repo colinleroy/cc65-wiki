@@ -7,7 +7,7 @@ Again - there is the excellent [http://cc65.github.com/cc65/doc/using-make.html 
 
 Wait... did I write "write new 'Makefile' for every new project"? Isn't there an easier way to set the project up, including some sort of "universal" 'Makefile', which wouldn't require rewriting it all the time? Something like the good, old [http://www.sas.com/products/sasc/index.html SAS/C] had on [http://en.wikipedia.org/wiki/Amiga Amiga] for example? I mean I have no clue now what all my source files are going to be named like, I am not sure what options I am going to use in the end, etc. Sure I can maintain and adapt my 'Makefile' every time I add a new source file. Adapt it again when I find the previously added file useless and delete it, adapt it whenever I want to test some new options, etc., etc. Sure - I can do it. Still, I somehow feel like I would prefer to be able to concentrate on quick development of the actual software, rather than my 'Makefile'... So?
 
-Well, if you are one of the lucky gals who live in the future, where cc65 v2.14 has already been released (or at least you use the latest "snapshot" aka "bleeding edge" version of cc65) - then we have something for you.
+Well, if you are one of the lucky gals who use cc65 v2.14 then we have something for you.
 
 If you move further down the page, you will find THE 'Makefile' for many simple to medium sized cc65 projects, which does not require any rewriting. There are some (we hope reasonable) conventions (Yes, some of us are big fans of "Convention over Configuration" paradigm.), which you can easily follow when setting up the project:
 
