@@ -8,7 +8,7 @@ $ make TARGETS=c64,atari,apple2
 </pre>
 Which builds it for (yes, you guessed it right!) C64, Atari and Apple <nowiki>][</nowiki>. The full list of linker [http://cc65.github.com/cc65/doc/ld65.html#ss2.2 supported target platforms] can be found in [http://cc65.github.com/cc65/doc/ld65.html ld65 linker documentation]. Unless your program uses some non-portable techniques, after issuing the above command, you should be able to find binaries for all three platforms, having their names ending with '.c64', '.atari', and '.apple2' respectively.
 
-Now - setting the targets on the command line is good for quick testing. But if you want to make it more permanent, assigning appropriate value to TARGETS variable inside the editable variables section of the Makefile itself is the way to go:
+Now - setting the targets on the command line is good for quick testing. But if you want to make it more permanent, assigning appropriate value to TARGETS variable inside the editable section of the Makefile itself is the way to go:
 <pre>
 # Space or comma separated list of cc65 supported target platforms to build for.
 # Default: c64 (lowercase!)
