@@ -176,7 +176,7 @@ and so on.. This method is flexible enough to accommodate various conventions wi
 
 === OK, I like it but I need more functionality... ===
 
-So - you like it, you say.. I guess it's good, isn't it? If you need the extra functionality, you can easily (who could have guessed :&ndash;) ) add it using for example new make targets stored in additional files, which names end with '.mk'. One of such examples, which the author of this words had a need for, is creating and populating disk images before test running the freshly built executable. How this is achieved? Have a look at the short file below
+So - you like it, you say.. I guess it's good, isn't it? If you need the extra functionality, you can easily (who could have guessed :&ndash;) ) add it using for example new make targets stored in additional files, which names end with '.mk'. One of such examples, which the author of these words had a need for, is creating and populating disk images before test running the freshly built executable. How this is achieved? Have a look at the short file below
 <pre>
 G64DISK=$(basename $(PROGRAM)).g64
 D64DISK=$(basename $(PROGRAM)).d64
