@@ -2,29 +2,32 @@
 
 cc65 is a complete package, which includes
 
-* a C compiler for machines with a 6502 compatible CPU,
+* a C compiler for machines with a 6502-compatible CPU,
 * a powerful macro assembler,
-* linker, librarian and several other tools,
-* target libraries that support common 6502 platform like the Commodore C64, the Atari 8-bit machines, the Apple II and others,
+* linker, librarian, and several other tools,
+* target libraries that support common 6502 platforms like the Commodore C64, the Atari 8-bit machines, the Apple II, and others,
 * [http://cc65.github.io/cc65/doc/ documentation] and more.
 
 == Host platforms ==
 
-According to the original author and former maintainer: "With one exception in the compiler (access()) the code is plain ISO C, so it should compile on most systems. Memory usage may be a problem, however."
+According to the original author and former maintainer: "With one exception in the compiler [access()], the code is plain ISO C; so, it should compile on most systems. Memory usage may be a problem, however."
 
-cc65 can surely be compiled and run on the following platforms, for which GNU Compiler Collection - [http://gcc.gnu.org GCC] is available.
+cc65 can surely be compiled and run on the following platforms, for which GNU Compiler Collection -- [http://gcc.gnu.org GCC] -- is available.
 
+* [[AmigaOS]]
 * [[GNU/Linux]]
 * [[Microsoft Windows]]
 * [[OS X]]
-* [[AmigaOS]]
+* QNX
 
 == Target platforms ==
 
 * [[Apple II]]
-* [[Atari 2600]]
+* [[Atari 2600]] and other Atari 8-bit machines
 * [[Commodore machines]]
 * [[GEOS]]
+* Nintendo Entertainment System game console
+* Watara Supervision game console
 
 == Setting up a cc65 project ==
 
