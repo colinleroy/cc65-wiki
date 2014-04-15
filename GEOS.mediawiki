@@ -23,18 +23,31 @@ java -jar ac.jar -geos geos.dsk < test.cvt
 GEOS requires a 6502-compatible CPU (e.g., 6510 or 8510). For binary compatibility, you will need RAM at $c100-$c2ff.
 
 === GEOS 64/128, GEOS Plus/4 ===
-* APP_RAM $04xx-$5xxx
-* PRINTBASE $60xx
-* OS_VARS $8xxx
-* DISK_BASE $9xxx
-* SCREEN_BASE $axxx-$bxxx
-* OS_JUMPTAB $c1xx-$c2xx
-* disk block size $100
+{|
+| APP_RAM || $04xx-$5xxx
+|-
+| PRINTBASE || $60xx
+|-
+| OS_VARS || $8xxx
+|-
+| DISK_BASE || $9xxx
+|-
+| SCREEN_BASE || $axxx-$bxxx
+|-
+| OS_JUMPTAB || $c1xx-$c2xx
+|-
+| disk block size || $100
+|}
 Info by Maciej Witkowiak.
 
 === Apple GEOS ===
-* APP_RAM $4xxx-
-* PRINTBASE $79xx
-* OS_JUMPTAB $fexx-$ffxx, $03xx
-* disk block size $200
+{|
+| APP_RAM || $4xxx-
+|-
+| PRINTBASE || $79xx
+|-
+| OS_JUMPTAB || $fexx-$ffxx, $03xx
+|-
+| disk block size || $200
+|}
 Info by Stefan Haubenthal.
