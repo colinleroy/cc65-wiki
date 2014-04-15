@@ -1,8 +1,8 @@
 == Wrong implicit conversion of integers ==
 
-While the standard says that an unsigned char should be promoted to int if an int can represent all values of an unsigned char, and similar for promotion from unsigned to long, cc65 promotes unsigned types to unsigned types of the larger range. That is, unsigned char is promoted to unsigned and unsigned to unsigned long.
+While the standard says that an unsigned char should be promoted to int if an int can represent all values of an unsigned char, and similar for promotion from unsigned to long, cc65 promotes unsigned types to unsigned types of the larger range. That is, unsigned char is promoted to unsigned, and unsigned to unsigned long.
 
-This can be easily tested. The following code should promote the operands to integer and produce a signed result, but if you look at the generated assembly, it uses the runtime routine for unsigneds, which generate an unsigned result:
+This can be easily tested. The following code should promote the operands to integer and produce signed results; but, if you look at the generated assembly, it uses the runtime routines for unsigneds, which generate unsigned results:
 
 <pre>
 int main (void)
@@ -21,7 +21,7 @@ int main (void)
 }
 </pre>
 
-While in the examples above, this has no ill effects, and is therefore only visible by looking at the generated code, there are other places, were the compiler gets tests wrong or produces invalid calculation results. For example:
+While, in the examples above, that has no ill effects, and is therefore only visible by looking at the generated code, there are other places where the compiler gets tests wrong, or produces invalid calculation results. For example:
 
 <pre>
 long n = -95;
@@ -41,6 +41,6 @@ A fix is possible with not too much effort (needs rewrite of two functions in th
 
 * The fixed code has a higher chance to trigger an error in the optimizer which causes invalid code transformations. This optimizer problem does actually exist without the fix, but chances for triggering it are rather low.
 
-* Fixing the conversions will have a negative impact on code quality. The reason are the integer promotions: The C standard says that operands to most binary operators must be converted to int. If this conversion is done to signed instead of unsigned, most operations on char will actually operate on signed ints. And on 6502 machines, code for a signed operation is usually larger and slower than the same code for an unsigned operation.
+* Fixing the conversions will have a negative impact on code quality. The reason is the integer promotions: The C standard says that operands to most binary operators must be converted to int. If that conversion is done to signed instead of unsigned, most operations on char will actually operate on signed ints. And on 6502 machines, code for a signed operation is usually larger and slower than the same code for an unsigned operation.
 
-So if you have plans to solve the issue, be at least prepared to have a thorough look at the generated code.
+So, if you have plans to solve the issue, be at least prepared to have a thorough look at the generated code.
