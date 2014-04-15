@@ -1,11 +1,11 @@
 == cc65 on Microsoft Windows ==
 
-In general just proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
+In general, just proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
 
-If you however want to build cc65 yourself from the sources then you can do so using [http://mingw-w64.sourceforge.net/ MinGW-w64], [http://www.mingw.org/ MinGW] or Microsoft Visual C++ 2013 Express.
+If you, however, want to build cc65 yourself from the sources, then you can do so using [http://mingw-w64.sourceforge.net/ MinGW-w64], [http://www.mingw.org/ MinGW], or [http://www.visualstudio.com/products/visual-studio-express-vs Microsoft Visual C++ 2013 Express].
 
-The build process is in general controlled by Makefiles. But this does '''not''' imply that you have to use an environment like Cygwin or MSYS. Rather the Makefiles are carefully designed to work with a plain vanilla cmd.exe.
+The build process is, in general, controlled by Makefiles. But, that does '''not''' imply that you have to use an environment like Cygwin or MSYS. Rather, the Makefiles are carefully designed to work with a plain vanilla "cmd.exe".
 
-Both MinGW-w64 and MinGW come with GNU make (built as mingw32-make.exe) so there's no need for any additional tools whatsoever. Just build the default make target of the top level Makefile.
+Both MinGW-w64 and MinGW come with GNU make (built as "mingw32-make.exe"); so, there's no need for any additional tools whatsoever. Just build the default make target of the top-level Makefile.
 
-Building cc65 with Visual C++ is a two step process. You first build the Visual C++ solution in the 'src' directory. Then you build the make target 'lib' of the top level Makefile. For the latter you need a Win32 build of GNU make. I suggest using [http://gnuwin32.sourceforge.net/packages/make.htm Make for Windows].
+Building cc65 with Visual C++ is a two-step process. You first build the Visual C++ solution in the 'src' directory. Then, you build the make target 'lib' of the top-level Makefile. For the latter, you need a Win32 build of GNU make. I suggest using [http://gnuwin32.sourceforge.net/packages/make.htm Make for Windows].
