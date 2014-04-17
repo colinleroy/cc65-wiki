@@ -49,6 +49,9 @@ Things that might be considered to be evaluated/implemented/included...
 * Find ways to increase the RAM size available to cc65 programs.
 * Test EM drivers with the <tt>multidemo</tt> sample; and, fix the broken ones.
 
+== CBM510 library ==
+* Make a TGI driver, based on the C64 driver.
+
 == Apple II library ==
 * Implement <code>lseek()</code>.
 * Update documentation to reflect the current linker configs.
