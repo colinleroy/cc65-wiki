@@ -23,7 +23,7 @@ Things that might be considered to be evaluated/implemented/included...
 == Compile & Link Utility ==
 * Add capability to call other external programs for processing, for example, Pucrunch.
 
-== Platform-independent run-time library ==
+== Platform-independent run-time libraries ==
 * Complete multiplication and division routines. Currently, it's somewhat a mess. Especially, <code>cc65_imul8x8r16()</code> is missing.
 * The changes in the TGI library need a review and cleanup. The new vector font routines need testing, docs., and maybe a sample program. Clipping is probably not implemented (needs check).
 * There's a function <code>tgi_imulround()</code> -- declared in <tt>tgi.h</tt> -- that can be used with <code>tgi_getaspectratio()</code> to scale a value "up" by the aspect ratio. However, it is desirable to be able to scale "down", as well, by the aspect ratio -- maybe with a function called <code>tgi_idivround()</code>.
