@@ -2,81 +2,81 @@ Things that might be considered to be evaluated/implemented/included...
 
 == Compiler ==
 * Fix standard compliance problems in the preprocessor.
-* Braces in initializers work in a non standard way, standard compliant initializer with braces are not always accepted.
-* Fix issue with 'goto' into a block that declares a local label.
-* Make 'fastcall' the standard.
-* [[Roadmap|Floating point support]]
+* Braces in initializers work in a non-standard way; standard-compliant initializers with braces are not always accepted.
+* Fix an issue with <code>goto</code> into a block that declares a local label.
+* Make <code>fastcall</code> the standard function-calling protocol.
+* [[Roadmap|Floating-point support]]
 
 == Assembler ==
 * Implement "weak" symbols.
+* Add a <code>widthof()</code> function that returns the number of bytes in the address of a symbol.
 
 == Linker ==
-* Fix issues with o65 format.
-* Map files do not work for o65 output in presence of external symbols. 
-* Add option to omit generation of output files if the file length is zero (useful for unused overlays).
+* Fix issues with the o65 format.
+* Map files do not work for o65 output in the presence of o65-external symbols. 
+* Add an option to omit the generation of output files if the file length is zero (useful for unused overlays).
 * Intel hex output.
 * Segment overlays.
-* Print symbols in map files additionally sorted according to address.
 
 == Disassembler ==
 
 == Compile & Link Utility ==
-* Add capability to call other external programs for processing, for example Pucrunch.
+* Add capability to call other external programs for processing, for example, Pucrunch.
 
-== Platform independent runtime library ==
-* Complete multiplication and division routines. Currently it's somewhat a mess. Especially cc65_imul8x8r16() is missing.
-* The changes in the TGI library need a review and cleanup. The new vector font routines need testing, docs and maybe a sample program. Clipping is probably not implemented (needs check).
-* There's a function tgi_imulround() - declared in tgi/tgi-kernel.h - that can be used with tgi_getaspectratio() to scale a value "up" by the aspect ratio. However it is as well desirable to be able to scale "down" by the aspect ratio - maybe with a function called tgi_idivround().
-* Implement an alternative "naive" heap manager that simply increments a pointer for every allocation (and doesn't actually de-allocate anything) to allow i.e. the module loader to be used without linking in the full blown heap manager.
-* Discuss if it is desirable to have standard SER and/or EMD drivers - like the standard JOY, MOU and TGI drivers.
-* Several formats in printf are broken: <code>printf("%04d",-12)</code> and <code>printf("%#04x",12)</code> are examples.
+== Platform-independent run-time library ==
+* Complete multiplication and division routines. Currently, it's somewhat a mess. Especially, <code>cc65_imul8x8r16()</code> is missing.
+* The changes in the TGI library need a review and cleanup. The new vector font routines need testing, docs., and maybe a sample program. Clipping is probably not implemented (needs check).
+* There's a function <code>tgi_imulround()</code> -- declared in <tt>tgi.h</tt> -- that can be used with <code>tgi_getaspectratio()</code> to scale a value "up" by the aspect ratio. However, it is desirable to be able to scale "down", as well, by the aspect ratio -- maybe with a function called <code>tgi_idivround()</code>.
+* Implement an alternative "naive" heap manager that simply increments a pointer for every allocation (and, doesn't actually de-allocate anything), to allow, e.g., the module loader to be used without linking in the full-blown heap manager.
+* Discuss if it is desirable to have standard SER and/or EMD drivers -- like the standard JOY, MOU, and TGI drivers.
+* Several formats in <code>printf()</code> are broken: <code>printf("%04d",-12)</code> and <code>printf("%#04x",12)</code> are examples.
 * Abstract printer support.
 
 == CBM library ==
 * Implement the DIO interface.
-* Implement a Userport SER driver based on George Hug's 'Toward 2400' source code - http://archive.org/details/transactor-magazines-v9-i03
-* Remove prepending "0:" / "1:" to POSIX filenames - http://cc65.github.io/cc65/mailarchive/2012-08/10683.html
-* Review handling of O_... flags in POSIX open().
+* Implement a Userport SER driver based on George Hug's 'Toward 2400' source code -- [http://archive.org/details/transactor-magazines-v9-i03].
+* Remove prepending "0:" / "1:" to POSIX filenames -- [http://cc65.github.io/cc65/mailarchive/2012-08/10683.html].
+* Review handling of O_... flags in POSIX <code>open()</code>.
 
 == C64 library ==
 * Implement OUTTEXT in the TGI driver.
-* Implement Soft-80 CONIO support as an "extra" .o file that "overrides" the cputc.o in the C library.
+* Implement Soft-80 CONIO support as an "extra" .o file that "overrides" the <tt>cputc.o</tt> in the C library.
 * Add extra EMD and joystick drivers.
 
 == C128 library ==
-* If possible do that "blinding" of the keyboard scanner while any button/switch is active which was done for the C64-1351 driver for the C128-1351 driver too.
+* If possible, do that "blinding" of the keyboard scanner while any button/switch is active, which was done for the C64-1351 driver, for the C128-1351 driver, too.
 * Implement OUTTEXT in the TGI drivers.
 * Find ways to increase the RAM size available to cc65 programs.
-* Test EM drivers with multidemo sample and fix the broken ones.
+* Test EM drivers with the <tt>multidemo</tt> sample; and, fix the broken ones.
 
 == Apple II library ==
-* Implement lseek().
+* Implement <code>lseek()</code>.
 * Update documentation to reflect the current linker configs.
-* Have the EM driver detect AUXMEM and cooperate with /RAM.
-* Implement a TGI driver that "hides" the hires screen using AUXMEM.
-* Allow _sys() to call ROM routines.
-* Add cmdline support to exec().
-* Add support for visible cursor on cgetc().
+* Have the EM driver detect AUXMEM, and co&ouml;perate with /RAM.
+* Implement a TGI driver that "hides" the hires screen, using AUXMEM.
+* Allow <code>_sys()</code> to call ROM routines.
+* Add command-line support to <code>exec()</code>.
+* Add support for a visible cursor in <code>cgetc()</code>.
 
 == Atari library ==
-* Add dio_query_sectcount() to complete the DIO implementation.
-** algorithm as follows (see http://cc65.github.io/cc65/mailarchive/2012-10/10974.html ):
-*** Read the 4th sector. (the xf551 drive had a bug, it returned the wrong PERCOM info after reading the normally 128-byte boot sectors, a read from sector 4 eliminates this chance)
-*** Read status (SIO command 0x53) and save that info.
-*** Request a PERCOM block. If it succeeds use that information.
-*** If reading PERCOM block fails assume 1050, 810 (or even 815) or compatible. Use the status byte 0 to differentiate between single, enhanced (medium) and double density. (bit 5 is set if double density and bit 7 is set if enhanced density). If we're only looking for sector count, only the bit 7 matters.
-* Implement the functions in device.h and test them with samples/enumdevdir.c.
-* Implement exec().
-* Implement 80 column CONIO support targeting the XEP80 interface module. Possibly as an "extra" .o file that "overrides" the cputc.o in the C library.
+* Add <code>dio_query_sectcount()</code> to complete the DIO implementation.
+** algorithm as follows (see [http://cc65.github.io/cc65/mailarchive/2012-10/10974.html]):
+*** Read the 4th sector. (The xf551 drive had a bug, it returned the wrong PERCOM info after reading the normally 128-byte boot sectors; a read from sector 4 eliminates that chance).
+*** Read the status (SIO command 0x53), and save that info.
+*** Request a PERCOM block. If it succeeds, use that information.
+*** If reading the PERCOM block fails, assume 1050, 810, (or even 815), or compatible. Use the status byte 0 to differentiate between single, enhanced (medium), and double density. (bit 5 is set if double density, and bit 7 is set if enhanced density). If we're looking for only the sector count, only bit 7 matters.
+* Implement the functions in <code>device.h</code>; and, test them with <tt>samples/enumdevdir.c</tt>.
+* Implement <code>exec()</code>.
+* Implement 80-column CONIO support targeting the XEP80 interface module. Possibly as an "extra" .o file that "overrides" <tt>cputc.o</tt> in the C library.
 
 == GEOS library ==
-* Make dio_query_sectcount() less naive.
+* Make <code>dio_query_sectcount()</code> less naive.
 * Adjust the MOU driver to the current MOU kernel interface.
-* Implement the functions in device.h and test them with samples/enumdevdir.c.
+* Implement the functions in <code>device.h</code>; and, test them with <tt>samples/enumdevdir.c</tt>.
 
 == Documentation ==
 * The BGI → TGI font converter doesn't have docs.
 * Update a font engine sample 'tgi-preview'.
 
 == Other stuff ==
-* Integrate Groepaz test suite and do nightly automated tests to improve the overall quality.
+* Integrate Groepaz's test suite; and, do nightly automated tests to improve the overall quality.
