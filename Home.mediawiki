@@ -27,6 +27,7 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 * [[Commodore machines]]
 * [[GEOS]]
 * Nintendo Entertainment System game console
+* Oric Atmos
 * Watara Supervision game console
 
 == Setting up a cc65 project ==
