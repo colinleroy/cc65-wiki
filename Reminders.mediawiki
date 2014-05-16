@@ -56,7 +56,7 @@ Things that might be considered to be evaluated/implemented/included...
 == Apple II library ==
 * Implement <code>lseek()</code>.
 * Update documentation to reflect the current linker configs.
-* Have the EM driver detect AUXMEM, and co&ouml;perate with /RAM.
+* Have the EM driver detect AUXMEM, and cooperate with /RAM.
 * Implement a TGI driver that "hides" the hires screen, using AUXMEM.
 * Allow <code>_sys()</code> to call ROM routines.
 * Add command-line support to <code>exec()</code>.
