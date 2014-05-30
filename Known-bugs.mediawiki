@@ -5,7 +5,7 @@ While the standard says that an unsigned char should be promoted to int if an in
 This can be easily tested. The following code should promote the operands to integer and produce signed results; but, if you look at the generated assembly, it uses the runtime routines for unsigneds, which generate unsigned results:
 
 <pre>
-int main (void)
+int main(void)
 {
     unsigned char c = 2;
     unsigned u = 2;
@@ -47,26 +47,25 @@ So, if you have plans to solve the issue, be at least prepared to have a thoroug
 
 == Inconsistent result on divide with a negative numerator and a constant or variable denominator ==
 
-When dividing a negative integer numerator by a constant number, or by a variable containing the same number, the compiler generates a different result.
+When dividing a negative integer numerator by a constant number, or by a variable containing that same number, the compiler generates different results.
 
-This sample code illustrates and will erroneously print "Not Equal":
+This sample code illustrates, and will erroneously print "Not Equal":
 <pre>
 #include <stdio.h>
-int main()
+void main(void)
 {
-	int a=-1, b=8;
-	if((a/8) == (a/b))
+	int a = -1, b = 8;
+	if ((a/8) == (a/b))
 		printf("Equal\n");
 	else
 		printf("Not Equal\n");
-	return 0;
 }
 </pre>
 
-Looking at the generated code it's easy to see where the error lies.  The compiler substituted the divide by a constant for a sift operation.  The shift operation doesn't yield the same answer as the divide, if the numerator is negative.  For the case above -1 >> 3 = -1 and -1 / 8 = 0.
+Looking at the generated code, it's easy to see where the error lies.  The compiler substituted a shift operation for the divide-by-a-constant.  The shift operation doesn't yield the same answer as the divide if the numerator is negative.<br />For the case above, <tt>-1 >> 3 = -1</tt> and <tt>-1 / 8 = 0</tt>.
 <pre>
 ;
-; if((a/8) == (a/b))
+; if ((a/8) == (a/b))
 ;
 	ldy     #$03
 	jsr     ldaxysp
@@ -80,4 +79,4 @@ Looking at the generated code it's easy to see where the error lies.  The compil
 	jsr     tosdivax	; use divide code to divide by 8
 </pre>
 
-The optimizer switched to using asrax3 for the constant division and used tosdivax for the division by the variable resulting in -1/8 not giving a consistant result depending on whether 8 is used as a literal or in a variable.
+The optimizer switched to using <code>asrax3</code> for the constant division; and, used <code>tosdivax</code> for the division by the variable, resulting in <code>-1/8</code> not giving a consistent result, depending on whether the <tt>8</tt> is used as a literal or in a variable.
