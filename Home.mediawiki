@@ -50,11 +50,12 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 * [[Direct console IO|Direct console I/O]]
 * [[Symbols in local scopes]]
 
+== [[Reminders]] ==
+
 == Library internals ==
 
 * [[Tiny Graphics Interface]]
 * [[Priority of constructors and destructors]]
-* [[Reminders]]
 
 == Compiler internals ==
 
