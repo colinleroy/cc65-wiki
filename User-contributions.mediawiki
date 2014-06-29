@@ -35,8 +35,8 @@
 [http://cc65.github.io/cc65/contrib/circlefracv1-1.zip Code]
 
 == dirmenu ==
-[http://cc65.github.io/cc65/contrib/dirmenu-1.00.txt Info] and 
-[http://cc65.github.io/cc65/contrib/dirmenu-1.00.zip Code]
+[http://cc65.github.io/cc65/contrib/dirmenu-1.10.txt Info] and 
+[http://cc65.github.io/cc65/contrib/dirmenu-1.10.zip Code]
 
 == drachen ==
 [http://cc65.github.io/cc65/contrib/drachenv1.1.txt Info] and 
