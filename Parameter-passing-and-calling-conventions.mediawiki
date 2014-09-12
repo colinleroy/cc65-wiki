@@ -1,56 +1,58 @@
 == Overview ==
 
-Parameters are passed to functions on the [[Parameter and return stacks|parameter stack]]. In general, parameters are pushed from left to right, so the rightmost parameter is the last one pushed (and therefore the one at the lowest position on the parameter stack). Provided that there are no local variables, the last parameter is at offset zero on the parameter stack. If the function returns a value, it comes back in A/X.
+Parameters are passed to functions on [[Parameter and return stacks|the parameter stack]]. In general, parameters are pushed from left to right, so the rightmost parameter is the last one pushed (and therefore, the one at the lowest position on the parameter stack). Provided that there are no local variables, the last parameter is at offset zero on the parameter stack. If the function returns a value, it comes back in A/X.
 
-== Parameter passing in presence of a prototype ==
+== Parameter passing in the presence of a prototype ==
 
-In presence of a prototype, parameters are pushed as their respective types. This does especially mean that characters are pushed as such and are not promoted to integers.
+In the presence of a prototype, parameters are pushed as their respective types. That especially does mean that characters are pushed as such (one byte), and are not promoted to integers.
 
 == Parameter passing without a prototype ==
 
-If no prototype is available, the default promotions are applied before pushing parameters. This means that characters are promoted to integer before pushing them.
+If no prototype is available, the default promotions are applied before pushing parameters. That means that characters are promoted to integers before pushing them.  The Y index register is set to the number of bytes (not parameters) that were pushed onto the stack.
+
+== Parameter passing in the presence of a K & R style prototype ==
+
+In the presence of an old-fashioned Kernighan & Ritchie prototype, parameters are treated the same as if there were no prototype.
 
 == Variable argument lists ==
 
-Parameters in variable argument lists (ellipsis, <code>...</code>) are treated the same as if there were no prototype. 
+Parameters in variable argument lists (ellipsis, <tt>&hellip;</tt>) are treated the same as if there were no prototype.  The Y register counts all of the bytes that were pushed, including the ones in the defined, fixed part of the list.
 
 == The 'fastcall' calling convention ==
 
-If a function is declared as <tt>&#95;&#95;fastcall&#95;&#95;</tt> (or <tt>fastcall</tt>), the last (rightmost) parameter is not passed on the stack, but passed in the [[The primary register|primary register]] to the called function. This is A in case of an eight bit value, A/X in case of a 16 bit value, and A/X/sreg in case of a 32 bit value. 
+If a function is declared as <tt>&#95;&#95;fastcall&#95;&#95;</tt> (or <tt>fastcall</tt>), the last (rightmost) parameter is not passed on the stack, but passed in [[The primary register|the primary register]] to the called function. That is A in the case of an eight-bit value, A/X in the case of a 16-bit value, and A/X/sreg in the case of a 32-bit value.
 
-If the called function is a C function, its first instruction will be a call to one of the 'push' functions to push the passed value onto the stack. This means that for C functions 'fastcall' doesn't make the code really faster. Assembler functions however, can take advantage of the values passed in registers.
+If the called function is a C function, its first instruction will be a call to one of the 'push' functions to push the passed value onto the stack. That means that, for C functions, 'fastcall' doesn't make the code really faster. Assembler functions, however, can take advantage of the values that are passed in registers.
 
-Although 'fastcall' doesn't help making C functions faster it usually helps making the whole program somewhat smaller as all the callers of a 'fastcall' function can omit one call to a 'push' function.
+Although 'fastcall' doesn't help to make C functions faster, it usually helps to make the whole program somewhat smaller, as all the callers of a 'fastcall' function can omit one call to a 'push' function.
 
 == Callee cleans up the stack ==
 
-Contrary to most other C compilers, the callee is responsible for cleaning up the stack (dropping stack space used for parameters) before returning. This is done in order to generate smaller code, since dropping parameters can in many places be combined with dropping local variables.
+Contrary to most other C compilers, the callee (the called function) is responsible for cleaning up the stack (dropping stack space used for parameters) before returning. That is done in order to generate smaller code, because dropping parameters can be combined, in many places, with dropping local variables.
+
+== Preserving registers ==
+
+The CPU's A, X, and Y registers are used to pass data back-and-forth between the caller and the callee; therefore, they don't need to be saved and restored.  Some of [[Using runtime zeropage locations in assembly language|the pseudo-registers]] (<tt>sreg</tt>, <tt>regsave</tt>, <tt>ptr''n''</tt>, and <tt>tmp''n''</tt>), also, don't need preservation.
+
+The pseudo-register array <tt>regbank</tt> ''does need'' to be preserved.  And, the <tt>sp</tt> parameter stack pointer needs to be "protected" (it will change if you clean the stack).
 
 == Examples ==
 
-The following example assume that there are no local variables. Presence of local variables would change the stack offset of the parameters in the function.
+The following example assumes that there are no local variables.  The presence of local variables would change the stack offset of the parameters in the function.
 
 Prototype:
-<pre>
-void foo (unsigned bar, unsigned char baz);
-</pre>
-
+ void foo(unsigned bar, unsigned char baz);
 Stack layout within the function:
-<pre>
-           +------------------+
-           | High byte of bar |
-Offset 2 ->+------------------+
-           | Low byte of bar  |
-Offset 1 ->+------------------+
-           | baz              |
-Offset 0 ->+------------------+
-</pre>
-
-Example code for accessing bar. The variable is in A/X after the code snippet:
-<pre>
-        ldy     #2              ; Offset of high byte of bar
-        lda     (sp),y          ; High byte now in A
-        tax                     ; High byte now in X
-        dey                     ; Offset of low byte of bar
-        lda     (sp),y          ; Low byte now in A
-</pre>
+            +------------------+
+            | High byte of bar |
+ Offset 2 ->+------------------+
+            | Low byte of bar  |
+ Offset 1 ->+------------------+
+            | baz              |
+ Offset 0 ->+------------------+
+Example code for accessing <code>bar</code>. The variable is in A/X after this code snippet:
+         ldy     #2      ; Offset of high byte of bar
+         lda     (sp),y  ; High byte now in A
+         tax             ; High byte now in X
+         dey             ; Offset of low byte of bar
+         lda     (sp),y  ; Low byte now in A
