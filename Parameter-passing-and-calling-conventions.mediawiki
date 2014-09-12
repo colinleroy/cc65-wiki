@@ -22,7 +22,7 @@ Parameters in variable argument lists (ellipsis, <tt>&hellip;</tt>) are treated 
 
 If a function is declared as <tt>&#95;&#95;fastcall&#95;&#95;</tt> (or <tt>fastcall</tt>), the last (rightmost) parameter is not passed on the stack, but passed in [[The primary register|the primary register]] to the called function. That is A in the case of an eight-bit value, A/X in the case of a 16-bit value, and A/X/sreg in the case of a 32-bit value.
 
-If the called function is a C function, its first instruction will be a call to one of the 'push' functions to push the passed value onto the stack. That means that, for C functions, 'fastcall' doesn't make the code really faster. Assembler functions, however, can take advantage of the values that are passed in registers.
+If the called function is a C function, its first instruction will be a call to one of the 'push' functions to push the passed value onto the stack. That means that, for C functions, 'fastcall' doesn't make the code really faster. Assembler functions, however, can take advantage of values being passed in registers.
 
 Although 'fastcall' doesn't help to make C functions faster, it usually helps to make the whole program somewhat smaller, as all the callers of a 'fastcall' function can omit one call to a 'push' function.
 
@@ -32,7 +32,7 @@ Contrary to most other C compilers, the callee (the called function) is responsi
 
 == Preserving registers ==
 
-The CPU's A, X, and Y registers are used to pass data back-and-forth between the caller and the callee; therefore, they don't need to be saved and restored.  Some of [[Using runtime zeropage locations in assembly language|the pseudo-registers]] (<tt>sreg</tt>, <tt>regsave</tt>, <tt>ptr''n''</tt>, and <tt>tmp''n''</tt>), also, don't need preservation.
+The CPU's A, X, Y, and processor flags registers are used to pass data back-and-forth between the caller and the callee; therefore, they don't need to be saved and restored.  Some of [[Using runtime zeropage locations in assembly language|the pseudo-registers]] (<tt>sreg</tt>, <tt>regsave</tt>, <tt>ptr''n''</tt>, and <tt>tmp''n''</tt>), also, don't need preservation.
 
 The pseudo-register array <tt>regbank</tt> ''does need'' to be preserved.  And, the <tt>sp</tt> parameter stack pointer needs to be "protected" (it will change if you clean the stack).
 
