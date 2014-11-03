@@ -63,4 +63,4 @@ System          || nes-64-56-2.tgi     || &nbsp; || ✓     || ✓     || ✓
 * A driver states, via a bit in the header, if it supports 8.8 fixed-point scaling (or only integer scaling).
 * Based on that bit (and the already existing integer x and y size values), the TGI kernel does clipping on character granularity.
 * The parameters to the OUTTEXT driver entry point are no C string but kind of a Pascal string in order to facilitate copy-free clipping for TGI kernel.
-More details can be found in [http://cc65.github.io/cc65/mailarchive/2011-07/index.html#9551 the mailing list archive].
+More details can be found in [http://cc65.github.io/mailarchive/2011-07/index.html#9551 the mailing list archive].
