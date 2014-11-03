@@ -5,22 +5,22 @@ The following enumeration is from the cc65 mailing list. The order implies no ju
 == Applications ==
 
 === A2Command ===
-[http://a2command.codeplex.com/ A2Command] is a filebrowser based on [[Applications written in C or C with assembler#cbm-command|CBM Command]] running on Apple //e, //c, IIgs.
+[http://a2command.codeplex.com A2Command] is a filebrowser based on [[Applications written in C or C with assembler#cbm-command|CBM Command]] running on Apple //e, //c, IIgs.
 
 === Breadbox64 ===
-[http://www.vandenbrande.com/wp/2009/06/breadbox64-a-twitter-client-for-the-c64/ Breadbox64] is a twitter client for the C64 that runs on Contiki. The source is available in the [http://contikiprojects.svn.sourceforge.net/viewvc/contikiprojects/vandenbrande.com/twitter/ Contiki Projects Community].
+[http://www.vandenbrande.com/wp/2009/06/breadbox64-a-twitter-client-for-the-c64 Breadbox64] is a twitter client for the C64 that runs on Contiki. The source is available in the [http://contikiprojects.svn.sourceforge.net/viewvc/contikiprojects/vandenbrande.com/twitter Contiki Projects Community].
 
 === C-Vote ===
-[http://www.paradroid.net/cvote/ C-Vote] is "a computerized voting system for demo parties that runs on C64:s. Of course it's not only limited to demo competitions, and the code is easy to port to other 6502-based platforms supported by the cc65 compiler." (source included)
+[http://www.paradroid.net/cvote C-Vote] is "a computerized voting system for demo parties that runs on C64:s. Of course it's not only limited to demo competitions, and the code is easy to port to other 6502-based platforms supported by the cc65 compiler." (source included)
 
 === CBM Command ===
-[http://cbmcommand.codeplex.com/ CBM Command] is a filebrowser running on C64/C128/VIC20/PET.
+[http://cbmcommand.codeplex.com CBM Command] is a filebrowser running on C64/C128/VIC20/PET.
 
 === Contiki ===
-The [http://www.contiki-os.org/ Contiki OS], originally developed by Adam Dunkels was first written using cc65. It has been improved since then and [http://hitmen.c02.at/html/tools_contiki.html ported to many more platforms]. Although today it's focus is on embedded devices a few enthusiasts [http://retrohackers.com/viewtopic.php?f=14&t=607 maintain a version that does still run on 6502 platforms].
+The [http://www.contiki-os.org Contiki OS], originally developed by Adam Dunkels was first written using cc65. It has been improved since then and [http://hitmen.c02.at/html/tools_contiki.html ported to many more platforms]. Although today it's focus is on embedded devices a few enthusiasts [http://retrohackers.com/viewtopic.php?f=14&t=607 maintain a version that does still run on 6502 platforms].
 
 === Contiki BBS ===
-[http://retrohackers.com/viewtopic.php?f=10&t=571 Contiki BBS] is a Contiki based telnet server for the C64. The source is available in the [http://contikiprojects.svn.sourceforge.net/viewvc/contikiprojects/ufud.org/contiki-bbs/ Contiki Projects Community].
+[http://retrohackers.com/viewtopic.php?f=10&t=571 Contiki BBS] is a Contiki based telnet server for the C64. The source is available in the [http://contikiprojects.svn.sourceforge.net/viewvc/contikiprojects/ufud.org/contiki-bbs Contiki Projects Community].
 
 === EasyProg ===
 Skoe has written a tool named [http://skoe.de/easyflash/index.php?page=easyprog-en EasyProg] to program the flash cartridge [http://skoe.de/easyflash/index.php EasyFlash]. (source included)
@@ -50,7 +50,7 @@ Portable AI, 1 or 2 player Chess game in C. This for the C64.
 Clone of the flash puzzle game 'Znax' with improved score system for Atari-8-Bit computers. The 'plus' version has minor fixes, is NTSC compatible and supports Atari CX77 touch tablet or similar devices (CMI08 PS/2 mouse interface). [http://atari.fandal.cz/search.php?search=ECKN Download] and [http://www.youtube.com/watch?v=KnwpMZAuxZo Video]
 
 === GNU Sudoku ===
-[http://noname.c64.org/csdb/release/?id=29472|GNU Sudoku] is a port of the well known game to the C64.
+[http://noname.c64.org/csdb/release/?id=29472 GNU Sudoku] is a port of the well known game to the C64.
 
 === Manic Miner ===
 Remake of Manic Miner by Matthew Smith from 1983.  This for the C64. [https://github.com/StewBC/manicminer GitHub project] and [http://www.youtube.com/watch?v=_3_V-8X8J5o Video]
@@ -97,7 +97,7 @@ The C64 game [http://noname.c64.org/csdb/release/?id=102217 Zoo Mania] was writt
 == Misc ==
 
 === 1541 Ultimate ===
-The 1.x firmware of the [http://1541ultimate.net/ 1541 Ultimate] uses cc65 to build the menu program, which is written in C.
+The 1.x firmware of the [http://1541ultimate.net 1541 Ultimate] uses cc65 to build the menu program, which is written in C.
 
 === brainfuck64 ===
 [https://github.com/gergoerdi/brainfuck64 brainfuck64] is a Brainfuck compiler that runs on the Commodore 64 (or any 6502-based computer supported by cc65 that has enough RAM).
@@ -112,7 +112,7 @@ The boot loader and menu program of the [http://icomp.de/products/chameleon_e.ht
 [http://noname.c64.org/csdb/release/?id=95792 Eliza 65] is a port of the well known Eliza program. (source included)
 
 === picoOS ===
-[http://picoos.sourceforge.net/ports/6502/ pico<nowiki>]</nowiki>OS for 6502] is a realtime operating system by Dennis Kuschel. (source included)
+[http://picoos.sourceforge.net/ports/6502 pico<nowiki>]</nowiki>OS for 6502] is a realtime operating system by Dennis Kuschel. (source included)
 
 === VICE ===
-No, the famous [http://www.viceteam.org/ Commodore emulator VICE] was not compiled with cc65 :&ndash;) But some of the test programs are, as Marco van den Heuvel writes on the mailing list: "The joystick (including userport) test-program(s) in the VICE testprogs directory of the svn is done using cc65 (source included)."
+No, the famous [http://vice-emu.sourceforge.net Commodore emulator VICE] was not compiled with cc65 :&ndash;) But some of the test programs are, as Marco van den Heuvel writes on the mailing list: "The joystick (including userport) test-program(s) in the VICE testprogs directory of the svn is done using cc65 (source included)."
