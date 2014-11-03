@@ -9,7 +9,7 @@ void main(void)
 }
 </pre>
 
-You save the above programming masterpiece using your favourite text editor as hello.c and the fun begins... You probably should read the excellent [http://cc65.github.com/cc65/doc/ cc65 documentation] or at least the [http://cc65.github.com/cc65/doc/intro.html introduction section] before continuing. This will make things more clear and structured in your mind. For now, we assume that you know what are the [http://cc65.github.io/cc65/doc/intro.html#ss1.3 translation phases] (or you just don't want to know that) and we go the easy way, using cc65's [http://cc65.github.com/cc65/doc/cl65.html compile & Link utility]. The beauty of this utility is that single command:
+You save the above programming masterpiece using your favourite text editor as hello.c and the fun begins... You probably should read the excellent [http://cc65.github.com/doc cc65 documentation] or at least the [http://cc65.github.com/doc/intro.html introduction section] before continuing. This will make things more clear and structured in your mind. For now, we assume that you know what are the [http://cc65.github.io/doc/intro.html#ss1.3 translation phases] (or you just don't want to know that) and we go the easy way, using cc65's [http://cc65.github.com/doc/cl65.html compile & Link utility]. The beauty of this utility is that single command:
 
 <pre>
 $ cl65 hello.c
@@ -32,4 +32,4 @@ C64 is the default target for many cc65 tools. If you need to have your pride co
 $ cl65 -t apple2 hello.c
 </pre>
 
-creates executable file for Apple II machines. For a complete list of supported target platforms, please refer to the [http://cc65.github.com/cc65/doc/ cc65 documentation] and [http://cc65.github.com/cc65/doc/ld65.html ld65] [http://cc65.github.com/cc65/doc/ld65.html#ss2.2 linker options] for setting the target.
+creates executable file for Apple II machines. For a complete list of supported target platforms, please refer to the [http://cc65.github.com/doc cc65 documentation] and [http://cc65.github.com/doc/ld65.html ld65] [http://cc65.github.com/doc/ld65.html#ss2.2 linker options] for setting the target.
