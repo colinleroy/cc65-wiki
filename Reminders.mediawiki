@@ -20,13 +20,14 @@ Things that might be considered to be evaluated/implemented/included...
 * Segment overlays.
 
 == Disassembler ==
+* Finish adding support for the display of <code>.segment</code> ranges in the output file.
 
 == Compile & Link Utility ==
 * Add capability to call other external programs for processing, for example, Pucrunch.
 
 == Platform-independent run-time libraries ==
 * Complete multiplication and division routines. Currently, it's somewhat a mess.
-* The changes in the TGI library need a review and cleanup. The new vector font routines need testing, docs., and maybe a sample program. Clipping is probably not implemented (needs check).
+* The changes in the TGI library need a review and clean-up. The new vector font routines need testing, docs., and maybe a sample program. Clipping is probably not implemented (needs check).
 * There's a function <code>tgi_imulround()</code> -- declared in <tt>tgi.h</tt> -- that can be used with <code>tgi_getaspectratio()</code> to scale a value "up" by the aspect ratio. However, it is desirable to be able to scale "down", as well, by the aspect ratio -- maybe with a function called <code>tgi_idivround()</code>.
 * Implement an alternative "naive" heap manager that simply increments a pointer for every allocation (and, doesn't actually de-allocate anything), to allow, e.g., the module loader to be used without linking in the full-blown heap manager.
 * Discuss if it is desirable to have standard SER and/or EMD drivers -- like the standard JOY, MOU, and TGI drivers.
