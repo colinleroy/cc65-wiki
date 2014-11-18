@@ -46,7 +46,6 @@ Things that might be considered to be evaluated/implemented/included...
 * Add extra EMD and joystick drivers.
 
 == C128 library ==
-* If possible, do that "blinding" of the keyboard scanner while any button/switch is active, which was done for the C64-1351 driver, for the C128-1351 driver, too.
 * Implement OUTTEXT in the TGI drivers.
 * Find ways to increase the RAM size available to cc65 programs.
 * Test EM drivers with the <tt>multidemo</tt> sample; and, fix the broken ones.
