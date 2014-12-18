@@ -48,7 +48,7 @@ Things that might be considered to be evaluated/implemented/included...
 * Implement OUTTEXT in the TGI drivers.
 * Find ways to increase the RAM size available to cc65 programs.
 * Test EM drivers with the <tt>multidemo</tt> sample; and, fix the broken ones.
-* Make a VIC-II TGI driver.
+* Make a VIC-II TGI driver -- needs different BASIC header and CFG files that open nine Kibibytes below the program (i.e., <code>GRAPHIC 1</code>).
 
 == CBM510 library ==
 * Make a TGI driver, based on the C64 driver.
