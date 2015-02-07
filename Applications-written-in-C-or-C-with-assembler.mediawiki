@@ -36,6 +36,9 @@ Skoe has written a tool named [http://skoe.de/easyflash/index.php?page=easyprog-
 
 == Games ==
 
+=== 2048 ===
+A port of the [https://github.com/nanoflite/2048-cc65 2048] game to cc65. There is a version for the C64 and one for the PET 4032.
+
 === Alter Ego ===
 [http://shiru.untergrund.net/software.shtml Alter Ego] is a puzzle platformer for the NES written in C/assembler. (source included)
 
