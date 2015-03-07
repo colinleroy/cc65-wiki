@@ -1,4 +1,4 @@
-Things that might be considered to be evaluated/implemented/included...
+Things that might be considered to be evaluated/implemented/included in the future:
 
 == Compiler ==
 * Fix standard compliance problems in the preprocessor.
@@ -76,6 +76,9 @@ Things that might be considered to be evaluated/implemented/included...
 * Make <code>dio_query_sectcount()</code> less naive.
 * Adjust the MOU driver to the current MOU kernel interface.
 * Implement the functions in <code>device.h</code>; and, test them with <tt>samples/enumdevdir.c</tt>.
+
+== Ohio Scientific C1P library ==
+* Add simple POSIX <code>read()</code> and <code>write()</code>, so that portable programs can use the <tt>stdio</tt> functions to talk through the console.
 
 == Documentation ==
 * The BGI → TGI font converter doesn't have docs.
