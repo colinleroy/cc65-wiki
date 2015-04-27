@@ -10,7 +10,7 @@ Things that might be considered to be evaluated/implemented/included in the futu
 == Assembler ==
 * Implement "weak" symbols.
 * Eventually, change <code>.addrsize()</code> from an optional (experimental) <code>.feature</code> into a normal (always available) function.
-* Add <code>-W error</code> option (and, use it in the C library Makefile).
+* Add <tt>-W error</tt> option (and, use it in the C library Makefile).
 
 == Linker ==
 * Fix issues with the o65 format.
@@ -27,7 +27,7 @@ Things that might be considered to be evaluated/implemented/included in the futu
 == Platform-independent run-time libraries ==
 * Complete multiplication and division routines. Currently, it's somewhat a mess.
 * The changes in the TGI library need a review and clean-up. The new vector font routines need testing, docs., and maybe a sample program. Clipping is probably not implemented (needs check).
-* There's a function <code>tgi_imulround()</code> -- declared in <tt>tgi.h</tt> -- that can be used with <code>tgi_getaspectratio()</code> to scale a value "up" by the aspect ratio. However, it is desirable to be able to scale "down", as well, by the aspect ratio -- maybe with a function called <code>tgi_idivround()</code>.
+* There's a function <code>tgi_imulround()</code> -- declared in <code>tgi.h</code> -- that can be used with <code>tgi_getaspectratio()</code> to scale a value "up" by the aspect ratio. However, it is desirable to be able to scale "down", as well, by the aspect ratio -- maybe with a function called <code>tgi_idivround()</code>.
 * Implement an alternative "naive" heap manager that simply increments a pointer for every allocation (and, doesn't actually de-allocate anything), to allow, e.g., the module loader to be used without linking in the full-blown heap manager.
 * Discuss if it is desirable to have standard SER and/or EMD drivers -- like the standard JOY, MOU, and TGI drivers.
 * Several formats in <code>printf()</code> are broken: <code>printf("%04d",-12)</code> and <code>printf("%#04x",12)</code> are examples.
@@ -83,6 +83,7 @@ Things that might be considered to be evaluated/implemented/included in the futu
 == Documentation ==
 * The BGI → TGI font converter doesn't have docs.
 * Update a font engine sample 'tgi-preview'.
+* Describe what the tools show at various levels when they're told to be <tt>--verbose</tt>.
 
 == Other stuff ==
 * Integrate Groepaz's test suite; and, do nightly automated tests to improve the overall quality.
