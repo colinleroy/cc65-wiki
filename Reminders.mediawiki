@@ -9,8 +9,8 @@ Things that might be considered to be evaluated/implemented/included in the futu
 
 == Assembler ==
 * Implement "weak" symbols.
-* Add a <code>widthof()</code> function that returns the number of bytes in the address of a symbol.
-* Add <code>-W error</code> option (and use it in the C library Makefile).
+* Eventually, change <code>.addrsize()</code> from an optional (experimental) <code>.feature</code> into a normal (always available) function.
+* Add <code>-W error</code> option (and, use it in the C library Makefile).
 
 == Linker ==
 * Fix issues with the o65 format.
