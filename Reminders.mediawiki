@@ -57,7 +57,6 @@ Things that might be considered to be evaluated/implemented/included in the futu
 * Have the EM driver detect AUXMEM, and cooperate with /RAM.
 * Implement a TGI driver that "hides" the hires screen, using AUXMEM.
 * Allow <code>_sys()</code> to call ROM routines.
-* Add command-line support to <code>exec()</code>.
 * Add support for a visible cursor in <code>cgetc()</code>.
 
 == Atari library ==
@@ -83,6 +82,3 @@ Things that might be considered to be evaluated/implemented/included in the futu
 * The BGI → TGI font converter doesn't have docs.
 * Update a font engine sample 'tgi-preview'.
 * Describe what the tools show at various levels when they're told to be <tt>--verbose</tt>.
-
-== Other stuff ==
-* Integrate Groepaz's test suite; and, do nightly automated tests to improve the overall quality.
