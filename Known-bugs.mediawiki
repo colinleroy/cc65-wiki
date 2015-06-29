@@ -106,4 +106,6 @@ bad: 0
 good: 1
 </pre>
 
+The bug occurs when the optimizer tries to squeeze a 16-bit comparison into an 8-bit comparison.  It squeezes correctly from the pattern made by "(joy_state & 1) == 0"; but, squeezes incorrectly from the pattern made by "0 == (joy_state & 1)".
+
 see http://www.cc65.org/mailarchive/2014-10/11680.html
