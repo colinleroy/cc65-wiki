@@ -80,3 +80,30 @@ Looking at the generated code, it's easy to see where the error lies.  The compi
 </pre>
 
 The optimizer switched to using <code>asrax3</code> for the constant division; and, used <code>tosdivax</code> for the division by the variable, resulting in <code>-1/8</code> not giving a consistent result, depending on whether the <tt>8</tt> is used as a literal or in a variable.
+
+== equality comparison is evaluated wrong in some cases ==
+
+Here is an example that demonstrates the behaviour:
+
+<pre>
+    #include <stdio.h>
+    #include <stdint.h>
+
+    int main ( void)
+    {
+      uint8_t  joy_state = 0x7e;
+      printf("bad: %u\n", 0 == (joy_state & 1) );
+      printf("good: %u\n", (joy_state & 1) == 0 );
+
+      return 0;
+    }
+</pre>
+
+This results in:
+
+<pre>
+bad: 0
+good: 1
+</pre>
+
+see http://www.cc65.org/mailarchive/2014-10/11680.html
