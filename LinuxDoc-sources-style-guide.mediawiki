@@ -6,6 +6,6 @@
 * You should avoid typing non-ASCII characters.
 
 * You should put blank lines between LinuxDoc sections:
-** Three blank lines between <code><nowiki/><sect></code> sections.
-** Two blank lines between <code><nowiki/><sect1></code> sections.
+** Three blank lines between <code><nowiki /><sect></code> sections.
+** Two blank lines between <code><nowiki /><sect1></code> sections.
 ** One blank line between other sections.
