@@ -31,7 +31,12 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 * Oric Atmos
 * Watara Supervision game console
 
-== Setting up a cc65 project ==
+== This cc65 project's coding guidelines ==
+
+* [[C and Assembly sources style-guide]]
+* [[LinuxDoc sources style-guide]]
+
+== Setting up a cc65-based project ==
 
 * [[Hello cc65!]]
 * [[Bigger Projects|Setting up somewhat bigger projects]]
