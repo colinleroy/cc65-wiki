@@ -8,13 +8,13 @@
 * You should avoid typing non-ASCII characters.
 * If you change "normal" source code into comments, then you must add a comment about why that code is a comment.
 * When you want to create a comment from several lines of code, you should use preprocessor lines, instead of <code>/* */</code> or "<code>;</code>".  Example:
- <code>
- #if 0
-     one ();
-     two ();
-     three = two () + one ();
- #endif
- </code>
+<code>
+#if 0
+    one ();
+    two ();
+    three = two () + one ();
+#endif
+</code>
 
 ==== C Sources ====
 
@@ -30,10 +30,10 @@
 
 * You must separate function names and parameter/argument lists by one space.
 * When declaring/defining pointers, you must put the asterisk (<code>*</code>) next to the data type, with a space between it and the variable's name.  Examples:
- <code>
+<code>
     int* namedPtr[5];
     char* nextLine (FILE* f);
- </code>
+</code>
 
 ==== Assembly Sources ====
 
