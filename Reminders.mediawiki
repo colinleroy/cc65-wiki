@@ -75,6 +75,9 @@ Things that might be considered to be evaluated/implemented/included in the futu
 * Adjust the MOU driver to the current MOU kernel interface.
 * Implement the functions in <code>device.h</code>; and, test them with <tt>samples/enumdevdir.c</tt>.
 
+== NES library ==
+* Add interruptor support (and check if the current interrupt handling really belongs in crt0.s).
+
 == Ohio Scientific C1P library ==
 * Add simple POSIX <code>read()</code> and <code>write()</code>, so that portable programs can use the <tt>stdio</tt> functions to talk through the console.
 
