@@ -6,6 +6,8 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 | 30 || initcurunit   || cbm
 |-
+| 27 || pm_init       || atari
+|-
 | 26 || detect        || atari
 |-
 | 25 || initdostype   || apple2
