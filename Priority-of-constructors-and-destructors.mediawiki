@@ -73,11 +73,13 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 | 10 || irq_done      || runtime
 |-
-|  7 || _reset_brk    || apple2, atari, c16, c128, c64, pet, vic20
+|  7 || _reset_brk    || apple2, atari, c128, c16, c64, pet, vic20
 |-
 |  7 || donecgetc     || c128
 |-
 |  7 || donekbd       || c16, plus4
+|-
+|  7 || pm_down       || atari
 |-
 |  7 || restore_caps  || atmos
 |-
