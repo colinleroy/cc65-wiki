@@ -10,6 +10,8 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 | 26 || detect        || atari
 |-
+| 26 || screen_setup  || atari5200
+|-
 | 25 || initdostype   || apple2
 |-
 | 25 || initmainargs  || atari
