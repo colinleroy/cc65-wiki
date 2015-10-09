@@ -30,6 +30,8 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 |  7 || cwd_init      || common
 |-
+|  7 || disable_caps  || atmos
+|-
 |  7 || env_init      || common
 |-
 |  7 || init_clock    || lynx
@@ -52,7 +54,7 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 |  7 || initscrsize   || geos
 |-
-|  7 || initstdin     || cbm
+|  7 || initstdin     || atmos, cbm
 |-
 |  7 || initstdout    || cbm
 |-
@@ -74,6 +76,8 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |  7 || donecgetc     || c128
 |-
 |  7 || donekbd       || c16, plus4
+|-
+|  7 || restore_caps  || atmos
 |-
 |  7 || setsyscursor  || cbm610
 |-
