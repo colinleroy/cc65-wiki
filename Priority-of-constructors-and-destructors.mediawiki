@@ -38,7 +38,7 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 |  7 || init_pointer  || geos
 |-
-|  7 || initcgetc     || atmos, c128
+|  7 || initcgetc     || atmos, c128, osic1p
 |-
 |  7 || initclock     || pce
 |-
