@@ -22,7 +22,7 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 | 24 || initheap      || common
 |-
-| 24 || initmainargs  || apple2, atmos, c16, c128, c64, cbm510, cbm610, geos, lynx, nes, pet, plus4, vic20
+| 24 || initmainargs  || apple2, atmos, c16, c128, c64, cbm510, cbm610, geos, lynx, nes, pet, plus4, sim6502, vic20
 |-
 | 11 || initreboot    || apple2
 |-
