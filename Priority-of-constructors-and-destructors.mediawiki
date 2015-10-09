@@ -48,6 +48,8 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 |  7 || initkbd       || c16, plus4
 |-
+|  7 || initmcb       || c128, c64, cbm510
+|-
 |  7 || initostype    || apple2
 |-
 |  7 || initprompt    || apple2
