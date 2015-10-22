@@ -89,5 +89,9 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 |  7 || setsyscursor  || cbm610
 |-
+|  7 || soft80_shutdown  || c64
+|-
+|  7 || soft80mono_shutdown  || c64
+|-
 |  5 || closeallfiles || apple2, atari, cbm
 |}
