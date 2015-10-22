@@ -28,6 +28,10 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |-
 | 10 || irq_init      || runtime
 |-
+|  8 || soft80_init   || c64
+|-
+|  8 || soft80mono_init   || c64
+|-
 |  7 || cwd_init      || common
 |-
 |  7 || disable_caps  || atmos
