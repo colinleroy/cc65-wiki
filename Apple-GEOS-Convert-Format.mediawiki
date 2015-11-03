@@ -57,7 +57,7 @@ The GEOS 64/128 CONVERT file format was carefully designed to allow for an easy 
 * The ProDOS <code>EOF</code> in the ProDOS directory entry at the first data block offset $180 is unused.
 * The first data block offsets $100-$17F indicate empty records ($FF for an empty record, $00-$FE for a non-empty record).
 * There is no ProDOS master index record.
-* Each record has is a data block called "prefix block".
+* Each record has a data block called "prefix block".
 * The prefix block offsets $000-$0FD and $100-$1FD are unused.
 * The prefix block offsets $0FF, $1FF and $0FE contain the record size in bytes.
 * The prefix block offset $1FE is 0.
