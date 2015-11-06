@@ -1,4 +1,4 @@
-For constructors, destructors and interruptors, the linker generates a table of addresses sorted by increasing numeric value of the priorities (if not otherwise specified by the <code>ORDER</code> attribute in the linker config file). The library routines that process these tables work from rear to front. This means that routines with a higher numeric priority value are called first.
+For constructors, destructors, and interruptors, the linker generates a table of addresses sorted by increasing numeric value of the priorities (if not otherwise specified by the <code>ORDER</code> attribute in the linker config file). The library routines that process those tables work from rear to front. That means that routines with a higher numeric priority value are called first.
 
 {| class="wikitable"
 |+ '''Constructors'''
@@ -94,4 +94,27 @@ For constructors, destructors and interruptors, the linker generates a table of 
 |  7 || soft80mono_shutdown  || c64
 |-
 |  5 || closeallfiles || apple2, atari, cbm
+|}
+
+{| class="wikitable"
+|+ '''Interruptors'''
+! priority !! function !! platform
+|-
+| 29 || ser_irq          || serial
+|-
+| 24 || ticktock         || pce
+|-
+|  7 || _UpLoaderIRQ     || lynx
+|-
+|  7 || joy_irq          || joystick
+|-
+|  7 || lynx_snd_handler || lynx
+|-
+|  7 || mouse_irq        || mouse
+|-
+|  7 || tgi_irq          || tgi
+|-
+|  2 || update_clock     || lynx
+|-
+|  1 || clevel_irq       || common
 |}
