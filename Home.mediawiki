@@ -26,7 +26,7 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 * [[Atari 2600]] and other Atari 8-bit machines
 * [[Commodore machines]]
 * [[GEOS]]
-* NEC PC-Engine (TurboGrafx-16)
+* NEC PC-Engine (TurboGrafx-16) game console
 * Nintendo Entertainment System game console
 * Ohio Scientific Challenger 1P
 * Oric Atmos
