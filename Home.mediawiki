@@ -61,7 +61,7 @@ cc65 can surely be compiled and run on the following platforms, for which GNU Co
 == Library internals ==
 
 * [[Tiny Graphics Interface]]
-* [[Priority of constructors and destructors]]
+* [[Priority of constructors, destructors, and interruptors]]
 
 == Compiler internals ==
 
