@@ -40,7 +40,6 @@ Things that might be considered to be evaluated/implemented/included in the futu
 
 == C64 library ==
 * Implement OUTTEXT in the TGI driver.
-* Implement Soft-80 CONIO support as an "extra" .o file that "overrides" the <tt>cputc.o</tt> in the C library.
 * Add extra EMD and joystick drivers.
 
 == C128 library ==
