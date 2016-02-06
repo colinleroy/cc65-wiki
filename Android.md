@@ -35,7 +35,7 @@ The executables can be found in the directory `bin` and have a `.exe` extension.
 
 Unofficial precompiled archives are available here: https://github.com/efornara/cc65/releases
 
-From the user's point of view, the main difference compared to an official cc65 branch is that the default target is *not* c64. All the official targets are still available, but, when compiling for the c64 target, the option `-t c 64`
+From the user's point of view, the main difference compared to an official cc65 branch is that the default target is *not* c64. All the official targets are still available, but, when compiling for the c64 target, the option `-t c64`
 must be explicitly selected.
 
 You need two files:
@@ -155,6 +155,7 @@ We install the terminal and "download" everything we need:
 From the emulator, we start the terminal and run the installation script:
 
 	android$ . /data/local/tmp/install.txt
+	...
 	android$ exit
 
 From the emulator, we can now restart the terminal and check that everything works:
