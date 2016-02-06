@@ -53,6 +53,19 @@ The file `cc65-android-bin-arm-pie.zip` is the one to use in the vast majority o
 
 While the static versions are the most compatible, they are not recommended, as they are bigger and they have compiled-in outdated runtime libraries.
 
+### Docker
+
+A docker image suitable for building the precompiled archives is available (tested on a CoreOS VM, beta channel):
+
+        $ pwd
+        /home/core
+        $ git clone https://github.com/efornara/cc65
+        $ docker run -it -v /home/core/cc65:/home/cc65 efornara/cc65_droid
+        # cd /home/cc65/util/android
+        # ./mk_all.sh
+
+The archives are left in `/opt` and can be retrieved with `docker cp`, followed by `scp` from the host.
+
 ## Installation
 
 ### Planning
