@@ -43,7 +43,7 @@ The pseudo-register array <tt>regbank</tt> ''does need'' to be preserved.  And, 
 The following example assumes that there are no local variables.  The presence of local variables would change the stack offset of the parameters in the function.
 
 Prototype:
- void foo(unsigned bar, unsigned char baz);
+ void cdecl foo(unsigned bar, unsigned char baz);
 Stack layout within the function:
             +------------------+
             | High byte of bar |
