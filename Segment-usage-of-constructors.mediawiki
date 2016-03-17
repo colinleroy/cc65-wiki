@@ -7,5 +7,5 @@ Depending on the linker config. file, the RAM used by constructors may be reused
 
 As the segment '''INIT''' is not zeroed before constructors are called, the constructors mustn't presume that any particular values exist in the segment '''INIT'''. If the constructor logic doesn't implicitly always set a value in the segment '''INIT''', but rather requires explicit zeroing, then it might be preferable to place the value in the segment '''DATA''' instead. Both alternatives have the same RAM size requirement while running main(); but, they differ in disk size requirements. The sequence
  LDA #0
- STA ''<abs>''
+ STA <abs>
 to zero a value in the segment INIT is 4 bytes larger (in the program's file) than a <code>.byte 0</code> in the segment DATA.
