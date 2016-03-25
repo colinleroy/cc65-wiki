@@ -54,7 +54,6 @@ Things that might be considered to be evaluated/implemented/included in the futu
 == Apple II library ==
 * Have the EM driver detect AUXMEM, and cooperate with /RAM.
 * Implement a TGI driver that "hides" the hires screen, using AUXMEM.
-* Allow <code>_sys()</code> to call ROM routines.
 * Add support for a visible cursor in <code>cgetc()</code>.
 
 == Atari library ==
