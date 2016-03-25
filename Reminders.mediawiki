@@ -52,7 +52,6 @@ Things that might be considered to be evaluated/implemented/included in the futu
 * Make a TGI driver, based on the C64 driver.
 
 == Apple II library ==
-* Update documentation to reflect the current linker configs.
 * Have the EM driver detect AUXMEM, and cooperate with /RAM.
 * Implement a TGI driver that "hides" the hires screen, using AUXMEM.
 * Allow <code>_sys()</code> to call ROM routines.
