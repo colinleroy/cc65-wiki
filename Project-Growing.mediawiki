@@ -195,8 +195,10 @@ $(ALLDISKS): $(ALLFILES)
 	c1541 -format $(basename $(PROGRAM)),00 $(subst .,,$(suffix $@)) $@
 	for file in $(ALLFILES) ; do c1541 $@ -write $$file ; done
 </pre>
-It shows by example what you need to do in order to efficiently accommodate additional functionality without touching the main Makefile:
-* File name: you may call it whatever you like as long as the name ends with '.mk' but in order to e. g. have the related files grouped next to each other on directory or IDE files listings you may consider the name starting with 'Makefile'. Second part after underscore denotes the name of the target the file adds to the build system. And of course the name has to end with '.mk' in order to be processed from within the main Makefile
+It shows by example what you need to do in order to efficiently accommodate additional functionality without touching the main Makefile. Here we use the 'c1541' tool to create empty (formatted) disk images and then write all resulting files onto them.
+
+When creating similar files please note:
+* Name of the extending file: you may call it whatever you like as long as the name ends with '.mk' but in order to e. g. have the related files grouped next to each other on directory or IDE files listings you may consider the name starting with 'Makefile_'. Second part after underscore denotes the name of the target the file adds to the build system. And of course the name has to end with '.mk' in order to be processed from within the main Makefile. Suggestion for the file above: <code>Makefile_disks.mk</code>. This way things remain organised and it is easy to find which targets are in which file.
 * Artefacts created by your make target (or targets) have to be added to the REMOVES variable in order to be able to use <code>make clean</code> and have them removed
 * Phony targets (those not leaving file artefacts) are to be declared as .PHONY (Please note that even if invoking 'disks' target will actually leave artefacts behind, it is not this target that creates them but the ones it depends on.)
 
