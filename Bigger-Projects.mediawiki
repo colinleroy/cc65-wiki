@@ -112,6 +112,7 @@ EMUCMD :=
 
 # Optional commands used before starting the emulation process, and after finishing it.
 # Default: none
+# Examples
 #PREEMUCMD := osascript -e "tell application \"System Events\" to set isRunning to (name of processes) contains \"X11.bin\"" -e "if isRunning is true then tell application \"X11\" to activate"
 #PREEMUCMD := osascript -e "tell application \"X11\" to activate"
 #POSTEMUCMD := osascript -e "tell application \"System Events\" to tell process \"X11\" to set visible to false"
