@@ -13,21 +13,25 @@ choose "Install" from the dialog box that appears when the command is not found.
 Since cc65 is very cleanly written, no additional configuration processes are needed. Once the necessary prerequisites are in place, start your terminal and proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
 
 == Compatibility ==
-=== OS X 10.9 "Mavericks" (i386) ===
+==== OS X 10.11 "El Capitan" (i386) ====
 Building from source works 100% - tested
-=== OS X 10.6 "Snow Leopard" (i386) ===
+==== OS X 10.10 "Yosemite" (i386) ====
 Building from source works 100% - tested
-=== OS X 10.5 "Leopard" (ppc) ===
+==== OS X 10.9 "Mavericks" (i386) ====
 Building from source works 100% - tested
-=== OS X 10.5 "Leopard" (i386) ===
+==== OS X 10.6 "Snow Leopard" (i386) ====
 Building from source works 100% - tested
-=== OS X 10.4 "Tiger" (ppc) ===
+==== OS X 10.5 "Leopard" (ppc) ====
+Building from source works 100% - tested
+==== OS X 10.5 "Leopard" (i386) ====
+Building from source works 100% - tested
+==== OS X 10.4 "Tiger" (ppc) ====
 Building from source should work fine - untested
-=== OS X 10.4 "Tiger" (i386) ===
+==== OS X 10.4 "Tiger" (i386) ====
 Building from source should work fine - untested
-=== OS X 10.3 "Panther" (ppc) ===
+==== OS X 10.3 "Panther" (ppc) ====
 Building from source works 100% - tested, please consider switching to 10.4, which is (IMHO) the first mature OS X version
-=== OS X 10.2 "Jaguar" (ppc) ===
+==== OS X 10.2 "Jaguar" (ppc) ====
 Building from source works 100% - tested, but while 10.2 was probably the first usable OS X version, you shouldn't really be running it anymore these days
-=== OS X 10.1 or earlier (ppc) ===
+==== OS X 10.1 or earlier (ppc) ====
 Those were not really usable (IMHO) - I don't believe you might still be running it...
