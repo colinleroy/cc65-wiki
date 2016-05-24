@@ -1,6 +1,6 @@
 Depending on the linker config. file, the RAM used by constructors may be reused by the segment '''BSS''' and/or the heap and/or the software stack. Therefore, constructors must follow these rules:
 
-* The code of constructors (and code called by ''only'' constructors) is ''not'' placed in the segment '''CODE''', but in the segment '''ONCE'''.
+* The code of constructors (and code called ''only'' by constructors) is ''not'' placed in the segment '''CODE''', but in the segment '''ONCE'''.
 * Data that is read by only constructors is ''not'' placed in the segment '''RODATA''', but in the segment '''ONCE'''.
 * Data that is changed by constructors is placed in the segment '''DATA'''.
 * Data that is created by constructors is ''not'' placed in the segment '''BSS''', but in the segment '''INIT'''.
