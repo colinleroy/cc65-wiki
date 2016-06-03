@@ -115,7 +115,9 @@ The boot loader and menu program of the [http://icomp.de/products/chameleon_e.ht
 [http://noname.c64.org/csdb/release/?id=95792 Eliza 65] is a port of the well known Eliza program. (source included)
 
 === picoOS ===
-[http://picoos.sourceforge.net/ports/6502 pico<nowiki>]</nowiki>OS for 6502] is a realtime operating system by Dennis Kuschel. (source included)
+The original [http://picoos.sourceforge.net/ports/6502 pico<nowiki>]</nowiki>OS 1.0.4 for 6502] is a real-time operating system by Dennis Kuschel. (source included; can be built by cc65 versions 2.13 and 2.14)
+
+Ari Suutari has updated it to [https://github.com/AriZuu/picoos pico<nowiki>]</nowiki>OS 1.1.0] which can be built by cc65 versions 2.15 and later.
 
 === VICE ===
-No, the famous [http://vice-emu.sourceforge.net Commodore emulator VICE] was not compiled with cc65 :&ndash;) But some of the test programs are, as Marco van den Heuvel writes on the mailing list: "The joystick (including userport) test-program(s) in the VICE testprogs directory of the svn is done using cc65 (source included)."
+No, the famous [http://vice-emu.sourceforge.net Commodore emulator VICE] was not compiled with cc65 :&ndash;) But, some of the test programs are, as Marco van den Heuvel writes on the mailing list: "The joystick (including userport) test-program(s) in the VICE testprogs directory of the svn is done using cc65 (source included)."
