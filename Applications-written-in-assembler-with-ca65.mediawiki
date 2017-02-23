@@ -23,7 +23,7 @@
 [http://noname.c64.org/csdb/release/?id=78348 Krill's Loader] is an advanced IRQ fastloader for the C64 supporting many different drives.
 
 === Outlaw game ===
-[ftp://ftp.groessler.org/pub/chris/cc65/outlaw.tar.gz Outlaw] is a simple clone of the games with the same name for the Atari 2600 console.
+[ftp://ftp.groessler.org/pub/chris/cc65/outlaw.tar.gz Outlaw] is a simple clone of the game with the same name for the Atari 2600 console.
 
 == Commodore VIC-20 ==
 
