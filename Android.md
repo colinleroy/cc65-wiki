@@ -4,19 +4,19 @@
 
 The cc65 suite has been successfully compiled for Android using the standalone toolchain from the NDK on Linux (Debian Jessie). There is no need to install Android Studio or the Android SDK. Here are the steps:
 
-1) Compile cc65 as usual and install it somewhere, so you can save the platform-independent parts:
+First, compile cc65 as usual and install it somewhere, so you can save the platform-independent parts:
 
 	cd __cc65_sources__
 	make clean
 	make
 	prefix=__somewhere__/cc65 make install
 
-2) Generate a NDK standalone toolchain (where `$NDK` is set to the location where you have uncompressed the NDK):
+Then, generate a NDK standalone toolchain (where `$NDK` is set to the location where you have uncompressed the NDK):
 
 	$NDK/build/tools/make-standalone-toolchain.sh \
 	--arch=arm --platform=android-16 --install-dir=__somewhere__/toolchain
 
-3) Cross-compile the Android executables:
+Finally, cross-compile the Android executables:
 
 	cd __cc65_sources__
 	export PATH="$PATH:__somewhere__/toolchain/bin"
