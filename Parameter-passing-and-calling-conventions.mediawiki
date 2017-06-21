@@ -22,7 +22,7 @@ Parameters in variable argument lists (ellipsis, <tt>&hellip;</tt>) are treated 
 
 == The 'fastcall' calling convention ==
 
-If a function is declared as <tt>&#95;&#95;fastcall&#95;&#95;</tt> (or <tt>fastcall</tt>), the last (rightmost) parameter is not passed on the stack, but passed in [[The primary register|the primary register]] to the called function. That is A in the case of an eight-bit value, A/X in the case of a 16-bit value, and A/X/sreg in the case of a 32-bit value.
+If a function is declared as <tt>__fastcall__</tt> (or <tt>fastcall</tt>), the last (rightmost) parameter is not passed on the stack, but passed in [[The primary register|the primary register]] to the called function. That is A in the case of an eight-bit value, A/X in the case of a 16-bit value, and A/X/sreg in the case of a 32-bit value.
 
 If the called function is a C function, its first instruction will be a call to one of the 'push' functions to push the passed value onto the stack. That means that, for C functions, 'fastcall' doesn't make the code really faster. Assembler functions, however, can take advantage of values being passed in registers.
 
