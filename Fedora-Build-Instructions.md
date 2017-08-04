@@ -32,7 +32,7 @@ The build process works flawlessly on Fedora. Simply type:
 You will want to refer to the documentation. It will be quicker to access it
 locally. Build it with this command:
 
-    make doc
+    PREFIX=/usr/local make doc
 
 # Step 6: Install the Compiler
 
