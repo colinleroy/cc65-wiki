@@ -15,6 +15,7 @@ According to the original author and former maintainer: "With one exception in t
 cc65 can surely be compiled and run on the following platforms, for which GNU Compiler Collection -- [http://gcc.gnu.org GCC] -- is available.
 
 * [[AmigaOS]]
+* [[Fedora Linux]]
 * [[GNU/Linux]]
 * [[Microsoft Windows]]
 * [[OS X]]
