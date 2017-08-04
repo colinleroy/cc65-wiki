@@ -42,6 +42,7 @@ The below command installs the following:
 * Documentation in info format in /usr/local/share/info. View it with the command: info /usr/local/share/info/index.info
 * Documentation in HTML format in /usr/local/share/doc/cc65/html.
 
+
     sudo PREFIX=/usr/local make install
 
 # Step 7: Bookmark the Documentation
