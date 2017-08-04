@@ -1,4 +1,4 @@
-These instructions provide a step-by-step guide to building and installing cc65 on Fedora Linux.
+These instructions provide a step-by-step guide to building and installing cc65 on [Fedora](https://getfedora.org) Linux.
 
 # Step 1: Install Dependencies
 
