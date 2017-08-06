@@ -26,11 +26,13 @@ cc65 surely can be compiled and run on the following platforms, for which GNU Co
 * [[Apple II]]
 * [[Atari 2600]] and other Atari 8-bit machines
 * [[Commodore machines]]
+* Bit Corporation Gamate game console
 * [[GEOS]]
 * NEC PC-Engine (TurboGrafx-16) game console
 * Nintendo Entertainment System game console
 * Ohio Scientific Challenger 1P
-* Oric Atmos
+* Oric Atmos and Telestrat
+* VTech Creativision game console
 * Watara Supervision game console
 
 == This cc65 project's coding guidelines ==
