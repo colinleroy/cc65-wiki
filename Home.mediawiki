@@ -12,11 +12,11 @@ cc65 is a complete package, which includes
 
 According to the original author and former maintainer: "With one exception in the compiler [access()], the code is plain ISO C; so, it should compile on most systems. Memory usage may be a problem, however."
 
-cc65 can surely be compiled and run on the following platforms, for which GNU Compiler Collection -- [http://gcc.gnu.org GCC] -- is available.
+cc65 surely can be compiled and run on the following platforms, for which GNU Compiler Collection -- [http://gcc.gnu.org GCC] -- is available.
 
 * [[AmigaOS]]
-* [[Fedora Linux]]
 * [[GNU/Linux]]
+** [[Fedora Linux]]
 * [[Microsoft Windows]]
 * [[OS X]]
 * GNU/QNX
