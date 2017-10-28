@@ -17,7 +17,7 @@ The following enumeration is from the cc65 mailing list. The order implies no ju
 [http://cbmcommand.codeplex.com CBM Command] is a filebrowser running on C64/C128/VIC20/PET.
 
 === Contiki ===
-The [http://www.contiki-os.org Contiki OS], originally developed by Adam Dunkels was first written using cc65. It has been improved since then and [http://hitmen.c02.at/html/tools_contiki.html ported to many more platforms]. Although today it's focus is on embedded devices a few enthusiasts [http://retrohackers.com/viewtopic.php?f=14&t=607 maintain a version that does still run on 6502 platforms].
+The [http://www.contiki-os.org Contiki OS], originally developed by Adam Dunkels was first written using cc65. It has been improved since then and [http://hitmen.c02.at/html/tools_contiki.html ported to many more platforms]. Although today it's focus is on embedded devices a few enthusiasts [https://github.com/oliverschmidt/contiki/releases maintain a version that does still run on 6502 platforms].
 
 === Contiki BBS ===
 [http://retrohackers.com/viewtopic.php?f=10&t=571 Contiki BBS] is a Contiki based telnet server for the C64. The source is available in the [http://contikiprojects.svn.sourceforge.net/viewvc/contikiprojects/ufud.org/contiki-bbs Contiki Projects Community].
