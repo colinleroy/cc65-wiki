@@ -56,6 +56,7 @@ Things that might be considered to be evaluated/implemented/included in the futu
 * Implement a TGI driver that "hides" the hires screen, using AUXMEM.
 
 == Atari library ==
+* Limit effect of <code>cursor()</code> to <code>cgetc()</code> as documented.
 * Add <code>dio_query_sectcount()</code> to complete the DIO implementation.
 ** algorithm as follows (see [http://cc65.github.io/mailarchive/2012-10/10974.html]):
 *** Read the 4th sector. (The xf551 drive had a bug, it returned the wrong PERCOM info after reading the normally 128-byte boot sectors; a read from sector 4 eliminates that chance).
