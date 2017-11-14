@@ -46,7 +46,7 @@ For constructors, destructors, and interruptors, the linker generates a table of
 |-
 |  7 || initclock     || pce
 |-
-|  7 || initconio     || apple2, nes, pce
+|  7 || initconio     || apple2, creativision, gamate, nes, pce
 |-
 |  7 || initiobuf     || apple2
 |-
