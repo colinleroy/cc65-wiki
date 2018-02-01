@@ -106,8 +106,6 @@ For constructors, destructors, and interruptors, the linker generates a table of
 |-
 |  7 || _UpLoaderIRQ     || lynx
 |-
-|  7 || joy_irq          || joystick
-|-
 |  7 || lynx_snd_handler || lynx
 |-
 |  7 || mouse_irq        || mouse
