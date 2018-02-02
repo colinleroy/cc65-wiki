@@ -1,0 +1,10 @@
+== Using Exomizer for  Apple<nowiki>][</nowiki> programs ==
+
+[https://bitbucket.org/magli143/exomizer/wiki/browse/downloads Exomizer] is a pretty popular tool for creating self-extracting archives in the CBM world. However, it supports the Apple<nowiki>][</nowiki> too. Unfortunately its usage for the Apple<nowiki>][</nowiki> isn't that intuitive and its [https://github.com/bitshifters/exomizer/blob/master/exomizer2/exo20info.txt User Infos] aren't that explicit too.
+
+Therefore here the command line to convert the standard Apple<nowiki>][</nowiki> cc65 binary program '''input.bin''' to the self-extracting archive '''output.bin''':
+
+<code>exomizer sfx $0803 -t162 -Di_load_addr=$0803 input.bin@$0803,4 -o output.bin</code>.
+
+The self-extracting archive contains a 4 byte DOS 3.3 header just like the standard Apple<nowiki>][</nowiki> cc65 binary program. If a non-standard program start address is used the the Exomizer command line needs to be adjusted accordingly.
+
