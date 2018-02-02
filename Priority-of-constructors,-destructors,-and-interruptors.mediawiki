@@ -110,7 +110,7 @@ For constructors, destructors, and interruptors, the linker generates a table of
 |-
 |  7 || mouse_irq        || mouse
 |-
-|  7 || tgi_irq          || tgi
+|  7 || tgi_irq          || lynx
 |-
 |  2 || update_clock     || lynx
 |-
