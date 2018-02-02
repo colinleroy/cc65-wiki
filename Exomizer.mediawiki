@@ -1,6 +1,6 @@
 == Using Exomizer for Apple II programs ==
 
-[https://bitbucket.org/magli143/exomizer/wiki/browse/downloads Exomizer] is a pretty popular tool for creating self-extracting archives in the CBM world. However, it also supports the Apple II. Unfortunately its usage for the Apple II isn't that intuitive and its [https://github.com/bitshifters/exomizer/blob/master/exomizer2/exo20info.txt User Infos] aren't that explicit too.
+[https://bitbucket.org/magli143/exomizer/wiki/browse/downloads Exomizer] is a pretty popular tool for creating self-extracting archives in the CBM world. However, it also supports the Apple II. Unfortunately its usage for the Apple II isn't that intuitive and its [https://raw.githubusercontent.com/bitshifters/exomizer/master/exomizer2/exo20info.txt User Infos] aren't that explicit too.
 
 Therefore here the command line to convert the standard Apple II cc65 binary program '''input.bin''' to the self-extracting archive '''output.bin''':
 
