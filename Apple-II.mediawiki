@@ -12,6 +12,7 @@ The Apple II family is supported by cc65 through the two targets
 == Tools ==
 
 * [[LOADER.SYSTEM]]
+* [[Exomizer]]
 
 == Sample Code ==
 
