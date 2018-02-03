@@ -1,26 +1,26 @@
 == Inlining of standard functions ==
 
-Recently we found out that cc65 had two pretty surprising behaviors:
+Recently, we found out that cc65 had two pretty surprising behaviors:
 
-1. The built-in inlining of memcpy(), memset(), strcmp(), strcpy() and strlen() was always (!) enabled even if the user didn't enable any optimization option at all. One would have guessed that this inlining would only happen if optimizations were in general enabled and/or if a specific option asking for that inlining was enabled.
+1. The built-in inlining of memcpy(), memset(), strcmp(), strcpy() and strlen() always (!) was enabled, even if the user didn't enable any optimization option at all. One would have guessed that this inlining would happen only if optimizations were, in general, enabled, and/or if a specific option asking for that inlining was enabled.
 
-2. The option -Os enabled additional well-known-to-be-unsafe inlining of some of those functions. One would have guessed that any -O variant (like i.e. -Oisr) would only enable (believed-to-be-)safe optimizations. And that well-known-to-be-unsafe optimizations would only be enabled via some explicit options with a long name.
+2. The option -Os enabled additional well-known-to-be-unsafe inlining of some of those functions. One would have guessed that any -O variant (like i.e., -Oisr) would enable only (believed-to-be-)safe optimizations. And, that well-known-to-be-unsafe optimizations would be enabled only via some explicit option with a long name.
 
-So it really seemed reasonable to have cc65 better conform to expectations:
+So, it really seemed reasonable to have cc65 better conform to expectations:
 
-* The safe inlining that was before always enabled is now enabled by --inline-stdfuncs (or together with general optimization by -Os).
+* The safe inlining that, before, always was enabled now is enabled by --inline-stdfuncs (or, together with general optimization, by -Os).
 
-* The unsafe inlining that was before enabled (together with general optimizations) by -Os is now enabled by --eagerly-inline-funcs. --eagerly-inline-funcs implies --inline-stdfuncs.
+* The unsafe inlining that was enabled before (together with general optimizations) by -Os now is enabled by --eagerly-inline-funcs. --eagerly-inline-funcs implies --inline-stdfuncs.
 
 What does that mean for existing projects?
 
-* If you used no optimization so far and want the same behavior as before then use now --inline-stdfuncs
+* If you used no optimization so far, and want the same behavior as before, then now use --inline-stdfuncs.
 
-* If you used -O so far and want the same behavior as before then use now -Os
+* If you used -O so far, and want the same behavior as before, then now use -Os.
 
-* If you used -Os so far and want the same behavior as before then use now -Os --eagerly-inline-funcs
+* If you used -Os so far, and want the same behavior as before, then now use -Os --eagerly-inline-funcs.
 
 Additional Info:
 
 * The new pragma "inline-stdfuncs" works identical to --inline-stdfuncs.
-* The new pragma "allow-eager-inline" enables the unsafe inlining but does _not_ imply the safe inlining. That means that by itself it doesn't enable any inlining but if safe inlining is enabled (i.e. by -Os) then unsafe inlining will be enabled too.
+* The new pragma "allow-eager-inline" enables the unsafe inlining; but, does _not_ imply the safe inlining. That means that, by itself, it doesn't enable any inlining; but, if safe inlining is enabled (i.e., by -Os), then unsafe inlining will be enabled too.
