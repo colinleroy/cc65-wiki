@@ -8,6 +8,6 @@ A prebuilt snapshot of the current sources can be downloaded [http://sourceforge
 
 The build process is, in general, controlled by Makefiles. But, that does '''not''' imply that you have to use an environment like Cygwin or MSYS. Rather, the Makefiles are carefully designed to work with a plain vanilla "cmd.exe".
 
-Both MinGW-w64 and MinGW come with GNU make (built as "mingw32-make.exe"); so, there's no need for any additional tools whatsoever. Just build the default make target of the top-level Makefile.
+Both Mingw-w64 and MinGW come with GNU make (built as "mingw32-make.exe"); so, there's no need for any additional tools whatsoever. Just build the default make target of the top-level Makefile.
 
 Building cc65 with Visual C++ is a two-step process. You first build the Visual C++ solution in the 'src' directory. Then, you build the make target 'lib' of the top-level Makefile. For the latter, you need a Win32 build of GNU make. I suggest using [http://gnuwin32.sourceforge.net/packages/make.htm Make for Windows].
