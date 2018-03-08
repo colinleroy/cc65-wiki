@@ -14,7 +14,7 @@ sc.exe /cmd @sc.txt
 </pre>
 
 === Apple GEOS ===
-By the time of this writing (10/2012), CONVERT file deconversion hasn't made it into the ''Stable Release'' of [http://applecommander.sourceforge.net/ AppleCommander]. However, the latest ''Interim Release Candidate'' contains it. In order to write, e.g., the file '''test.cvt''' to the disk image '''geos.dsk''', you can use this command:
+[https://applecommander.github.io/ AppleCommander] supports CONVERT file deconversion. In order to write, e.g., the file '''test.cvt''' to the disk image '''geos.dsk''', you can use this command:
 <pre>
 java -jar ac.jar -geos geos.dsk < test.cvt
 </pre>
