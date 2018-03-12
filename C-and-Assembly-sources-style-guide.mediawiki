@@ -15,6 +15,7 @@
     three = two () + one ();
 #endif
 </pre>
+* You should type upper case characters for hex values.
 * When you type zero-page addresses in hexadecimal, you should type two hex characters (after the hex prefix).  When you type non-zero-page addresses in hex, you should type four hex characters.
 * When you type lists of addresses, it is a good idea to sort them in ascending numerical order.  That makes it easier for readers to build mental pictures of where things are in an address space.  And, it is easier to see how big the variables and buffers are. Example:
 <pre>
