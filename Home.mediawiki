@@ -48,6 +48,7 @@ cc65 surely can be compiled and run on the following platforms, for which GNU Co
 
 == Tips and tricks ==
 
+* [[Using cc65 with Visual Studio Code]]
 * [[Using cc65 with Emacs]]
 * [[Using ca65 with foreign source]]
 * [[Using runtime zeropage locations in assembly language]]
