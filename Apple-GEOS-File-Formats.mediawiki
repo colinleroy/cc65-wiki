@@ -42,7 +42,7 @@ The Apple GEOS disk I/O subsystem is based on '''ProDOS 8'''. In order to unders
 
 == Background Info ==
 
-[http://lyonlabs.org/commodore/onrequest/geos-manuals/The_Hitchhikers_Guide_to_GEOS.pdf The Hitchhiker's Guide To GEOS] contains no section on file formats. However several sections contain side notes on Apple GEOS file formats:
+[https://archive.org/details/The_Hitchhikers_Guide_to_GEOS The Hitchhiker's Guide To GEOS] contains no section on file formats. However several sections contain side notes on Apple GEOS file formats:
 
 === AppendRecord ===
 <pre>
