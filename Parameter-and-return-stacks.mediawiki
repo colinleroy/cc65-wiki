@@ -53,7 +53,7 @@ we can access it using
 
 === Moving the stack ===
 
-The stack isn't put in a segment; it's put into a separate memory area. That area isn't named; it's implied by two expressions.  The first one is in the ld65 configuration file.  For example, 'c64.cfg' has size = <code>$C7F3 - _ _STACKSIZE_ _</code>.  The second one is in the start-up code. For example, 'c64/crt0.s' has <code>(_ _RAM_START_ _ + _ _RAM_SIZE_ _ + _ _STACKSIZE_ _)</code>.
+The stack isn't put in a segment; it's put into a separate memory area. That area isn't named; it's implied by two expressions.  The first one is in the ld65 configuration file.  For example, 'c64.cfg' has <code>size = $C7F3 - _ _STACKSIZE_ _</code>.  The second one is in the start-up code. For example, 'c64/crt0.s' has <code>(_ _RAM_START_ _ + _ _RAM_SIZE_ _ + _ _STACKSIZE_ _)</code>.
 
 If it were named explicitly (it ''should'' be!), then they would look like this:
 
