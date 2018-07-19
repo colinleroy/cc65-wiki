@@ -4,9 +4,9 @@ In general, just proceed as described in [http://cc65.github.io/cc65/getting-sta
 
 If you, however, want to build cc65 yourself from the sources, then you can do so using [http://mingw-w64.org/ Mingw-w64], [http://www.mingw.org/ MinGW], or [http://www.visualstudio.com/products/visual-studio-express-vs Microsoft Visual Studio Express].
 
-A pre-built snapshot of the current sources can be downloaded [http://sourceforge.net/projects/cc65/files/cc65-snapshot-win32.zip here].
+A pre-built snapshot of the current sources can be [http://sourceforge.net/projects/cc65/files/cc65-snapshot-win32.zip downloaded here].
 
-The build process is, in general, controlled by Makefiles. But, that does '''not''' imply that you have to use an environment like Cygwin or MSYS. Rather, the Makefiles are carefully designed to work with a plain vanilla "cmd.exe".
+The build process is, in general, controlled by Makefiles. But, that does '''not''' imply that you have to use an environment like [http://www.cygwin.com/ Cygwin] or [http://www.msys2.org/ MSYS2]. Rather, the Makefiles are carefully designed to work with a plain vanilla "cmd.exe".
 
 Both Mingw-w64 and MinGW come with GNU make (built as "mingw32-make.exe"); so, there's no need for any additional tools whatsoever. Just build the default make target of the top-level Makefile.
 
