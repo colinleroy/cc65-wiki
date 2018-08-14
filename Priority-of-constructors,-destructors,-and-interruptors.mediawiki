@@ -58,13 +58,13 @@ For constructors, destructors, and interruptors, the linker generates a table of
 |-
 |  7 || initprompt    || apple2
 |-
+|  7 || inittime      || c128, c64
+|-
 |  7 || initscrsize   || geos
 |-
 |  7 || initstdin     || atmos, cbm
 |-
 |  7 || initstdout    || cbm
-|-
-|  7 || initsystime   || c128, c64
 |-
 |  7 ||raisefilelevel || apple2
 |}
