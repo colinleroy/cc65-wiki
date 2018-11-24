@@ -10,4 +10,5 @@ The build process is, in general, controlled by Makefiles. But, that does '''not
 
 Both Mingw-w64 and MinGW come with GNU make (built as "mingw32-make.exe"); so, there's no need for any additional tools whatsoever. Just build the default make target of the top-level Makefile.
 
-Building cc65 with Visual C++ is a two-step process. You first build the Visual C++ solution in the 'src' directory. Then, you build the make target 'lib' of the top-level Makefile. For the latter, you need a Win32 build of GNU make. I suggest using [http://gnuwin32.sourceforge.net/packages/make.htm Make for Windows]. Note that cc65 built with Visual C++ appears to have issues with spaces in the names of source files.
+Building cc65 with Visual C++ is a two-step process. You first build the Visual C++ solution in the 'src' directory. Then, you build the make target 'lib' of the top-level Makefile. For the latter, you need a Win32 build of GNU make. I suggest using [http://gnuwin32.sourceforge.net/packages/make.htm Make for Windows].
+
