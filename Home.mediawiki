@@ -39,6 +39,7 @@ cc65 surely can be compiled and run on the following platforms, for which GNU Co
 
 * [[C and Assembly sources style-guide]]
 * [[LinuxDoc sources style-guide]]
+* [[TAB chars]]
 
 == Setting up a cc65-based project ==
 
