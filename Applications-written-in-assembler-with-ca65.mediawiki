@@ -33,10 +33,10 @@
 == Nintendo Entertainment System ==
 
 === 240p test suite ===
-The [http://forums.nesdev.com/viewtopic.php?p=157634#p157634 240p test suite] turns an NES into a test pattern generator to evaluate the quality of a TV or upscaler. (source included)
+The [https://github.com/pinobatch/240p-test-mini 240p Test Suite] turns an NES into a test pattern generator to evaluate the quality of a TV or upscaler. (On GitHub)
 
 === Concentration Room ===
-[https://pineight.com/croom/ Concentration Room] is a card matching game for NES. (source included)
+[https://github.com/pinobatch/croom-nes Concentration Room] is a card matching game for NES. (On GitHub)
 
 === DABG ===
 [https://github.com/NovaSquirrel/DABG Double Action Blaster Guys] is an arcade-style platformer for the NES that plays similarly to ''Bubble Bobble''. (On GitHub)
@@ -57,7 +57,7 @@ The [http://forums.nesdev.com/viewtopic.php?p=157634#p157634 240p test suite] tu
 [https://github.com/NovaSquirrel/SlidingBlaster Sliding Blaster] is an overhead shooter for NES with mouse support for 1 or 2 players. (On GitHub)
 
 === Thwaite ===
-[https://pineight.com/nes/#thwaite Thwaite] is a missile defense game for NES. (source included)
+[https://github.com/pinobatch/thwaite-nes Thwaite] is a missile defense game for NES. (source included)
 
 === Zap Ruder ===
 [https://pineight.com/nes/#ruder Zap Ruder] is a test suite for the Zapper light gun. It includes ZapPing (a paddle and ball game), a music toy, and several test cards. (source included)
