@@ -58,6 +58,9 @@ Clone of the flash puzzle game 'Znax' with improved score system for Atari-8-Bit
 === Manic Miner ===
 Remake of Manic Miner by Matthew Smith from 1983.  This for the C64. [https://github.com/StewBC/manicminer GitHub project] and [http://www.youtube.com/watch?v=_3_V-8X8J5o Video]
 
+=== NESert Golfing ===
+A 2D golf game by Brad Smith for NES. [https://github.com/bbbradsmith/NESertGolfing GitHub project] and [https://rainwarrior.itch.io/nesert-golfing itch.io page]
+
 === Snake Byte ===
 Remake of Snake Byte by Sirius Software first published in 1982.  This for the C64 with a conio port.
 [https://github.com/StewBC/snakebyte GitHub project] and [http://www.youtube.com/watch?v=H7Y4HVXVzoI Video]
