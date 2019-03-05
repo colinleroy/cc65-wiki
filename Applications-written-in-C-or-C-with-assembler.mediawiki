@@ -49,6 +49,9 @@ A port of the [https://github.com/nanoflite/2048-cc65 2048] game to cc65. There 
 Portable AI, 1 or 2 player Chess game in C. This for the C64.
 [https://github.com/StewBC/cc65-Chess GitHub project] and [http://www.youtube.com/watch?v=bkA4vtwxaJg Video]
 
+=== Critical Match ===
+Color matching game for NES by slembcke. [https://github.com/slembcke/critical-match GitHub project]
+
 === ECKN/ECKN+ ===
 Clone of the flash puzzle game 'Znax' with improved score system for Atari-8-Bit computers. The 'plus' version has minor fixes, is NTSC compatible and supports Atari CX77 touch tablet or similar devices (CMI08 PS/2 mouse interface). [http://atari.fandal.cz/search.php?search=ECKN Download] and [http://www.youtube.com/watch?v=KnwpMZAuxZo Video]
 
