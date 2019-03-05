@@ -41,6 +41,9 @@ The [http://forums.nesdev.com/viewtopic.php?p=157634#p157634 240p test suite] tu
 === DABG ===
 [https://github.com/NovaSquirrel/DABG Double Action Blaster Guys] is an arcade-style platformer for the NES that plays similarly to ''Bubble Bobble''. (On GitHub)
 
+=== Lizard ===
+[https://github.com/bbbradsmith/lizard_src_demo Lizard] by Brad Smith is an exploration platformer for the NES. (On GitHub; requires non-free assets available separately)
+
 === NESLife ===
 [https://github.com/NovaSquirrel/NESLife NESLife] is a Conway's Life simulator for NES. (On GitHub)
 
