@@ -1,4 +1,4 @@
-These instructions provide a step-by-step guide for installing cc65 on the distributions that are supoorted by the [https://fedoraproject.org/wiki/EPEL/FAQ Fedora EPEL repository].
+These instructions provide a step-by-step guide for installing cc65 on the distributions that are supported by the [https://fedoraproject.org/wiki/EPEL/FAQ Fedora EPEL repository].
 
 == Step 1: Enable the Fedora EPEL repository ==
 
