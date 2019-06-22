@@ -1,4 +1,4 @@
-These instructions provide a step-by-step guide for installing cc65 on [https://getfedora.org Fedora] Linux.
+These instructions provide a step-by-step guide for installing cc65 on [https://getfedora.org Fedora] Linux starting with Fedora 29.
 
 == Step 1: Install cc65 ==
 
