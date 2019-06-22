@@ -24,6 +24,19 @@ To install the additional utilities, which are shipped in the [https://github.co
 sudo dnf install cc65-utils
 </pre>
 
+Those utilities programs are:
+
+* /usr/bin/ataricvt65
+** Conversion between Atari and ISO-8859-1 character set.
+* /usr/bin/ca65html
+** Convert a ca65 source into HTML
+* /usr/bin/cbmcvt65
+** Conversion between PetSCII and ISO-8859-1 character set.
+* /usr/bin/deflater65
+** Compresses data to the DEFLATE format. The compressed data is ready to use with the inflatemem() routine from cc65's zlib.
+* /usr/bin/gamate-fixcart65
+** Adds a checksum to a Gamate Cartridge ROM image.
+
 == Step 3: Bookmark the Documentation ==
 
 To be successful working with software development tools you need quick access to the documentation. I keep a very organized set of bookmarks in my browser so that I can quickly get answers to questions that come up during development. One can waste a lot of time looking for information if it is not readily available. So I suggest creating a bookmark in your browser for the following local file which is the starting point for the cc65 documentation in HTML format.
