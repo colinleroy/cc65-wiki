@@ -1,67 +1,35 @@
-These instructions provide a step-by-step guide to building and installing cc65 on [https://getfedora.org Fedora] Linux.
+These instructions provide a step-by-step guide for installing cc65 on [https://getfedora.org Fedora] Linux.
 
-== Step 1: Install Dependencies ==
+== Step 1: Install cc65 ==
 
-The following command not only installs the necessary tools to build the cc65 executable programs, it also installs all the tools to build the documentation.
-
-<pre>
-sudo dnf install git gcc make linuxdoc-tools texinfo
-</pre>
-
-== Step 2: Create a Place for the Source Code ==
-
-If you don't have a "git" directory, create it with the below commands. You don't need to create a ~/git/cc65 directory because that will be done automatically by git.
+The following command installs the cc65 executable programs, it may also install the documentation and additional utilities as weak dependencies.
 
 <pre>
-cd ~
-mkdir git
-cd git
+sudo dnf install cc65
 </pre>
 
-== Step 3: Retrieve the Source Code ==
+== Step 2: Optional packages ==
 
-From the ~/git directory, enter the following command to download the cc65 code from github.com. A cc65 subdirectory will automatically be created.
+There are additional pre-built packages, that can be installed without dependencies on the cc65 compiler:
+
+The following command installs the documentation (html and GNU/info) for the cc65 compiler.
 
 <pre>
-git clone https://github.com/cc65/cc65.git
+sudo dnf install cc65-doc
 </pre>
 
-== Step 4: Build the Compiler from Source ==
-
-The build process works flawlessly on Fedora. Simply type:
+To install the additional utilities, which are shipped in the [https://github.com/cc65/cc65/tree/master/util util directory of the git repository], simply use this command.
 
 <pre>
-cd cc65
-make
+sudo dnf install cc65-utils
 </pre>
 
-== Step 5: Build the Documentation ==
-
-You will want to refer to the documentation. It will be quicker to access it
-locally. Build it with this command:
-
-<pre>
-PREFIX=/usr/local make doc
-</pre>
-
-== Step 6: Install the Compiler ==
-
-The below command installs the following:
-
-* Executables in /usr/local/bin
-* Documentation in info format in /usr/local/share/info. View it with the command: info /usr/local/share/info/index.info
-* Documentation in HTML format in /usr/local/share/doc/cc65/html.
-
-<pre>
-sudo PREFIX=/usr/local make install
-</pre>
-
-== Step 7: Bookmark the Documentation ==
+== Step 3: Bookmark the Documentation ==
 
 To be successful working with software development tools you need quick access to the documentation. I keep a very organized set of bookmarks in my browser so that I can quickly get answers to questions that come up during development. One can waste a lot of time looking for information if it is not readily available. So I suggest creating a bookmark in your browser for the following local file which is the starting point for the cc65 documentation in HTML format.
 
 In Firefox you can press Ctrl-O to open a file. Enter the below path. Then bookmark it with Ctrl-D.
 
 <pre>
-/usr/local/share/doc/cc65/html/index.html
+/usr/share/doc/cc65/html/index.html
 </pre>
