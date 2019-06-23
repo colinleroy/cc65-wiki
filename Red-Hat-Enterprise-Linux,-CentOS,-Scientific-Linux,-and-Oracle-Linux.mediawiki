@@ -54,7 +54,5 @@ To be successful working with software development tools you need quick access t
 In Firefox you can press Ctrl-O to open a file. Enter the below path. Then bookmark it with Ctrl-D.
 
 <pre>
-/usr/share/doc/cc65-$CC65VERSION/html/index.html
+/usr/share/doc/cc65/html/index.html
 </pre>
-
-Please be aware, that the path to those documentation files also includes the version of the cc65 compiler. You may need to adjust it to the actual version installed on your system.
