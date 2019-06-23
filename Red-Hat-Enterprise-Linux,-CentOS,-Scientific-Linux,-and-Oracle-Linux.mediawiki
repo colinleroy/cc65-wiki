@@ -14,4 +14,4 @@ sudo yum makecache
 
 To install the cc65 compiler (and additional things) you can proceed using the [https://github.com/cc65/wiki/wiki/Fedora-Linux instructions for Fedora Linux].
 
-You may need to replace <pre>dnf</pre> command with <pre>yum</pre> eventually.
+You may need to replace the ''dnf'' command with ''yum'' eventually.
