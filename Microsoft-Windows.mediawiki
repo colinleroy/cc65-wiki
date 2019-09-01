@@ -1,6 +1,6 @@
 == cc65 on Microsoft Windows ==
 
-In general, just proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
+In general, just proceed as described in [http://cc65.github.io/getting-started.html Getting Started].
 
 If you, however, want to build cc65 yourself from the sources, then you can do so using [http://mingw-w64.org/ Mingw-w64], [http://www.mingw.org/ MinGW], or [http://www.visualstudio.com/ Microsoft Visual Studio].
 
