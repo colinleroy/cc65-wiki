@@ -1,4 +1,4 @@
-# OpenSUSE OBS: Debian .DEB and RPM
+== OpenSUSE OBS: Debian .DEB and RPM ==
 
 There are pre-built binaries available for Debian based systems, as well as RPM based system (currently, OpenSUSE, but other platforms might work, too). These packages are developed with the [https://build.opensuse.org/ OpenSUSE build service] at [https://build.opensuse.org/package/show/home:strik/cc65 the project homepage].
 
