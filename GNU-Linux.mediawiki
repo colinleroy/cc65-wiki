@@ -6,4 +6,4 @@ Another option is to use pre-built binaries, which are available in different fl
 
 * A variant for Debian based systems (.DEB) [[OBS: Debian .DEB and RPM]]
 * A variant for [[Fedora Linux]]
-* A variant FOR [[Red Hat Enterprise Linux, CentOS, Scientific Linux, and Oracle Linux]]
+* A variant for [[Red Hat Enterprise Linux, CentOS, Scientific Linux, and Oracle Linux]]
