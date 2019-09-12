@@ -16,6 +16,7 @@ cc65 surely can be compiled and run on the following platforms, for which GNU Co
 
 * [[AmigaOS]]
 * [[GNU/Linux]]
+** [[OBS: Debian .DEB and RPM]]
 ** [[Fedora Linux]]
 ** [[Red Hat Enterprise Linux, CentOS, Scientific Linux, and Oracle Linux]]
 * [[Microsoft Windows]]
