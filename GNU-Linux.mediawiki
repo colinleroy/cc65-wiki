@@ -2,12 +2,8 @@
 
 You have two options: You can compile everything from scratch. In this case, just proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
 
-Another option is to use pre-built binaries, which are available for Debian based systems, as well as RPM based system (currently, OpenSUSE, but other platforms might work, too). These packages are developed with the [https://build.opensuse.org/ OpenSUSE build service] at [https://build.opensuse.org/package/show/home:strik/cc65 the project homepage].
+Another option is to use pre-built binaries, which are available in different flavours:
 
-The pre-built binary packages can be got from [http://software.opensuse.org/download.html?project=home%3Astrik&package=cc65 the download page] of the build service. As said, there are debian as .DEB well as OpenSUSE .RPM available. Install instructions can be found at this link.
-
-These packages are built as snapshots. Whenever there is a checkin into the trunk of the cc65 github, the sources are compiled and binaries are built. Note that there is some delay between the check in and the availability of the binaries. Furthermore, when compilation finishes, there are some minutes in which neither the old nor the new binaries and/or source packages can be downloaded.
-
-The packages are split into "cc65" (the main package), "cc65-common" (only on Debian: contains all files that are independant from the architecture of the host), and "cc65-doc" (which contains the documentation files). "cc65-common" is a dependancy of "cc65", thus, you do not have to specify it yourself. cc65-doc, however, is not a dependancy. If you want the documentation, you have to specify it yourself.
-
-In case you have any problems with the binary packages, please report this on the mailing list. The binary packages are maintained by Spiro Trikaliotis.
+* A variant for Debian based systems (.DEB) [[OBS: Debian .DEB and RPM]]
+* A variant for [[Fedora Linux]]
+* A variant FOR [[Red Hat Enterprise Linux, CentOS, Scientific Linux, and Oracle Linux]]
