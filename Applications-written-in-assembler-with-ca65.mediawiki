@@ -65,4 +65,4 @@ The [https://github.com/pinobatch/240p-test-mini 240p Test Suite] turns an NES i
 == Multiple platforms ==
 
 === IP65 ===
-[http://oliverschmidt.github.io/ip65/ IP65] is a TCP/IP stack for 6502 based computers.
+[https://github.com/cc65/ip65/wiki IP65] is a TCP/IP stack for 6502 based computers.
