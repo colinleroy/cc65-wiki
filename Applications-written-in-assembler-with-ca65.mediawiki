@@ -30,6 +30,11 @@
 === SID Vicious ===
 [http://vic20emu.googlecode.com/svn/trunk/sidplay/ SID Vicious] is a SID emulator for the VIC-20 by Aleksi Eeben. Output pulse wave, triangle, sawtooth, noise with ADSR envelopes at 6.1 kHz. (source included)
 
+== Commander X16 ==
+
+=== Penetrator ===
+[https://github.com/StewBC/penetrator/ Penetrator] is a remake of the 1982 ZX Spectrum game by Phillip Mitchell and Beam Software.
+
 == Nintendo Entertainment System ==
 
 === 240p test suite ===
