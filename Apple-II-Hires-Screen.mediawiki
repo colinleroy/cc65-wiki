@@ -1,0 +1,35 @@
+== Direct writing to the hires video screen ==
+
+Because of the non-contiguous memory layout it's not trivial to directly write to the Apple II hires video screen. Therefore usually the Applesoft ROM routines are used instead. However, those ROM routines are rather optimized for size than for speed. When speed is utmost priority, then it is appropriate to use a table with the start address of every hires line.
+
+The code below has ca65 create such a table (in fact one table with the low byte of the address and one table with the high byte of the address) using its <code>.repeat</code> control command. Additionally it contains a snippet showing how to use the two tables. 
+
+<pre>
+    .include "zeropage.inc"
+
+
+    .rodata
+
+BASELO:
+    .repeat $C0, I
+    .byte   I & $08 << 4 | I & $80 >> 1 | I & $80 >> 3 | I & $40 >> 1 | I & $40 >> 3
+    .endrep
+
+BASEHI:
+    .repeat $C0, I
+    .byte   >$2000 | I & $07 << 2 | I & $30 >> 4
+    .endrep
+
+
+    .code
+
+    ; tmp1: Value to write to the hires screen
+    ; X:    Line to write the value to (0..191)
+    ; Y:    Byte in that line to write the value to (0..40)
+    lda BASELO,x
+    sta ptr1
+    lda BASEHI,x
+    sta ptr1+1
+    lda tmp1
+    sta (ptr1),y
+</pre>
