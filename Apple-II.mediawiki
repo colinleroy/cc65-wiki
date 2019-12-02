@@ -16,6 +16,7 @@ The Apple II family is supported by cc65 through the two targets
 == Sample Code ==
 
 * [[Apple II Screen|Save and restore the text video screen]]
+* [[Apple-II-Hires-Screen|Direct writing to the hires video screen]]
 
 == Apple GEOS ==
 
