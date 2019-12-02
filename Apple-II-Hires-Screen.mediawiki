@@ -12,7 +12,7 @@ The code below has ca65 create such a table (in fact one table with the low byte
 
 BASELO:
     .repeat $C0, I
-    .byte   I & $08 << 4 | I & $80 >> 1 | I & $80 >> 3 | I & $40 >> 1 | I & $40 >> 3
+    .byte   I & $08 << 4 | I & $C0 >> 1 | I & $C0 >> 3
     .endrep
 
 BASEHI:
