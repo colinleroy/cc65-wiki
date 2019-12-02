@@ -25,7 +25,7 @@ BASEHI:
 
     ; tmp1: Value to write to the hires screen
     ; X:    Line to write the value to (0..191)
-    ; Y:    Byte in that line to write the value to (0..40)
+    ; Y:    Byte in that line to write the value to (0..39)
     lda BASELO,x
     sta ptr1
     lda BASEHI,x
