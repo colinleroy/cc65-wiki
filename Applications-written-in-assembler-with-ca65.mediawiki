@@ -6,6 +6,8 @@
 === VM02 ===
 [http://sourceforge.net/projects/vm02/ VM02] is a Java compatible environment for the Apple II series of computers. Most basic features of a Java VM are implemented to allow direct execution of standard Java class files on a 64K, 8 bit, 1 MHz Apple II computer. (source included)
 
+[https://github.com/StewBC/penetrator-apple2] is a remake of the 1982 ZX Spectrum game by Phillip Mitchell and Beam Software.
+
 == Atari computers ==
 
 === seitensprung ===
