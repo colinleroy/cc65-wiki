@@ -1,12 +1,13 @@
 Save the following code as hello.c
-
-<pre>#include &lt;conio.h&gt;  
+<pre>
+#include <conio.h>  
 
 void main(void)  
 {  
   cputs("Hello, World!\n";);  
   cgetc();  
-}</pre>
+}
+</pre>
 Compile the program to hello.apple2 (the -o isn’t needed but adding it with .apple2 will make sense later, in the make section). Used the command line: <code>cl65 -t apple2 hello.c -o hello.apple2</code>
 
 Now you have an Apple II ready program, but it needs to go on a disk so it can be loaded in an emulator.
