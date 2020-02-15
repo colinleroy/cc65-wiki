@@ -1,0 +1,40 @@
+__NOTOC__
+=== Get a ProDOS disk ===
+
+Download a ProDOS disk from https://prodos8.com/.
+
+Just follow the download links through the download button to get the latest version. 
+=== Make a template disk ===
+Open AppleCommander: <code>java -jar AppleCommander-win64-1.5.0.jar</code> (where AppleCommander-win64-1.5.0.jar is the full path and name of the version you downloaded)
+
+Open the downloaded ProDOS disk and delete all the files except for the file named '''PRODOS'''<br/>
+Save this disk to a new name, <code>template.dsk</code> and keep this safe - it will be reused all the time.
+
+<a name="diskprep"></a> 
+=== Prepare a disk for your program ===
+Copy the template.dsk to hello.dsk in the same folder where you created hello.apple2 
+
+=== Add your program to the disk ===
+Run the following on the command line and take note of the output:
+
+<code>cl65 --print-target-path</code>
+
+Let’s assume it’s Windows and the output was <code>D:\apps\cc65\target</code>
+
+Run AppleCommander and use it to install your program to auto-boot from the disk. Notice that the tail end of the 1st command is the path <code>D:\cc65\target\apple2\util\loader.system</code>. Replace <code>D:\cc65\target\</code> with whatever the <code>cl65 --print-target-path</code> command gave as output, so in my example case it becomes <code>D:\apps\cc65\target\apple2\util\loader.system</code>.
+
+On Windows, the following commands must be done in cmd.exe, not in PowerShell, so the redirection works. On Unix and macOS, I tested this in the bash shell.
+
+<pre>java -jar AppleCommander-win64-1.5.0.jar -p hello.dsk hello.system sys < D:\cc65\target\apple2\util\loader.system
+java -jar AppleCommander-win64-1.5.0.jar -as hello.dsk hello bin < hello.apple2 </pre>
+Remember to fix the <code>D:\cc65\target\apple2\util\loader.system</code> in the first java command to reflect your installation. This assumes that you are using AppleCommander-win64-1.5.0.jar and that it’s in the folder where hello.apple2 resides. Obviously, use the full path to AppleCommander if it isn’t in the same folder as hello.apple2.
+
+You can rename the version of AppleCommander that you have, to ac.jar for short.
+
+You now have a working ProDOS disk that will run your hello.c program when the Apple II boots from this disk. 
+=== Running it in the Emulator ===
+Load your emulator and load the disk, '''hello.dsk''' into the emulator. (F3 in AppleWin and linapple, or drag-and-drop hello.dsk on the left side of the window in Microm8). Reboot the emulator (F2 in AppleWin and libapple, automatic in Microm8)
+
+You should now see <code>Hello, World!</code> on your screen towards the upper left, and when you press a key, you return to the file selector at ProDOS.
+
+=== [https://github.com/cc65/wiki/wiki/Apple-II-4.-Compiling-assembly-code-for-the-Apple-II Next: 4. Compiling assembly code for the Apple II] ===
