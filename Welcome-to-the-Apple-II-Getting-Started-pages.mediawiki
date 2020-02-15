@@ -1,0 +1,51 @@
+__NOTOC__
+The following sections have been created to help a cc65 user with using the Apple II as a target. Section I is getting set up and Section II is about the Apple II platform, and has several programs embedded to help explain the content.
+
+== Section I - Getting Set Up ==
+
+This section covers:
+<ol>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/1.-Apple-II-emulators-and-related-software">Apple II emulators and related Software</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/2.-Compiling-%22C%22-for-the-Apple-II">Compiling “C” code for the Apple II</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/3.-Making-an-Apple-2-disk-for-an-emulator">Making an Apple II disk for an emulator</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/4.-Compiling-assembly-code-for-the-Apple-II">Compiling assembly code for the Apple II</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/5.-Using-make-and-Makefiles-for-a-great-workflow">Using make and Makefiles for a great workflow</a>
+</li>
+</ol>
+== Section II - Getting to know the Apple II ==
+
+This section covers:<br />
+
+<ol start="6">
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/6.-Apple-II--Zero-Page-locations-and-use">Zero Page locations and use</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/7.-Apple-II-System-Locations">System Locations</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/8.-Apple-II-Keyboard">The Keyboard</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/9.-Apple-II-Audio">Audio</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/10.-Apple-II-File-IO-with-ProDOS">File I/O with ProDOS</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/11.-Apple-II-Display-Modes">Display Modes</a>
+</li>
+<li>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/12.-Apple-II-joystick">Using the joystick</a>
+</li>
+</ol>
+=== [https://github.com/cc65/wiki/wiki/Apple-II/Getting-Started/1.-Apple-II-emulators-and-related-software Start: 1. Apple II emulators and related software] ===
