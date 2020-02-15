@@ -3,23 +3,29 @@ You are free to use whatever emulator and related software works for you, but th
 
 == Tools ==
 === AppleCommander ===
-Download the latest <b>AppleCommander</b> from here: https://github.com/AppleCommander/AppleCommander/releases<br />
+Download the latest <b>AppleCommander</b> from here: https://github.com/AppleCommander/AppleCommander/releases
+
 ''Note:'' The AppleCommander versions with -ac- in the file name are command line versions. The versions with -linux-, -win64- or -macosx- are the versions with a user interface. The user-inetrface versions can be used as command line versions as well, by adding the command-line parameters when executing. The user-interface will be used once to prepare a ProDOS disk.
 
 === Java ===
-Java is needed for AppleCommander, which is used to work with disk images. Download from: https://java.com/download/<br />
+Java is needed for AppleCommander, which is used to work with disk images. Download from: https://java.com/download/
+
 ''Note on Windows:'' On my x64 machine, the Java downloaded was a 32-bit Java which did not work for the win64 AppleCommander. I had to download the 64-bit version from the manual download page, and that works with AppleCommander-win64-1.5.0.jar. I found the manual download page here: https://www.java.com/en/download/manual.jsp
 
 == Emulators ==
 === Windows ===
-AppleWin - Excellent and free - https://github.com/AppleWin/AppleWin/releases<br />
+AppleWin - Excellent and free - https://github.com/AppleWin/AppleWin/releases
+
 AppleWin is open source, is actively being developed and feature rich. Most importantly to developers, it has a great debugger built in.
 === Linux ===
-I tried linapple (free) and was able to load a dsk image and play some games.<br />
-https://github.com/linappleii/linapple<br />
+I tried linapple (free) and was able to load a dsk image and play some games.
+
+https://github.com/linappleii/linapple
+
 ''Note:'' I was able to run AppleWin in Wine on Ubuntu and that worked perfectly.
 === macOS ===
-(free) Microm8 worked for me - https://paleotronic.com/software/microm8/<br />
+(free) Microm8 worked for me - https://paleotronic.com/software/microm8/
+
 (not free) Virtual ][ seems really good - https://www.virtualii.com/
 == Install ==
 Install the files anywhere on your system but '''note the path''', especially for AppleCommander.
