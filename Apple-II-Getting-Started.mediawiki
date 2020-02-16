@@ -26,7 +26,7 @@ This section covers:<br />
 
 <ol start="6">
 <li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-6.--Zero-Page-locations-and-use">Zero Page locations and use</a>
+<a href="https://github.com/cc65/wiki/wiki/Apple-II-6.-Zero-Page-locations-and-use">Zero Page locations and use</a>
 </li>
 <li>
 <a href="https://github.com/cc65/wiki/wiki/Apple-II-7.-System-Locations">System Locations</a>
