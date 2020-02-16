@@ -1,0 +1,227 @@
+I will only be discussing ProDOS here. There are many sources for more information, once you know what to look for, such as https://prodos8.com/docs/.
+
+What follows here will mostly show how to load and save an arbitrary blob of binary data. This will, for example, work for saving scores or loading levels in a game.
+
+The ProDOS API is accessed by doing a <code>jsr $BF00</code>, also referred to as the Machine Language Interface (MLI). Immediately following the jsr call is the API access type and then the address of the parameters to the call. Here’s the first ProDOS define:
+
+<pre>
+MLI             := $BF00
+</pre>
+These are some of the access types (there are more for DELETE, RENAME, GET_FILE_INFO, etc.):
+
+<pre>
+QUIT_CALL       := $65            ; Terminating a program and returning to Dos is done through ProDOS
+CREATE_CALL     := $C0            ; These are all file operations
+OPEN_CALL       := $C8
+READ_CALL       := $CA
+WRITE_CALL      := $CB
+CLOSE_CALL      := $CC
+SETEOF_CALL     := $D0
+</pre>
+In the spkr.asm file you have already seen the <code>QUIT_CALL</code> being used to terminate the program and return to ProDOS.
+
+Here are some parameter blocks configured to save/load binary chunks of data (with assembly code to follow):
+
+<pre>
+createParam:
+    .byte       $07               ; param_count
+createName:
+    .addr       PATHNAME          ; pathname
+    .byte       $C3               ; access
+    .byte       $06               ; file_type (6 is binary)
+    .word       $0000             ; aux_type
+    .byte       $01               ; storage_type
+    .word       $0000             ; create_date
+    .word       $0000             ; create_time
+
+eofParam:
+    .byte       $02               ; param_count
+eofRef:
+    .byte       $00               ; ref_num
+    .byte       $00, $00, $00     ; size
+
+openParam:
+    .byte       $03               ; param_count
+openName:
+    .addr       PATHNAME          ; pathname
+    .addr       $2000-$400        ; io_buffer - you decide
+openRef:
+    .byte       $00               ; ref_num
+
+readParam:
+    .byte       $04               ; param_count
+readRef:
+    .byte       $00               ; ref_num
+readAddress:
+    .addr       dataToLoad        ; data_buffer
+readLength:
+    .word       $FFFF             ; request_count - $ffff will load up to 65535 so you don't have to set exact
+    .word       $0000             ; trans_count - after call contains the bytes actually loaded
+
+writeParam:
+    .byte       $04               ; param_count
+writeRef:
+    .byte       $00               ; ref_num
+writeAddress:
+    .addr       dataToSave        ; data_buffer
+writeLength:
+    .word       dataToSaveEnd-dataToSaveStart   ; request_count
+    .word       $0000             ; trans_count
+
+closeParam:
+    .byte       $01               ; param_count
+closeRef:
+    .byte       $00               ; ref_num
+</pre>
+Some of the common File Types are:
+
+<pre>
+$00 - UNK Unknown
+$01 - BAD Bad Block
+$04 - TXT ASCII Text
+$06 - BIN Binary File
+$0F - DIR ProDOS Directory
+$FA - Integer Basic Program 
+$FB - Integer Basic Variables 
+</pre>
+The Storage Types are:
+
+<pre>
+$01 - Seedling
+$02 - Sapling
+$03 - Tree
+$0D - Directory
+</pre>
+The MLI error codes are:
+
+<pre>
+$00 - No Error
+$01 - Bad Call Number
+$04 - Bad Parameter Count
+$25 - Interrupt Table Full
+$27 - I/O Error
+$28 - No Device Connected
+$2B - Write Protected
+$2E - Disk Switched
+$40 - Invalid Pathname
+$42 - Maximum Number of Files Open
+$43 - Invalid Reference Number
+$44 - Directory Not Found
+$45 - Volume Not Found
+$46 - File Not Found
+$47 - Duplicate File Name
+$48 - Volume Full
+$49 - Directory Full
+$4A - Incompatible File Format
+$4B - Unsupported Storage Type
+$4C - End of File, No More Data
+$4D - Position Out of Range (Beyond EOF)
+$4E - File Access Error, File Locked
+$50 - File Already Open
+$51 - Directory Structure Damaged (Oops!)
+$53 - Invalid Parameter
+$55 - Volume Control Block Table Full (Too Many Volumes)
+$56 - Bad Buffer Address
+$57 - Duplicate Volume
+$5A - File Structure Damaged
+</pre>
+A typical sequence to save a binary file could look like this:
+
+<pre>
+.proc saveFile
+
+    lda         #<dataToSave      ; set the location
+    sta         writeAddress
+    lda         #>dataToSave
+    sta         writeAddress + 1
+
+    lda         #<(dataToSaveEnd-dataToSave)    ; set the size
+    sta         writeLength
+    lda         #>(dataToSaveEnd-dataToSave)
+    sta         writeLength + 1
+
+    jsr         MLI               ; create the file, ignoring errors (may already exist)
+    .byte       CREATE_CALL
+    .word       createParam
+    bcc         :+
+    cmp         #$47              ; duplicate file okay - means overwrite
+    beq         :+ 
+    jmp         error             ; all other create errors are not okay
+
+:
+    jsr         MLI               ; open the (now hopefully existing) file
+    .byte       OPEN_CALL
+    .word       openParam
+    bcc         :+
+    jmp         error
+
+: 
+    lda         openRef           ; reference to open file returned by open call
+    sta         eofRef            ; need it for EOF (truncate)
+    sta         writeRef          ; and write
+    sta         closeRef          ; and close
+
+    jsr         MLI
+    .byte       SET_EOF           ; if overwriting and file was larger than what will be written,
+    .word       eofParam          ; the write does not truncate. So set to 0 length before writing
+    bcs         error             ; making sure the end result has the actual, shorter, length
+
+    jsr         MLI
+    .byte       WRITE_CALL
+    .word       writeParam
+    bcs         error
+
+    jsr         MLI
+    .byte       CLOSE_CALL
+    .word       closeParam
+    bcs         error
+
+error:
+    rts                           ; On success carry clear, on error carry set with error code in accumulator
+
+.endproc
+</pre>
+A typical sequence to load a binary file could look like this:
+
+<pre>
+.proc loadFile 
+
+    lda         #<dataToLoad      ; set the location
+    sta         readAddress
+    lda         #>dataToLoad
+    sta         readAddress + 1
+
+    lda         #<(dataToLoadEnd-dataToLoad)    ; set the size ($FFFF if size unknown)
+    sta         readLength
+    lda         #>(dataToLoadEnd-dataToLoad)
+    sta         readLength + 1
+
+    jsr         MLI               ; Open the file
+    .byte       OPEN_CALL
+    .word       openParam
+    bcc         :+
+    jmp         error
+
+: 
+    lda         openRef           ; save reference
+    sta         readRef           ; for read
+    sta         closeRef          ; and close
+
+    jsr         MLI               ; read the data
+    .byte       READ_CALL
+    .word       readParam
+    bcs         error
+
+    jsr         MLI               ; close the file
+    .byte       CLOSE_CALL
+    .word       closeParam
+    bcs         error
+
+error:
+    rts                           ; On success carry clear, on error carry set with error code in accumulator
+
+.endproc
+</pre>
+<blockquote>Note: The <code>saveFile</code> and <code>loadFile</code> assumes that <code>PATHNAME</code> is set to the name of the file. ''When the program starts, the filename of the program can be found at 280, starting with the length and then the path itself''. The fully qualified name can be up to 64 characters long. It’s a good idea to assume the executable file isn’t in the root. People may copy the file into any folder. This is especially true now as emulators have “hard disks” and people organize the programs they like into their “hard disks”. If you create data files, try to place them next to the executable (by finding the path at 280) or maybe have a load/save dialog.
+</blockquote>
+=== [https://github.com/cc65/wiki/wiki/Apple-II-11.-Apple-II-Display-Modes 11. Display Modes] ===
