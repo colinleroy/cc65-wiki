@@ -65,7 +65,7 @@ writeRef:
 writeAddress:
     .addr       dataToSave        ; data_buffer
 writeLength:
-    .word       dataToSaveEnd-dataToSaveStart   ; request_count
+    .word       dataToSaveEnd-dataToSave   ; request_count
     .word       $0000             ; trans_count
 
 closeParam:
@@ -162,7 +162,7 @@ A typical sequence to save a binary file could look like this:
     sta         closeRef          ; and close
 
     jsr         MLI
-    .byte       SET_EOF           ; if overwriting and file was larger than what will be written,
+    .byte       SETEOF_CALL       ; if overwriting and file was larger than what will be written,
     .word       eofParam          ; the write does not truncate. So set to 0 length before writing
     bcs         error             ; making sure the end result has the actual, shorter, length
 
