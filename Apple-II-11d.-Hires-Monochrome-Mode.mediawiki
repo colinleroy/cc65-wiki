@@ -1,0 +1,299 @@
+__NOTOC__
+About the Apple II Hires Graphics: The Apple II has no ''soft switch'' to select color or monochrome. On the Apple II, this is all about how the monitor chooses to interpret the video signal.
+
+When the Apple II is connected to a monochrome monitor, or when you are programming in Hires and don’t consider color, it can be convenient to think of this as a Hires monochrome mode with a resolution of 280 horizontal pixel and 192 vertical pixels.
+
+The Apple II hires graphics seem a little strange initially, mostly for 3 reasons:<br />
+* the hires buffer is not sequential
+* every byte has 7 visible pixels (bits 0 through 6). The most significant bit (also called the msb, bit 7) is used, but for controlling color.
+* the pixels are drawn left to right, from the least significant bit to the bit before the msb.
+
+None of this is particularly problematic, once you get used to it.<br /><br />
+
+Also remember that you may have to exclude the HGR Page or Pages you use from the memory map using the cl65 linker configuration files. See [https://github.com/cc65/wiki/wiki/Apple-II-11a.-Text-Mode#exclude Note] for more information. You can use address 0x6000 to start after the HGR pages. If only one HGR page is needed, you can of course use the one at $4000-$6000 leaving quite a bit of memory between $0803 and $4000.
+
+== Turn Hires mode on and off ==
+
+The defines used here are in <code>apple2.inc</code>.
+
+To turn on a hires page, you can use this sequence:
+
+<pre>
+    bit     TXTCLR ; Display Graphics, Text Off
+    bit     MIXCLR ; Turn off the bottom 4 lines of text
+    bit     HISCR  ; Page2, use LOWSCR for Page1
+    bit     HIRES  ; Hires Graphics
+</pre>
+To turn it off again, you can use this sequence:
+
+<pre>
+    bit     TXTSET ; Turn on text, Graphics off
+    bit     LOWSCR ; Set memory to Page1
+</pre>
+== Access a line and column in HGR (non-linear memory) ==
+
+Similar to how it was done for the text mode, a table can be used to find the memory that starts every display line (row) of a hires screen. The following two memory blocks define the low and hi bytes that represent the start of every of the 192 screen rows.<br />Notice the >$0000 - this can be $2000 or $4000, or, if both are being used, left as $0000 and updated when used. The example later will make this clear.
+
+<pre>
+rowL:
+    .repeat $C0, Row
+        .byte   Row & $08 << 4 | Row & $C0 >> 1 | Row & $C0 >> 3
+    .endrep
+rowH:
+    .repeat $C0, Row
+        .byte   >$0000 | Row & $07 << 2 | Row & $30 >> 4
+    .endrep
+</pre>
+== Define a character (k, as an example), backwards and using at most 7 bits/pixels ==
+
+The following illustrates the definition of 6 bytes that when drawn on-screen will look like a lowercase k, but are stored in memory as a backwards lowercase k. This is a monochrome character. You would use the same layout to define all graphics (backwards for how it’s displayed).
+
+<pre>
+letterk:
+; the bitmask     memory    screen
+.byte %00000100 ; -----X--  --X-----
+.byte ‭%00010100‬ ; ---X-X--  --X-X---
+.byte %0000‭1100‬ ; ----XX--  --XX----
+.byte %0000‭1100‬ ; ----XX--  --XX----
+.byte ‭%00010100‬ ; ---X-X--  --X-X---
+.byte %‭00100100‬ ; --X--X--  --X--X--
+</pre>
+== Assembly language sample showing pixel access ==
+
+Using the column and line access blocks above, it becomes quite easy to access a column of pixels, and therefor an individual pixel on-screen. The individual pixels are set by setting bits in a byte. To this end, here’s an example program that bounces a pixel around the screen in the classic “bouncing ball” example.
+
+You can easily test this by pasting the code into the mygame/src/apple2 folder as something like main.asm (just make sure it’s the only source file there). Also change the Makefile line <code>$(NAME).apple2: LDFLAGS +=</code> to read <code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib -C apple2-asm.cfg</code>. In this case, there’s so little code that it’s not neccesary to change the start address. This code easily fits into the space from $0803 to $2000, before HGR Page 1.
+
+<pre>
+.include "apple2.inc"
+
+.segment "DATA"
+HGR1    = $2000 ; HiRes Page 1
+HGR2    = $4000 ; HiRes Page 2
+MLI     = $BF00 ; ProDOS API for Quit
+
+BALLX   = $50   ; ball X position 0 - 255 (Y pos is in y register)
+DIRX    = $51   ; x travel direction, 1 or -1
+DIRY    = $52   ; y travel direction, 1 or -1
+DELAY   = $53   ; additional delay variable, make pixel movement visible
+XTAB    = 2     ; because the screen is 280 wide, but I want to work in 
+                ; bytes, I want an x of 0-256.  So, I "tab" the left side.
+                ; This is added to rowL to offset all row starts
+                ; by XTAB columns (XTAB* 7 for pixels)
+
+; Build a lookup table for the start of every screen row
+rowL:
+    .repeat $C0, Row
+        .byte   XTAB + Row & $08 << 4 | Row & $C0 >> 1 | Row & $C0 >> 3
+    .endrep
+
+rowH:
+    .repeat $C0, Row
+        .byte   >$0000 | Row & $07 << 2 | Row & $30 >> 4
+    .endrep
+
+; The following two lookup tables take quite a bit of RAM but make the code
+; very simple and fast.
+
+; Build a lookup table for the column, given 7 pixels per column
+div7:
+    .repeat $100, Col
+        .byte Col / 7
+    .endrep
+
+; Build a lookup table for the column "poke".  This will find the bit to
+; set to light up a pixel in the column.  If x is 0, it sets bit 0, which
+; is leftmost.  If x is 1, set bit 1, which is second left most, etc.
+; It's the modulo of x with 7 so 0 to 6 for all 256 possible values of x
+mod7pix:
+    .repeat $100, Col
+        .byte 1 << (Col .MOD 7)
+    .endrep
+
+; Code starts here
+.segment "CODE"
+
+    bit     KBDSTRB         ; clear the keyboard
+    jsr     clearScreens    ; erase the screens (Page1 and Page2)
+    lda     #0
+    sta     BALLX           ; Init the ball x to 0
+    tay                     ; Init the ball y to 0 (always in y register)
+    sta     DELAY           ; Init the delay counter to 0 
+    lda     #1
+    sta     DIRX            ; Set the initial direction in x to +1
+    sta     DIRY            ; Set the initial direction in y to +1
+
+    bit     TXTCLR          ; Turn off text, turn on Graphics
+    bit     MIXCLR          ; Turn off the bottom 4 lines of text
+    bit     LOWSCR          ; Activate Page1.  Use HISCR for Page2 but see page: init
+    bit     HIRES           ; Turn on Hires mode
+
+loop:
+    jsr     togglePixel     ; Turn the ball pixel on
+    lda     KBD             ; see if a key is pressed
+    asl                     ; shift "pressed" bit to carry
+    bcc     :+              ; if carry clear, no key
+    jmp     done            ; key was pressed, done with program
+:
+    ldx     #$10            ; outer delay counter in x  (lower down to $1 = faster)
+:
+    dec     DELAY           ; decrement the delay counter
+    bne     :-              ; and keep doing till it is 0
+    dex                     ; decrement the x outer delay
+    bne     :-              ; and keep doing till it is also 0
+    jsr     togglePixel     ; turn off the ball pixel (Comment out for a much cooler effect!)
+    jsr     movePixel       ; move the ball
+    jmp     loop            ; and keep doing
+
+done:
+    bit     TXTSET          ; turn text mode back on
+    bit     LOWSCR          ; Page1 memory active
+    bit     KBDSTRB         ; clear the key that was pressed
+    jsr     MLI             ; Call the ProDOS API to quit this app
+    .byte   $65             ; Quit
+    .addr   * + 2           ; Parameter block follows this address
+    .byte   4               ; 4 parameters
+    .byte   0               ; all 4 are 0 (reserved)
+    .word   0000
+    .byte   0
+    .word   0000
+
+.proc clearScreens
+
+    lda #0                  ; 0 is all pixels off
+    tax                     ; start the index at 0
+:
+    .repeat $20, B          ; $20 * $100 = $2000 - one whole HGR buffer
+        sta HGR1+(B*256), x ; write 0's to Page1
+        sta HGR2+(B*256), x ; and to Page2
+    .endrep
+
+    dex                     ; do for all 256 
+    beq done                ; when x is 0 again, done
+    jmp :-                  ; must jump, too far for a branch
+
+done:
+    rts                     ; return to caller
+
+.endproc 
+
+.proc togglePixel
+
+    ldx     BALLX           ; get the ball position
+    lda     div7, x         ; get the column
+    clc                     ; clear carry for addition
+    adc     rowL, y         ; add the low row
+    sta     setPixelCol + 1 ; set the eor low
+    sta     setPixelCol + 4 ; set the sta low
+    lda     page            ; get the hi byte (HGR $20xx or $40xx)
+    adc     rowH, y         ; and add the row hi
+    sta     setPixelCol + 2 ; set the eor hi
+    sta     setPixelCol + 5 ; set the sta hi
+
+    lda     mod7pix, x      ; get the value to set the pixel, given x
+
+setPixelCol:
+    eor     $ffff           ; invert the pixel current state
+    sta     $ffff           ; and save the new state
+    
+    rts                     ; return to caller
+
+.endproc 
+
+.proc movePixel
+
+    tya                     ; get the row into accumulator
+    clc                     ; clear carry for addition
+    adc     DIRY            ; add the direction (1 or -1, i.e. 1 or $ff)
+    tay                     ; set back in y
+    beq     flipY           ; if 0 now, flip direction
+    cpy     #$BF            ; compare to 191 (last row)
+    bne     doX             ; if not 191, don't flip direction 
+
+flipY:
+    lda     DIRY            ; get the direction
+    eor     #%11111110      ; flip all the bits but bit 0 i.e. 1->$ff->1
+    sta     DIRY            ; and save the direction
+
+doX:                        ; repeat for x
+    clc 
+    lda     BALLX 
+    adc     DIRX
+    sta     BALLX
+    beq     flipX
+    cmp     #$FF            ; but flip x at $0 and $ff
+    bne     done
+
+flipX:
+    lda     DIRX
+    eor     #%11111110
+    sta     DIRX 
+
+done:
+    rts                     ; return to caller
+
+.endproc 
+
+.segment "DATA"
+page:       .byte >HGR1       ; assumes LOWSCR (Page1, i.e. $20).  Make >HGR2 ($40) for HISCR
+</pre>
+== “C” example showing pixel access ==
+
+Here’s the same program as in 10.4.4, but this one uses the Mixed Hires mode (280x160 with 4 lines of text) and uses the conio print function to show some stats about the ball.
+
+<pre>
+#include <conio.h>
+#include <string.h>
+#include <peekpoke.h>
+                                            
+#define SCREEN_HEIGHT   (192 - (4 * 8))         /* 24 * 8 - the 4 text lines for MIXSET               */
+unsigned char *row[SCREEN_HEIGHT];              /* Holds the HGR row start memory locations           */
+
+void screenSetup(void)
+{
+    unsigned char y;
+
+    for(y=0 ; y < SCREEN_HEIGHT ; y++)          /* Calculate the row start positions                  */
+        row[y] = (unsigned char *)(0x2000 + (y / 64) * 0x28 + (y % 8) * 0x400 + ((y / 8) & 7 ) * 0x80);
+
+    POKE(0xC050, 0);                            /* Display Graphics                                   */
+    POKE(0xC054, 0);                            /* LOWSCR - Page 1                                    */
+    POKE(0xC053, 0);                            /* MIXSET - Enable 4 lines of text                    */
+    POKE(0xC057, 0);                            /* HIRES - 280x192 Mono or 140x192 col                */
+}
+
+void main(void)
+{
+    unsigned char column, pixel;                /* runtime calculated                                */
+    unsigned int  ballx = 0;                    /* ball x needs more than 255                         */
+    unsigned char bally = 0;                    /* ball y is 0 - 191, max                             */
+    signed char   dx = 1, dy = 1;               /* 1 or -1 depending on direction                     */
+
+    screenSetup();                              /* Calc row start and enter HIRES                     */
+    memset((unsigned char *)0x2000, 0, 0x2000); /* Clear HGR Page 1                                   */
+    clrscr();                                   /* clear text page 1 using conio                      */
+    while(!kbhit())
+    {
+        ballx += dx;                            /* move the ball                                      */
+        bally += dy;
+        if(ballx == 0 || ballx == 279)          /* flip direction at edges                            */
+            dx = -dx;
+        if(bally == 0 || bally == SCREEN_HEIGHT - 1)
+            dy = -dy;
+        
+        column = ballx / 7;                     /* calculate column                                   */
+        pixel = 1 << (ballx % 7);               /* calculate pixel in column                          */
+                                                /* XOR pixel ON                                       */
+        *(unsigned char *)(row[bally] + column) ^= pixel;
+        gotoxy(0,20);                           /* display some stats in TXT rows                     */
+        cprintf("Ball: X=%3d y=%3d col=%2d val=%02X", ballx, bally, column, pixel);
+                                                /* XOR pixel OFF                                      */
+        *(unsigned char *)(row[bally] + column) ^= pixel;
+    }
+    POKE(0xC051, 0);                            /* Display Text (Hires off)                           */
+    cgetc();                                    /* consume the key that was pressed                   */
+}
+</pre>
+Un-comment the gotoxy and cprintf lines for much more speed, and un-comment the second XOR line (<code>^=</code>) to leave a nice pattern on screen. If you look at this pattern on a color display, you will also see something about how the Apple II does color, as covered in the next section. If you also change the code so that SCREEN_HEIGHT is 192 and POKE(0xC053, 0) is changed to POKE(0xC052, 0) - MIXCLR instead of MIXSET, then you will see a full-screen pattern that looks a little different than the 1st one.
+
+=== [https://github.com/cc65/wiki/wiki/Apple-II-11e.-Hires-Color-Mode Next: 11e. Hires Color Mode] ===
