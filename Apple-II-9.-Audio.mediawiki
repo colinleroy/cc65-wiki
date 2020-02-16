@@ -1,0 +1,13 @@
+== 9. Apple II Audio ==
+
+To make a sound, one simply needs to access location $C030, to toggle the Speaker.
+
+In the spkr example program previously given, the <code>SPEAKER</code> ($C030) port is accessed every time a Zero Page counter reaches zero, and that produced that specific hum, or frequency, infinitely long (till a key is pressed).
+
+To make a specific sound, a specific frequency held for a particular duration, the access to $C030 needs to be repeated a specific number of times, and with specific delay between each access. Since there are normally no interrupts on the Apple II, allowing for easy timing, you have to resort to “cycle counting” to get clear audio.
+
+See https://www.xtof.info/blog/?p=807 for sample code and quite a bit of information on Apple II Music, incl. frequency timing. The author of those pages has told me the cycle counting on the pages are quite naive and that there are ROM routines to help. I still found the play routine useful and have used it to produce music in a game - it’s just up to the game to call the routine at a predictable cadence.
+
+See https://github.com/oliverschmidt/Play-BTc for a code example of digitized audio (the latter also has a dsk file that can be run in an emulator and the code shows the exact machine cycle counting required).
+
+=== [https://github.com/cc65/wiki/wiki/Apple-II-10.-Apple-II-File-IO-with-ProDOS Next: 10. File I/O with ProDOS] ===
