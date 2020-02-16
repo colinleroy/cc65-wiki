@@ -76,7 +76,7 @@ This example uses a “sprite” to illustrate color hires. This sprite is a 4 b
 
 When running the program, a help message will show in the 4 text lines at the bottom that says how the user can change the program behavior and color. In short, B changes the ball color, F the fill or background color, H toggles the fill msb, J toggles the ball msb and V shows how the drawing happens by always clearing the fill to black (all zero’s).
 
-Also change the start address to $6003 by changing the line <code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib</code> in the Makefile to </code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib –start-addr 0x6003</code>
+Also change the start address to $6000 by changing the line <code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib</code> in the Makefile to <code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib –start-addr 0x6000</code>
 
 <pre>
 #include <conio.h>
