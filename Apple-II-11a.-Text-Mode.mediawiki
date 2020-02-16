@@ -38,7 +38,7 @@ To use the row (or rowL/H), look up the line start by the Y position. Add the X 
 Note: 
 * cc65 will, by default, place Apple II program in the Page 2 memory (at $0803). 
 * If you want to use Page 2, you can either tell cl65 to use a new start address with the <code>--start-addr</code> option, or you can add a .cfg file to src/apple2 in which you override the start address. Use an address past Page 2’s end. I used $0C00 and that worked great. 
-* To use the <code>--start-addr</code> with the Makefile, refer to [https://github.com/StewBC/apple2-getting-started/wiki/5.-Using-make-and-Makefiles-for-a-great-workflow#ldflags LDFLAGS]. Change the <code>LDFLAGS</code> line to read like like this for a start address of $0C00 with an all assembly code program: <code> $(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib --start-addr 0x0C00</code><br />or, for a “C” program, the following (the previous will work but some of it is redundant):<code> $(NAME).apple2: LDFLAGS += --start-addr 0x0C00</code>
+* To use the <code>--start-addr</code> with the Makefile, refer to [https://github.com/cc65/wiki/wiki/Apple-II-5.-Using-make-and-Makefiles-for-a-great-workflow#ldflags LDFLAGS]. Change the <code>LDFLAGS</code> line to read like like this for a start address of $0C00 with an all assembly code program: <code> $(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib --start-addr 0x0C00</code><br />or, for a “C” program, the following (the previous will work but some of it is redundant):<code> $(NAME).apple2: LDFLAGS += --start-addr 0x0C00</code>
 * Remember to adjust the row definition (rowH for assembly) from $400 to $800 for Page 2, or add the high-byte on-the-fly if both pages are being used.
 </blockquote>
 
