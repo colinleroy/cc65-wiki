@@ -60,10 +60,10 @@ REMOVES += $(DSK)
 dsk: $(DSK)
 
 $(DSK): $(NAME).apple2
-    $(call CP, apple2/template.dsk $@)
-    java -jar $(AC) -p  $@ $(NAME).system sys < $(shell cl65 --print-target-path)/apple2/util/loader.system
-    java -jar $(AC) -as $@ $(NAME)        bin < $(NAME).apple2
-    </pre>
+	$(call CP, apple2/template.dsk $@)
+	java -jar $(AC) -p  $@ $(NAME).system sys < $(shell cl65 --print-target-path)/apple2/util/loader.system
+	java -jar $(AC) -as $@ $(NAME)        bin < $(NAME).apple2
+</pre>
 For this makefile to work, you will need AppleCommander installed and unless you have it in mygame as ac.jar, you will need to do either a or b below:<br/>
 a) Edit Makefile-dsk.mk and replace ac.jar in the line AC ?= ac.jar with the full path to AppleCommander<br/>
 b) Set an environment variable so that the java command will find AppleCommander. Use the following to set the environment variable for whatever shell you are using:<br/>
