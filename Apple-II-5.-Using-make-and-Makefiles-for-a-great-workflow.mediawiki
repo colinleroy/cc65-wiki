@@ -76,7 +76,7 @@ b) Set an environment variable so that the java command will find AppleCommander
     bash (Unix or MacOS terminal):
     export AC="path to AppleCommander.jar"
 </pre>
-<blockquote>The “path to AppleCommander.jar” is where you put it - something like “/home/me/apps/java/ac.jar” or “c:-win64-1.5.0.jar” or whatever (made up paths, not suggestions). The point is, its the path and the .jar file name, not just the path.
+<blockquote>The “path to AppleCommander.jar” is where you put it - something like “/home/me/apps/java/ac.jar” or “c:\dev\extra\apple2\AppleCommander-win64-1.5.0.jar” or whatever (made up paths, not suggestions). The point is, its the path and the .jar file name, not just the path.
 </blockquote>
 This <code>Makefile</code>and <code>Makefile-dsk.mk</code> combo of files, along with <code>apple2/template.dsk</code>, can now be dropped in any folder and can make an apple2 executable and disk. The executable will be the folder name, with .apple2 added as an extension (in this case mygame.apple2). The disk will be the folder name with .dsk added as the extension (i.e. mygame.dsk). Very convenient!
 
