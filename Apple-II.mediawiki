@@ -9,6 +9,9 @@ The Apple II family is supported by cc65 through the two targets
 ** Lowercase chars (only the latter can display inverse lc)
 ** Keyboard (only the latter has up/down keys)
 
+== Getting Started ==
+There's a tutorial style introduction to working with the Apple II [https://github.com/cc65/wiki/wiki/Apple-II-Getting-Started here].
+
 == Tools ==
 
 * [[LOADER.SYSTEM]]
