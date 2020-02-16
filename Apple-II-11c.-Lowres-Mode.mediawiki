@@ -1,0 +1,27 @@
+Lowres Mode has a resolution of 40 cols by 48 rows, in 16 colors.
+
+Lowres mode is the same as text mode in many ways, except you don’t see characters but rather block pixels in 16 colors. Each ''character cell'' is divided in 2, top and bottom, giving 48 rows, instead of the 24 which are available in text mode. Access to the cells are exactly the same as in text, but setting the top pixel is done by using the lower nibble, values 0-15, and setting the bottom pixel is done by using the high nibble, values (0-15) <code><< 4</code>, i.e. 16 and up in steps of 16.
+
+To turn on Lores mode, access <code>LORES</code> ($C056). To set any pixel in X (0-40) and Y (0-48) in C using the const int [https://github.com/cc65/wiki/wiki/Apple-II-11a.-Text-Mode#rows row definition], you could use something like this:
+
+<pre>
+    unsigned char cell, top, bottom;
+
+    /* get the current cell, both top and bottom pixels */
+    cell = *(char*)(row[y/2] + x);
+
+    /* extract the two pixel colors into top and bottom */
+    top = cell & 15;
+    bottom = cell & (15 << 4);
+
+    /* bottom rows are odd numbered, so set the appropriate pixel */
+    if(y & 1) 
+        bottom = color << 4;
+    else 
+        top = color;
+
+    /* combine the pixels back into the cell */
+    *(char*)(row[y/2]+x) = top | bottom;
+</pre>
+
+=== [https://github.com/cc65/wiki/wiki/Apple-II-11d.-Hires-Monochrome-Mode Next: 11d. Hires Monochrome Mode] ===
