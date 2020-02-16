@@ -13,4 +13,4 @@ Quite a few of the Apple II “ports” are triggered by simply accessing a memo
 
 To reset the keyboard, one can simply access location $C010. Whether it’s a load, store or bit instruction, accessing KBDSTRB will clear the keyboard.
 
-=== [https://github.com/cc65/wiki/wiki/Apple-II-8.-The-Keyboard Next: 8. The Keyboard] ===
+=== [https://github.com/cc65/wiki/wiki/Apple-II-8.-Keyboard Next: 8. The Keyboard] ===
