@@ -6,4 +6,4 @@ It is often very handy to be able to use a simple text display to convey informa
 </blockquote>
 Using this mode is very simple. Simply touch <code>MIXSET</code> ($C053) to enable the last 4 lines as text, and touch <code>MIXCLR</code> ($C052) to disable the 4 lines for full-screen graphics.
 
-=== [https://github.com/cc65/wiki/wiki/Apple-II-11c.-Apple-II-Lowres-Mode Next: 11c. Lowres Mode] ===
+=== [https://github.com/cc65/wiki/wiki/Apple-II-11c.Lowres-Mode Next: 11c. Lowres Mode] ===
