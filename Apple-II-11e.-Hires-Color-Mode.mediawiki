@@ -1,0 +1,435 @@
+The Hires Color display mode has an effective resolution of 140 horizontal pixels, 192 vertical pixels and there are up to 6 colors.
+
+Building on the hires mode discussed so far, the 280 x 192 mode, it is possible to do color in the same mode, but to use 2 bits per pixel resulting in an effective resolution of 140 x 192, with 6 colors. You would expect 4 colors with 2 bits per pixel (bpp) but the msb of every byte ''shifts'' 2 of the colors. There is also a good discussion of this mode here: https://www.xtof.info/blog/?p=768
+
+Practically speaking, the colors are done as bit pairs with the bits having the following meaning:<br />
+* 00 - black
+* 01 - green or orange
+* 10 - violet (purple) or blue
+* 11 - white
+
+As stated, the green/orange and violet/blue “choice” is made through the setting of the MSB of the byte in which they occur.
+
+Since the physical screen the graphics are being displayed on didn’t change size, but the horizontal resolution halved, it means that each pixel is now twice as wide as it was when everything was monochrome.
+
+There is an issue if each pixel is 2 bits wide. With bit 7 (MSB) not used as a pixel bit, it leaves 7 bits per byte. 7 doesn’t divide by 2, but it takes 2 bits to define a color pixel. What this means is that one of the pixels spans the two bytes, with one of its bits in each of the bytes.
+
+Rendering the following 2 bytes consecutively (the 2nd line is there just to identify the bits)
+
+<pre>
+01010101 00101010
+01234567 89abcdef
+</pre>
+results in an on-screen representation of, and the Apple II seeing the bits, in this order (remember right to left and the MSB is not a pixel):
+
+<pre>
+10101010101010
+7654321fedcba9
+</pre>
+Notice that the pattern is an alternating 10. But if you put the source bytes below one-another you see
+
+<pre>
+01010101
+00101010
+</pre>
+The source bytes, for the 7 pixel bits, are not the same due to the fact that 7 doesn’t divide by 2, as mentioned above. The second byte is shifted 1 to the right (ignoring the MSB). This means you do need to consider the byte you are writing, and what came before. Aligning graphics on boundaries is useful, and then you can consider whether you are on an odd or even byte to know what the “shift” needs to be, or have pre-shifted graphics for odd/even columns.
+<br /><br />
+Look at these definitions - 2 bytes wide producing 7 (double-wide) on screen pixels per 2 bytes:
+
+<pre>
+.byte %00000000, %00000000 ; black
+.byte %10000000, %10000000 ; same black
+
+.byte %01111111, %01111111 ; white
+.byte %11111111, %11111111 ; same white
+</pre>
+In black and in white, the MSB has no effect.
+
+<pre>
+.byte %01010101, %00101010 ; violet
+.byte %11010101, %10101010 ; blue
+
+.byte %00101010, %01010101 ; green
+.byte %10101010, %11010101 ; orange
+</pre>
+Notice how orange and blue are the same as green and violet, except that the MSB is set.
+
+If you were to render the following bytes (violet followed by green)
+
+<pre>
+01010101 00101010 00101010 01010101 
+01234567 89abcdef ghijklmn opqrstuv
+</pre>
+you would expect violet and green lines next to one-another. What you have instead is violet, black, and then green. That happens because when rendering, these bit pairs are rendered as
+
+<pre>
+10 10 10 10 10 10 10 01 01 01 01 01 01 01
+76 54 32 1f ed cb a9 nm lk ji hv ut sr qp 
+</pre>
+Right in the middle where violet meets green, you see two 0’s next to one-another (<code>9n</code>). Even though they are from different pairs, that’s not what the Apple hardware sees. The hardware sees this simply as a stream of 0s and 1s and when a 0 is followed by a 0, black is produced. What it sees are alternating bits for color, then a pair of zeros for black and then more alternating pairs for color. The upshot of all of that is that you cannot have violet next to green or orange, without a black in between. The same happens when you have two 1’s next to one-another, even from different pixel-pairs. You end up with White.
+<br /><br />
+Also note that the MSB controls the color shift for a whole byte. This means you cannot have violet and blue in the same byte, or orange and green in the same byte either.
+
+== Color bouncing ball example ==
+
+This example uses a “sprite” to illustrate color hires. This sprite is a 4 byte wide by 9 rows high image of a ball, in color. The program uses double-buffering to ensure smooth animations. What that means is that the ball is drawn to a Hires page that’s not visible and only when it’s fully drawn is that page made visible, i.e. the visible page is made invisible and the newly drawn ball page is made visible. The old ball (now invisible) is erased and a new ball is drawn to the invisible page, and the process repeats.
+
+When running the program, a help message will show in the 4 text lines at the bottom that says how the user can change the program behavior and color. In short, B changes the ball color, F the fill or background color, H toggles the fill msb, J toggles the ball msb and V shows how the drawing happens by always clearing the fill to black (all zero’s).
+
+Also change the start address to $6003 by changing the line <code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib</code> in the Makefile to </code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib –start-addr 0x6003</code>
+
+<pre>
+#include <conio.h>
+#include <string.h>
+#include <peekpoke.h>
+                                            
+#define TXTCLR              0xC050      /* Display graphics                                           */
+#define TXTSET              0xC051      /* Display text                                               */
+#define MIXCLR              0xC052      /* Disable 4 lines of text                                    */
+#define MIXSET              0xC053      /* Enable 4 lines of text                                     */
+#define LOWSCR              0xC054      /* Page 1                                                     */
+#define HISCR               0xC055      /* Page 2                                                     */
+#define LORES               0xC056      /* Lores graphics                                             */
+#define HIRES               0xC057      /* Hires graphics                                             */
+
+#define PAGE1MEM            0x2000      /* HGR Page 1 memory address                                  */
+#define PAGE2MEM            0x4000      /* HGR Page 2 memory address                                  */
+#define PAGE_SIZE           0x2000      /* Byte size of an HGR memory Page                            */
+
+#define SCREEN_HEIGHT       192         /* Pixels vertical                                            */
+#define COLOR_WIDTH         140         /* Pixels horizontal (2 bpp)                                  */
+#define BALL_WIDTH          5           /* Ball pixel width (2 bpp)                                   */
+#define BALL_HEIGHT         9           /* Ball pixel height                                          */
+#define SPRITE_WIDTH_BYTES  4           /* Ball sprite is 4 bytes wide                                */
+#define NUM_ANIMS           8           /* Ball has 8 frames of animation (0-7)                       */
+
+int row[SCREEN_HEIGHT];                 /* Holds the HGR row start memory locations                   */
+int page;                               /* 0x2000 or 0x4000 depending on which page is being drawn to */
+unsigned char bHiBit = 0;               /* 0x00 or 0x80 when msb needs to be clear or set             */
+unsigned char fHiBit = 0;               /* 0x00 or 0x80 when msb needs to be clear or set             */
+char *ballOptions = "CD ";              /* Draw 10, 01 or 00 into sprite mem based in string pattern  */
+char *fillOptions = "ab ";              /* Draw 10, 01 or 00 into mem based in string pattern         */
+char ballO = 0;                         /* ballOption index (0-2) which is active                     */
+char fillO = 1;                         /* fillOption index (0-2) which is active                     */
+char viewDrawing = 0;                   /* =1 means always fill back buffer with 0 so blit is visible */
+
+typedef struct _animStruct              /* struct to describe an animation frame                      */
+{
+    char *string;                       /* String that represents the frame                           */
+    unsigned char *data;                /* index to data "baked" from string data                     */
+} AnimStruct;
+
+AnimStruct anims[NUM_ANIMS] =           /* Ball Animations                                            */
+{
+    {
+        "abCDCDCDabababababababababab"  /* ab CD CD CD ab  This ball is 5 2-bit pixels wide           */
+        "abCDCDCDabababababababababab"  /* ab CD CD CD ab  CD is the ball color                       */
+        "CDCDCDCDCDababababababababab"  /* CD CD CD CD CD  XX is the "line" color                     */
+        "XXXXXXCDCDababababababababab"  /* XX XX XX CD CD  ab is the background fill color            */
+        "XXXXXXCDCDababababababababab"  /* XX XX XX CD CD                                             */
+        "CDCDCDCDCDababababababababab"  /* CD CD CD CD CD  Either a, b or neither will be 1 and the   */
+        "CDCDCDCDCDababababababababab"  /* CD CD CD CD CD  same goes for CD.  X is always 1           */
+        "abCDCDCDabababababababababab"  /* ab CD CD CD ab                                             */
+        "abCDCDCDabababababababababab", /* ab CD CD CD ab                                             */
+        NULL
+    },
+    { 
+        "ababXXCDCDababababababababab"  /* Ball rotated by about 51.4 degrees ;) and moved 1 color    */
+        "ababXXCDCDababababababababab"  /* pixel over (2 bits).  360 / 7 = 51.4                       */
+        "abCDXXCDCDCDabababababababab"
+        "abCDCDXXCDCDabababababababab"
+        "abCDCDXXCDCDabababababababab"
+        "abCDCDCDCDCDabababababababab"
+        "abCDCDCDCDCDabababababababab"
+        "ababCDCDCDababababababababab"
+        "ababCDCDCDababababababababab",
+        NULL
+    },
+    { 
+        "abababCDCDXXabababababababab"  /* abababC DCDXXab  Notice that the left and right byte       */
+        "abababCDCDXXabababababababab"  /* abababC DCDXXab  slices one of the pixels in half.         */
+        "ababCDCDCDXXCDababababababab"  /* ababCDC DCDXXCD  If the right byte is rendered at an odd   */
+        "ababCDCDXXCDCDababababababab"  /* ababCDC DXXCDCD  col (counting from 0), all is well but    */
+        "ababCDCDXXCDCDababababababab"  /* ababCDC DXXCDCD  if it is rendered at an even col, the 1st */
+        "ababCDCDCDCDCDababababababab"  /* ababCDC DCDCDCD  pixel becomes DC instead of CD, so it     */
+        "ababCDCDCDCDCDababababababab"  /* ababCDC DCDCDCD  will have a color change which is wrong.  */
+        "abababCDCDCDabababababababab"  /* abababC DCDCDab  This means the whole line of 4 bytes must */
+        "abababCDCDCDabababababababab", /* abababC DCDCDab  always be drawn to an even nubered column */
+        NULL
+    },
+    {
+        "ababababCDCDCDababababababab"
+        "ababababCDCDCDababababababab"
+        "abababCDCDCDCDXXabababababab"
+        "abababCDCDCDCDXXabababababab"
+        "abababCDCDCDXXCDabababababab"
+        "abababCDCDCDXXCDabababababab"
+        "abababCDCDCDCDCDabababababab"
+        "ababababCDCDCDababababababab"
+        "ababababCDCDCDababababababab",
+        NULL
+    },
+    {
+        "abababababCDCDCDabababababab"
+        "abababababCDCDCDabababababab"
+        "ababababCDCDCDCDCDababababab"
+        "ababababCDCDCDXXCDababababab"
+        "ababababCDCDCDXXCDababababab"
+        "ababababCDCDCDCDXXababababab"
+        "ababababCDCDCDCDXXababababab"
+        "abababababCDCDCDabababababab"
+        "abababababCDCDCDabababababab",
+        NULL
+    },
+    {
+        "ababababababCDCDCDababababab"
+        "ababababababCDCDCDababababab"
+        "abababababCDCDCDCDCDabababab"
+        "abababababCDCDCDCDCDabababab"
+        "abababababCDCDXXCDCDabababab"
+        "abababababCDCDXXCDCDabababab"
+        "abababababCDCDCDXXCDabababab"
+        "ababababababCDCDXXababababab"
+        "ababababababCDCDXXababababab",
+        NULL
+    },
+    {
+        "abababababababCDCDCDabababab"  /* This frame is at even col + 0, 1, 2, 3 bytes               */
+        "abababababababCDCDCDabababab"  /* The ball is in bytes 1, 2, & 3 but the next                */
+        "ababababababCDCDCDCDCDababab"  /* ball will be at frame 0, so col + 2, + 0, 1, 2, 3          */
+        "ababababababCDCDCDCDCDababab"  /* In bits, let's say this is 0-6 7-13 14-20 21-27            */
+        "ababababababCDCDXXCDCDababab"  /* and the next frame (0) to roll the ball along by 1         */
+        "ababababababCDCDXXCDCDababab"  /* will be drawn to bits 14-20 and 21-27.  So frame 6         */
+        "ababababababCDXXCDCDCDababab"  /* at byte cols 0-3 and then frame 0 at byte cols             */
+        "abababababababXXCDCDabababab"  /* 2-5 (with the 2 right bytes being 0. Frame 0 ball actually */
+        "abababababababXXCDCDabababab", /* fits in 2 bytes (2 & 3).                                   */
+        NULL
+    },
+    {
+        "abababababababababababababab"  /* A blank frame for erasing the ball                         */
+        "abababababababababababababab" 
+        "abababababababababababababab" 
+        "abababababababababababababab" 
+        "abababababababababababababab" 
+        "abababababababababababababab" 
+        "abababababababababababababab" 
+        "abababababababababababababab" 
+        "abababababababababababababab", 
+        NULL
+    }
+};
+
+                                        /* Memory area to hold baked ball anim data                   */
+unsigned char animData[NUM_ANIMS * SPRITE_WIDTH_BYTES * BALL_HEIGHT];
+
+                                        /* Fill dest with two alternating bytes, a and b              */
+void memset16(unsigned char *dest, unsigned char a, unsigned char b, unsigned int size )
+{
+    unsigned char *e = dest + size - 1;
+
+    while(dest < e)                     /* Do 2 bytes at a time                                       */
+    {
+        *dest++ = a;
+        *dest++ = b;
+    }
+    if(size & 1)                        /* If odd number of bytes, put a in last byte                 */
+        *dest++ = a;
+}
+
+                                        /* Fill the screen with bit patterns as selected              */
+void fillScreen(void)
+{
+    POKE(MIXSET, 0);                    /* Enable 4 lines of text to show help and "Working"          */
+    POKE(LOWSCR, 0);                    /* Set Page 2 "On"                                            */
+
+    switch(fillOptions[fillO])          /* select a path based on the current fill option             */
+    {
+                                        /* 0x55 == %01010101 and 0x2a = %00101010 which join
+    to make (ignoring high bits) (0x552a) 10101010101010 or (0x2a55) 01010101010101                   */
+        case 'a':
+            memset16((unsigned char*)PAGE1MEM, 0x55 | fHiBit, 0x2a | fHiBit, PAGE_SIZE);
+            memset16((unsigned char*)PAGE2MEM, 0x55 | fHiBit, 0x2a | fHiBit, PAGE_SIZE);
+            break;
+
+        case 'b':
+            memset16((unsigned char*)PAGE1MEM, 0x2a | fHiBit, 0x55 | fHiBit, PAGE_SIZE);
+            memset16((unsigned char*)PAGE2MEM, 0x2a | fHiBit, 0x55 | fHiBit, PAGE_SIZE);
+            break;
+
+        case ' ':
+            memset((unsigned char*)PAGE1MEM, 0 | fHiBit, PAGE_SIZE);
+            memset((unsigned char*)PAGE2MEM, 0 | fHiBit, PAGE_SIZE);
+            break;
+    }
+    POKE(MIXCLR, 0);                    /* Disable 4 lines of text.  All graphics                      */
+}
+
+                                        /* This code or some way to make the graphics data will
+    normally not run on the Apple II but will have been run somewhere else and the resultant binary
+    data "blob" (usually a .bin file) will be included using the .incbin command                      */
+void makeAnimation(void)
+{
+    char *src;                          /* Points at string data to bake                              */
+    unsigned char i;                    /* index into anims array                                     */
+    unsigned char *dst = animData;      /* Points into animData as dest for baked bytes               */
+    unsigned char bits = 0, shift = 0;  /* Helpers to turn string data into baked bytes               */
+
+    POKE(MIXSET, 0);                    /* Enable 4 lines of text.  Show help and "Working"           */
+    POKE(LOWSCR, 0);                    /* Set Page 2 "On"                                            */
+
+    for(i = 0; i < NUM_ANIMS ; i++)     /* For all animation                                          */
+    {
+
+        src = anims[i].string;          /* work with the string for this anim                         */
+        anims[i].data = dst;            /* point the data into the animData array where it's baked    */
+
+        do
+        {
+            char thisBit = *src;        /* Extract the character in the string                        */
+                                        /* Xs convert into 1's in the bits, as do the selected option */
+            if(thisBit == 'X' || thisBit == ballOptions[ballO] || thisBit == fillOptions[fillO])
+            {
+                bits |= 1 << shift;     /* and the 1's are in "reverse order"                         */
+                                        /* If this is a fill color, or in the fill hi bit             */
+                if(thisBit == ballOptions[ballO])
+                    bits |= bHiBit;
+                if(thisBit == fillOptions[fillO])
+                    bits |= fHiBit;
+            }
+
+            if(++shift == 7)            /* Each graphics (baked) byte uses lower 7 bits               */
+            {
+                *dst++ = bits;
+                shift = 0;              /* Reset the helpers                                          */
+                bits = 0;
+            }
+        } while(*++src);                /* Keep doing till the string is all done                     */
+    }
+    POKE(MIXCLR, 0);                    /* Disable 4 lines of text.  Hide help and "Working"           */
+}
+
+void screenSetup(void)
+{
+    unsigned char y;
+
+                                        /* Calculate the row start positions                          */
+    for(y=0 ; y < SCREEN_HEIGHT ; y++) 
+        row[y] = ((y / 64) * 0x28 + (y % 8) * 0x400 + ((y / 8) & 7 ) * 0x80);
+
+    POKE(TXTCLR, 0);                    /* Display Graphics                                           */
+    POKE(HISCR, 0);                     /* Set Page 2 "On"                                            */
+    POKE(HIRES, 0);                     /* 280x192 Monochrome or 140x192 color                        */
+    POKE(MIXCLR, 0);                    /* Disable 4 lines of text                                     */
+
+    page = PAGE1MEM;                    /* Init drawing to "off" screen, Page 1                       */
+}
+
+void showAnimationFrame(unsigned char x, unsigned char y, char frame)
+{
+    unsigned char y1 = y + BALL_HEIGHT; /* Lines to draw = start + height                             */
+    unsigned char offset = 0;           /* index into animData for where line starts                  */
+
+                                        /* The ball x is in the range 0-139 (2 bit) but the screen
+    pixels are 280 single bits divided into 40 columns so calculating the column must multiply the
+    ball X by 2 to go from "ball" coordinates to screen "coordinates"                                 */
+    unsigned char colX = (x / 7) * 2;   /* column where sprite drawing starts                         */
+    
+                                        /* Draw each row of the sprite.  Copy the baked frame
+    data, 4 bytes at a time, into the row (address looked up in row) and col as calculated            */
+    for(; y < y1; y++, offset += SPRITE_WIDTH_BYTES)
+        memcpy((unsigned char *)(page + row[y] + colX), anims[frame].data + offset, SPRITE_WIDTH_BYTES);
+}
+
+void main(void)
+{
+    unsigned char quit = 0;             /* 0 = run, 1 = quit                                          */
+    unsigned char step = 0;             /* 0 = run, 1 = single step                                   */
+                                        /* Ball x, y and travel dir x, y                              */
+    unsigned char x = 0, y = 0, dx = 1, dy = 1;
+    unsigned char ex = 0, ey = 0;       /* Cache the old ball position (1 frame lag) for erasing      */
+
+    clrscr();                           /* clear text page 1 using conio                              */
+    gotoxy(0, 20); cputs("Working");
+    gotoxy(0, 21); cputs("Keys B, F, H and J changes colors");
+    gotoxy(0, 22); cputs("Keys S to step and V for View Draw");
+    gotoxy(0, 23); cputs("Key  Q to Quit");
+    makeAnimation();                    /* Bake strings into bytes                                    */
+    fillScreen();
+    screenSetup();                      /* Calc row start and enter HIRES                             */
+    
+    while(!quit)                        /* Loop till a key pressed                                    */
+    {
+        if(!viewDrawing)
+        {                               /* Show the blank frame (erase old ball on back page)         */
+            showAnimationFrame(ex, ey, NUM_ANIMS - 1);
+        }
+        else 
+        {                               /* Erase back page to black so all 4 bytes drawn stand out    */
+            memset((char*)page, 0, PAGE_SIZE);
+        }
+        ex = x;                         /* Cache the x, y to the last ball drawn (on front page)      */
+        ey = y; 
+
+        x += dx;                        /* Move the ball in X                                         */
+        if(x == 0 || x == COLOR_WIDTH - BALL_WIDTH) 
+            dx = -dx ;                  /* flip direction at the edges                                */
+
+        y += dy;                        /* Move ball in Y                                             */
+        if(y == 0 || y == SCREEN_HEIGHT - BALL_HEIGHT)
+            dy = -dy ;                  /* Flip direction at the edges                                */
+
+                                        /* draw the next frame of the ball, ignoring the blank frame  */
+        showAnimationFrame(x, y, x % (NUM_ANIMS - 1));
+
+        if(page == PAGE1MEM)            /* Is page 1 currently back                                   */
+        {
+            page = PAGE2MEM;            /* draw to Hi (Page 2)                                        */
+            POKE(LOWSCR, 0);            /* Show LOWSCR - Page 1                                       */
+        }
+        else
+        {
+            page = PAGE1MEM;            /* Draw to Lo (Page 1)                                        */
+            POKE(HISCR, 0);             /* Show HISCR - Page 2                                        */
+        }
+
+        if(kbhit() || step)
+        {
+            char c = cgetc();
+            switch(c)
+            {
+                case 'B':               /* Change the ball color                                      */
+                    ballO = (ballO + 1) % 3;
+                    makeAnimation();
+                    break;
+                case 'F':               /* Change the fill color                                      */
+                    fillO = (fillO + 1) % 3;
+                    makeAnimation();    /* affects ball also                                          */
+                    fillScreen();
+                    break;
+                case 'H':               /* Toggle the fHiBit on/off                                   */
+                    fHiBit = 0x80 - fHiBit;
+                    makeAnimation();    /* affects both ball and fill                                 */
+                    fillScreen();
+                    break;
+                case 'J':               /* Toggle the bHiBit on/off                                   */
+                    bHiBit = 0x80 - bHiBit;
+                    makeAnimation();    /* affects only ball                                          */
+                    break;
+                case 'V':               /* Toggle viewDrawing mode on/off                             */
+                    viewDrawing = 1 - viewDrawing;
+                    if(!viewDrawing)    /* if off, restore the screen                                 */
+                        fillScreen();
+                    break;
+                case 'S':               /* Toggle single step mode on/off                             */
+                    step = 1 - step;
+                    break;
+                case 'Q':               /* Quit the app                                               */
+                    quit = 1;
+                    break;
+            }
+        }
+    }
+    POKE(TXTSET, 0);                    /* Display Text (Hires off)                                   */
+}
+</pre>
+=== [https://github.com/cc65/wiki/wiki/Apple-II-12.-Joystick Next: 12. Joystick] ===
