@@ -1,0 +1,161 @@
+__NOTOC__
+This section will show you how to use make and a Makefile to really accelerate your workflow. This also works on Windows, macOS and Linux, with a little bit of setup.
+
+== Install Make if it isn’t available on your system. ==
+
+Open cmd.exe, PowerShell or Terminal on your OS. Type <code>make</code> to see if make is installed and in the path. If it is installed, try <code>make --version</code> and make sure the make is GNU make. The Makefile this tutorial uses relies on GNU make. To get GNU make working/installed, there’s helpful information on this page: https://cc65.github.io/doc/using-make.html.
+
+On Windows, I would suggest starting with make as referenced on the page [https://cc65.github.io/doc/using-make.html linked] above, near the bottom of the page, where a <code>make.exe</code> link takes you to a GNU make install for Windows. 
+== Start a project ==
+Let’s assume you are going to make a project called mygame, so make a folder called <code>mygame</code>.
+== Get a Makefile == 
+Go to https://github.com/cc65/wiki/wiki/Bigger-Projects. At the bottom of the page is listed all the code for a Makefile.
+
+Copy the Makefile code to a text editor and save this to the mygame folder with the name Makefile (no extension). Remember this page, you will likely want to read it all at some point. There’s a lot more you can do but for now, if you are in a hurry, don’t worry about it - come back and read it later :)
+
+== Expand the Makefile capabilities to automatically make a .dsk file ==
+
+The next three sections expand the “make system” so a simple <code>make TARGETS=apple2 dsk</code> on the command line will build the code and make an Apple II ready disk.
+
+=== Use a template disk ===
+
+Add the <code>template.dsk</code> file to mygame. Add a folder under mygame called <code>apple2</code> and in that copy the template.dsk file.
+
+=== Get access to a name for the disk ===
+
+Changes need to be made to the Makefile so it will work with disk building ''and'' assembly only projects (will still work with “C” projects also).
+
+<a name="ldflags"></a>Look for the line <code>LDFLAGS :=</code> quite near the top of the file. Just below that line, add the following lines:
+
+<pre>
+ifeq ($(PROGRAM),)
+    NAME := $(notdir $(CURDIR))
+else 
+    NAME := $(PROGRAM)
+endif
+$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib
+</pre>
+What this does is set a name based on the current folder name (unless the <code>PROGRAM :=</code> was set to override the name). This NAME will be used as the name for the dsk image and it also identifies the Apple II executable, which will be named NAME.apple2 (of course with NAME being the folder name, unless changed by setting PROGRAM :=)
+
+=== Add another Makefile component ===
+
+Create another file and call it <code>Makefile-dsk.mk</code>, and put the following in that file:
+
+<pre>
+DSK = $(NAME).dsk
+
+# For this one, see https://applecommander.github.io/
+AC ?= ac.jar
+
+# Unix or Windows
+ifeq ($(shell echo),)
+    CP = cp $1
+else
+    CP = copy $(subst /,\,$1)
+endif
+
+REMOVES += $(DSK)
+
+.PHONY: dsk
+dsk: $(DSK)
+
+$(DSK): $(NAME).apple2
+    $(call CP, apple2/template.dsk $@)
+    java -jar $(AC) -p  $@ $(NAME).system sys < $(shell cl65 --print-target-path)/apple2/util/loader.system
+    java -jar $(AC) -as $@ $(NAME)        bin < $(NAME).apple2
+    </pre>
+For this makefile to work, you will need AppleCommander installed and unless you have it in mygame as ac.jar, you will need to do either a or b below:<br/>
+a) Edit Makefile-dsk.mk and replace ac.jar in the line AC ?= ac.jar with the full path to AppleCommander<br/>
+b) Set an environment variable so that the java command will find AppleCommander. Use the following to set the environment variable for whatever shell you are using:<br/>
+
+<pre>
+    Powershell:
+    $env:AC = "path to AppleCommander.jar"
+    cmd.exe
+    set AC="path to AppleCommander.jar"
+    bash (Unix or MacOS terminal):
+    export AC="path to AppleCommander.jar"
+</pre>
+<blockquote>The “path to AppleCommander.jar” is where you put it - something like “/home/me/apps/java/ac.jar” or “c:-win64-1.5.0.jar” or whatever (made up paths, not suggestions). The point is, its the path and the .jar file name, not just the path.
+</blockquote>
+This <code>Makefile</code>and <code>Makefile-dsk.mk</code> combo of files, along with <code>apple2/template.dsk</code>, can now be dropped in any folder and can make an apple2 executable and disk. The executable will be the folder name, with .apple2 added as an extension (in this case mygame.apple2). The disk will be the folder name with .dsk added as the extension (i.e. mygame.dsk). Very convenient!
+
+'''''Note:'' The folder name should not be more than 8 characters, nor should it contain a space or any other unacceptable characters.'''
+
+== Add your code and make ==
+
+Under mygame make a folder called src and under src make a folder called apple2 (i.e. <code>src/apple2</code>). You can put code that could run on any cc65 supported platform in src and the apple2 specific code in the src/apple2 folder. If you think that mygame will only ever run on an apple2, I suggest you still stick with these folders and simply put all your code into the apple2 folder. If you really don’t want the apple2 folder, you can put your code all in src folder.
+
+In the mygame folder you can now type (assuming you have added code, for example hello.c as src/apple2/hello.c or src/hello.c) <code>make TARGETS=apple2 dsk</code> and you will end up, if all goes well, with a file <code>mygame.dsk</code> which you can run in the emulator.
+
+<blockquote>Notes:
+
+If you are making an all assembly program, you will need to specify an assembly-ready linker config (.cfg) file to cl65. The easiest way to do this is to change the [[#ldflags|LDFLAGS]] line in the Makefile. There is a system supplied <code>apple2-asm.cfg</code> file that should work in most cases. Change the LDFLAGS line read:<br/>
+
+<code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib -C apple2-asm.cfg</code><br/>
+
+Another option would be to supply your own .cfg file. You can use <code>apple2.cfg</code> or <code>apple2-asm.cfg</code> as a base. For example, if you copy the spkr.asm file into src/apple2 you can also copy apple2-asm.cfg from wherever it is in your system, to the src/apple2 folder. To find the apple2-asm.cfg file on your system, you can run <code>cl65 --print-target-path</code> and, in the resultant output, replace the trailing word <code>target</code> with <code>cfg</code> to find the folder.<br/>
+
+In some cases you may need your own cfg file for C programs too, for example when you use hires graphics and you have a lot of code (you would need to prevent cl65 from using memory in the HGR Pages you use). You can then use the method described above to find apple2.cfg and copy that to src/apple2. You can then edit that copy.<br/>
+
+I would suggest not making your own cfg files if you don’t need to (As said, sometimes you have to). As cc65 is developed, the format of these files could change making custom copies not work without maintenance.<br/>
+
+For more information about cfg files, see https://cc65.github.io/doc/ld65.html#s5
+</blockquote>
+You could also edit the Makefile to set the target to be the <code>apple2</code> if that’s all you need. Very near the top you will find a line that says <code>TARGETS :=</code> and change that line to read:
+
+<code>TARGETS := apple2</code>
+
+You can now just type make and it will always default to making the apple2 as though you had typed make TARGETS=apple2
+
+== Using make to run the emulator ==
+
+You can add a line to run the emulator automatically, in the <code>Makefile</code>. Look for _EMUCMD and see examples of how other emulators are run. For AppleWin, for example, add the following line which will give the full path name to the dsk, as required by AppleWin (assumes AppleWin in the path, or otherwise specify the full path to AppleWin):
+
+<code>apple2_EMUCMD := applewin.exe -d1 $(CURDIR)/$(NAME).dsk</code>
+
+The way the emulator is called, by <code>make test</code> is with the full executable name (ending in .apple2). AppleWin doesn’t like that, so under <code>test:</code> in the Makefile, also change this <code>$(EMUCMD) $<</code> to read just <code>$(EMUCMD)</code>. This may not be necessary with other emulators.
+
+You could also fill in <code>apple2_EMUCMD :=</code>to something like <code>test.sh</code> or <code>test.bat</code> and put the commands in a shell script or batch file, that will work just fine as well and you would not need to change the line under test: in the Makefile.
+
+Now, you can build, make a disk and run the emulator all with a simple make command:
+
+<code>make TARGETS=apple2 dsk test</code>
+
+and if you did add apple2 as the only target in the Makefile, as in <code>TARGETS := apple2</code>, just this:
+
+<code>make dsk test</code>
+
+That will make the disk and launch the emulator. What a nice workflow!
+
+<blockquote>Note:
+
+Always look at the output of the make compile itself. If the code didn’t compile, the dsk file will have been made previously when the last executable successfully built. When you test, it will look as though your changes had no effect. If you think your changes aren’t working, make sure the code compiled properly. May be easiest to check by just doing a make without dsk and test.
+</blockquote>
+
+== A final tip - Symbols, AppleWin and Assebly Code ==
+
+If you happen to use AppleWin, you can have it to load ''your'' user symbols. To turn the ca65 label file into a AppleWin usable file, I used [https://www.gnu.org/software/sed/ GNU sed]. Like <code>make</code>, <code>sed</code> can be downloaded from [http://gnuwin32.sourceforge.net/packages/sed.htm Sourceforge]. Install in the path, or use a full path when calling sed.
+
+Add a line to the Makefile, under <code>EMUCMD :=</code>. The line is <code>APPLEWIN_HOME := <path to applewin></code> of course <code><path to AppleWin></code> being the path where applewin.exe lives, so for example <code>APPLEWIN_HOME := c:\applewin</code>. Just the path, this time.
+
+I added the following line to <code>PREEMUCMD :=</code>, in the Makefile, so it looks like this:
+
+<code>PREEMUCMD := sed "s/^al \([[0-9A-F]\+\)\ \./\1 /g" $(NAME).apple2.lbl > $(APPLEWIN_HOME)\A2_USER1.SYM</code>
+
+I also changed my <code>_labelfile_</code> section in the Makefile, adding debug info generation. My section now looks like this:
+
+<pre>
+# Linker flags for generating VICE label file
+define _labelfile_
+ASFLAGS += --debug-info
+LDFLAGS += -Ln $$@.lbl
+REMOVES += $(PROGRAM).lbl
+endef
+</pre>
+
+To activate the label file, run <code>make</code>, just once, like this: <code>make OPTIONS=labelfile</code>. This generates a Makefile.options file that stores the selected options. Now just running <code>make</code> always uses the OPTIONS specified (labelfile in this case), and makes a label (or symbol) file.
+
+Finally, when I do a <code>make dsk test</code>, the symbols that are generated automatically get copied over the <code>A2_USER1.SYM</code> file in the AppleWin folder, and AppleWin automatically loads this file, showing me my symbols.
+
+=== [https://github.com/cc65/wiki/wiki/Apple-II-6.-Apple-II--Zero-Page-locations-and-use Next: 6. Apple II Zero Page Locations and Use] ===
