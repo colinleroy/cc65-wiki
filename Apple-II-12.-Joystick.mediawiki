@@ -1,0 +1,157 @@
+The Apple II calls the Joystick port, where the values are read, the Paddle. Whether you have a stick or paddle connected is immaterial, the usage is the same. I will refer to all of this as the joystick, even though the defines in the sample code and literature normally refer to the “paddle”.
+
+Reading the joystick is a process of steps. Start the process by touching the trigger port. After that, count how long it takes for the most significant bit of the value port to turn off. Once that bit turns off, the time it took shows where the joystick is, relative to the center.
+
+In the sample code, there’s an assembly routine that reads the joystick and stores the count values into two global variables (declared in the “C” code), joyX and joyY.
+
+The counted values are 0 for max up and max left but “larger” for max right and max down, usually represented as 255. It may take longer than 255 “counts” to get the right value when holding the joystick to the right or down. The sample code will, at 255 counts, simply call the value 255 (ignore overflow).
+
+Note that you can count (or time) the X and Y axis one at a time, or you can calculate the values (counts) at the same time. The sample code opts to do both axis at the same time. The code may look a little odd, as though things can be optimized a little better, but there’s a good reason for having it the way it is. Since the counts are actually a count of elapsed time, it’s important that the algorithm uses more or less the same amount of time, in sampling and counting, or the values aren’t stable for different ends of the axis.
+
+Think of the timing like this: if x = 0 and, and an early out is taken, y is now “sampled” much faster. So much so that the center value would be around 128 (as expected, the middle between 0 and 255) instead of the 64 it is when sampling both axis. So, if X is 0 and Y is in the middle, the count will read 128. With X at 255 (other end of the axis), Y still in the middle, will now have a count of 64 or lower. Very problematic! Sampling one after the other will of course fix the issue and can be very accurate in the 0 to 255 range, but the algorithm may use 2x as many CPU cycles as counting both axis at the same time.
+
+The joyread routine provided is written the way it is so as to be cheap (fast), but still give fairly consistent values no matter which axis is pushed to which end. This code is almost 2x as fast as the code that does one after the other. The center position is now around 64, and not 128, for the reasons explained (samples at 1/2 the rate because it’s doing twice the work).
+
+The assembly routine goes one further and makes an easy to use bitmask that, in digital form, describes the joystick position as UP, RIGHT, DOWN or LEFT. The same mask also has the button positions (not pressed or pressed) for the two fire buttons on the joystick. These direction and button digital values are stored in the global variable joyMask (also declared in the “C” code).
+
+In order to come up with the digital mask, the assembly program must decide when the joystick is “far enough” in one of the directions. The second complication with the decision is that the joystick is analog, so around the middle, the values aren’t always stable (usually close to 128 for single axis sampling, or 64 for both as in the sample code) but almost never exactly 128 or 64. The code must compensate for this by having what is referred to as a “dead zone”. A range of values that may be returned by the joystick, but that are to be ignored and treated as though the stick is in the middle.
+
+In the sample code, the dead zone values are $20 (32 decimal) and $60 (96 decimal). This means 0-51 is left or up, and 96+ is right or down.
+
+== The assembly routine ==
+
+To use, save this routine as something like joyread.s in src/apple2
+
+<pre>
+.export _joyread                    ; Make the assembly function visible to "C" code
+.import _joyX, _joyY, _joyMask      ; Make the global "C" variables visible to the assembly code
+
+.include "apple2.inc"               ; some port locations defined in here
+
+PADDL0  := $C064                    ; Read to get POT msb
+PTRIG   := $C070                    ; Reset PADDLE values so counting can start
+
+; These are the bits set for getting digital values from the Joystick
+UP      := %00000001                ; 1
+RIGHT   := %00000010                ; 2
+DOWN    := %00000100                ; 4
+LEFT    := %00001000                ; 8
+BUTTON0 := %00010000                ; 16
+BUTTON1 := %00100000                ; 32
+
+.proc _joyread
+    
+    ldx     #$0                     ; start the x counter at 0
+    ldy     #$0                     ; start the y counter at 0
+    lda     PTRIG                   ; trigger the fact that the joystick will be read
+
+readBoth:
+    lda     PADDL0                  ; get the value for X axis
+    bpl     :+                      ; if MSB is zero, done with X
+upX:
+    inx                             ; increment the counter
+    bne     :+                      ; while x <> 0 go read y
+    dex                             ; if x reaches 0 it's overflow, keep at 255
+:
+    lda     PADDL0 + 1              ; read the value for the Y axis
+    bpl     readX                   ; if MSB is zero Y is done, may need to handle X still
+    iny                             ; increment the Y counter
+    bne     readBoth                ; branch to the start to check both axis
+    dey                             ; if Y reaches 0 it's overflow, keep at 255 and drop through to check x
+
+readX:
+    lda     PADDL0                  ; get the value for X axis
+    bmi     upX                     ; if not done, go increment x
+
+doneJoy:
+    lda     #0                      ; start the digital mask with all off
+
+    cpx     #$20                    ; compare to the low end dead zone
+    bcs     :+                      ; if greater than, then not left
+    ora     #LEFT                   ; the joystick is left
+    bne     chkY                    ; branch always as acc is now non-zero
+:
+    cpx     #$60                    ; check the upper bound of the dead-zone
+    bcc     chkY                    ; if less than, then not right
+    ora     #RIGHT                  ; gt high end of dead zone so joystick is right
+
+chkY:
+    cpy     #$20                    ; do the same for the Y axis as for the X axis
+    bcs     :+
+    ora     #UP 
+    bne     buttons
+:
+    cpy     #$60 
+    bcc     buttons 
+    ora     #DOWN
+
+buttons:
+    stx     _joyX                   ; store the "counted" x and y values of the joystick in the
+    sty     _joyY                   ; global "C" variables (notice the _ before the name of "C" variables)
+    
+    ldx     BUTN0                   ; read the button 0 state
+    cpx     #$80                    ; if ge 128 the button is fully depressed
+    bcc     :+          
+    ora     #BUTTON0                ; mark the button as down
+
+:
+    ldx     BUTN1                   ; do the same for button 1 as for button 0
+    cpx     #$80 
+    bcc     :+
+    ora     #BUTTON1 
+
+:
+    sta     _joyMask                ; save the mask in the global "C" variable
+
+    rts                             ; return to the C code
+
+.endproc 
+</pre>
+== The “C” code that uses the assembly joyread routine ==
+
+To use, save this as something like main.c in src/apple2
+
+<pre>
+#include <conio.h>
+
+#define UP          1                      /* Up       bit 0                          */
+#define RIGHT       2                      /* Right    bit 1                          */
+#define DOWN        4                      /* Down     bit 2                          */
+#define LEFT        8                      /* Left     bit 3                          */
+#define BUTTON0     16                     /* Button 0 bit 4                          */
+#define BUTTON1     32                     /* Button 1 bit 5                          */
+
+extern void joyread();                     /* declare the assembly routine to "C"      */
+
+unsigned char joyX, joyY, joyMask;         /* global variables for joyread to fill in */
+
+void main(void)
+{
+    clrscr();                              /* clear the screen                        */
+    gotoxy(0, 2); cputs("JOY X:");       /* and put some labels down                */
+    gotoxy(0, 3); cputs("JOY Y:");
+
+    while(!kbhit())                        /* Loop till a key is pressed              */
+    {
+        joyread();                         /* Read the joystick (call assembly code)  */
+        gotoxy(7, 2);cprintf("%3d", joyX); /* Show the analog readings                */
+        gotoxy(7, 3);cprintf("%3d", joyY);
+
+        gotoxy(7, 4);                      /* Show the digital states                 */
+        if(joyMask & UP)       cputs("UP ");
+        if(joyMask & RIGHT)    cputs("RIGHT ");
+        if(joyMask & DOWN)     cputs("DOWN ");
+        if(joyMask & LEFT)     cputs("LEFT ");
+        if(joyMask & BUTTON0)  cputs("BU0 ");
+        if(joyMask & BUTTON1)  cputs("BU1 ");
+
+        cclear(40-wherex());               /* Clear to the end of the line            */
+    }
+
+    cgetc();                               /* Consume the key that was read           */
+}
+</pre>
+<br />
+== This wraps up this Getting Started with the Apple II ==
+<br />
+[https://github.com/cc65/wiki/wiki/Apple-II-Getting-Started Home]
