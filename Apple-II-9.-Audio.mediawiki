@@ -8,4 +8,4 @@ See https://www.xtof.info/blog/?p=807 for sample code and quite a bit of informa
 
 See https://github.com/oliverschmidt/Play-BTc for a code example of digitized audio (the latter also has a dsk file that can be run in an emulator and the code shows the exact machine cycle counting required).
 
-=== [https://github.com/cc65/wiki/wiki/Apple-II-10.-Apple-II-File-IO-with-ProDOS Next: 10. File I/O with ProDOS] ===
+=== [https://github.com/cc65/wiki/wiki/Apple-II-10.-File-IO-with-ProDOS Next: 10. File I/O with ProDOS] ===
