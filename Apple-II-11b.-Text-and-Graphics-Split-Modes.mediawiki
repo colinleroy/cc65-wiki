@@ -1,0 +1,9 @@
+It is often very handy to be able to use a simple text display to convey information when using a graphics program. The Apple II has the ability to ''shorten'' the graphics display, and use the last (bottom) 4 rows of text, as text. These rows can then be accessed and used as a normal text display.
+
+<blockquote>By ''shorten'' I mean the following:<br />
+* Lowres, normally 48 rows, will become 40 rows tall.<br />
+* Hires and Color, normally 192 rows tall, will become 160 rows tall.
+</blockquote>
+Using this mode is very simple. Simply touch <code>MIXSET</code> ($C053) to enable the last 4 lines as text, and touch <code>MIXCLR</code> ($C052) to disable the 4 lines for full-screen graphics.
+
+=== [https://github.com/cc65/wiki/wiki/Apple-II-11c.-Apple-II-Lowres-Mode Next: 11c. Lowres Mode] ===
