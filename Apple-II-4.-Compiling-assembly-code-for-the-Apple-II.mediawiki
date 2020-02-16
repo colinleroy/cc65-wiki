@@ -1,0 +1,62 @@
+== Compiling assembly code for the Apple II ==
+
+Save the following program as spkr.asm
+
+<pre>
+.include "apple2.inc"
+
+SPEAKER          = $C030
+
+.segment "CODE"
+
+.proc main
+    lda     #0
+    sta     $50
+
+    bit     KBDSTRB 
+loop:
+    lda     KBD 
+    asl 
+    bcc     :+
+
+    bit     KBDSTRB 
+    jsr     $BF00 
+    .byte   $65
+    .addr   * + 2
+    .byte   4
+    .byte   0
+    .word   0000
+    .byte   0
+    .word   0000
+
+:
+    dec     $50
+    bne     loop 
+    lda     SPEAKER 
+    jmp     loop 
+    
+.endproc
+</pre>
+This program will simply hum the speaker till a key is pressed and will then quit back to ProDOS.
+
+Compile the program to spkr.apple2 using the following command line:
+
+<code>cl65 -t apple2 -u __EXEHDR__ spkr.asm apple2.lib -o spkr.apple2 -C apple2-asm.cfg</code>
+
+The differences with the “C” program are:
+
+* <code>-u __EXEHDR__</code> adds a needed header
+
+* <code>apple2.lib</code> adds a needed library
+
+* <code>-C apple2-asm.cfg</code> uses a config file specifically set up for assembly programs
+
+You now have an Apple II ready program, but it needs to go on a disk so it can be loaded in an emulator.
+
+== Making a disk ==
+
+Follow the instructions from [https://github.com/cc65/wiki/wiki/Apple-II-3.-Making-an-Apple-2-disk-for-an-emulator#diskprep Prepare a disk for your program] but replace the word <code>hello</code> with the word <code>spkr</code>.
+
+Run the program and you should hear the speaker hum, till you press a key when the program quits, and you are back in the file selector at ProDOS.
+
+=== [https://github.com/cc65/wiki/wiki/Apple-II-5.-Using-make-and-Makefiles-for-a-great-workflow Next: 5. Using make and Makefiles for a great workflow] ===
