@@ -1,8 +1,0 @@
-The Apple II modes of display that we will cover are:
-* [https://github.com/cc65/wiki/wiki/Apple-II-11a.-Text-Mode Apple II Text] 
-* [https://github.com/cc65/wiki/wiki/Apple-II-11b.-Text-and-Graphics-Split-Modes Text and Graphics Split Modes] (One of the Lowres, Hires or Color modes, but with 4 lines of text at the bottom)
-* [https://github.com/cc65/wiki/wiki/Apple-II-11c.-Lowres-Mode Lowres] (40x48 16 color)
-* [https://github.com/cc65/wiki/wiki/Apple-II-11d.-Hires-Monochrome-Mode Hires Monochrome] (280x192)
-* [https://github.com/cc65/wiki/wiki/Apple-II-11e.-Hires-Color-Mode Hires Color] (140x192 6 color)
-
-=== [https://github.com/cc65/wiki/wiki/Apple-II-11a.-Text-Mode Next: 11a. Text Mode] ===
