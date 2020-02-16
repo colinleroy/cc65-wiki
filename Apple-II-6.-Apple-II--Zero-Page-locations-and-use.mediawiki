@@ -1,0 +1,23 @@
+Zero Page use by the Monitor (M), Applesoft (A), Disk Drivers (D), and ProDOS MLI (P) is shown below in this table:
+
+<pre> ,   | Hex | $0  | $1  | $2  | $3  | $4  | $5  | $6  | $7  | $8  | $9  | $A  | $B  | $C  | $D  | $E  | $F  
+ --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---  
+ 0   | $00 | DA  | DA  |  A  |  A  |  A  |  A  |     |     |     |     |  A  |  A  |  A  |  A  |  A  |  A  
+ 16  | $10 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |     |     |     |     |     |     |  A  
+ 32  | $20 |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  
+ 48  | $30 |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  |  M  | PMD | PMD | PMD | PMD | PMD | DM  
+ 64  | $40 | PMD | PMD | PMD | PMD | PMD | PMD | PMD | PM  | PM  | PM  |  P  |  P  |  P  |  P  | PM  |  M  
+ 80  | $50 | MA  | MA  | MA  | MA  | MA  | MA  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  
+ 96  | $60 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  
+ 112 | $70 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  
+ 128 | $80 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  
+ 144 | $90 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  
+ 160 | $A0 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  
+ 176 | $B0 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  
+ 192 | $C0 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A    
+ 208 | $D0 |  A  |  A  |  A  |  A  |  A  |  A  |     |     |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  
+ 224 | $E0 |  A  |  A  |  A  |     |  A  |  A  |  A  |  A  |  A  |  A  |  A    
+ 240 | $F0 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A    </pre>
+If you are using assembly only, it’s easy to remember that <code>$50</code> onward are available. If you need more Zero Page locations than that, you can consult this table.
+
+=== [https://github.com/cc65/wiki/wiki/Apple-II-7.-Apple-II-System-Locations Next: 7. Apple II System Locations] ===
