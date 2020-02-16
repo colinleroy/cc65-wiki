@@ -4,7 +4,7 @@ Save the following code as hello.c
 
 void main(void)  
 {  
-  cputs("Hello, World!\n";);  
+  cputs("Hello, World!\n");  
   cgetc();  
 }
 </pre>
