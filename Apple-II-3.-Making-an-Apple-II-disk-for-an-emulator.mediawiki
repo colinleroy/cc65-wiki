@@ -33,7 +33,7 @@ You can rename the version of AppleCommander that you have, to ac.jar for short.
 
 You now have a working ProDOS disk that will run your hello.c program when the Apple II boots from this disk. 
 === Running it in the Emulator ===
-Load your emulator and load the disk, '''hello.dsk''' into the emulator. (F3 in AppleWin and linapple, or drag-and-drop hello.dsk on the left side of the window in Microm8). Reboot the emulator (F2 in AppleWin and libapple, automatic in Microm8)
+Load your emulator and load the disk, '''hello.dsk''' into the emulator. (F3 in AppleWin and linapple, or drag-and-drop hello.dsk on the left side of the window in Microm8). Reboot the emulator (F2 in AppleWin and linapple, automatic in Microm8)
 
 You should now see <code>Hello, World!</code> on your screen towards the upper left, and when you press a key, you return to the file selector at ProDOS.
 
