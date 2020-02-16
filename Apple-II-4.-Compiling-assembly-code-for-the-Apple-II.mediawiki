@@ -55,7 +55,7 @@ You now have an Apple II ready program, but it needs to go on a disk so it can b
 
 == Making a disk ==
 
-Follow the instructions from [https://github.com/cc65/wiki/wiki/Apple-II-3.-Making-an-Apple-2-disk-for-an-emulator#diskprep Prepare a disk for your program] but replace the word <code>hello</code> with the word <code>spkr</code>.
+Follow the instructions from [https://github.com/cc65/wiki/wiki/Apple-II-3.-Making-an-Apple-II-disk-for-an-emulator#diskprep Prepare a disk for your program] but replace the word <code>hello</code> with the word <code>spkr</code>.
 
 Run the program and you should hear the speaker hum, till you press a key when the program quits, and you are back in the file selector at ProDOS.
 
