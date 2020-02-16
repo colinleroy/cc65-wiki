@@ -1,5 +1,3 @@
-== 9. Apple II Audio ==
-
 To make a sound, one simply needs to access location $C030, to toggle the Speaker.
 
 In the spkr example program previously given, the <code>SPEAKER</code> ($C030) port is accessed every time a Zero Page counter reaches zero, and that produced that specific hum, or frequency, infinitely long (till a key is pressed).
