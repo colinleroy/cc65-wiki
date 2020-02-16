@@ -1,4 +1,5 @@
-The following sections have been created to help a cc65 user with using the Apple II as a target. Section I is getting set up and Section II is about the Apple II platform, and has several programs embedded to help explain the content.
+The following sections have been created to help a cc65 user with using the Apple II as a target.<br/><br/>
+Section I is getting set up and Section II is about the Apple II platform, and has several programs embedded to help explain the content.
 
 == Section I - Getting Set Up ==
 
