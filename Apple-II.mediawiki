@@ -1,6 +1,4 @@
 __NOTOC__
-== Overview ==
-
 The Apple II family is supported by cc65 through the two targets
 
 * '''apple2''' for Apple <nowiki>][+</nowiki> (or later) machines
