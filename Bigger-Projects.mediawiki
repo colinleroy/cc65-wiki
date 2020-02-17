@@ -1,3 +1,4 @@
+__NOTOC__
 == Setting up somewhat bigger projects ==
 Once you are out the [[Hello cc65!|"Hello? Anybody home?"]] stage of making yourself accustomed with cc65 and its amazing possibilities, you will probably start to think about developing something bigger (or at least less of a cliché ;&ndash;) ), right? That means that - as your project starts growing - your willingness to compile manually tens (if not hundreds) of files constituting it, will be exponentially diminishing.
 
