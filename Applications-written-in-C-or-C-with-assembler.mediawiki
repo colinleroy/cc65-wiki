@@ -1,7 +1,9 @@
+__NOTOC__
 == Overview ==
 
 The following enumeration is from the cc65 mailing list. The order implies no judgement, it's alphabetically. Feel free to correct entries or add to it as appropriate. The programs should be available to the general public, so while it's nice if you compile all your programs with cc65, this is not the place to list them if they're private.
 
+__TOC__
 == Applications ==
 
 === A2Command ===
