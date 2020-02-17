@@ -9,10 +9,10 @@
 === Penetrator ===
 [https://github.com/StewBC/penetrator-apple2/ Penetrator] is a remake of the 1982 ZX Spectrum game by Phillip Mitchell and Beam Software.
 
-== Atari computers ==
+== Atari 8-bit machines ==
 
 === seitensprung ===
-"seitensprung" is an ASCII/Windows-1252 text viewer with proportional font support for Atari 8-bit computers. [http://www.atariage.com/forums/topic/157385-release-of-seitensprung-v015-5th-place-abbuc-sc/ Download/Video]
+"seitensprung" is an ASCII/Windows-1252 text viewer with proportional font support for Atari 8-bit machines. [http://www.atariage.com/forums/topic/157385-release-of-seitensprung-v015-5th-place-abbuc-sc/ Download/Video]
 
 == Commodore 64 ==
 
