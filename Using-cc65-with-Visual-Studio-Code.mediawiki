@@ -6,5 +6,4 @@ Visual Studio Code is a great editor for working with cc65 projects.  There is a
 * Executing with make
 * Executing directly to the emulator
 
-The CC65 extension is open source and available at:
-[https://github.com/sharpninja/vscode-cc65 GitHub URL]
+The CC65 extension is open source and available at [https://github.com/sharpninja/vscode-cc65]
