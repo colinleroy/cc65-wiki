@@ -1,6 +1,4 @@
 __NOTOC__
-== Apple GEOS File Formats ==
-
 The Apple GEOS disk I/O subsystem is based on '''ProDOS 8'''. In order to understand the information provided here both knowledge of [http://www.easy68k.com/paulrsm/6502/PDOS8TRM.HTM ProDOS 8 Technical Reference Manual] terminology and the general concept of '''GEOS sequential files''' and '''GEOS VLIR files''' is necessary.
 
 == Common to both Formats ==
