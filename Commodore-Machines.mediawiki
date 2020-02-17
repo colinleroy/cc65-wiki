@@ -17,4 +17,4 @@ We have to make sure this goes in front of everything else; so, when using segme
 
 The second measure is to account for the additional two bytes, in the linker config. If our code starts at <tt>$C000</tt>, we must account for the load address, and make the start address of the memory area <tt>$BFFE</tt>.
 
-People who are used to other assemblers can find some more hints [http://cc65.github.io/doc/ca65.html#ss17.1 in the ca65 documentation].
+People who are used to other assemblers can find some more hints in the [http://cc65.github.io/doc/ca65.html#ss17.1 ca65 documentation].
