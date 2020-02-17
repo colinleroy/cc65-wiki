@@ -1,6 +1,4 @@
 __NOTOC__
-== Overview ==
-
 The 6502 has a fixed stack with a size of 256 bytes in page 1 (at address $100). On several platforms, the stack is even smaller, because the operating system uses part of it for other purposes. This means that the stack is too small to use it as storage for local variables in C programs. For this reason, cc65 compiled programs utilize separate parameter and return stacks.
 
 == The return stack ==
