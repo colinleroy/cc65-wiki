@@ -1,6 +1,4 @@
 __NOTOC__
-== Overview ==
-
 Parameters are passed to functions on [[Parameter and return stacks|the parameter stack]]. In general, parameters are pushed from left to right, so the rightmost parameter is the last one pushed (and therefore, the one at the lowest position on the parameter stack). Provided that there are no local variables, the last parameter is at offset zero on the parameter stack. If the function returns a value, it comes back in A/X.
 
 The compiler expects all return values to use X, even if they are declared as an 8-bit type. X should always contain the high byte of the return value as if it was promoted to a 16-bit integer.
