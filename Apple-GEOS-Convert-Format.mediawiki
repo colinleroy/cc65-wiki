@@ -1,5 +1,4 @@
-== Overview ==
-
+__NOTOC__
 In most filesystems a file consists of a few file attributes (incl. the filename) and a byte stream (the file content). However in the GEOS filesystem all files have 256 bytes of file attributes and VLIR files have up to 127 distinct byte streams. Therefore a GEOS file can't be represented in other filesystems as-is.
 
 So if a GEOS file is to be transfered from one machine to another it has to be converted first into a "standard file", then transfered and finally deconverted back into a GEOS file. Of course this "standard file" can't be used with GEOS, its only use is to be transfered. For GEOS 64/128 the program [http://cbmfiles.com/geos/geos-5.php CONVERT] takes care of the convert and deconvert process. When transfered to other filesystems this "standard file" is typically given the filename extension <code>.cvt</code>. The [http://www.filegate.net/cbm/g-tech/cvtformt.txt GEOS CONVERT UTILITY FILE STRUCTURE] describes the GEOS 64/128 CONVERT file format.
