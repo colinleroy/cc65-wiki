@@ -1,3 +1,4 @@
+__NOTOC__
 == What is available in the debug information? ==
 
 The debug info and the API mirrors closely the items available in the sources used to build an executable. To use the API efficiently, it is necessary to understand from which blocks the information is built.
