@@ -1,3 +1,4 @@
+__NOTOC__
 == Even more complex project? ==
 So... you followed guidelines from [[Bigger Projects|previous article]] and by now you have a working development environment with GNU Make at the centre of your build system, utilising happily [[Bigger-Projects#the-makefile-itself|THE Makefile for cc65]], right? Right! Your code is flourishing and your appetite to rule the 6502 based world is growing accordingly! How about running it on Apple <nowiki>][</nowiki>? How about Atari 800? Well...
 
