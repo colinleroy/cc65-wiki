@@ -1,3 +1,4 @@
+__NOTOC__
 == cc65 on OS X ==
 cc65 runs perfectly fine under various versions of OS X. There are no binary installation packages distributed yet, but one can quite easily build his own binaries from sources.
 
