@@ -1,3 +1,4 @@
+__NOTOC__
 == What is cc65? ==
 
 cc65 is a complete package, which includes
