@@ -2,17 +2,17 @@ The Hires Color display mode has an effective resolution of 140 horizontal pixel
 
 Building on the hires mode discussed so far, the 280 x 192 mode, it is possible to do color in the same mode, but to use 2 bits per pixel resulting in an effective resolution of 140 x 192, with 6 colors. You would expect 4 colors with 2 bits per pixel (bpp) but the msb of every byte ''shifts'' 2 of the colors. There is also a good discussion of this mode here: https://www.xtof.info/blog/?p=768
 
-Practically speaking, the colors are done as bit pairs with the bits having the following meaning:<br />
+Practically speaking, the colors are done as bit pairs with the bits having the following meaning:
 * 00 - black
 * 01 - green or orange
 * 10 - violet (purple) or blue
 * 11 - white
 
-As stated, the green/orange and violet/blue “choice” is made through the setting of the MSB of the byte in which they occur.
+As stated, the green/orange and violet/blue “choice” is made through the setting of the msb of the byte in which they occur.
 
 Since the physical screen the graphics are being displayed on didn’t change size, but the horizontal resolution halved, it means that each pixel is now twice as wide as it was when everything was monochrome.
 
-There is an issue if each pixel is 2 bits wide. With bit 7 (MSB) not used as a pixel bit, it leaves 7 bits per byte. 7 doesn’t divide by 2, but it takes 2 bits to define a color pixel. What this means is that one of the pixels spans the two bytes, with one of its bits in each of the bytes.
+There is an issue if each pixel is 2 bits wide. With bit 7 (msb) not used as a pixel bit, it leaves 7 bits per byte. 7 doesn’t divide by 2, but it takes 2 bits to define a color pixel. What this means is that one of the pixels spans the two bytes, with one of its bits in each of the bytes.
 
 Rendering the following 2 bytes consecutively (the 2nd line is there just to identify the bits)
 
@@ -20,7 +20,7 @@ Rendering the following 2 bytes consecutively (the 2nd line is there just to ide
 01010101 00101010
 01234567 89abcdef
 </pre>
-results in an on-screen representation of, and the Apple II seeing the bits, in this order (remember right to left and the MSB is not a pixel):
+results in an on-screen representation of, and the Apple II seeing the bits, in this order (remember right to left and the msb is not a pixel):
 
 <pre>
 10101010101010
@@ -32,8 +32,8 @@ Notice that the pattern is an alternating 10. But if you put the source bytes be
 01010101
 00101010
 </pre>
-The source bytes, for the 7 pixel bits, are not the same due to the fact that 7 doesn’t divide by 2, as mentioned above. The second byte is shifted 1 to the right (ignoring the MSB). This means you do need to consider the byte you are writing, and what came before. Aligning graphics on boundaries is useful, and then you can consider whether you are on an odd or even byte to know what the “shift” needs to be, or have pre-shifted graphics for odd/even columns.
-<br /><br />
+The source bytes, for the 7 pixel bits, are not the same due to the fact that 7 doesn’t divide by 2, as mentioned. The second byte is shifted 1 to the right (ignoring the msb). This means you do need to consider the byte you are writing, and what came before. Think about it in terms of columns of bytes - odd column bytes (counting from 0) are a continuation of the left side even column bytes.  Aligning graphics on boundaries is useful, and then you can consider whether you are on an odd or even byte to know what the “shift” needs to be, or have pre-shifted graphics for odd/even columns.<br/><br/>
+
 Look at these definitions - 2 bytes wide producing 7 (double-wide) on screen pixels per 2 bytes:
 
 <pre>
@@ -43,7 +43,7 @@ Look at these definitions - 2 bytes wide producing 7 (double-wide) on screen pix
 .byte %01111111, %01111111 ; white
 .byte %11111111, %11111111 ; same white
 </pre>
-In black and in white, the MSB has no effect.
+In black and in white, the msb has no effect.
 
 <pre>
 .byte %01010101, %00101010 ; violet
@@ -52,7 +52,7 @@ In black and in white, the MSB has no effect.
 .byte %00101010, %01010101 ; green
 .byte %10101010, %11010101 ; orange
 </pre>
-Notice how orange and blue are the same as green and violet, except that the MSB is set.
+Notice how orange and blue are the same as green and violet, except that the msb is set.
 
 If you were to render the following bytes (violet followed by green)
 
@@ -66,9 +66,8 @@ you would expect violet and green lines next to one-another. What you have inste
 10 10 10 10 10 10 10 01 01 01 01 01 01 01
 76 54 32 1f ed cb a9 nm lk ji hv ut sr qp 
 </pre>
-Right in the middle where violet meets green, you see two 0’s next to one-another (<code>9n</code>). Even though they are from different pairs, that’s not what the Apple hardware sees. The hardware sees this simply as a stream of 0s and 1s and when a 0 is followed by a 0, black is produced. What it sees are alternating bits for color, then a pair of zeros for black and then more alternating pairs for color. The upshot of all of that is that you cannot have violet next to green or orange, without a black in between. The same happens when you have two 1’s next to one-another, even from different pixel-pairs. You end up with White.
-<br /><br />
-Also note that the MSB controls the color shift for a whole byte. This means you cannot have violet and blue in the same byte, or orange and green in the same byte either.
+Right in the middle where violet meets green, you see two 0’s next to one-another (<code>9n</code>). Even though they are from different pairs, that’s not what the Apple hardware sees. The hardware sees this simply as a stream of 0s and 1s and when a 0 is followed by a 0, black is produced. What it sees are alternating bits for color, then a pair of zeros for black and then more alternating pairs for color. The upshot of all of that is that you cannot have violet next to green or orange, without a black in between. The same happens when you have two 1’s next to one-another, even from different pixel-pairs. You end up with White.<br/><br/>
+Also note that the msb controls the color shift for a whole byte. This means you cannot have violet and blue in the same byte, or orange and green in the same byte either.
 
 == Color bouncing ball example ==
 
