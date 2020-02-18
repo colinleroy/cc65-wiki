@@ -90,7 +90,7 @@ In the mygame folder you can now type (assuming you have added code, for example
 
 <blockquote>Notes:
 
-If you are making an all assembly program, you will need to specify an assembly-ready linker config (.cfg) file to cl65. The easiest way to do this is to change the LDFLAGS line in the Makefile. There is a system supplied <code>apple2-asm.cfg</code> file that should work in most cases. Change the LDFLAGS line read:
+If you are making an all assembly program, you will need to specify an assembly-ready linker config (.cfg) file to cl65. The easiest way to do this is to change the LDFLAGS line in the Makefile. There is a system supplied <code>apple2-asm.cfg</code> file that should work in most cases. Change the LDFLAGS line to read:
 
 <code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib -C apple2-asm.cfg</code>
 
