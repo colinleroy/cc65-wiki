@@ -1,17 +1,24 @@
 Text mode is the power-on default display mode. To make sure text mode is on you access <code>TXTSET</code> ($C051). The Apple II has 2 text areas. The first, Page 1, is at $0400 and the second, Page 2, is at $0800. Only 1 area is visible at any given time. To select Page 1 access <code>LOWSCR</code> ($C054) and, to select Page 2, access <code>HISCR</code> ($C055).
 
-The Apple II or II+ uses the following set of 64 characters:<br />
+The Apple II or II+ uses the following set of 64 characters:
+
 <code>@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_ !"#$%&'()*+,-./0123456789:;<=>?</code>
 
-When writing bytes directly into Page 1 or Page 2, this is how this set of 64 characters will be displayed based on the byte written to the display page:<br />
-0 - 63 Inverted<br />
-64 - 127 Flashing<br />
-128 - 191 Normal Set<br />
+When writing bytes directly into Page 1 or Page 2, this is how this set of 64 characters will be displayed based on the byte written to the display page:
+
+0 - 63 Inverted
+
+64 - 127 Flashing
+
+128 - 191 Normal Set
+
 192 - 255 Normal Set
 
-The Apple //e uses these same characters, but for byte values 224 - 255 it has these additional characters:<br />
+The Apple //e uses these same characters, but for byte values 224 - 255 it has these additional characters:
+
 <code>`abcdefghijklmnopqrstuvwxyz{|}~░</code>
 
+=== Adressing Rows ===
 The text memory has a non-linear organization but it is easy to make a table that will point at the start of each text line. The following assembly code will generate a lo and hi byte table:
 
 <pre>
@@ -25,20 +32,20 @@ rowH:
         .byte   >$0400 | (Row .mod 8 ) / 2
     .endrep
 </pre>
-In “C” the table can be generated, or one can simply add code such as this:<br />
-<a name="rows"></a>
+In “C” the table can be generated, or one can simply add code such as this:
 
 <pre>
-const int row[24]= {0x0400, 0x0480, 0x0500, 0x0580, 0x0600, 0x0680, 0x0700, 0x0780, 0x0428, 0x04A8, 0x0528, 0x05A8, 0x0628, 0x06A8, 0x0728, 0x07A8, 0x0450, 0x04D0, 0x0550, 0x05D0, 0x0650, 0x06D0, 0x0750, 0x07D0};
+const int row[24]= {0x0400, 0x0480, 0x0500, 0x0580, 0x0600, 0x0680, 0x0700, 
+0x0780, 0x0428, 0x04A8, 0x0528, 0x05A8, 0x0628, 0x06A8, 0x0728, 0x07A8, 
+0x0450, 0x04D0, 0x0550, 0x05D0, 0x0650, 0x06D0, 0x0750, 0x07D0};
 </pre>
 To use the row (or rowL/H), look up the line start by the Y position. Add the X position to the looked-up value and that’s the address of the character on the screen at the Y (row) and X (col) location.
 
-<a name="exclude"></a>
 <blockquote>
 Note: 
 * cc65 will, by default, place Apple II program in the Page 2 memory (at $0803). 
 * If you want to use Page 2, you can either tell cl65 to use a new start address with the <code>--start-addr</code> option, or you can add a .cfg file to src/apple2 in which you override the start address. Use an address past Page 2’s end. I used $0C00 and that worked great. 
-* To use the <code>--start-addr</code> with the Makefile, refer to [https://github.com/cc65/wiki/wiki/Apple-II-5.-Using-make-and-Makefiles-for-a-great-workflow#ldflags LDFLAGS]. Change the <code>LDFLAGS</code> line to read like like this for a start address of $0C00 with an all assembly code program: <code> $(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib --start-addr 0x0C00</code><br />or, for a “C” program, the following (the previous will work but some of it is redundant):<code> $(NAME).apple2: LDFLAGS += --start-addr 0x0C00</code>
+* To use the <code>--start-addr</code> with the Makefile, change the <code>$(NAME).apple2: LDFLAGS += </code> for a start address of $0C00 with an all assembly code program to: <code> $(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib --start-addr 0x0C00</code> or, for a “C” program, the following (the previous will work but some of it is redundant):<code> $(NAME).apple2: LDFLAGS += --start-addr 0x0C00</code>
 * Remember to adjust the row definition (rowH for assembly) from $400 to $800 for Page 2, or add the high-byte on-the-fly if both pages are being used.
 </blockquote>
 
