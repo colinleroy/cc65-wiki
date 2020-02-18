@@ -5,34 +5,34 @@ __TOC__
 == Applications ==
 
 === A2Command ===
-[http://a2command.codeplex.com A2Command] is a filebrowser based on [[Applications written in C or C with assembler#cbm-command|CBM Command]] running on Apple //e, //c, IIgs.
+[https://github.com/A2Command/a2command] is a filebrowser based on [[Applications written in C or C with assembler#cbm-command|CBM Command]] running on Apple //e, //c, IIgs.
 
 === Breadbox64 ===
-[http://www.vandenbrande.com/wp/2009/06/breadbox64-a-twitter-client-for-the-c64 Breadbox64] is a twitter client for the C64 that runs on Contiki. The source is available in the [http://contikiprojects.svn.sourceforge.net/viewvc/contikiprojects/vandenbrande.com/twitter Contiki Projects Community].
+[https://web.archive.org/web/20130723162430/http://www.vandenbrande.com/wp/2009/06/breadbox64-a-twitter-client-for-the-c64/ Breadbox64] is a twitter client for the C64 that runs on Contiki. The source is available in the [https://sourceforge.net/p/contikiprojects/code/HEAD/tree/vandenbrande.com/twitter/ Contiki Projects Community].
 
 === C-Vote ===
-[http://www.paradroid.net/cvote C-Vote] is "a computerized voting system for demo parties that runs on C64:s. Of course it's not only limited to demo competitions, and the code is easy to port to other 6502-based platforms supported by the cc65 compiler." (source included)
+[https://paradroid.automac.se/cvote/ C-Vote] is "a computerized voting system for demo parties that runs on C64:s. Of course it's not only limited to demo competitions, and the code is easy to port to other 6502-based platforms supported by the cc65 compiler." (source included)
 
 === CBM Command ===
-[http://cbmcommand.codeplex.com CBM Command] is a filebrowser running on C64/C128/VIC20/PET.
+[https://github.com/CINJ/CBM-Command CBM Command] is a filebrowser running on C64/C128/VIC20/PET.
 
 === Contiki ===
-The [http://www.contiki-os.org Contiki OS], originally developed by Adam Dunkels was first written using cc65. It has been improved since then and [http://hitmen.c02.at/html/tools_contiki.html ported to many more platforms]. Although today it's focus is on embedded devices a few enthusiasts [https://github.com/oliverschmidt/contiki/releases maintain a version that does still run on 6502 platforms].
+The [https://github.com/contiki-os/contiki OS], originally developed by Adam Dunkels was first written using cc65. It has been improved since then and [http://hitmen.c02.at/html/tools_contiki.html ported to many more platforms]. Although today it's focus is on embedded devices a few enthusiasts [https://github.com/oliverschmidt/contiki/releases maintain a version that does still run on 6502 platforms].
 
 === Contiki BBS ===
-[http://retrohackers.com/viewtopic.php?f=10&t=571 Contiki BBS] is a Contiki based telnet server for the C64. The source is available in the [http://contikiprojects.svn.sourceforge.net/viewvc/contikiprojects/ufud.org/contiki-bbs Contiki Projects Community].
+[http://retrohackers.com/viewtopic.php?f=10&t=571 Contiki BBS] is a Contiki based telnet server for the C64. The source is available in the [https://sourceforge.net/p/contikiprojects/code/HEAD/tree/ufud.org/contiki-bbs/ Contiki Projects Community].
 
 === EasyProg ===
-Skoe has written a tool named [http://skoe.de/easyflash/index.php?page=easyprog-en EasyProg] to program the flash cartridge [http://skoe.de/easyflash/index.php EasyFlash]. (source included)
+Skoe has written a tool named [https://skoe.de/easyflash/doku.php?id=writecrt EasyProg] to program the flash cartridge [https://skoe.de/easyflash/doku.php EasyFlash]. (source included)
 
 === GuruTerm ===
-[http://noname.c64.org/csdb/release/?id=38908 GuruTerm] is a commodore graphics enabled telnet client for the C64 written in assembler and C.
+[https://csdb.dk/release/?id=38908 GuruTerm] is a commodore graphics enabled telnet client for the C64 written in assembler and C.
 
 === rt65 ===
 [http://retrohackers.com/viewtopic.php?f=4&t=417&p=4301&hilit=rt65#p4301 rt65] is a preemptive multitasking kernel/OS written mostly in C with minimal use of assembler.
 
 === Serial Slave ===
-[http://www.paradroid.net/serslave/ Serial Slave] is "is a system that allows you to use a PC as a virtual disk drive for your C64 or C128. It communicates using RS-232 and doesn't require any custom hardware. The PC server also runs well under multitasking operating systems, so you don't have to dedicate a machine to running Serial Slave. Serial Slave is fast: 3.8 kB/s with a SwiftLink, 11.5 kB/s with a Turbo232 or Silver Surfer, and even 23 kB/s with a SuperCPU if your PC supports 230400 baud."  (source included)
+[http://paradroid.automac.se/serslave/ Serial Slave] is "is a system that allows you to use a PC as a virtual disk drive for your C64 or C128. It communicates using RS-232 and doesn't require any custom hardware. The PC server also runs well under multitasking operating systems, so you don't have to dedicate a machine to running Serial Slave. Serial Slave is fast: 3.8 kB/s with a SwiftLink, 11.5 kB/s with a Turbo232 or Silver Surfer, and even 23 kB/s with a SuperCPU if your PC supports 230400 baud."  (source included)
 
 == Games ==
 
@@ -40,85 +40,85 @@ Skoe has written a tool named [http://skoe.de/easyflash/index.php?page=easyprog-
 A port of the [https://github.com/nanoflite/2048-cc65 2048] game to cc65. There is a version for the C64 and one for the PET 4032.
 
 === Alter Ego ===
-[http://shiru.untergrund.net/software.shtml Alter Ego] is a puzzle platformer for the NES written in C/assembler. (source included)
+[https://shiru.untergrund.net/software.shtml Alter Ego] is a puzzle platformer for the NES written in C/assembler. (source included)
 
 === CardSwipe ===
-[http://noname.c64.org/csdb/release/?id=98755 CardSwipe] is a card game for the C64.
+[https://csdb.dk/release/?id=98755 CardSwipe] is a card game for the C64.
 
 === cc65 Chess ===
 Portable AI, 1 or 2 player Chess game in C. This for the C64 and the Apple II.
-[https://github.com/StewBC/cc65-Chess GitHub project] and [http://www.youtube.com/watch?v=bkA4vtwxaJg Video]
+[https://github.com/StewBC/cc65-Chess GitHub project] and [https://www.youtube.com/watch?v=bkA4vtwxaJg Video]
 
 === Critical Match ===
 Color matching game for NES by slembcke. [https://github.com/slembcke/critical-match GitHub project]
 
 === ECKN/ECKN+ ===
-Clone of the flash puzzle game 'Znax' with improved score system for Atari-8-Bit computers. The 'plus' version has minor fixes, is NTSC compatible and supports Atari CX77 touch tablet or similar devices (CMI08 PS/2 mouse interface). [http://atari.fandal.cz/search.php?search=ECKN Download] and [http://www.youtube.com/watch?v=KnwpMZAuxZo Video]
+Clone of the flash puzzle game 'Znax' with improved score system for Atari-8-Bit computers. The 'plus' version has minor fixes, is NTSC compatible and supports Atari CX77 touch tablet or similar devices (CMI08 PS/2 mouse interface). [http://a8.fandal.cz/search.php?search=ECKN Download] and [https://www.youtube.com/watch?v=KnwpMZAuxZo Video]
 
 === GNU Sudoku ===
-[http://noname.c64.org/csdb/release/?id=29472 GNU Sudoku] is a port of the well known game to the C64.
+[https://csdb.dk/release/?id=29472 GNU Sudoku] is a port of the well known game to the C64.
 
 === Manic Miner ===
-Remake of Manic Miner by Matthew Smith from 1983.  This for the C64. [https://github.com/StewBC/manicminer GitHub project] and [http://www.youtube.com/watch?v=_3_V-8X8J5o Video]
+Remake of Manic Miner by Matthew Smith from 1983.  This for the C64. [https://github.com/StewBC/manicminer GitHub project] and [https://www.youtube.com/watch?v=_3_V-8X8J5o Video]
 
 === NESert Golfing ===
 A 2D golf game by Brad Smith for NES. [https://github.com/bbbradsmith/NESertGolfing GitHub project] and [https://rainwarrior.itch.io/nesert-golfing itch.io page]
 
 === Snake Byte ===
 Remake of Snake Byte by Sirius Software first published in 1982.  This for the C64 with a conio port.
-[https://github.com/StewBC/snakebyte GitHub project] and [http://www.youtube.com/watch?v=H7Y4HVXVzoI Video]
+[https://github.com/StewBC/snakebyte GitHub project] and [https://www.youtube.com/watch?v=H7Y4HVXVzoI Video]
 
 === Solitaire ===
-The Atari Lynx [http://www.classicgamedev.com/Lynx:Solitaire_in_C Solitaire] (source included) contains three games:
+The Atari Lynx [https://atarigamer.com/lynx/game/Solitaire/267586633 Solitaire] (source included) contains three games:
 * Klondike (1 and 3 cards at a time)
 * Freecell
 * Spider
 
 === The Potion ===
-[http://noname.c64.org/csdb/release/?id=9392 The Potion] is a text adventure for the C64 written in C/assembler. (source included)
+[https://csdb.dk/release/?id=9392 The Potion] is a text adventure for the C64 written in C/assembler. (source included)
 
 === UWOL - Quest for Money ===
-[http://noname.c64.org/csdb/release/?id=93409 UWOL - Quest for Money] is a jump'n'run game written in C and Assembler, ported from the Spectrum version.
+[https://csdb.dk/release/?id=93409 UWOL - Quest for Money] is a jump'n'run game written in C and Assembler, ported from the Spectrum version.
 
 === Wumpus 65 ===
-[http://noname.c64.org/csdb/release/?id=95850 Wumpus 65] is a text adventure written in C. runs on C64/C128/plus4/pet. (source included)
+[https://csdb.dk/release/?id=95850 Wumpus 65] is a text adventure written in C. runs on C64/C128/plus4/pet. (source included)
 
 === Zoo Mania ===
-The C64 game [http://noname.c64.org/csdb/release/?id=102217 Zoo Mania] was written in C/assembler. (source included)
+The C64 game [https://csdb.dk/release/?id=102217 Zoo Mania] was written in C/assembler. (source included)
 
 == Demos ==
 
 === BCC #3 Party Scroller ===
-[http://noname.c64.org/csdb/release/?id=79461 BCC #3 Party Scroller] is a C64 demo by C64 club berlin. (source included)
+[https://csdb.dk/release/?id=79461 BCC #3 Party Scroller] is a C64 demo by C64 club berlin. (source included)
 
 === Bunkerparty 2008 Invitation ===
-[http://noname.c64.org/csdb/release/?id=64202 Bunkerparty 2008 Invitation] is a C64 demo by Dienstagstreff.
+[https://csdb.dk/release/?id=64202 Bunkerparty 2008 Invitation] is a C64 demo by Dienstagstreff.
 
 === MatrixCevi ===
-[http://noname.c64.org/csdb/release/?id=21038 MatrixCevi] is a simple "Matrix effect" for the C64 written in C. (source included)
+[https://csdb.dk/release/?id=21038 MatrixCevi] is a simple "Matrix effect" for the C64 written in C. (source included)
 
 === Minicast ===
 [http://hitmen.c02.at/html/tools_cc65.html Minicast] is an interactive raycasting demo for the C64 written in C which makes extensive use of inline assembly. (source included)
 
 === Se gitai o Ilios ===
-[http://noname.c64.org/csdb/release/?id=56368|Se gitai o Ilios] is a C64 demo by Cascade. (source included)
+[https://csdb.dk/release/?id=56368 Se gitai o Ilios] is a C64 demo by Cascade. (source included)
 
 == Misc ==
 
 === 1541 Ultimate ===
-The 1.x firmware of the [http://1541ultimate.net 1541 Ultimate] uses cc65 to build the menu program, which is written in C.
+The 1.x firmware of the [http://1541ultimate.net/ 1541 Ultimate] uses cc65 to build the menu program, which is written in C.
 
 === brainfuck64 ===
 [https://github.com/gergoerdi/brainfuck64 brainfuck64] is a Brainfuck compiler that runs on the Commodore 64 (or any 6502-based computer supported by cc65 that has enough RAM).
 
 === Chameleon ===
-The boot loader and menu program of the [http://icomp.de/products/chameleon_e.htm Chameleon] are written using a combination of assembler and C.
+The boot loader and menu program of the [http://wiki.icomp.de/wiki/Chameleon Chameleon] are written using a combination of assembler and C.
 
 === Chip-8 Emulator ===
-[http://noname.c64.org/csdb/release/?id=17306 Chip-8 Emulator] is a Chip-8 Emulator for the C64 written in C and assembler.
+[https://csdb.dk/release/?id=17306 Chip-8 Emulator] is a Chip-8 Emulator for the C64 written in C and assembler.
 
 === Eliza 65 ===
-[http://noname.c64.org/csdb/release/?id=95792 Eliza 65] is a port of the well known Eliza program. (source included)
+[https://csdb.dk/release/?id=95792 Eliza 65] is a port of the well known Eliza program. (source included)
 
 === IP65 ===
 [https://github.com/cc65/ip65/wiki IP65] is a TCP/IP stack for 6502 based computers. The actual TCP/IP stack is written in assembler, but various programs coming with IP65 are written in C.
