@@ -1,51 +1,48 @@
-The following sections have been created to help a cc65 user with using the Apple II as a target.<br/><br/>
+The following sections have been created to help a cc65 user with using the Apple II as a target.
+
 Section I is getting set up and Section II is about the Apple II platform, and has several programs embedded to help explain the content.
 
 == Section I - Getting Set Up ==
 
 This section covers:
-<ol>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-1.-Emulators-and-related-software">Apple II emulators and related Software</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-2.-Compiling-%22C%22-for-the-Apple-II">Compiling “C” code for the Apple II</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-3.-Making-an-Apple-II-disk-for-an-emulator">Making an Apple II disk for an emulator</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-4.-Compiling-assembly-code-for-the-Apple-II">Compiling assembly code for the Apple II</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-5.-Using-make-and-Makefiles-for-a-great-workflow">Using make and Makefiles for a great workflow</a>
-</li>
-</ol>
+
+[https://github.com/cc65/wiki/wiki/Apple-II-1.-Emulators-and-related-software 1. Apple II emulators and related Software]
+
+[https://github.com/cc65/wiki/wiki/Apple-II-2.-Compiling-%22C%22-for-the-Apple-II 2. Compiling “C” code for the Apple II]
+
+[https://github.com/cc65/wiki/wiki/Apple-II-3.-Making-an-Apple-II-disk-for-an-emulator 3. Making an Apple II disk for an emulator]
+
+[https://github.com/cc65/wiki/wiki/Apple-II-4.-Compiling-assembly-code-for-the-Apple-II 4. Compiling assembly code for the Apple II]
+
+[https://github.com/cc65/wiki/wiki/Apple-II-5.-Using-make-and-Makefiles-for-a-great-workflow 5. Using make and Makefiles for a great workflow]
+
+
 == Section II - Getting to know the Apple II ==
 
-This section covers:<br />
+This section covers:
 
-<ol start="6">
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-6.-Zero-Page-locations-and-use">Zero Page locations and use</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-7.-System-Locations">System Locations</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-8.-Keyboard">The Keyboard</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-9.-Audio">Audio</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-10.-File-IO-with-ProDOS">File I/O with ProDOS</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-11.-Display-Modes">Display Modes</a>
-</li>
-<li>
-<a href="https://github.com/cc65/wiki/wiki/Apple-II-12.-joystick">Using the joystick</a>
-</li>
-</ol>
+
+[https://github.com/cc65/wiki/wiki/Apple-II-6.-Zero-Page-locations-and-use 6. Zero Page locations and use]
+
+
+[https://github.com/cc65/wiki/wiki/Apple-II-7.-System-Locations 7. System Locations]
+
+
+[https://github.com/cc65/wiki/wiki/Apple-II-8.-Keyboard 8.. The Keyboard]
+
+
+[https://github.com/cc65/wiki/wiki/Apple-II-9.-Audio 9. Audio]
+
+
+[https://github.com/cc65/wiki/wiki/Apple-II-10.-File-IO-with-ProDOS 10. File I/O with ProDOS]
+
+
+[https://github.com/cc65/wiki/wiki/Apple-II-11.-Display-Modes 11. Display Modes]
+
+
+[https://github.com/cc65/wiki/wiki/Apple-II-12.-joystick 12. Using the joystick]
+
+
+
+
 === [https://github.com/cc65/wiki/wiki/Apple-II-1.-Emulators-and-related-software Start: 1. Apple II Emulators and related software] ===
