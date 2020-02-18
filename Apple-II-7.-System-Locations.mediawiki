@@ -8,7 +8,8 @@ MLI     = $BF00 ; ProDOS Machine Language Interface
 SPEAKER = $C030 ; Access to toggle the speaker
 PADDL0  = $C064 ; Read to get paddle / joystick
 PTRIG   = $C070 ; Reset PADDLE values</pre>
-Quite a few of the Apple II “ports” are triggered by simply accessing a memory address. For example, in the apple2.inc file there is this definition:<br />
+Quite a few of the Apple II “ports” are triggered by simply accessing a memory address. For example, in the apple2.inc file there is this definition:
+
 <code>KBDSTRB := $C010 ; Clear keyboard strobe</code>
 
 To reset the keyboard, one can simply access location $C010. Whether it’s a load, store or bit instruction, accessing KBDSTRB will clear the keyboard.
