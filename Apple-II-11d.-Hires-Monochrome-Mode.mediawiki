@@ -3,14 +3,12 @@ About the Apple II Hires Graphics: The Apple II has no ''soft switch'' to select
 
 When the Apple II is connected to a monochrome monitor, or when you are programming in Hires and don’t consider color, it can be convenient to think of this as a Hires monochrome mode with a resolution of 280 horizontal pixel and 192 vertical pixels.
 
-The Apple II hires graphics seem a little strange initially, mostly for 3 reasons:<br />
+The Apple II hires graphics seem a little strange initially, mostly for 3 reasons:
+
 * the hires buffer is not sequential
 * every byte has 7 visible pixels (bits 0 through 6). The most significant bit (also called the msb, bit 7) is used, but for controlling color.
 * the pixels are drawn left to right, from the least significant bit to the bit before the msb.
-
-None of this is particularly problematic, once you get used to it.<br /><br />
-
-Also remember that you may have to exclude the HGR Page or Pages you use from the memory map using the cl65 linker configuration files. See [https://github.com/cc65/wiki/wiki/Apple-II-11a.-Text-Mode#exclude Note] for more information. You can use address 0x6000 to start after the HGR pages. If only one HGR page is needed, you can of course use the one at $4000-$6000 leaving quite a bit of memory between $0803 and $4000.
+None of this is particularly problematic, once you get used to it.  Also remember that you may have to exclude the HGR Page or Pages you use from the memory map using the cl65 linker configuration files. You can use address 0x6000 to start after the HGR pages. If only one HGR page is needed, you can of course use the one at $4000-$6000 leaving quite a bit of memory between $0803 and $4000.
 
 == Turn Hires mode on and off ==
 
@@ -32,7 +30,9 @@ To turn it off again, you can use this sequence:
 </pre>
 == Access a line and column in HGR (non-linear memory) ==
 
-Similar to how it was done for the text mode, a table can be used to find the memory that starts every display line (row) of a hires screen. The following two memory blocks define the low and hi bytes that represent the start of every of the 192 screen rows.<br />Notice the >$0000 - this can be $2000 or $4000, or, if both are being used, left as $0000 and updated when used. The example later will make this clear.
+Similar to how it was done for the text mode, a table can be used to find the memory that starts every display line (row) of a hires screen. The following two memory blocks define the low and hi bytes that represent the start of every of the 192 screen rows.
+
+Notice the >$0000 - this can be $2000 or $4000, or, if both are being used, left as $0000 and updated when used. The example later will make this clear.
 
 <pre>
 rowL:
