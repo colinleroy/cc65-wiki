@@ -1,10 +1,10 @@
 == Apple II ==
 
 === CCFA ===
-[http://dreher.net/projects/CFforAppleII/downloads/CFforAppleII_Manual_1.0.pdf CFFA] is a CompactFlash Interface for Apple II. The reference manual contains in appendix 1 the firmware listing.
+[https://dreher.net/projects/CFforAppleII/downloads/CFforAppleII_Manual_1.0.pdf CFFA] is a CompactFlash Interface for Apple II. The reference manual contains in appendix 1 the firmware listing.
 
 === VM02 ===
-[http://sourceforge.net/projects/vm02/ VM02] is a Java compatible environment for the Apple II series of computers. Most basic features of a Java VM are implemented to allow direct execution of standard Java class files on a 64K, 8 bit, 1 MHz Apple II computer. (source included)
+[https://sourceforge.net/projects/vm02/ VM02] is a Java compatible environment for the Apple II series of computers. Most basic features of a Java VM are implemented to allow direct execution of standard Java class files on a 64K, 8 bit, 1 MHz Apple II computer. (source included)
 
 === Penetrator ===
 [https://github.com/StewBC/penetrator-apple2/ Penetrator] is a remake of the 1982 ZX Spectrum game by Phillip Mitchell and Beam Software.
@@ -12,18 +12,18 @@
 == Atari 8-bit machines ==
 
 === seitensprung ===
-"seitensprung" is an ASCII/Windows-1252 text viewer with proportional font support for Atari 8-bit machines. [http://www.atariage.com/forums/topic/157385-release-of-seitensprung-v015-5th-place-abbuc-sc/ Download/Video]
+"seitensprung" is an ASCII/Windows-1252 text viewer with proportional font support for Atari 8-bit machines. [https://atariage.com/forums/topic/157385-release-of-seitensprung-v015-5th-place-abbuc-sc/ Download/Video]
 
 == Commodore 64 ==
 
 === Cypherbasic ===
-[http://github.com/silizium/cypherbasic Cypherbasic] is a BASIC extension for the Commodore 64 with a lot of useful functions for classic cryptography 
+[https://github.com/silizium/cypherbasic Cypherbasic] is a BASIC extension for the Commodore 64 with a lot of useful functions for classic cryptography 
 
 === G-Pascal ===
-[http://kildall.apana.org.au/~cjb/G-Pascal/ G-Pascal] is a Pascal compiler of 1983, call SYS 32768. (184 KB source included)
+[https://web.archive.org/web/20170324234712/http://kildall.apana.org.au/~cjb/G-Pascal/ G-Pascal] is a Pascal compiler of 1983, call SYS 32768. (184 KB source included)
 
 === Krill's Loader ===
-[http://noname.c64.org/csdb/release/?id=78348 Krill's Loader] is an advanced IRQ fastloader for the C64 supporting many different drives.
+[https://csdb.dk/release/?id=78348 Krill's Loader] is an advanced IRQ fastloader for the C64 supporting many different drives.
 
 === Outlaw game ===
 [ftp://ftp.groessler.org/pub/chris/cc65/outlaw.tar.gz Outlaw] is a simple clone of the game with the same name for the Atari 2600 console.
@@ -31,7 +31,7 @@
 == Commodore VIC-20 ==
 
 === SID Vicious ===
-[http://vic20emu.googlecode.com/svn/trunk/sidplay/ SID Vicious] is a SID emulator for the VIC-20 by Aleksi Eeben. Output pulse wave, triangle, sawtooth, noise with ADSR envelopes at 6.1 kHz. (source included)
+[https://www.dropbox.com/sh/7m0d1nfrwujtmd4/AAAhehcmONEziJM8MMI8EAdUa SID Vicious] is a SID emulator for the VIC-20 by Aleksi Eeben. Output pulse wave, triangle, sawtooth, noise with ADSR envelopes at 6.1 kHz. (source included)
 
 == Commander X16 ==
 
@@ -56,7 +56,7 @@ The [https://github.com/pinobatch/240p-test-mini 240p Test Suite] turns an NES i
 [https://github.com/NovaSquirrel/NESLife NESLife] is a Conway's Life simulator for NES. (On GitHub)
 
 === Pently ===
-[https://github.com/Qix-/pently Pently] is a text-based music player for NES, with a text-based input format similar to MML or LilyPond. (On GitHub)
+[https://github.com/pinobatch/pently Pently] is a text-based music player for NES, with a text-based input format similar to MML or LilyPond. (On GitHub)
 
 === RHDE: Furniture Fight ===
 [https://github.com/pinobatch/rhde-nes RHDE: Furniture Fight] is an interior decoration real-time strategy game for NES for two players. (On GitHub)
