@@ -10,7 +10,6 @@ Open AppleCommander: <code>java -jar AppleCommander-win64-1.5.0.jar</code> (wher
 Open the downloaded ProDOS disk and delete all the files except for the file named '''PRODOS'''<br/>
 Save this disk to a new name, <code>template.dsk</code> and keep this safe - it will be reused all the time.
 
-<a name="diskprep"></a> 
 === Prepare a disk for your program ===
 Copy the template.dsk to hello.dsk in the same folder where you created hello.apple2 
 
