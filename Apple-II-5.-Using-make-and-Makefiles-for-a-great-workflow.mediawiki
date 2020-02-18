@@ -5,7 +5,7 @@ This section will show you how to use make and a Makefile to really accelerate y
 
 Open cmd.exe, PowerShell or Terminal on your OS. Type <code>make</code> to see if make is installed and in the path. If it is installed, try <code>make --version</code> and make sure the make is GNU make. The Makefile this tutorial uses relies on GNU make. To get GNU make working/installed, there’s helpful information on this page: https://cc65.github.io/doc/using-make.html.
 
-On Windows, I would suggest starting with make as referenced on the page [https://cc65.github.io/doc/using-make.html linked] above, near the bottom of the page, where a <code>make.exe</code> link takes you to a GNU make install for Windows. 
+On Windows, I would suggest starting with make as referenced on the page linked above, near the bottom of the page, where a <code>make.exe</code> link takes you to a GNU make install for Windows. 
 == Start a project ==
 Let’s assume you are going to make a project called mygame, so make a folder called <code>mygame</code>.
 == Get a Makefile == 
@@ -25,7 +25,7 @@ Add the <code>template.dsk</code> file to mygame. Add a folder under mygame call
 
 Changes need to be made to the Makefile so it will work with disk building ''and'' assembly only projects (will still work with “C” projects also).
 
-<a name="ldflags"></a>Look for the line <code>LDFLAGS :=</code> quite near the top of the file. Just below that line, add the following lines:
+Look for the line <code>LDFLAGS :=</code> quite near the top of the file. Just below that line, add the following lines:
 
 <pre>
 ifeq ($(PROGRAM),)
@@ -66,7 +66,7 @@ $(DSK): $(NAME).apple2
 </pre>
 For this makefile to work, you will need AppleCommander installed and unless you have it in mygame as ac.jar, you will need to do either a or b below:<br/>
 a) Edit Makefile-dsk.mk and replace ac.jar in the line AC ?= ac.jar with the full path to AppleCommander<br/>
-b) Set an environment variable so that the java command will find AppleCommander. Use the following to set the environment variable for whatever shell you are using:<br/>
+b) Set an environment variable so that the java command will find AppleCommander. Use the following to set the environment variable for whatever shell you are using:
 
 <pre>
     Powershell:
@@ -90,15 +90,15 @@ In the mygame folder you can now type (assuming you have added code, for example
 
 <blockquote>Notes:
 
-If you are making an all assembly program, you will need to specify an assembly-ready linker config (.cfg) file to cl65. The easiest way to do this is to change the [[#ldflags|LDFLAGS]] line in the Makefile. There is a system supplied <code>apple2-asm.cfg</code> file that should work in most cases. Change the LDFLAGS line read:<br/>
+If you are making an all assembly program, you will need to specify an assembly-ready linker config (.cfg) file to cl65. The easiest way to do this is to change the [[#ldflags|LDFLAGS]] line in the Makefile. There is a system supplied <code>apple2-asm.cfg</code> file that should work in most cases. Change the LDFLAGS line read:
 
-<code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib -C apple2-asm.cfg</code><br/>
+<code>$(NAME).apple2: LDFLAGS += -u __EXEHDR__ apple2.lib -C apple2-asm.cfg</code>
 
-Another option would be to supply your own .cfg file. You can use <code>apple2.cfg</code> or <code>apple2-asm.cfg</code> as a base. For example, if you copy the spkr.asm file into src/apple2 you can also copy apple2-asm.cfg from wherever it is in your system, to the src/apple2 folder. To find the apple2-asm.cfg file on your system, you can run <code>cl65 --print-target-path</code> and, in the resultant output, replace the trailing word <code>target</code> with <code>cfg</code> to find the folder.<br/>
+Another option would be to supply your own .cfg file. You can use <code>apple2.cfg</code> or <code>apple2-asm.cfg</code> as a base. For example, if you copy the spkr.asm file into src/apple2 you can also copy apple2-asm.cfg from wherever it is in your system, to the src/apple2 folder. To find the apple2-asm.cfg file on your system, you can run <code>cl65 --print-target-path</code> and, in the resultant output, replace the trailing word <code>target</code> with <code>cfg</code> to find the folder.
 
-In some cases you may need your own cfg file for C programs too, for example when you use hires graphics and you have a lot of code (you would need to prevent cl65 from using memory in the HGR Pages you use). You can then use the method described above to find apple2.cfg and copy that to src/apple2. You can then edit that copy.<br/>
+In some cases you may need your own cfg file for C programs too, for example when you use hires graphics and you have a lot of code (you would need to prevent cl65 from using memory in the HGR Pages you use). You can then use the method described above to find apple2.cfg and copy that to src/apple2. You can then edit that copy.
 
-I would suggest not making your own cfg files if you don’t need to (As said, sometimes you have to). As cc65 is developed, the format of these files could change making custom copies not work without maintenance.<br/>
+I would suggest not making your own cfg files if you don’t need to (As said, sometimes you have to). As cc65 is developed, the format of these files could change making custom copies not work without maintenance.
 
 For more information about cfg files, see https://cc65.github.io/doc/ld65.html#s5
 </blockquote>
