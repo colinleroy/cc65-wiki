@@ -120,6 +120,9 @@ The boot loader and menu program of the [http://icomp.de/products/chameleon_e.ht
 === Eliza 65 ===
 [http://noname.c64.org/csdb/release/?id=95792 Eliza 65] is a port of the well known Eliza program. (source included)
 
+=== IP65 ===
+[https://github.com/cc65/ip65/wiki IP65] is a TCP/IP stack for 6502 based computers. The actual TCP/IP stack is written in assembler, but various programs coming with IP65 are written in C.
+
 === picoOS ===
 The original [http://picoos.sourceforge.net/ports/6502 pico<nowiki>]</nowiki>OS 1.0.4 for 6502] is a real-time operating system by Dennis Kuschel. (source included; can be built by cc65 versions 2.13 and 2.14)
 
