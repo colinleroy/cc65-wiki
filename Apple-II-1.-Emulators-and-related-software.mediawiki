@@ -26,7 +26,10 @@ https://github.com/linappleii/linapple
 === macOS ===
 (free) Microm8 worked for me - https://paleotronic.com/software/microm8/
 
-(not free) Virtual ][ seems really good - https://www.virtualii.com/
+(not free) Virtual <nowiki>][</nowiki> seems really good - https://www.virtualii.com/
+
+''Note:'' Wine is not compatible with macOS Catelina (10.15).  I have seen reports of people compiling Wine themselves and having success with Windows x64 binaries (such as AppleWin) but I did not try this myself.
+
 == Install ==
 Install the files anywhere on your system but '''note the path''', especially for AppleCommander.
 
