@@ -32,7 +32,7 @@ Notice that the pattern is an alternating 10. But if you put the source bytes be
 01010101
 00101010
 </pre>
-The source bytes, for the 7 pixel bits, are not the same due to the fact that 7 doesn’t divide by 2, as mentioned. The second byte is shifted 1 to the right (ignoring the msb). This means you do need to consider the byte you are writing, and what came before. Think about it in terms of columns of bytes - odd column bytes (counting from 0) are a continuation of the left side even column bytes.  Aligning graphics on boundaries is useful, and then you can consider whether you are on an odd or even byte to know what the “shift” needs to be, or have pre-shifted graphics for odd/even columns.<br/><br/>
+The source bytes, for the 7 pixel bits, are not the same due to the fact that 7 doesn’t divide by 2, as mentioned. The second byte is shifted 1 to the right (ignoring the msb). This means you do need to consider the byte you are writing, and what came before. Think about it in terms of columns of bytes - odd column bytes (counting from 0) are a continuation of the left side even column bytes.  Aligning graphics on boundaries is useful, and then you can consider whether you are on an odd or even byte to know what the “shift” needs to be, or have pre-shifted graphics for odd/even columns.
 
 Look at these definitions - 2 bytes wide producing 7 (double-wide) on screen pixels per 2 bytes:
 
@@ -66,7 +66,9 @@ you would expect violet and green lines next to one-another. What you have inste
 10 10 10 10 10 10 10 01 01 01 01 01 01 01
 76 54 32 1f ed cb a9 nm lk ji hv ut sr qp 
 </pre>
-Right in the middle where violet meets green, you see two 0’s next to one-another (<code>9n</code>). Even though they are from different pairs, that’s not what the Apple hardware sees. The hardware sees this simply as a stream of 0s and 1s and when a 0 is followed by a 0, black is produced. What it sees are alternating bits for color, then a pair of zeros for black and then more alternating pairs for color. The upshot of all of that is that you cannot have violet next to green or orange, without a black in between. The same happens when you have two 1’s next to one-another, even from different pixel-pairs. You end up with White.<br/><br/>
+Right in the middle where violet meets green, you see two 0’s next to one-another (<code>9n</code>). Even though they are from different pairs, that’s not what the Apple hardware sees. The hardware sees this simply as a stream of 0s and 1s and when a 0 is followed by a 0, black is produced. What it sees are alternating bits for color, then a pair of zeros for black and then more alternating pairs for color. The upshot of all of that is that you cannot have violet next to green or orange, without a black in between. The same happens when you have two 1’s next to one-another, even from different pixel-pairs. You end up with White.
+
+
 Also note that the msb controls the color shift for a whole byte. This means you cannot have violet and blue in the same byte, or orange and green in the same byte either.
 
 == Color bouncing ball example ==
