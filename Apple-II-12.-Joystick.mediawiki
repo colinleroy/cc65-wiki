@@ -150,7 +150,10 @@ void main(void)
 
     cgetc();                               /* Consume the key that was read           */
 }
-</pre><br /><br />
+</pre>
+
+
 '''This wraps up this Getting Started with the Apple II'''
-<br /><br />
+
+
 [https://github.com/cc65/wiki/wiki/Apple-II-Getting-Started Home]
