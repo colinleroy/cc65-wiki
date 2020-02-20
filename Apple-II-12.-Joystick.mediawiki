@@ -32,12 +32,12 @@ PADDL0  := $C064                    ; Read to get POT msb
 PTRIG   := $C070                    ; Reset PADDLE values so counting can start
 
 ; These are the bits set for getting digital values from the Joystick
-UP      := %00000001                ; 1
-RIGHT   := %00000010                ; 2
-DOWN    := %00000100                ; 4
-LEFT    := %00001000                ; 8
-BUTTON0 := %00010000                ; 16
-BUTTON1 := %00100000                ; 32
+UP      =  %00000001                ; 1
+RIGHT   =  %00000010                ; 2
+DOWN    =  %00000100                ; 4
+LEFT    =  %00001000                ; 8
+BUTTON0 =  %00010000                ; 16
+BUTTON1 =  %00100000                ; 32
 
 .proc _joyread
     
@@ -134,8 +134,8 @@ void main(void)
     while(!kbhit())                        /* Loop till a key is pressed              */
     {
         joyread();                         /* Read the joystick (call assembly code)  */
-        gotoxy(7, 2);cprintf("%3d", joyX); /* Show the analog readings                */
-        gotoxy(7, 3);cprintf("%3d", joyY);
+        gotoxy(7, 2);cprintf("%3u", joyX); /* Show the analog readings                */
+        gotoxy(7, 3);cprintf("%3u", joyY);
 
         gotoxy(7, 4);                      /* Show the digital states                 */
         if(joyMask & UP)       cputs("UP ");
@@ -153,7 +153,7 @@ void main(void)
 </pre>
 
 
-'''This wraps up this Getting Started with the Apple II'''
+'''This wraps up this "Getting Started with the Apple II"'''
 
 
 [https://github.com/cc65/wiki/wiki/Apple-II-Getting-Started Home]
