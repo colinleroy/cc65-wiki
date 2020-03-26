@@ -69,7 +69,7 @@ Clone of the flash puzzle game 'Znax' with improved score system for Atari-8-Bit
 [https://csdb.dk/release/?id=29472 GNU Sudoku] is a port of the well known game to the C64.
 
 === Manic Miner ===
-Remake of Manic Miner by Matthew Smith from 1983.  This for the C64. [https://github.com/StewBC/manicminer GitHub project] and [https://www.youtube.com/watch?v=_3_V-8X8J5o Video]
+Remake of Manic Miner by Matthew Smith from 1983.  This for the C64 and C128. [https://github.com/StewBC/manicminer GitHub project] and [https://www.youtube.com/watch?v=_3_V-8X8J5o Video] (source included)
 
 === NESert Golfing ===
 A 2D golf game by Brad Smith for NES. [https://github.com/bbbradsmith/NESertGolfing GitHub project] and [https://rainwarrior.itch.io/nesert-golfing itch.io page]
@@ -89,6 +89,7 @@ The Atari Lynx [https://atarigamer.com/lynx/game/Solitaire/267586633 Solitaire] 
 
 === UWOL - Quest for Money ===
 [https://csdb.dk/release/?id=93409 UWOL - Quest for Money] is a jump'n'run game written in C and Assembler, ported from the Spectrum version.
+There is also [https://github.com/mojontwins/SuperUwol_NES SuperUwol] for the NES/Famicom. (source included)
 
 === Wumpus 65 ===
 [https://csdb.dk/release/?id=95850 Wumpus 65] is a text adventure written in C. runs on C64/C128/plus4/pet. (source included)
