@@ -38,6 +38,7 @@ Skoe has written a tool named [https://skoe.de/easyflash/doku.php?id=writecrt Ea
 
 === 2048 ===
 A port of the [https://github.com/nanoflite/2048-cc65 2048] game to cc65. There is a version for the C64 and one for the PET 4032.
+Another port is [https://github.com/jeremysrand/apple2048 Apple2048] for the enhanced Apple //e. (source included)
 
 === A2Bejwld ===
 [https://github.com/jeremysrand/a2sudoku A2Bejwld] is an implementation of Sudoku for the Apple II with a Mockingboard. (source included)
@@ -134,6 +135,9 @@ The boot loader and menu program of the [http://wiki.icomp.de/wiki/Chameleon Cha
 
 === IP65 ===
 [https://github.com/cc65/ip65/wiki IP65] is a TCP/IP stack for 6502 based computers. The actual TCP/IP stack is written in assembler, but various programs coming with IP65 are written in C.
+
+=== mocklib ===
+The [https://github.com/jeremysrand/mocklib mocklib] is a support library for the Apple II Mockingboard. (source included)
 
 === picoOS ===
 The original [http://picoos.sourceforge.net/ports/6502 pico<nowiki>]</nowiki>OS 1.0.4 for 6502] is a real-time operating system by Dennis Kuschel. (source included; can be built by cc65 versions 2.13 and 2.14)
