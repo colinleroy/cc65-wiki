@@ -39,6 +39,12 @@ Skoe has written a tool named [https://skoe.de/easyflash/doku.php?id=writecrt Ea
 === 2048 ===
 A port of the [https://github.com/nanoflite/2048-cc65 2048] game to cc65. There is a version for the C64 and one for the PET 4032.
 
+=== A2Bejwld ===
+[https://github.com/jeremysrand/a2sudoku A2Bejwld] is an implementation of Sudoku for the Apple II with a Mockingboard. (source included)
+
+=== A2Sudoku ===
+[https://github.com/jeremysrand/a2sudoku A2Sudoku] is an implementation of Bejeweled written for the Apple II. (source included)
+
 === Alter Ego ===
 [https://shiru.untergrund.net/software.shtml Alter Ego] is a puzzle platformer for the NES written in C/assembler. (source included)
 
@@ -48,6 +54,9 @@ A port of the [https://github.com/nanoflite/2048-cc65 2048] game to cc65. There 
 === cc65 Chess ===
 Portable AI, 1 or 2 player Chess game in C. This for the C64 and the Apple II.
 [https://github.com/StewBC/cc65-Chess GitHub project] and [https://www.youtube.com/watch?v=bkA4vtwxaJg Video]
+
+=== colourgo ===
+[https://github.com/jeremysrand/colourgo colourgo] is a game in the spirit of Chameleon Run for the Apple II. (source included)
 
 === Critical Match ===
 Color matching game for NES by slembcke. [https://github.com/slembcke/critical-match GitHub project]
@@ -116,6 +125,9 @@ The boot loader and menu program of the [http://wiki.icomp.de/wiki/Chameleon Cha
 
 === Chip-8 Emulator ===
 [https://csdb.dk/release/?id=17306 Chip-8 Emulator] is a Chip-8 Emulator for the C64 written in C and assembler.
+
+=== CurtaSim ===
+[https://github.com/jeremysrand/CurtaSim CurtaSim] is a simulation of the Curta mechanical calculator written for the Apple II. (source included)
 
 === Eliza 65 ===
 [https://csdb.dk/release/?id=95792 Eliza 65] is a port of the well known Eliza program. (source included)
