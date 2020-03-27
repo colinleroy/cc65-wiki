@@ -3,7 +3,6 @@ Things that might be considered to be evaluated/implemented/included in the futu
 == Compiler ==
 * Fix standard compliance problems in the preprocessor.
 * Braces in initializers work in a non-standard way; standard-compliant initializers with braces are not always accepted.
-* Fix an issue with <code>goto</code> into a block that declares a local label.
 * [[Roadmap|Floating-point support]]
 
 == Assembler ==
