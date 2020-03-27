@@ -79,6 +79,5 @@ Things that might be considered to be evaluated/implemented/included in the futu
 * Add simple POSIX <code>read()</code> and <code>write()</code>, so that portable programs can use the <tt>stdio</tt> functions to talk through the console.
 
 == Documentation ==
-* The BGI → TGI font converter doesn't have docs.
 * Update a font engine sample 'tgi-preview'.
 * Describe what the tools show at various levels when they're told to be <tt>--verbose</tt>.
