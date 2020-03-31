@@ -61,7 +61,7 @@ Things that might be considered to be evaluated/implemented/included in the futu
 *** Read the 4th sector. (The xf551 drive had a bug, it returned the wrong PERCOM info after reading the normally 128-byte boot sectors; a read from sector 4 eliminates that chance). See also [https://atariage.com/forums/topic/297498-writing-a-sector-copier-cart-need-some-info/?do=findComment&comment=4383902].
 *** Read the status (SIO command 0x53), and save that info.
 *** Request a PERCOM block. If it succeeds, use that information.
-*** If reading the PERCOM block fails, assume 1050, 810, (or even 815), or compatible. Use the status byte 0 to differentiate between single, enhanced (medium), and double density. (bit 5 is set if double density, and bit 7 is set if enhanced density). If we're looking for only the sector count, only bit 7 matters.
+*** If reading the PERCOM block fails, assume 1050, 810, (or even 815), or compatible. Use the status byte 0 to differentiate between single, enhanced (medium), and double density. (bit 5 is set if double density, and bit 7 is set if enhanced density). If we're looking for only the sector count, only bit 7 matters. See also [https://atariage.com/forums/topic/301964-percom-block-question/].
 * Complete implementation of the functions in <code>device.h</code>; and, test them with <tt>samples/enumdevdir.c</tt>.
 * Improve <code>exec()</code> command line handling.
 * Implement 80-column CONIO support targeting the XEP80 interface module. Possibly as an "extra" .o file that "overrides" <tt>cputc.o</tt> in the C library.
