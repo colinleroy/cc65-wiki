@@ -40,7 +40,7 @@ Summary of the discussion in 2004 (without IEEE 754-2008 knowledge of course):
 
 The C standard allows setting errno, raising an exception, or just ignoring the condition for most operations. The standard does not require NaNs and infinite values, so it may be an option not to implement them, because this removes all corresponding checks in the math functions resulting in smaller code size. The TMS320 DSP has this behaviour and it's quite convenient.
 
-[http://grouper.ieee.org/groups/754/ IEEE 754-2008]
+[http://web.archive.org/web/20180419150129/http://grouper.ieee.org/groups/754/ IEEE 754-2008] (archived)
 
 [http://www.jhauser.us/arithmetic/ IEEE 754 test suite]
 
