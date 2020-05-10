@@ -120,7 +120,7 @@ The C64 game [https://csdb.dk/release/?id=102217 Zoo Mania] was written in C/ass
 The 1.x firmware of the [http://1541ultimate.net 1541 Ultimate] uses cc65 to build the menu program, which is written in C.
 
 === 8bit-Unity ===
-[http://8bit-unity.com 8bit-Unity], a game SDK for 80s computers. Write your game only once and then deploy it on all platforms.
+[http://8bit-unity.com 8bit-Unity], a game SDK for 80s computers. Write your game only once and then deploy it on all platforms. ([https://github.com/8bit-Dude/8bit-Unity source] included)
 
 === brainfuck64 ===
 [https://github.com/gergoerdi/brainfuck64 brainfuck64] is a Brainfuck compiler that runs on the Commodore 64 (or any 6502-based computer supported by cc65 that has enough RAM).
