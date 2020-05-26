@@ -53,7 +53,7 @@ Another port is [https://github.com/jeremysrand/apple2048 Apple2048] for the enh
 [https://csdb.dk/release/?id=98755 CardSwipe] is a card game for the C64.
 
 === cc65 Chess ===
-Portable AI, 1 or 2 player Chess game in C. This for the C64 and the Apple II.
+Portable AI, 1 or 2 player Chess game in C. This for the C64, the Apple II, the Oric-1/Atmos/Telestrat and the Commander X16.
 [https://github.com/StewBC/cc65-Chess GitHub project] and [https://www.youtube.com/watch?v=bkA4vtwxaJg Video]
 
 === colourgo ===
