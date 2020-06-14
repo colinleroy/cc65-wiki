@@ -26,6 +26,8 @@ For constructors, destructors, and interruptors, the linker generates a table of
 |-
 | 10 || irq_init      || runtime
 |-
+|  9 || initostype    || apple2
+|-
 |  8 || soft80_init   || c64
 |-
 |  8 || soft80mono_init   || c64
@@ -52,8 +54,6 @@ For constructors, destructors, and interruptors, the linker generates a table of
 |-
 |  7 || initmcb       || c128, c64, cbm510
 |-
-|  7 || initostype    || apple2
-|-
 |  7 || initprompt    || apple2
 |-
 |  7 || inittime      || c128, c64
@@ -63,6 +63,8 @@ For constructors, destructors, and interruptors, the linker generates a table of
 |  7 || initstdin     || atmos, cbm
 |-
 |  7 || initstdout    || cbm
+|-
+|  7 || initvsync     || apple2
 |-
 |  7 ||raisefilelevel || apple2
 |}
