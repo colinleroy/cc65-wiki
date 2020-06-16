@@ -158,4 +158,4 @@ To activate the label file, run <code>make</code>, just once, like this: <code>m
 
 Finally, when I do a <code>make dsk test</code>, the symbols that are generated automatically get copied over the <code>A2_USER1.SYM</code> file in the AppleWin folder, and AppleWin automatically loads this file, showing me my symbols.
 
-=== Next: [https://github.com/cc65/wiki/wiki/Apple-II-6.-Zero-Page-locations-and-use 6. Apple II Zero Page Locations and Use] ===
+=== Next: [https://github.com/cc65/wiki/wiki/Apple-II-6.-Zero-Page-locations-and-memory-usage 6. Apple II Zero Page Locations and Memory Usage] ===
