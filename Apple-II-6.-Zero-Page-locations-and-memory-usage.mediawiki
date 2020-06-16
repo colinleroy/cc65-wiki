@@ -20,4 +20,47 @@ Zero Page use by the Monitor (M), Applesoft (A), Disk Drivers (D), and ProDOS ML
  240 | $F0 |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A  |  A    </pre>
 If you are using assembly only, it’s easy to remember that <code>$50</code> onward are available. If you need more Zero Page locations than that, you can consult this table.
 
+=== Screen "Holes" ===
+The Apple II display memory is not contiguous.  This is discussed later, but it is worth noting that there are locations in the $0400 to $0800 range that should be left untouched.  The reason is that some firmware/software specific slot cards use these locations for state storage and corrupting the "holes" could cause havoc.  These locations are: 
+<pre>
+$0478-$047F  
+$04F8-$04FF  
+$0578-$057F  
+$05F8-$05FF  
+$0678-$067F  
+$06F8-$06FF  
+$0778-$077F  
+$07F8-$07FF  
+</pre>
+
+=== Need more memory? ===
+It is possible to free up the ROM at $D000-$FFFF and thus get another 12K of RAM.  The way to do this is: 
+<pre> 
+bit $C08F  
+bit $C08F  ; yes, twice in a row  
+</pre>
+and the ROM at $D000-$FFFF is replaced with RAM.
+
+To switch the RAM back to ROM, simply do <code>bit $C08A</code> and $D000-$FFFF is ROM again.  
+
+Note: The RAM that becomes available is where ProDOS is normally loaded so when this RAM is changed, ProDOS will be trashed and to exit the application, the Apple II will need to be rebooted. ProDOS core is in $D000-D3FF and using that trashes ProDOS.  You could use $D400-DFFF and still exit to ProDOS, if you didn't touch $D000-$D3FF.  
+
+The reset vector is a property of the 6502 processor, not the Apple II. Upon reset, a 6502 will fetch the address in $FFFC-FFFD, set the PC to this value, and start executing code. In the Apple II, this address is normally within the ROM, and the vector points to ROM, as well.  
+
+The Apple //e and newer variants switch to ROM before accessing the reset vector. But the Apple ][ and ][+ do not. So for full compatibility you need a valid RESET vector in RAM at $FFFC-FFFD. 
+
+Have the RAM RESET vector point to a handler somewhere below $C000. Implement the handler as: 
+<pre>
+BIT $C08A    ; Put ROM back in (Hence needed below $C000 so the next instruction isn't obscured)  
+JMP ($FFFC)  ; Jump to the ROM reset vector  
+</pre> 
+
+In order to distinguish between a cold boot and a Ctrl-Reset the Apple does a minimalistic RAM content checksum. So in order to cause a Ctrl-Reset to reboot all you have to do is to break that checksum:
+<pre> 
+LDA $03F3 
+STA $03F4 
+</pre> 
+
+After that a programmatic reboot is done with <code> JMP ($FFFC) </code>
+
 === [https://github.com/cc65/wiki/wiki/Apple-II-7.-System-Locations Next: 7. System Locations] ===
