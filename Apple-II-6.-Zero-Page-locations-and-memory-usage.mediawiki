@@ -47,12 +47,13 @@ Note: The RAM that becomes available is where ProDOS is normally loaded so when 
 
 The reset vector is a property of the 6502 processor, not the Apple II. Upon reset, a 6502 will fetch the address in $FFFC-FFFD, set the PC to this value, and start executing code. In the Apple II, this address is normally within the ROM, and the vector points to ROM, as well.  
 
-The Apple //e and newer variants switch to ROM before accessing the reset vector. But the Apple ][ and ][+ do not. So for full compatibility you need a valid RESET vector in RAM at $FFFC-FFFD. 
+The Apple //e and newer variants switch to ROM before accessing the reset vector.   
+The Apple ][ and ][+ do not switch to ROM before accessing the reset vector. For full compatibility you need a valid RESET vector in RAM at $FFFC-FFFD. 
 
 Have the RAM RESET vector point to a handler somewhere below $C000. Implement the handler as: 
 <pre>
-BIT $C08A    ; Put ROM back in (Hence needed below $C000 so the next instruction isn't obscured)  
-JMP ($FFFC)  ; Jump to the ROM reset vector  
+BIT $C08A
+JMP ($FFFC)
 </pre> 
 
 In order to distinguish between a cold boot and a Ctrl-Reset the Apple does a minimalistic RAM content checksum. So in order to cause a Ctrl-Reset to reboot all you have to do is to break that checksum:
