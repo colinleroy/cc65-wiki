@@ -11,7 +11,7 @@ The following sections have been created to help a cc65 user with using the Appl
 
 
 == Section II - Getting to know the Apple II ==
-* [https://github.com/cc65/wiki/wiki/Apple-II-6.-Zero-Page-locations-and-use 6. Zero Page locations and use]
+* [https://github.com/cc65/wiki/wiki/Apple-II-6.-Zero-Page-locations-and-memory-usage 6. Zero Page locations and memory usage]
 * [https://github.com/cc65/wiki/wiki/Apple-II-7.-System-Locations 7. System Locations]
 * [https://github.com/cc65/wiki/wiki/Apple-II-8.-Keyboard 8.. The Keyboard]
 * [https://github.com/cc65/wiki/wiki/Apple-II-9.-Audio 9. Audio]
