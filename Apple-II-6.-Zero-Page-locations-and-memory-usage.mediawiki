@@ -38,16 +38,16 @@ It is possible to free up the ROM at $D000-$FFFF and thus get another 12K of RAM
 <pre> 
 bit $C08F  
 bit $C08F  ; yes, twice in a row  
+
+          ; To switch the RAM back to ROM, simply do:  
+bit $C08A ; $D000-$FFFF is ROM again.  
 </pre>
-and the ROM at $D000-$FFFF is replaced with RAM.
 
-To switch the RAM back to ROM, simply do <code>bit $C08A</code> and $D000-$FFFF is ROM again.  
+Note: The RAM that becomes available is where ProDOS is normally loaded so when this RAM is changed, ProDOS will be trashed and to exit the application, the Apple II will need to be rebooted. 
 
-Note: The RAM that becomes available is where ProDOS is normally loaded so when this RAM is changed, ProDOS will be trashed and to exit the application, the Apple II will need to be rebooted. ProDOS core is in $D000-D3FF and using that trashes ProDOS.  You could use $D400-DFFF and still exit to ProDOS, if you didn't touch $D000-$D3FF.  
+The reset vector is a property of the 6502 processor, not the Apple II. Upon reset, a 6502 will fetch the address in $FFFC-$FFFD, set the PC to this value, and start executing code. In the Apple II, this address is normally within the ROM, and the vector points to ROM, as well.  
 
-The reset vector is a property of the 6502 processor, not the Apple II. Upon reset, a 6502 will fetch the address in $FFFC-FFFD, set the PC to this value, and start executing code. In the Apple II, this address is normally within the ROM, and the vector points to ROM, as well.  
-
-The Apple //e and newer variants do switch to ROM before accessing the reset vector. The Apple <nowiki>][</nowiki> and <nowiki>][+</nowiki> do not switch to ROM before accessing the reset vector. For full compatibility you need a valid RESET vector in RAM at $FFFC-FFFD. 
+The Apple //e and newer variants do switch to ROM before accessing the reset vector. The Apple <nowiki>][</nowiki> and <nowiki>][+</nowiki> do not switch to ROM before accessing the reset vector. For full compatibility you need a valid RESET vector in RAM at $FFFC-$FFFD. 
 
 Have the RAM RESET vector point to a handler somewhere below $C000. Implement the handler as: 
 <pre>
@@ -62,5 +62,14 @@ STA $03F4
 </pre> 
 
 After that a programmatic reboot is done with <code> JMP ($FFFC) </code>
+
+ProDOS core is located at $D000-$D3FF.  You could use $D400-$DFFF, which gives you another 3K, and exit to ProDOS.  To do this, you just need a different set of soft-switches.  These are:
+<pre>
+bit $C087
+bit $C087 ; twice, yes.  $D400-$DFFF now RAM
+  
+bit $C082 ; Switch ROM back.  $D400-$DFFF now ROM again
+</pre>  
+
 
 === [https://github.com/cc65/wiki/wiki/Apple-II-7.-System-Locations Next: 7. System Locations] ===
