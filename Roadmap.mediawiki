@@ -1,3 +1,6 @@
+== V2.19 ==
+* Fix major optimizer bugs, so it works like V2.13.3 again #781
+
 == Floating point support ==
 
 Summary of the discussion in 2004 (without IEEE 754-2008 knowledge of course):
