@@ -48,3 +48,5 @@ The C standard allows setting errno, raising an exception, or just ignoring the 
 [http://www.jhauser.us/arithmetic/ IEEE 754 test suite]
 
 [http://codebase64.org/doku.php?id=base:floating_point_routines_for_the_6502 Steve Wozniak's implementation]
+
+[https://github.com/mrdudz/cc65-floatlib cc65-floatlib] is "a naive approach for using kernal floating point numbers on C64, while using IEEE float values at application level"
