@@ -1,7 +1,7 @@
 == V2.19 ==
 * Fix major optimizer bugs, so it works like V2.13.3 again [https://github.com/cc65/cc65/issues/781 #781]
 
-== Floating point support ==
+== V3 Floating point support ==
 
 Summary of the discussion in 2004 (without IEEE 754-2008 knowledge of course):
 
@@ -50,3 +50,7 @@ The C standard allows setting errno, raising an exception, or just ignoring the 
 [http://codebase64.org/doku.php?id=base:floating_point_routines_for_the_6502 Steve Wozniak's implementation]
 
 [https://github.com/mrdudz/cc65-floatlib cc65-floatlib] is "a naive approach for using kernal floating point numbers on C64, while using IEEE float values at application level"
+
+== V4 24 bit support ==
+* Native 65816 code generation
+* Full 6280 address space
