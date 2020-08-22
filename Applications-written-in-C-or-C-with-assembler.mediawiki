@@ -81,7 +81,7 @@ A 2D golf game by Brad Smith for NES. [https://github.com/bbbradsmith/NESertGolf
 A portable game which is somewhat similar to Tetris. [https://github.com/mrdudz/portris GitHub project]
 
 === Skye's Castle ===
-It's a sequel to The Abandoned Farmhouse Adventure, a text adventure game in the spirit of similar games that ran on 8-bit microcomputers of the 1970s and 80s. [https://github.com/jefftranter/6502/tree/master/c/adventure2 GitHub project]
+It's a sequel to [[Applications written in C or C with assembler##Abandoned_Farmhouse_Adventure|The Abandoned Farmhouse Adventure]], a text adventure game in the spirit of similar games that ran on 8-bit microcomputers of the 1970s and 80s. [https://github.com/jefftranter/6502/tree/master/c/adventure2 GitHub project]
 
 === Snake Byte ===
 Remake of Snake Byte by Sirius Software first published in 1982.  This for the C64 with a conio port.
