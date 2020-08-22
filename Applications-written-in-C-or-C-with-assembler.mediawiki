@@ -103,6 +103,9 @@ There is also [https://github.com/mojontwins/SuperUwol_NES SuperUwol] for the NE
 === Wumpus 65 ===
 [https://csdb.dk/release/?id=95850 Wumpus 65] is a text adventure written in C. runs on C64/C128/plus4/pet. (source included)
 
+=== YUM ===
+This is a computer version of the game YUM, similar to games known as Yahtzee, Yacht and Generala. [https://github.com/jefftranter/6502/tree/master/c/yum GitHub project]
+
 === Zoo Mania ===
 The C64 game [https://csdb.dk/release/?id=102217 Zoo Mania] was written in C/assembler. (source included)
 
