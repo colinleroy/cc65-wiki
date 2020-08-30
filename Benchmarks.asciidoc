@@ -1,0 +1,38 @@
+== Benchmarks ==
+https://atariage.com/forums/topic/276141-gcc-6502-vs-cc65/page/2/
+
+=== dhrystone for Atari ===
+{|
+! cc65 !! gcc !! vbcc
+|-
+|
+* 474 ticks
+|
+* 378 ticks
+|
+* 165 ticks
+|}
+
+=== md5 for Atari ===
+{|
+! cc65 !! gcc !! vbcc
+|-
+|
+* 811 ticks
+|
+* 404 ticks
+|
+* 361 ticks
+|}
+
+=== Sieve for Atari ===
+{|
+! cc65 !! mad pascal !! vbcc
+|-
+|
+* 614 frames
+|
+* 607 frames
+|
+* 636 frames
+|}
