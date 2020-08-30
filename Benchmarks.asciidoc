@@ -2,6 +2,7 @@
 https://atariage.com/forums/topic/276141-gcc-6502-vs-cc65/page/2/
 
 === dhrystone for Atari ===
+
 {|
 ! cc65 !! gcc !! vbcc
 |-
@@ -14,6 +15,7 @@ https://atariage.com/forums/topic/276141-gcc-6502-vs-cc65/page/2/
 |}
 
 === md5 for Atari ===
+
 {|
 ! cc65 !! gcc !! vbcc
 |-
@@ -26,6 +28,7 @@ https://atariage.com/forums/topic/276141-gcc-6502-vs-cc65/page/2/
 |}
 
 === Sieve for Atari ===
+
 {|
 ! cc65 !! mad pascal !! vbcc
 |-
