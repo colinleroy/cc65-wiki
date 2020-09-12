@@ -57,3 +57,7 @@ Example code for accessing <code>bar</code>. The variable is in A/X after this c
          tax             ; High byte now in X
          dey             ; Offset of low byte of bar
          lda     (sp),y  ; Low byte now in A
+
+== References ==
+
+[https://cc65.github.io/doc/cc65-intern.html cc65 internals] - documentation
