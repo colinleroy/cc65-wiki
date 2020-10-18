@@ -13,6 +13,9 @@ __TOC__
 === C-Vote ===
 [https://paradroid.automac.se/cvote/ C-Vote] is "a computerized voting system for demo parties that runs on C64:s. Of course it's not only limited to demo competitions, and the code is easy to port to other 6502-based platforms supported by the cc65 compiler." (source included)
 
+=== c128_kasse ===
+[https://michael.stapelberg.ch/c128_kasse/ c128_kasse] is a Point of Sale application running on C128. (source included)
+
 === CBM Command ===
 [https://github.com/CINJ/CBM-Command CBM Command] is a filebrowser running on C64/C128/VIC20/PET.
 
