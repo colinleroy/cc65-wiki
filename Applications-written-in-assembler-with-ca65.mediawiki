@@ -1,5 +1,8 @@
 == Apple II ==
 
+=== 2048 ===
+[https://github.com/david-schmidt/AII2048 Apple II - 2048] is a game for Apple II and III based on the engine from Carlos "Chester" Duarte do Nascimento's 2048 game for the Atari 2600.
+
 === CCFA ===
 [https://dreher.net/projects/CFforAppleII/downloads/CFforAppleII_Manual_1.0.pdf CFFA] is a CompactFlash Interface for Apple II. The reference manual contains in appendix 1 the firmware listing.
 
