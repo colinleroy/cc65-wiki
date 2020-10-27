@@ -50,6 +50,9 @@ Things that might be considered to be evaluated/implemented/included in the futu
 == CBM510 library ==
 * Make a TGI driver, based on the C64 driver.
 
+== Creativision library ==
+* Find out CLOCKS_PER_SEC value.
+
 == Apple II library ==
 * Have the EM driver detect AUXMEM, and cooperate with /RAM.
 * Implement a TGI driver that "hides" the hires screen, using AUXMEM.
