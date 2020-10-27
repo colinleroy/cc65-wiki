@@ -52,6 +52,7 @@ Things that might be considered to be evaluated/implemented/included in the futu
 
 == Creativision library ==
 * Find out CLOCKS_PER_SEC value.
+* Implement <code>waitvsync()</code>.
 
 == Apple II library ==
 * Have the EM driver detect AUXMEM, and cooperate with /RAM.
