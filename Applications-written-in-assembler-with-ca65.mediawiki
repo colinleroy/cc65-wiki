@@ -9,6 +9,9 @@
 === Manic Miner ===
 [https://github.com/StewBC/mminer-apple2/ Manic Miner] is a remake of the 1983 ZX Spectrum game by Matthew Smith and Bug Byte.
 
+=== MIST ===
+[https://github.com/deater/dos33fsprogs/tree/master/mist MIST] is a reimplementation of MYST from scratch for Apple II computers.
+
 === Penetrator ===
 [https://github.com/StewBC/penetrator-apple2/ Penetrator] is a remake of the 1982 ZX Spectrum game by Phillip Mitchell and Beam Software.
 
