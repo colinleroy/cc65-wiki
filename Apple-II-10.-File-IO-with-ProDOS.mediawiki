@@ -146,6 +146,7 @@ A typical sequence to save a binary file could look like this:
     bcc         :+
     cmp         #$47              ; duplicate file okay - means overwrite
     beq         :+ 
+    sec                           ; beq could have cleared carry
     jmp         error             ; all other create errors are not okay
 
 :
