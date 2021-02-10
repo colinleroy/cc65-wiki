@@ -34,6 +34,7 @@ Things that might be considered to be evaluated/implemented/included in the futu
 == CBM library ==
 * Implement the DIO interface.
 * Implement a Userport SER driver based on George Hug's 'Toward 2400' source code -- [http://archive.org/details/transactor-magazines-v9-i03].
+* Implement another Userport SER driver based on Daniel Dallmann's 'UP9600' source code -- [https://github.com/bozimmerman/Zimodem/blob/master/cbm8bit/src/up9600.asm].
 * Remove prepending "0:" / "1:" to POSIX filenames -- [http://cc65.github.io/mailarchive/2012-08/10683.html].
 * Review handling of O_... flags in POSIX <code>open()</code>  -- [https://cc65.github.io/mailarchive/2010-02/7863.html].
 
