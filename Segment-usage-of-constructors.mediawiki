@@ -1,8 +1,8 @@
 Depending on the linker config. file, the RAM used by constructors may be reused by the segment '''BSS''' and/or the heap and/or the software stack. Therefore, constructors must follow these rules:
 
-* The code of constructors (and code called ''only'' by constructors) is ''not'' placed in the segment '''CODE''', but in the segment '''ONCE'''.
+* The code of constructors (and code called by ''only'' constructors) is ''not'' placed in the segment '''CODE''', but in the segment '''ONCE'''.
 * Data that is read by only constructors is ''not'' placed in the segment '''RODATA''', but in the segment '''ONCE'''.
-* Data that is changed by constructors is placed in the segment '''DATA'''.
+* Data that is ''changed'' by constructors is placed in the segment '''DATA'''.
 * Data that is created by constructors is ''not'' placed in the segment '''BSS''', but in the segment '''INIT'''.
 
 As the segment '''INIT''' is not zeroed before constructors are called, the constructors mustn't presume that any particular values exist in the segment '''INIT'''. If the constructor logic doesn't implicitly always set a value in the segment '''INIT''', but rather requires explicit zeroing, then it might be preferable to place the value in the segment '''DATA''' instead. Both alternatives have the same RAM size requirement while running <code>main()</code>; but, they differ in disk size requirements. The sequence
