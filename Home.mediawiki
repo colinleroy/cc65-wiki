@@ -36,6 +36,7 @@ cc65 surely can be compiled and run on the following platforms, for which GNU Co
 * Nintendo Entertainment System game console
 * Ohio Scientific Challenger 1P
 * Oric Atmos and Telestrat
+* Synertek Systems Sym-1
 * VTech Creativision game console
 * Watara Supervision game console
 
