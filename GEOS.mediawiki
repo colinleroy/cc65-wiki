@@ -43,7 +43,7 @@ Info by Maciej Witkowiak.
 
 === Apple GEOS ===
 {|
-| APP_RAM || $4xxx-
+| APP_RAM || $4xxx-$78ff
 |-
 | PRINTBASE || $79xx
 |-
