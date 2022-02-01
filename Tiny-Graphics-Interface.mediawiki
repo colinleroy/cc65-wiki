@@ -74,3 +74,17 @@ System             || nes-64-56-2.tgi     || &nbsp; || ✓      || ✓      || �
 * Based on that bit (and the already existing integer x and y size values), the TGI kernel does clipping on character granularity.
 * The parameters to the OUTTEXT driver entry point are no C string but kind of a Pascal string in order to facilitate copy-free clipping for TGI kernel.
 More details can be found in [http://cc65.github.io/mailarchive/2011-07/index.html#9551 the mailing list archive].
+
+== TGI driver aspect ratio values ==
+Terminology according to [http://en.wikipedia.org/wiki/Pixel_aspect_ratio]:
+* Pixel aspect ratio (PAR)
+* Display aspect ratio (DAR)
+* Storage aspect ratio (SAR)
+
+The three values are related by the identity SAR × PAR = DAR.
+
+* DAR is presumed as 4:3 for CRTs.
+* SAR is defined as the x resolution divided by y resolution of the TGI driver.
+* PAR is what we want in the TGI driver header field.
+
+The PAR in the TGI driver headers is set to the (rounded) result derived from the the above DAR and SAR.
