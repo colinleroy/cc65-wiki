@@ -1,5 +1,5 @@
-== V2.19 ==
-* Fix major optimizer bugs, so it works like V2.13.3 again [https://github.com/cc65/cc65/issues/781 #781]
+== <s>V2.19</s> ==
+<s>* Fix major optimizer bugs, so it works like V2.13.3 again [https://github.com/cc65/cc65/issues/781 #781]</s>
 
 == V3 Floating point support ==
 
