@@ -5,10 +5,10 @@ __TOC__
 == Applications ==
 
 === A2Command ===
-[https://github.com/A2Command/a2command] is a filebrowser based on [[Applications written in C or C with assembler#cbm-command|CBM Command]] running on Apple //e, //c, IIgs.
+[https://github.com/A2Command/a2command A2Command] is a filebrowser based on [[Applications written in C or C with assembler#cbm-command|CBM Command]] running on Apple //e, //c, IIgs.
 
 === A2Stream ===
-[https://github.com/oliverschmidt/A2Stream] does glitch-free high-quality internet audio streaming on the Apple II.
+[https://github.com/oliverschmidt/A2Stream A2Stream] does glitch-free high-quality internet audio streaming on the Apple II.
 
 === Breadbox64 ===
 [https://web.archive.org/web/20130723162430/http://www.vandenbrande.com/wp/2009/06/breadbox64-a-twitter-client-for-the-c64/ Breadbox64] is a twitter client for the C64 that runs on Contiki. The source is available in the [https://sourceforge.net/p/contikiprojects/code/HEAD/tree/vandenbrande.com/twitter/ Contiki Projects Community].
