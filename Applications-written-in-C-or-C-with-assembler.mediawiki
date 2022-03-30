@@ -11,7 +11,7 @@ __TOC__
 [https://github.com/oliverschmidt/A2Stream A2Stream] does glitch-free high-quality internet audio streaming on the Apple II.
 
 === Breadbox64 ===
-[https://web.archive.org/web/20130723162430/http://www.vandenbrande.com/wp/2009/06/breadbox64-a-twitter-client-for-the-c64/ Breadbox64] is a twitter client for the C64 that runs on Contiki. The source is available in the [https://sourceforge.net/p/contikiprojects/code/HEAD/tree/vandenbrande.com/twitter/ Contiki Projects Community].
+<s>[https://web.archive.org/web/20130723162430/http://www.vandenbrande.com/wp/2009/06/breadbox64-a-twitter-client-for-the-c64/ Breadbox64] is a twitter client for the C64 that runs on Contiki. The source is available in the [https://sourceforge.net/p/contikiprojects/code/HEAD/tree/vandenbrande.com/twitter/ Contiki Projects Community].</s>
 
 === C-Vote ===
 [https://paradroid.automac.se/cvote/ C-Vote] is "a computerized voting system for demo parties that runs on C64:s. Of course it's not only limited to demo competitions, and the code is easy to port to other 6502-based platforms supported by the cc65 compiler." (source included)
