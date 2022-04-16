@@ -1,7 +1,4 @@
-== <s>V2.19</s> ==
-<s>* Fix major optimizer bugs, so it works like V2.13.3 again [https://github.com/cc65/cc65/issues/781 #781]</s>
-
-== V3 Floating point support ==
+== Floating point support ==
 
 Summary of the discussion in 2004 (without IEEE 754-2008 knowledge of course):
 
@@ -50,33 +47,3 @@ The C standard allows setting errno, raising an exception, or just ignoring the 
 [http://codebase64.org/doku.php?id=base:floating_point_routines_for_the_6502 Steve Wozniak's implementation]
 
 [https://github.com/mrdudz/cc65-floatlib cc65-floatlib] is "a naive approach for using kernal floating point numbers on C64, while using IEEE float values at application level"
-
-== V4 24 bit support ==
-* Native 65816 code generation
-* Full 6280 address space
-
-== MEGA65 ==
-# DMA memory copies/fills
-# Hardware 32x32 fixed point multiplier
-# Hardware 32/32 = 32.32 fixed point divider
-# Fast CPU mode
-# 4510 stack-relative opcodes
-# 32-bit compound instructions
-# Access to memory >64KB without bank switching etc.
-
-first add assembler support:
-* add support for new opcodes to the assembler (this seems to exist)
-* provide linker configs for your target (missing)
-then add support to the library:
-
-* use extra capabilites of the hardware (new opcodes) in the runtime functions
-* port the rest of the library (conio, drivers etc)
-now add support to the simulator, so compiler changes can be tested in the regression tests
-
-* update the cpu emulator
-* add tests for this
-last not least add support to the compiler:
-
-* update the codegenerator
-* improve the optimizer
-* add a lot of regression tests to make sure you dont break something
