@@ -2,9 +2,10 @@ __NOTOC__
 
 This Wiki contains all info that does not fit into the regular [http://cc65.github.io/doc documentation].
 
-== This cc65 project's coding guidelines ==
+== TODO ==
 
-* [[TAB chars]]
+* a bunch of pages should get moved into the regular documentation - see below
+* several pages are orphaned and/or not linked from this page
 
 == Setting up a cc65-based project ==
 
@@ -17,41 +18,58 @@ This Wiki contains all info that does not fit into the regular [http://cc65.gith
 * [[Using cc65 with Visual Studio Code]]
 * [[Using cc65 with Emacs]]
 * [[Using ca65 with foreign source]]
-* [[Using runtime zeropage locations in assembly language]]
 
 == Frequently asked questions ==
 
-* [[PEEK and POKE]]
-* [[The .ORG directive]]
-* [[Interrupt handlers in C]]
-* [[Direct console IO|Direct console I/O]]
 * [[Symbols in local scopes]]
-
-== [[Reminders]] ==
 
 == Library internals ==
 
 * [[Tiny Graphics Interface]]
-* [[Priority of constructors, destructors, and interruptors]]
-* [[Segment usage of constructors]]
 
-== Compiler internals ==
+== Misc ==
 
-* [[The primary register]]
-* [[Parameter and return stacks]]
-* [[Parameter passing and calling conventions]]
-* [[Roadmap]]
-* [[Changes]]
 * [[Benchmarks]]
-
-== Debug information ==
-
-* [[debug-info-overview|Overview]]
-* [[debug-info-data|Available information]]
-* [[debug-info-module|Module usage and API calls]]
 
 == Applications ==
 
 * [http://sourceforge.net/projects/cc65/files/contrib User contributions]
 * [[Applications written in assembler with ca65]]
 * [[Applications written in C or C with assembler]]
+
+== Pages that should be moved ==
+
+=== To Contributing.md ===
+
+* [[Roadmap]] (needs a critical review, and the relevant parts moved into "Roadmap" and/or "TODO" sections)
+* [[Reminders]] (needs a critical review, and the relevant parts moved into "Roadmap" and/or "TODO" sections)
+* [[TAB-chars]]
+
+=== To the user manual (LinuxDoc) ===
+
+* [[Atari-2600]]
+* [[Apple-II-1.-Emulators-and-related-software]]
+* [[Changes]] (if there is actually still relevant info on this page move it into the docs)
+* [[Commodore-Machines]]
+* [[The-.ORG-directive]]
+* [[Direct-console-IO]]
+* [[GEOS]]
+* [[Interrupt-handlers-in-C]]
+* [[PEEK-and-POKE]]
+
+==== for Developers ====
+
+We may add an addition section in the documentation, which is targetted at those who want to develop either external programs that work with cc65, or those that want to develop/extend the libraries.
+
+* Debug info related
+** [[debug-info-overview|Overview]]
+** [[debug-info-data|Available information]]
+** [[debug-info-module|Module usage and API calls]]
+
+* Library internals
+** [[Parameter-and-return-stacks]]
+** [[Parameter-passing-and-calling-conventions]]
+** [[Priority-of-constructors,-destructors,-and-interruptors]]
+** [[Segment-usage-of-constructors]]
+** [[The-primary-register]]
+** [[Using-runtime-zeropage-locations-in-assembly-language]]
