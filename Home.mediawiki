@@ -9,6 +9,8 @@ Codestyle rules and other important stuff for those who want to contribute to th
 * a bunch of pages should get moved into the regular documentation - see below
 * several pages are orphaned and/or not linked from this page
 
+[[Before the next release]] - what needs to be done
+
 == Setting up a cc65-based project ==
 
 * [[Hello cc65!]]
