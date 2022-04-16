@@ -1,49 +1,9 @@
 __NOTOC__
-== What is cc65? ==
 
-cc65 is a complete package, which includes
-
-* a C compiler for machines with a 6502-compatible CPU,
-* a powerful macro assembler,
-* a linker, a librarian, and several other tools,
-* target libraries that support common 6502 platforms like the Commodore C64, the Atari 8-bit machines, the Apple II, and others,
-* [http://cc65.github.io/doc documentation] and more.
-
-== Host platforms ==
-
-According to the original author and former maintainer: "With one exception in the compiler [access()], the code is plain ISO C; so, it should compile on most systems. Memory usage may be a problem, however."
-
-cc65 surely can be compiled and run on the following platforms, for which GNU Compiler Collection -- [http://gcc.gnu.org GCC] -- is available.
-
-* [[AmigaOS]]
-* [[GNU/Linux]]
-** [[OBS: Debian .DEB and RPM]]
-** [[Fedora Linux]]
-** [[Red Hat Enterprise Linux, CentOS, Scientific Linux, and Oracle Linux]]
-* [[Microsoft Windows]]
-* [[OS X]]
-* GNU/QNX
-
-== Target platforms ==
-
-* [[Apple II]]
-* [[Atari 2600]] and other Atari 8-bit machines
-* Commander X16
-* [[Commodore machines]]
-* Bit Corporation Gamate game console
-* [[GEOS]]
-* NEC PC-Engine (TurboGrafx-16) game console
-* Nintendo Entertainment System game console
-* Ohio Scientific Challenger 1P
-* Oric Atmos and Telestrat
-* Synertek Systems Sym-1
-* VTech Creativision game console
-* Watara Supervision game console
+This Wiki contains all info that does not fit into the regular [http://cc65.github.io/doc documentation].
 
 == This cc65 project's coding guidelines ==
 
-* [[C and Assembly sources style-guide]]
-* [[LinuxDoc sources style-guide]]
 * [[TAB chars]]
 
 == Setting up a cc65-based project ==
