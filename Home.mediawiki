@@ -45,7 +45,6 @@ The following pages contain info that should most likely be moved into the regul
 
 * [[Roadmap]] (needs a critical review, and the relevant parts moved into "Roadmap" and/or "TODO" sections)
 * [[Reminders]] (needs a critical review, and the relevant parts moved into "Roadmap" and/or "TODO" sections)
-* [[TAB-chars]]
 
 === To the user manual (LinuxDoc) ===
 
