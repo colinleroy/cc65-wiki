@@ -39,6 +39,8 @@ This Wiki contains all info that does not fit into the regular [http://cc65.gith
 
 == Pages that should be moved ==
 
+The following pages contain info that should most likely be moved into the regular documentation, instead of hiding them here on the wiki. (Obviously this is not a hard rule and each individual case needs to be carefully reviewed and edited/modified if needed.)
+
 === To Contributing.md ===
 
 * [[Roadmap]] (needs a critical review, and the relevant parts moved into "Roadmap" and/or "TODO" sections)
