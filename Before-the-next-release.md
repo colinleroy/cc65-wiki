@@ -3,3 +3,4 @@ On this page we collect things to be done before the next release. After a relea
 * move all Wiki pages that fit into Contributing.md or the Documentation
 * make the github action(s) build the documentation and upload it to the webpage
 * make a github action that produces a release
+* come up with a good way to handle external contributions to the wiki
