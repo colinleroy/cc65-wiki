@@ -53,6 +53,7 @@ Codestyle rules and other important stuff for those who want to contribute to th
 ** [[Apple-II-12.-Joystick]]
 * [[Apple-II-Hires-Screen]]
 * [[Apple-II-Screen]]
+* [[LOADER.SYSTEM]]
 
 == GEOS ==
 
