@@ -52,6 +52,10 @@ Codestyle rules and other important stuff for those who want to contribute to th
 ** [[Apple-II-12.-Joystick]]
 * [[Apple-II-Hires-Screen]]
 * [[Apple-II-Screen]]
+
+== GEOS ==
+
+* [[GEOS]]
 * [[Apple-GEOS-Convert-Format]]
 * [[Apple-GEOS-File-Formats]]
 * [[Apple-GEOS-Symbol-Table]]
