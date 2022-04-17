@@ -78,3 +78,8 @@ The [https://github.com/pinobatch/240p-test-mini 240p Test Suite] turns an NES i
 
 === Zap Ruder ===
 [https://pineight.com/nes/#ruder Zap Ruder] is a test suite for the Zapper light gun. It includes ZapPing (a paddle and ball game), a music toy, and several test cards. (source included)
+
+== WDC W65C816SXB ==
+
+=== w65c816sxb-hacker ===
+[https://github.com/derekmulcahy/w65c816sxb-hacker w65c816sxb-hacker] is a tool for modifying the firmware of the WDC W65C816SXB Development Board.
