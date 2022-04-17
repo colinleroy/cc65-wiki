@@ -1,6 +1,6 @@
 __NOTOC__
 
-This Wiki contains all info that does not fit into the regular [http://cc65.github.io/doc documentation].
+This Wiki contains all info that does not fit into the regular [http://cc65.github.io/doc documentation] and/or the [https://cc65.github.io website].
 
 Codestyle rules and other important stuff for those who want to contribute to the cc65 project can be found in [https://github.com/cc65/cc65/blob/master/Contributing.md Contributing.md]
 
