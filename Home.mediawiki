@@ -17,7 +17,10 @@ Codestyle rules and other important stuff for those who want to contribute to th
 * [[Android]]
 * [[Fedora-Linux]]
 * [[GNU-Linux]]
+** [[OBS:-Debian-.DEB-and-RPM]]
 * [[Microsoft-Windows]]
+* [[OS-X]]
+* [[Red-Hat-Enterprise-Linux,-CentOS,-Scientific-Linux,-and-Oracle-Linux]]
 
 == Setting up a cc65-based project ==
 
@@ -68,10 +71,6 @@ Codestyle rules and other important stuff for those who want to contribute to th
 
 * [[Symbols in local scopes]]
 
-== Library internals ==
-
-* [[Tiny Graphics Interface]]
-
 == Misc ==
 
 * [[Benchmarks]]
@@ -84,7 +83,12 @@ Codestyle rules and other important stuff for those who want to contribute to th
 
 == Pages that should be moved ==
 
-The following pages contain info that should most likely be moved into the regular documentation, instead of hiding them here on the wiki. (Obviously this is not a hard rule and each individual case needs to be carefully reviewed and edited/modified if needed.)
+The following pages contain info that should most likely be moved into the regular documentation, instead of hiding them here on the wiki.(Obviously this is not a hard rule and each individual case needs to be carefully reviewed and edited/modified if needed.)
+
+It should be done for the following reasons:
+
+* The cc65 package should be self contained and all documentation for the end user should be included (he shouldn't have to look up extra stuff on the wiki)
+* The wiki is unfortunately much more "closed" than the linuxdoc documentation (The wiki can only be edited by team members, the documentation can be updated by anyone via pull requests).
 
 === To Contributing.md ===
 
@@ -102,6 +106,7 @@ The following pages contain info that should most likely be moved into the regul
 * [[GEOS]]
 * [[Interrupt-handlers-in-C]]
 * [[PEEK-and-POKE]]
+* [[Tiny Graphics Interface]]
 
 ==== for Developers ====
 
