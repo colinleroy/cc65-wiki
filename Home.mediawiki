@@ -15,6 +15,7 @@ Codestyle rules and other important stuff for those who want to contribute to th
 
 * [[AmigaOS]]
 * [[Android]]
+* [[Fedora-Linux]]
 
 == Setting up a cc65-based project ==
 
