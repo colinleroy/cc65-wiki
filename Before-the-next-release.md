@@ -16,3 +16,6 @@ On this page we collect things to be done before the next release. After a relea
     * create a github action that will pull this repo and compile all the files
 * create a style rule for "indent" (or similar program(s))
 * fix issue [#1538](https://github.com/cc65/cc65/issues/1538) - ANDing a non constant expression with a constant expression should make the size of the expression known to the assembler
+* add a .cfg to produce easyflash images
+    * add a sample program that uses it, with banking routines
+* add a sample that demonstrates the use of inline assembly
