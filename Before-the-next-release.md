@@ -1,4 +1,4 @@
-On this page we collect things to be done before the next release. After a release, the page will be whiped and we start from scratch.
+On this page we collect things to be done before the next release. When something was done it is ~striked out~. After a release, the page will be whiped from all issues there were striked out (ideally all).
 
 * move all Wiki pages that fit into Contributing.md or the Documentation
 * make Contributing.md more complete
@@ -15,7 +15,7 @@ On this page we collect things to be done before the next release. After a relea
     * put each one into a seperate directory, do not use .zip files
     * create a github action that will pull this repo and compile all the files
 * create a style rule for "indent" (or similar program(s))
-* fix issue [#1538](https://github.com/cc65/cc65/issues/1538) - ANDing a non constant expression with a constant expression should make the size of the expression known to the assembler
+* ~fix issue [#1538](https://github.com/cc65/cc65/issues/1538) - ANDing a non constant expression with a constant expression should make the size of the expression known to the assembler~
 * add a .cfg to produce easyflash images
     * add a sample program that uses it, with banking routines
 * add a sample that demonstrates the use of inline assembly
