@@ -6,6 +6,6 @@ The pre-built binary packages can be got from [http://software.opensuse.org/down
 
 Those packages are built as snapshots. Whenever there is a check-in into the trunk of the cc65 Github, the sources are compiled, and binaries are built. Note that there is some delay between the check-in and the availability of the binaries. Furthermore, when compilation finishes, there are some minutes in which neither the old nor the new binaries and/or source packages can be downloaded.
 
-The packages are split into "cc65" (the main package), "cc65-common" (for only Debian: contains all files that are independant from the architecture of the host), and "cc65-doc" (which contains the documentation files). "cc65-common" is a dependancy of "cc65"; thus, you do not have to specify it yourself. "cc65-doc", however, is not a dependancy. If you want the documentation, you have to specify it yourself.
+The packages are split into "cc65" (the main package), "cc65-common" (for Debian only: contains all files that are independant from the architecture of the host), and "cc65-doc" (which contains the documentation files). "cc65-common" is a dependancy of "cc65"; thus, you do not have to specify it yourself. "cc65-doc", however, is not a dependancy. If you want the documentation, you have to specify it yourself.
 
 In case you have any problems with the binary packages, please report it on the mailing list. The binary packages are maintained by Spiro Trikaliotis.
