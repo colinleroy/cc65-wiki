@@ -20,3 +20,7 @@ On this page we collect things to be done before the next release. When somethin
     * add a sample program that uses it, with banking routines
 * add a sample that demonstrates the use of inline assembly
 * add all missing undocumented opcodes to the 6502X mode
+* make the build system less ambigitious (see [#1726](https://github.com/cc65/cc65/issues/1726))
+    * the detected shell should not imply the target system
+    * cross-compile should not imply the target system
+    * it should be possible to override any autodetected behaviour
