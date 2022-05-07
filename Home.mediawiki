@@ -111,12 +111,12 @@ It should be done for the following reasons:
 
 We may add an addition section in the documentation, which is targetted at those who want to develop either external programs that work with cc65, or those that want to develop/extend the libraries.
 
-* Debug info related
+* Debug info related (perhaps make a new page cc65-debuginfo.html for this)
 ** [[debug-info-overview|Overview]]
 ** [[debug-info-data|Available information]]
 ** [[debug-info-module|Module usage and API calls]]
 
-* Library internals
+* Library internals (most can probably go to cc65-intern.html)
 ** [[Parameter-and-return-stacks]]
 ** [[Parameter-passing-and-calling-conventions]]
 ** [[Priority-of-constructors,-destructors,-and-interruptors]]
