@@ -1,2 +1,2 @@
-[[Before the next release]]
-[[Test-Suite]]
+* [[Before the next release]]
+* [[Test-Suite]]
