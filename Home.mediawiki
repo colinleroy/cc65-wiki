@@ -1,4 +1,4 @@
-__NOTOC__
+
 
 This Wiki contains all info that does not fit into the regular [http://cc65.github.io/doc documentation] and/or the [https://cc65.github.io website].
 
