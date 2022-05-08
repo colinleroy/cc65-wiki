@@ -1,5 +1,5 @@
 
-We somehow need to make testing of the library automatic too:
+We somehow need to make testing of the library headers for standard conformance automatic too. The tests should go into test/standard/
 
 Standards we need to test:
 
