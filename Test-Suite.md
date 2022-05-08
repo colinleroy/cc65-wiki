@@ -7,6 +7,12 @@ Standards we need to test:
 * C99 (defines __CC65_STD_C99__)
 * CC65 (__CC65_STD_CC65__)
 
+https://en.cppreference.com/w/c can give some quick clues on what is available in which standard
+
+# standards / drafts
+
+* https://stackoverflow.com/questions/81656/where-do-i-find-the-current-c-or-c-standard-documents
+* https://www.open-std.org/jtc1/sc22/wg14/www/projects
 
 # other Test Suites
 
