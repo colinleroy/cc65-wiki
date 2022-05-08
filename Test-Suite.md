@@ -1,3 +1,13 @@
+
+We somehow need to make testing of the library automatic too:
+
+Standards we need to test:
+
+* C89 (defines __CC65_STD_C89__)
+* C99 (defines __CC65_STD_C99__)
+* CC65 (__CC65_STD_CC65__)
+
+
 # other Test Suites
 
 * [musl libc tests](https://repo.or.cz/libc-test.git)
