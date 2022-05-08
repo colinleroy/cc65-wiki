@@ -4,7 +4,7 @@ We somehow need to make testing of the library automatic too:
 Standards we need to test:
 
 * C89 (defines __CC65_STD_C89__)
-* C99 (defines __CC65_STD_C99__)
+* C99 (defines __CC65_STD_C99__) [ISO C99 Draft](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1256.pdf) - Annex B has the header file info
 * CC65 (__CC65_STD_CC65__)
 
 https://en.cppreference.com/w/c can give some quick clues on what is available in which standard
