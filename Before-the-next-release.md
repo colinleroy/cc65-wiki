@@ -5,9 +5,9 @@ On this page we collect things to be done before the next release. When somethin
 * make the github action(s) build the documentation and upload it to the webpage
 * make a github action that produces a release
 * come up with a good way to handle external contributions to the wiki
-* fix [#1670](https://github.com/cc65/cc65/issues/1670):
-    * make the compiler define some macro depending on selected standard
-    * fix library headers to comply with the c-standards
+* ~fix [#1670](https://github.com/cc65/cc65/issues/1670):~
+    * ~make the compiler define some macro depending on selected standard~
+    * ~fix library headers to comply with the c-standards~
 * fix [#1667](https://github.com/cc65/cc65/issues/1667): the ```__CC65__``` version macro is broken
 * make sure the website, wiki and .md files are all prominently cross linked
 * find a way to make the documentation searchable (at least the one on the webpage)
