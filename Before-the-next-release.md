@@ -28,5 +28,7 @@ On this page we collect things to be done before the next release. When somethin
     * the detected shell should not imply the target system
     * cross-compile should not imply the target system
     * it should be possible to override any autodetected behaviour
+* fix/test the old retro replay emd driver
+    * [PR](https://github.com/cc65/cc65/pull/1509) with WIP code
 
 ETA: We really don't know. One way to speed up the process is [contributing](Contributing.md) to the CC65 project :) 
