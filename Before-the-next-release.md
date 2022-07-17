@@ -1,4 +1,4 @@
-On this page we collect things to be done before the next release. When something was done it is ~striked out~. After a release, the page will be whiped from all issues there were striked out (ideally all).
+On this page we collect things to be done before the next release. When something was done it is ~striked out~. After a release, the page will be whiped from all issues that were striked out (ideally all).
 
 * move all Wiki pages that fit into Contributing.md or the Documentation
 * make Contributing.md more complete
@@ -28,3 +28,5 @@ On this page we collect things to be done before the next release. When somethin
     * the detected shell should not imply the target system
     * cross-compile should not imply the target system
     * it should be possible to override any autodetected behaviour
+
+ETA: We really don't know. One way to speed up the process is [contributing](Contributing.md) to the CC65 project :) 
