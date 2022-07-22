@@ -30,5 +30,6 @@ On this page we collect things to be done before the next release. When somethin
     * it should be possible to override any autodetected behaviour
 * fix/test the old retro replay emd driver
     * [PR](https://github.com/cc65/cc65/pull/1509) with WIP code
+* add code for 2/3 button joystick to standard c64 driver at least, see [#1752](https://github.com/cc65/cc65/issues/1752)
 
 ETA: We really don't know. One way to speed up the process is [contributing](Contributing.md) to the CC65 project :) 
