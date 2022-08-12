@@ -73,6 +73,7 @@ Codestyle rules and other important stuff for those who want to contribute to th
 == Misc ==
 
 * [[Benchmarks]]
+* [https://github.com/ilmenit/CC65-Advanced-Optimizations CC65 Advanced Optimizations]
 
 == Applications ==
 
