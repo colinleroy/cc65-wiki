@@ -21,9 +21,9 @@ java -jar ac.jar -geos geos.dsk < test.cvt
 </pre>
 
 == Internals ==
-GEOS requires a 6502-compatible CPU (e.g., 6510 or 8510). For binary compatibility, you will need RAM at $c100-$c2ff.
+GEOS requires a 6502-compatible CPU (e.g., 6510 or 8510). For binary compatibility, the jump table will need RAM at $c100-$c2ff.
 
-=== GEOS 64/128, GEOS Plus/4 ===
+=== GEOS 64/128, GEOS Plus/4, GEOS Atari ===
 {|
 | APP_RAM || $04xx-$5xxx
 |-
