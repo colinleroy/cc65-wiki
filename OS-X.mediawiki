@@ -11,7 +11,7 @@ $ xcode-select --install
 
 choose "Install" from the dialog box that appears when the command is not found. There are more thorough explanations available e. g. in [http://blog.chrisbolman.com/how-install-command-line-developer-tools-mac-osx-mavericks-10-9-xcode/ This blog post].
 
-Since cc65 is very cleanly written, no additional configuration processes are needed. Once the necessary prerequisites are in place, start your terminal and proceed as described in [http://cc65.github.io/cc65/getting-started.html Getting Started].
+Since cc65 is very cleanly written, no additional configuration processes are needed. Once the necessary prerequisites are in place, start your terminal and proceed as described in [https://cc65.github.io/getting-started.html Getting Started].
 
 == Compatibility ==
 ==== OS X 10.11 "El Capitan" (i386) ====
