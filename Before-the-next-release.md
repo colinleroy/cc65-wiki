@@ -2,7 +2,7 @@ On this page we collect things to be done before the next release. When somethin
 
 * move all Wiki pages that fit into Contributing.md or the Documentation
 * make Contributing.md more complete
-* make the github action(s) build the documentation and upload it to the webpage
+* ~make the github action(s) build the documentation and upload it to the webpage
 * make a github action that produces a release
 * come up with a good way to handle external contributions to the wiki
 * ~fix [#1670](https://github.com/cc65/cc65/issues/1670):~
