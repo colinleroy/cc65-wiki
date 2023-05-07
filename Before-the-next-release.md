@@ -4,7 +4,7 @@ On this page we collect things to be done before the next release. When somethin
 * make Contributing.md more complete
 * ~make the github action(s) build the documentation and upload it to the webpage~
 * make a github action that produces a release
-* come up with a good way to handle external contributions to the wiki
+* come up with a good way to handle external contributions to the wiki (see #2062)
 * ~fix [#1670](https://github.com/cc65/cc65/issues/1670):~
     * ~make the compiler define some macro depending on selected standard~
     * ~fix library headers to comply with the c-standards~
