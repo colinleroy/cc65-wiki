@@ -16,6 +16,7 @@ There are several types of information:
 * Source files 
 * Spans
 * Symbols
+* Exports
 * Types
 
 Each item of each type has something like a primary index called an 'id'. The ids can be thought of as array indices, so looking up something by its id is fast. Invalid ids are marked with the special value CC65_INV_ID.
@@ -179,15 +180,31 @@ The last two fields will save a call to ''cc65_line_byspan'' or ''cc65_scope_bys
 |-
 | The id of the corresponding export. Only valid for imports, CC65_INV_ID for other symbols
 |-
-| The segment id if the symbol is segment based. For an import, taken from the export
+| The segment id if the symbol is segment based. Only valid for equate and label, CC65_INV_ID for other symbols
 |-
 | The id of the scope this symbols was defined in
 |-
 | The id of the parent symbol. This is only set for cheap locals and CC65_INV_ID otherwise
 |}
 
-Beware: Even for an import, the id of the corresponding export may be CC65_INV_ID. This happens if the module with the export has no debug information. So make sure that your application can handle it.
 
+=== Exports ===
+
+{| class="wikitable"
+! Available information
+|-
+| Export id
+|-
+| The name of the export
+|-
+| The value of the export (its address)
+|-
+| The size of the export. Zero if unknown
+|-
+| The id of the corresponding symbol, if it comes from a module with debug information
+|}
+
+The debug info file will also reference exports with no debug symbols, for completeness.
 
 === Types ===
 
